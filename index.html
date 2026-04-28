@@ -16,58 +16,61 @@
     --font-heading: Georgia, 'Times New Roman', serif;
   }
 
+  /* Logos brand palette (from λ icon screenshot) */
+  :root {
+    --logos-dark:  #1c2028;
+    --logos-sage:  #778868;
+    --logos-light: #d8dbd0;
+  }
+
   [data-theme="dark"] {
-    --bg:           #000;
-    --bg-raised:    #111;
-    --bg-hover:     #1a1a1a;
-    --bg-overlay:   rgba(0,0,0,0.88);
-    --text:         #fff;
-    --text-muted:   rgba(255,255,255,0.55);
-    --text-faint:   rgba(255,255,255,0.28);
-    --border:       rgba(255,255,255,0.1);
-    --border-subtle:rgba(255,255,255,0.06);
-    --accent:       #48749e;
-    --accent-light: #b6c9cf;
-    --accent-hover: #5a87b5;
-    --node-online:  #38bdf8;
-    --node-border:  #0ea5e9;
-    --node-offline: #374151;
-    --node-border-offline: #4b5563;
-    --node-self:    #f59e0b;
-    --node-self-b:  #d97706;
+    --bg:           #1c2028;
+    --bg-raised:    #22262f;
+    --bg-hover:     #2a2f3a;
+    --bg-overlay:   rgba(28,32,40,0.92);
+    --text:         #f0f0ec;
+    --text-muted:   rgba(240,240,236,0.55);
+    --text-faint:   rgba(240,240,236,0.28);
+    --border:       rgba(240,240,236,0.1);
+    --border-subtle:rgba(240,240,236,0.06);
+    --accent:       #778868;
+    --accent-hover: #8a9c78;
+    --node-online:  #778868;
+    --node-border:  #8a9c78;
+    --node-offline: #3a3e46;
+    --node-border-offline: #52575f;
+    --node-self:    #f0f0ec;
+    --node-self-b:  #c8c8c4;
     --event-color:  #e879f9;
     --event-border: #d946ef;
-    --popup-bg:     #111;
-    --popup-border: rgba(255,255,255,0.12);
-    --map-bg:       #0a0a0a;
-    --tile-url:     'dark';
+    --popup-bg:     #22262f;
+    --popup-border: rgba(240,240,236,0.12);
+    --map-bg:       #1c2028;
   }
 
   [data-theme="light"] {
-    --bg:           #fff;
-    --bg-raised:    #f0f4f5;
-    --bg-hover:     #deeefe;
-    --bg-overlay:   rgba(255,255,255,0.88);
-    --text:         #000;
-    --text-muted:   rgba(30,61,89,0.65);
-    --text-faint:   rgba(30,61,89,0.38);
-    --border:       #d1dde1;
-    --border-subtle:#e8eef0;
-    --accent:       #48749e;
-    --accent-light: #1e3d59;
-    --accent-hover: #2d5a80;
-    --node-online:  #1d6fa8;
-    --node-border:  #1560a0;
-    --node-offline: #9ca3af;
-    --node-border-offline: #6b7280;
-    --node-self:    #b45309;
-    --node-self-b:  #92400e;
+    --bg:           #f4f2ed;
+    --bg-raised:    #d8dbd0;
+    --bg-hover:     #c8ccc0;
+    --bg-overlay:   rgba(244,242,237,0.92);
+    --text:         #1c2028;
+    --text-muted:   rgba(28,32,40,0.6);
+    --text-faint:   rgba(28,32,40,0.35);
+    --border:       rgba(28,32,40,0.15);
+    --border-subtle:rgba(28,32,40,0.07);
+    --accent:       #778868;
+    --accent-hover: #5e6e52;
+    --node-online:  #778868;
+    --node-border:  #5e6e52;
+    --node-offline: #a0a49c;
+    --node-border-offline: #84887e;
+    --node-self:    #1c2028;
+    --node-self-b:  #3a3e46;
     --event-color:  #a21caf;
     --event-border: #86198f;
-    --popup-bg:     #fff;
-    --popup-border: #d1dde1;
-    --map-bg:       #f0f4f5;
-    --tile-url:     'light';
+    --popup-bg:     #f4f2ed;
+    --popup-border: rgba(28,32,40,0.15);
+    --map-bg:       #d8dbd0;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -104,7 +107,6 @@
     color: var(--text);
     letter-spacing: 0.01em;
     white-space: nowrap;
-    font-style: italic;
   }
 
   .stat {
@@ -155,14 +157,16 @@
     border: 1px solid var(--border);
     color: var(--text-muted);
     border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 15px;
+    padding: 5px 9px;
     cursor: pointer;
     white-space: nowrap;
-    line-height: 1;
-    transition: background 0.15s;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    transition: background 0.15s, color 0.15s;
   }
-  #theme-btn:hover { background: var(--bg-hover); }
+  #theme-btn:hover { background: var(--bg-hover); color: var(--text); }
+  #theme-btn svg { display: block; }
 
   /* ── Main layout ── */
   #main {
@@ -475,7 +479,7 @@
   <div id="spacer"></div>
 
   <span id="updated-label">—</span>
-  <button id="theme-btn" onclick="cycleTheme()" title="Toggle theme">🌙</button>
+  <button id="theme-btn" onclick="cycleTheme()" title="Toggle theme"></button>
   <button class="hdr-btn" onclick="refresh()">Refresh</button>
   <button class="hdr-btn active" id="feed-btn" onclick="toggleSidebar()">Feed</button>
 </div>
@@ -523,14 +527,15 @@ let currentTheme = (() => {
   return saved || (isDaytime() ? 'light' : 'dark');
 })();
 
+const SVG_SUN  = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+const SVG_MOON = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+
 function applyTheme(theme) {
   currentTheme = theme;
   document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('theme-btn').textContent = theme === 'dark' ? '☀️' : '🌙';
+  document.getElementById('theme-btn').innerHTML = theme === 'dark' ? SVG_SUN : SVG_MOON;
   localStorage.setItem('logos-live-theme', theme);
-  if (tileLayer) {
-    tileLayer.setUrl(theme === 'dark' ? TILE_DARK : TILE_LIGHT);
-  }
+  if (tileLayer) tileLayer.setUrl(theme === 'dark' ? TILE_DARK : TILE_LIGHT);
 }
 
 function cycleTheme() {
@@ -559,8 +564,8 @@ let tileLayer = L.tileLayer(currentTheme === 'dark' ? TILE_DARK : TILE_LIGHT, {
   noWrap: true,
 }).addTo(map);
 
-// Now set the correct icon based on current theme
-document.getElementById('theme-btn').textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+// Set initial icon now that SVGs are defined
+document.getElementById('theme-btn').innerHTML = currentTheme === 'dark' ? SVG_SUN : SVG_MOON;
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let markers = [];
