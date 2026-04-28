@@ -267,14 +267,19 @@
 const map = L.map('map', {
   center: [20, 10],
   zoom: 2,
+  minZoom: 2,
   zoomControl: true,
   attributionControl: true,
+  worldCopyJump: false,
+  maxBounds: [[-85, -180], [85, 180]],
+  maxBoundsViscosity: 1.0,
 });
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
   subdomains: 'abcd',
   maxZoom: 18,
+  noWrap: true,
 }).addTo(map);
 
 // ── State ─────────────────────────────────────────────────────────────────────
@@ -337,6 +342,9 @@ function render(data) {
   const totalCount  = data.nodes.length;
   document.getElementById('node-count-num').textContent = `${onlineCount} / ${totalCount}`;
 
+  // Clear previous markers before re-rendering
+  clearMarkers();
+
   // Events
   const showEvents = document.getElementById('toggle-events').checked;
   const events = data.events || [];
@@ -376,7 +384,6 @@ function render(data) {
   }
 
   // Markers
-  clearMarkers();
   for (const node of data.nodes) {
     const online = node.self || node.online !== false;
     const m = L.marker([node.lat, node.lon], {
@@ -408,6 +415,8 @@ function render(data) {
 }
 
 // ── Data fetch ────────────────────────────────────────────────────────────────
+let firstLoad = true;
+
 async function refresh() {
   document.getElementById('loading').classList.remove('hidden');
   try {
@@ -415,6 +424,17 @@ async function refresh() {
     if (!resp.ok) throw new Error(resp.statusText);
     const data = await resp.json();
     render(data);
+    if (firstLoad) {
+      firstLoad = false;
+      // Fit map to all data points (nodes + events)
+      const pts = [
+        ...data.nodes.map(n => [n.lat, n.lon]),
+        ...(data.events || []).map(e => [e.lat, e.lon]),
+      ];
+      if (pts.length > 0) {
+        map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 6 });
+      }
+    }
   } catch (e) {
     document.getElementById('updated-label').textContent = 'Error: ' + e.message;
   } finally {
