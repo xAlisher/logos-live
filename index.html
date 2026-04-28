@@ -171,6 +171,31 @@
   }
   #node-count strong { color: #38bdf8; font-size: 20px; margin-right: 6px; }
 
+  /* ── Event (circle) markers ── */
+  .event-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .event-marker.upcoming {
+    background: #e879f9;
+    border: 2px solid #d946ef;
+    box-shadow: 0 0 8px rgba(232,121,249,0.6);
+  }
+  .event-marker.upcoming::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: rgba(232,121,249,0.2);
+    animation: pulse 2s ease-out infinite;
+  }
+  .event-marker.past {
+    background: #86198f44;
+    border: 2px solid #86198f88;
+  }
+
   /* ── Loading overlay ── */
   #loading {
     position: absolute;
@@ -213,6 +238,18 @@
     <span class="stat-value" id="stat-peers">—</span>
   </div>
 
+  <div class="stat">
+    <span class="stat-label">Circles</span>
+    <span class="stat-value" id="stat-events">—</span>
+  </div>
+
+  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#9ca3af;font-size:12px;white-space:nowrap;">
+    <input type="checkbox" id="toggle-events" checked style="accent-color:#22c55e;"> Circles
+  </label>
+  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#9ca3af;font-size:12px;white-space:nowrap;">
+    <input type="checkbox" id="toggle-nodes" checked style="accent-color:#38bdf8;"> Nodes
+  </label>
+
   <div id="spacer"></div>
 
   <span id="updated-label">—</span>
@@ -242,10 +279,13 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let markers = [];
+let eventMarkers = [];
 
 function clearMarkers() {
   markers.forEach(m => m.remove());
   markers = [];
+  eventMarkers.forEach(m => m.remove());
+  eventMarkers = [];
 }
 
 function makeIcon(isSelf, online) {
@@ -297,6 +337,44 @@ function render(data) {
   const totalCount  = data.nodes.length;
   document.getElementById('node-count-num').textContent = `${onlineCount} / ${totalCount}`;
 
+  // Events
+  const showEvents = document.getElementById('toggle-events').checked;
+  const events = data.events || [];
+  const upcomingCount = events.filter(e => e.upcoming).length;
+  document.getElementById('stat-events').textContent =
+    `${upcomingCount} upcoming / ${events.length} total`;
+
+  for (const ev of events) {
+    const cls = ev.upcoming ? 'event-marker upcoming' : 'event-marker past';
+    const icon = L.divIcon({
+      className: '',
+      html: `<div class="${cls}"></div>`,
+      iconSize: [14, 14],
+      iconAnchor: [7, 7],
+    });
+    const m = L.marker([ev.lat, ev.lon], {
+      icon,
+      zIndexOffset: ev.upcoming ? 500 : -50,
+      opacity: showEvents ? 1 : 0,
+    });
+    const date = ev.start ? ev.start.slice(0, 10) : '—';
+    const location = [ev.city, ev.country].filter(Boolean).join(', ') || '—';
+    m.bindPopup(`
+      <div style="color:#e879f9;font-weight:600;margin-bottom:6px;">
+        ● ${ev.upcoming ? 'Upcoming Circle' : 'Past Circle'}
+      </div>
+      <div style="font-weight:600;margin-bottom:8px;color:#f0f0f0;">${ev.name}</div>
+      <div class="popup-row"><span class="popup-key">Date</span><span class="popup-val">${date}</span></div>
+      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${location}</span></div>
+      <div class="popup-row"><span class="popup-key">Address</span><span class="popup-val" style="max-width:160px;word-break:break-word;">${ev.address || '—'}</span></div>
+      <div style="margin-top:8px;">
+        <a href="${ev.url}" target="_blank" style="color:#e879f9;font-size:12px;">View on lu.ma →</a>
+      </div>
+    `);
+    if (showEvents) m.addTo(map);
+    eventMarkers.push(m);
+  }
+
   // Markers
   clearMarkers();
   for (const node of data.nodes) {
@@ -343,6 +421,13 @@ async function refresh() {
     document.getElementById('loading').classList.add('hidden');
   }
 }
+
+document.getElementById('toggle-events').addEventListener('change', e => {
+  eventMarkers.forEach(m => e.target.checked ? m.addTo(map) : m.remove());
+});
+document.getElementById('toggle-nodes').addEventListener('change', e => {
+  markers.forEach(m => e.target.checked ? m.addTo(map) : m.remove());
+});
 
 // Auto-refresh every 30s
 refresh();
