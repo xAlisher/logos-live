@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logos Network</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0a;
+    color: #e5e7eb;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  #header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 10px 20px;
+    background: #111;
+    border-bottom: 1px solid #1e1e1e;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  #header h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f0f0f0;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .stat-label { color: #6b7280; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat-value { color: #e5e7eb; font-size: 13px; font-weight: 500; }
+
+  #mode-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .mode-online  { background: #14532d; color: #22c55e; }
+  .mode-syncing { background: #78350f; color: #f59e0b; }
+  .mode-offline { background: #450a0a; color: #ef4444; }
+
+  #spacer { flex: 1; }
+
+  #updated-label {
+    color: #4b5563;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  #refresh-btn {
+    background: #1e1e1e;
+    border: 1px solid #2e2e2e;
+    color: #9ca3af;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  #refresh-btn:hover { background: #2a2a2a; color: #e5e7eb; }
+
+  /* ── Map ── */
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── Popup ── */
+  .leaflet-popup-content-wrapper {
+    background: #111;
+    border: 1px solid #2e2e2e;
+    border-radius: 6px;
+    color: #e5e7eb;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
+  .leaflet-popup-tip { background: #111; }
+  .leaflet-popup-content { margin: 12px 14px; min-width: 220px; }
+
+  .popup-peer-id {
+    font-size: 10px;
+    color: #6b7280;
+    word-break: break-all;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .popup-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 3px 0;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .popup-row:last-child { border-bottom: none; }
+  .popup-key { color: #6b7280; }
+  .popup-val { color: #e5e7eb; text-align: right; }
+
+  /* ── Marker pulse ── */
+  .node-marker {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #38bdf8;
+    border: 2px solid #0ea5e9;
+    position: relative;
+  }
+  .node-marker::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: rgba(56,189,248,0.25);
+    animation: pulse 2.5s ease-out infinite;
+  }
+  .node-marker.offline {
+    background: #374151;
+    border: 2px solid #4b5563;
+  }
+  .node-marker.offline::after {
+    display: none;
+  }
+  .node-marker.self {
+    width: 16px;
+    height: 16px;
+    background: #f59e0b;
+    border: 2px solid #d97706;
+  }
+  .node-marker.self::after {
+    background: rgba(245,158,11,0.3);
+    animation: pulse 1.8s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { transform: scale(0.8); opacity: 0.6; }
+    70%  { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  /* ── Node count overlay ── */
+  #node-count {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    z-index: 1000;
+    background: rgba(17,17,17,0.9);
+    border: 1px solid #2e2e2e;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: #9ca3af;
+    pointer-events: none;
+  }
+  #node-count strong { color: #38bdf8; font-size: 20px; margin-right: 6px; }
+
+  /* ── Loading overlay ── */
+  #loading {
+    position: absolute;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(10,10,10,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #6b7280;
+    letter-spacing: 0.05em;
+  }
+  #loading.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>Logos Network</h1>
+
+  <div class="stat">
+    <span class="stat-label">Status</span>
+    <span id="mode-badge" class="stat-value mode-offline">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">Slot</span>
+    <span class="stat-value" id="stat-slot">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">Height</span>
+    <span class="stat-value" id="stat-height">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">LIB Slot</span>
+    <span class="stat-value" id="stat-lib">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">Connected Peers</span>
+    <span class="stat-value" id="stat-peers">—</span>
+  </div>
+
+  <div id="spacer"></div>
+
+  <span id="updated-label">—</span>
+  <button id="refresh-btn" onclick="refresh()">Refresh</button>
+</div>
+
+<div style="position:relative; flex:1; overflow:hidden; display:flex; flex-direction:column;">
+  <div id="map"></div>
+  <div id="node-count"><strong id="node-count-num">—</strong>online / total</div>
+  <div id="loading">Loading network data...</div>
+</div>
+
+<script>
+// ── Map init ──────────────────────────────────────────────────────────────────
+const map = L.map('map', {
+  center: [20, 10],
+  zoom: 2,
+  zoomControl: true,
+  attributionControl: true,
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 18,
+}).addTo(map);
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let markers = [];
+
+function clearMarkers() {
+  markers.forEach(m => m.remove());
+  markers = [];
+}
+
+function makeIcon(isSelf, online) {
+  let cls = 'node-marker';
+  if (isSelf)        cls += ' self';
+  else if (!online)  cls += ' offline';
+  const size = isSelf ? 16 : 12;
+  return L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [size,size], iconAnchor: [size/2,size/2] });
+}
+
+function fmtTs(ts) {
+  if (!ts) return '—';
+  return new Date(ts * 1000).toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+}
+
+function fmt(n) {
+  if (n == null) return '—';
+  return Number(n).toLocaleString();
+}
+
+function timeSince(ts) {
+  const s = Math.round(Date.now()/1000 - ts);
+  if (s < 60)  return `${s}s ago`;
+  if (s < 3600) return `${Math.round(s/60)}m ago`;
+  return `${Math.round(s/3600)}h ago`;
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render(data) {
+  // Chain stats
+  const chain = data.chain || {};
+  const net   = data.network || {};
+
+  const mode = chain.mode || 'Offline';
+  const badge = document.getElementById('mode-badge');
+  badge.textContent = mode;
+  badge.className = '';
+  if (mode === 'Online')       badge.className = 'stat-value mode-online';
+  else if (mode === 'Offline') badge.className = 'stat-value mode-offline';
+  else                         badge.className = 'stat-value mode-syncing';
+
+  document.getElementById('stat-slot').textContent   = fmt(chain.slot);
+  document.getElementById('stat-height').textContent = fmt(chain.height);
+  document.getElementById('stat-lib').textContent    = fmt(chain.lib_slot);
+  document.getElementById('stat-peers').textContent  = fmt(net.n_peers);
+
+  document.getElementById('updated-label').textContent = 'Updated ' + timeSince(data.updated);
+  const onlineCount = data.nodes.filter(n => n.self || n.online !== false).length;
+  const totalCount  = data.nodes.length;
+  document.getElementById('node-count-num').textContent = `${onlineCount} / ${totalCount}`;
+
+  // Markers
+  clearMarkers();
+  for (const node of data.nodes) {
+    const online = node.self || node.online !== false;
+    const m = L.marker([node.lat, node.lon], {
+      icon: makeIcon(node.self, online),
+      zIndexOffset: node.self ? 1000 : (online ? 0 : -100),
+      opacity: online ? 1 : 0.6,
+    });
+
+    const shortPeer = node.peer_id.slice(0, 16) + '…' + node.peer_id.slice(-8);
+    const location  = [node.city, node.country].filter(Boolean).join(', ') || 'Unknown';
+    const selfLabel   = node.self   ? '<div style="color:#f59e0b;font-weight:600;margin-bottom:6px;">⬡ This node</div>' : '';
+    const statusLabel = !node.self  ? `<div style="color:${online ? '#22c55e' : '#6b7280'};font-size:11px;font-weight:600;margin-bottom:6px;">${online ? '● Online' : '● Offline'}</div>` : '';
+
+    m.bindPopup(`
+      ${selfLabel}${statusLabel}
+      <div class="popup-peer-id" title="${node.peer_id}">${shortPeer}</div>
+      <div class="popup-row"><span class="popup-key">IP</span><span class="popup-val">${node.ip}</span></div>
+      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${location}</span></div>
+      <div class="popup-row"><span class="popup-key">ISP</span><span class="popup-val">${node.isp || '—'}</span></div>
+      <div class="popup-row"><span class="popup-key">Org</span><span class="popup-val">${node.org || '—'}</span></div>
+      <div class="popup-row"><span class="popup-key">ASN</span><span class="popup-val">${node.asn || '—'}</span></div>
+      ${node.first_seen ? `<div class="popup-row"><span class="popup-key">First seen</span><span class="popup-val">${fmtTs(node.first_seen)}</span></div>` : ''}
+      ${node.last_seen  ? `<div class="popup-row"><span class="popup-key">Last seen</span><span class="popup-val">${fmtTs(node.last_seen)}</span></div>` : ''}
+    `);
+
+    m.addTo(map);
+    markers.push(m);
+  }
+}
+
+// ── Data fetch ────────────────────────────────────────────────────────────────
+async function refresh() {
+  document.getElementById('loading').classList.remove('hidden');
+  try {
+    const resp = await fetch('./network.json');
+    if (!resp.ok) throw new Error(resp.statusText);
+    const data = await resp.json();
+    render(data);
+  } catch (e) {
+    document.getElementById('updated-label').textContent = 'Error: ' + e.message;
+  } finally {
+    document.getElementById('loading').classList.add('hidden');
+  }
+}
+
+// Auto-refresh every 30s
+refresh();
+setInterval(refresh, 30_000);
+
+// Fix Leaflet not knowing its size until layout is stable
+setTimeout(() => map.invalidateSize(), 100);
+
+// Keep "updated X ago" label fresh
+setInterval(() => {
+  const label = document.getElementById('updated-label');
+  if (!label.textContent.startsWith('Updated')) return;
+}, 10_000);
+</script>
+</body>
+</html>
