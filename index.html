@@ -1,23 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Logos Network</title>
+<title>Logos Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
+  /* ── Theme tokens ── */
+  :root {
+    --font-main: 'Fira Code', 'Fira Mono', monospace;
+    --font-heading: Georgia, 'Times New Roman', serif;
+  }
+
+  [data-theme="dark"] {
+    --bg:           #000;
+    --bg-raised:    #111;
+    --bg-hover:     #1a1a1a;
+    --bg-overlay:   rgba(0,0,0,0.88);
+    --text:         #fff;
+    --text-muted:   rgba(255,255,255,0.55);
+    --text-faint:   rgba(255,255,255,0.28);
+    --border:       rgba(255,255,255,0.1);
+    --border-subtle:rgba(255,255,255,0.06);
+    --accent:       #48749e;
+    --accent-light: #b6c9cf;
+    --accent-hover: #5a87b5;
+    --node-online:  #38bdf8;
+    --node-border:  #0ea5e9;
+    --node-offline: #374151;
+    --node-border-offline: #4b5563;
+    --node-self:    #f59e0b;
+    --node-self-b:  #d97706;
+    --event-color:  #e879f9;
+    --event-border: #d946ef;
+    --popup-bg:     #111;
+    --popup-border: rgba(255,255,255,0.12);
+    --map-bg:       #0a0a0a;
+    --tile-url:     'dark';
+  }
+
+  [data-theme="light"] {
+    --bg:           #fff;
+    --bg-raised:    #f0f4f5;
+    --bg-hover:     #deeefe;
+    --bg-overlay:   rgba(255,255,255,0.88);
+    --text:         #000;
+    --text-muted:   rgba(30,61,89,0.65);
+    --text-faint:   rgba(30,61,89,0.38);
+    --border:       #d1dde1;
+    --border-subtle:#e8eef0;
+    --accent:       #48749e;
+    --accent-light: #1e3d59;
+    --accent-hover: #2d5a80;
+    --node-online:  #1d6fa8;
+    --node-border:  #1560a0;
+    --node-offline: #9ca3af;
+    --node-border-offline: #6b7280;
+    --node-self:    #b45309;
+    --node-self-b:  #92400e;
+    --event-color:  #a21caf;
+    --event-border: #86198f;
+    --popup-bg:     #fff;
+    --popup-border: #d1dde1;
+    --map-bg:       #f0f4f5;
+    --tile-url:     'light';
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: #181c24;
-    color: #e5e7eb;
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
     font-size: 13px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: background 0.25s, color 0.25s;
   }
 
   /* ── Header ── */
@@ -26,18 +90,21 @@
     align-items: center;
     gap: 24px;
     padding: 10px 20px;
-    background: #181c24;
-    border-bottom: 1px solid #252b38;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
     flex-shrink: 0;
     flex-wrap: wrap;
+    transition: background 0.25s, border-color 0.25s;
   }
 
   #header h1 {
-    font-size: 15px;
-    font-weight: 600;
-    color: #f0f0f0;
-    letter-spacing: 0.04em;
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.01em;
     white-space: nowrap;
+    font-style: italic;
   }
 
   .stat {
@@ -45,8 +112,8 @@
     flex-direction: column;
     gap: 1px;
   }
-  .stat-label { color: #6b7280; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
-  .stat-value { color: #e5e7eb; font-size: 13px; font-weight: 500; }
+  .stat-label { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat-value { color: var(--text); font-size: 13px; font-weight: 500; }
 
   #mode-badge {
     padding: 2px 8px;
@@ -62,26 +129,42 @@
   #spacer { flex: 1; }
 
   #updated-label {
-    color: #4b5563;
+    color: var(--text-faint);
     font-size: 11px;
     white-space: nowrap;
   }
 
-  #refresh-btn, #feed-btn {
-    background: #252b38;
-    border: 1px solid #2e3747;
-    color: #9ca3af;
+  .hdr-btn {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
     border-radius: 4px;
     padding: 4px 10px;
-    font-family: inherit;
+    font-family: var(--font-main);
     font-size: 11px;
     cursor: pointer;
     white-space: nowrap;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
-  #refresh-btn:hover, #feed-btn:hover { background: #2e3747; color: #e5e7eb; }
-  #feed-btn.active { color: #e879f9; border-color: #e879f9; }
+  .hdr-btn:hover { background: var(--bg-hover); color: var(--text); }
+  .hdr-btn.active { color: var(--event-color); border-color: var(--event-color); }
 
-  /* ── Main area: map + sidebar ── */
+  /* ── Theme switcher ── */
+  #theme-btn {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+    transition: background 0.15s;
+  }
+  #theme-btn:hover { background: var(--bg-hover); }
+
+  /* ── Main layout ── */
   #main {
     flex: 1;
     display: flex;
@@ -97,23 +180,24 @@
   #map {
     width: 100%;
     height: 100%;
-    background: #181c24;
+    background: var(--map-bg);
   }
 
   /* ── Popup ── */
   .leaflet-popup-content-wrapper {
-    background: #1e2330;
-    border: 1px solid #2e3747;
+    background: var(--popup-bg);
+    border: 1px solid var(--popup-border);
     border-radius: 6px;
-    color: #e5e7eb;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    color: var(--text);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   }
-  .leaflet-popup-tip { background: #1e2330; }
+  .leaflet-popup-tip { background: var(--popup-bg); }
   .leaflet-popup-content { margin: 12px 14px; min-width: 220px; }
+  .leaflet-popup-content a { color: var(--event-color); }
 
   .popup-peer-id {
     font-size: 10px;
-    color: #6b7280;
+    color: var(--text-muted);
     word-break: break-all;
     margin-bottom: 8px;
     line-height: 1.4;
@@ -123,19 +207,18 @@
     justify-content: space-between;
     gap: 12px;
     padding: 3px 0;
-    border-bottom: 1px solid #252b38;
+    border-bottom: 1px solid var(--border-subtle);
   }
   .popup-row:last-child { border-bottom: none; }
-  .popup-key { color: #6b7280; }
-  .popup-val { color: #e5e7eb; text-align: right; }
+  .popup-key { color: var(--text-muted); }
+  .popup-val { color: var(--text); text-align: right; }
 
-  /* ── Marker pulse ── */
+  /* ── Markers ── */
   .node-marker {
-    width: 12px;
-    height: 12px;
+    width: 12px; height: 12px;
     border-radius: 50%;
-    background: #38bdf8;
-    border: 2px solid #0ea5e9;
+    background: var(--node-online);
+    border: 2px solid var(--node-border);
     position: relative;
   }
   .node-marker::after {
@@ -143,22 +226,21 @@
     position: absolute;
     inset: -4px;
     border-radius: 50%;
-    background: rgba(56,189,248,0.25);
+    background: color-mix(in srgb, var(--node-online) 25%, transparent);
     animation: pulse 2.5s ease-out infinite;
   }
   .node-marker.offline {
-    background: #374151;
-    border: 2px solid #4b5563;
+    background: var(--node-offline);
+    border: 2px solid var(--node-border-offline);
   }
   .node-marker.offline::after { display: none; }
   .node-marker.self {
-    width: 16px;
-    height: 16px;
-    background: #f59e0b;
-    border: 2px solid #d97706;
+    width: 16px; height: 16px;
+    background: var(--node-self);
+    border: 2px solid var(--node-self-b);
   }
   .node-marker.self::after {
-    background: rgba(245,158,11,0.3);
+    background: color-mix(in srgb, var(--node-self) 30%, transparent);
     animation: pulse 1.8s ease-out infinite;
   }
   @keyframes pulse {
@@ -167,59 +249,60 @@
     100% { transform: scale(1.6); opacity: 0; }
   }
 
-  /* ── Node count overlay ── */
-  #node-count {
-    position: absolute;
-    bottom: 24px;
-    left: 16px;
-    z-index: 1000;
-    background: rgba(24,28,36,0.92);
-    border: 1px solid #252b38;
-    border-radius: 6px;
-    padding: 8px 14px;
-    font-size: 12px;
-    color: #9ca3af;
-    pointer-events: none;
-  }
-  #node-count strong { color: #38bdf8; font-size: 20px; margin-right: 6px; }
-
-  /* ── Event (circle) markers ── */
   .event-marker {
-    width: 14px;
-    height: 14px;
+    width: 14px; height: 14px;
     border-radius: 50%;
     position: relative;
   }
   .event-marker.upcoming {
-    background: #e879f9;
-    border: 2px solid #d946ef;
-    box-shadow: 0 0 8px rgba(232,121,249,0.6);
+    background: var(--event-color);
+    border: 2px solid var(--event-border);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--event-color) 60%, transparent);
   }
   .event-marker.upcoming::after {
     content: '';
     position: absolute;
     inset: -4px;
     border-radius: 50%;
-    background: rgba(232,121,249,0.2);
+    background: color-mix(in srgb, var(--event-color) 20%, transparent);
     animation: pulse 2s ease-out infinite;
   }
   .event-marker.past {
-    background: #86198f44;
-    border: 2px solid #86198f88;
+    background: color-mix(in srgb, var(--event-border) 25%, transparent);
+    border: 2px solid color-mix(in srgb, var(--event-border) 50%, transparent);
   }
 
-  /* ── Loading overlay ── */
+  /* ── Node count overlay ── */
+  #node-count {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    z-index: 1000;
+    background: var(--bg-overlay);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    pointer-events: none;
+    font-family: var(--font-main);
+    backdrop-filter: blur(4px);
+  }
+  #node-count strong { color: var(--node-online); font-size: 20px; margin-right: 6px; }
+
+  /* ── Loading ── */
   #loading {
     position: absolute;
     inset: 0;
     z-index: 2000;
-    background: rgba(24,28,36,0.85);
+    background: var(--bg-overlay);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: #6b7280;
+    color: var(--text-muted);
     letter-spacing: 0.05em;
+    font-family: var(--font-main);
   }
   #loading.hidden { display: none; }
 
@@ -227,21 +310,18 @@
   #sidebar {
     width: 300px;
     flex-shrink: 0;
-    background: #181c24;
-    border-left: 1px solid #252b38;
+    background: var(--bg);
+    border-left: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: width 0.2s ease;
+    transition: width 0.2s ease, border-color 0.25s;
   }
-  #sidebar.hidden {
-    width: 0;
-    border-left: none;
-  }
+  #sidebar.hidden { width: 0; border-left: none; }
 
   #sidebar-tabs {
     display: flex;
-    border-bottom: 1px solid #252b38;
+    border-bottom: 1px solid var(--border);
     flex-shrink: 0;
   }
   .stab {
@@ -249,8 +329,8 @@
     padding: 9px 0;
     background: none;
     border: none;
-    color: #6b7280;
-    font-family: inherit;
+    color: var(--text-muted);
+    font-family: var(--font-main);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -259,23 +339,22 @@
     border-bottom: 2px solid transparent;
     transition: color 0.15s, border-color 0.15s;
   }
-  .stab:hover { color: #e5e7eb; }
-  .stab.active { color: #e5e7eb; border-bottom-color: #38bdf8; }
-  .stab.active.circles-tab { border-bottom-color: #e879f9; }
+  .stab:hover { color: var(--text); }
+  .stab.active      { color: var(--text); border-bottom-color: var(--accent); }
+  .stab.active.ctab { border-bottom-color: var(--event-color); }
 
-  #sidebar-body {
-    flex: 1;
-    overflow-y: auto;
-  }
+  #sidebar-body { flex: 1; overflow-y: auto; }
   #sidebar-body::-webkit-scrollbar { width: 4px; }
   #sidebar-body::-webkit-scrollbar-track { background: transparent; }
-  #sidebar-body::-webkit-scrollbar-thumb { background: #252b38; border-radius: 2px; }
+  #sidebar-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
   .feed-item {
     padding: 12px 14px;
-    border-bottom: 1px solid #1e2330;
+    border-bottom: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: background 0.12s;
   }
-  .feed-item:hover { background: #1e2330; cursor: pointer; }
+  .feed-item:hover { background: var(--bg-raised); }
 
   .feed-meta {
     display: flex;
@@ -285,26 +364,16 @@
   }
   .feed-repo {
     font-size: 10px;
-    color: #38bdf8;
+    color: var(--accent);
     font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 170px;
   }
-  .feed-repo.community { color: #e879f9; }
-  .feed-time {
-    font-size: 10px;
-    color: #4b5563;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .feed-title {
-    font-size: 12px;
-    color: #d1d5db;
-    line-height: 1.4;
-    word-break: break-word;
-  }
+  .feed-repo.community { color: var(--event-color); }
+  .feed-time { font-size: 10px; color: var(--text-faint); white-space: nowrap; flex-shrink: 0; }
+  .feed-title { font-size: 12px; color: var(--text); line-height: 1.4; word-break: break-word; }
   .feed-type {
     display: inline-block;
     font-size: 9px;
@@ -319,14 +388,9 @@
   .type-pr      { background: #1e3a2a; color: #4ade80; }
   .type-release { background: #3a1e1e; color: #f87171; }
   .type-create  { background: #2a1e3a; color: #c084fc; }
-  .type-topic   { background: #3a1e2e; color: #e879f9; }
+  .type-topic   { background: color-mix(in srgb, var(--event-color) 15%, transparent); color: var(--event-color); }
 
-  .feed-empty {
-    padding: 24px 14px;
-    color: #4b5563;
-    font-size: 12px;
-    text-align: center;
-  }
+  .feed-empty { padding: 24px 14px; color: var(--text-faint); font-size: 12px; text-align: center; }
 
   /* ── YouTube corner widget ── */
   #yt-widget {
@@ -335,11 +399,12 @@
     right: 16px;
     z-index: 1000;
     width: 280px;
-    background: #181c24;
-    border: 1px solid #252b38;
+    background: var(--bg);
+    border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    backdrop-filter: blur(4px);
   }
   #yt-widget.collapsed #yt-player { display: none; }
   #yt-header {
@@ -349,42 +414,31 @@
     padding: 7px 10px;
     cursor: pointer;
     user-select: none;
-    border-bottom: 1px solid #252b38;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-main);
   }
-  #yt-header:hover { background: #1e2330; }
-  #yt-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #ef4444;
-    flex-shrink: 0;
-  }
-  #yt-title {
-    font-size: 11px;
-    color: #d1d5db;
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  #yt-chevron {
-    font-size: 10px;
-    color: #6b7280;
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
+  #yt-header:hover { background: var(--bg-raised); }
+  #yt-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
+  #yt-title { font-size: 11px; color: var(--text-muted); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #yt-chevron { font-size: 10px; color: var(--text-faint); flex-shrink: 0; transition: transform 0.2s; }
   #yt-widget.collapsed #yt-chevron { transform: rotate(180deg); }
-  #yt-player iframe {
-    display: block;
-    width: 100%;
-    height: 158px;
-    border: none;
+  #yt-player iframe { display: block; width: 100%; height: 158px; border: none; }
+
+  /* Leaflet attribution themed */
+  .leaflet-control-attribution {
+    background: var(--bg-overlay) !important;
+    color: var(--text-faint) !important;
+    border-radius: 4px 0 0 0;
+    font-family: var(--font-main);
+    font-size: 10px;
   }
+  .leaflet-control-attribution a { color: var(--accent) !important; }
 </style>
 </head>
 <body>
 
 <div id="header">
-  <h1>Logos Network</h1>
+  <h1>Logos Live</h1>
 
   <div class="stat">
     <span class="stat-label">Status</span>
@@ -403,7 +457,7 @@
     <span class="stat-value" id="stat-lib">—</span>
   </div>
   <div class="stat">
-    <span class="stat-label">Connected Peers</span>
+    <span class="stat-label">Peers</span>
     <span class="stat-value" id="stat-peers">—</span>
   </div>
   <div class="stat">
@@ -411,18 +465,19 @@
     <span class="stat-value" id="stat-events">—</span>
   </div>
 
-  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#9ca3af;font-size:12px;white-space:nowrap;">
-    <input type="checkbox" id="toggle-events" checked style="accent-color:#e879f9;"> Circles
+  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text-muted);font-size:12px;white-space:nowrap;">
+    <input type="checkbox" id="toggle-events" checked style="accent-color:var(--event-color);"> Circles
   </label>
-  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#9ca3af;font-size:12px;white-space:nowrap;">
-    <input type="checkbox" id="toggle-nodes" checked style="accent-color:#38bdf8;"> Nodes
+  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text-muted);font-size:12px;white-space:nowrap;">
+    <input type="checkbox" id="toggle-nodes" checked style="accent-color:var(--node-online);"> Nodes
   </label>
 
   <div id="spacer"></div>
 
   <span id="updated-label">—</span>
-  <button id="refresh-btn" onclick="refresh()">Refresh</button>
-  <button id="feed-btn" class="active" onclick="toggleSidebar()">Feed</button>
+  <button id="theme-btn" onclick="cycleTheme()" title="Toggle theme">🌙</button>
+  <button class="hdr-btn" onclick="refresh()">Refresh</button>
+  <button class="hdr-btn active" id="feed-btn" onclick="toggleSidebar()">Feed</button>
 </div>
 
 <div id="main">
@@ -444,7 +499,7 @@
   <div id="sidebar">
     <div id="sidebar-tabs">
       <button class="stab active" data-tab="dev" onclick="switchTab('dev')">Dev</button>
-      <button class="stab circles-tab" data-tab="community" onclick="switchTab('community')">Community</button>
+      <button class="stab ctab" data-tab="community" onclick="switchTab('community')">Community</button>
     </div>
     <div id="sidebar-body">
       <div class="feed-empty">Loading…</div>
@@ -453,6 +508,38 @@
 </div>
 
 <script>
+// ── Theme ─────────────────────────────────────────────────────────────────────
+const TILE_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+const TILE_ATTR  = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
+
+function isDaytime() {
+  const h = new Date().getHours();
+  return h >= 7 && h < 20;
+}
+
+let currentTheme = (() => {
+  const saved = localStorage.getItem('logos-live-theme');
+  return saved || (isDaytime() ? 'light' : 'dark');
+})();
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('theme-btn').textContent = theme === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('logos-live-theme', theme);
+  if (tileLayer) {
+    tileLayer.setUrl(theme === 'dark' ? TILE_DARK : TILE_LIGHT);
+  }
+}
+
+function cycleTheme() {
+  applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+}
+
+// Apply immediately (before map init)
+document.documentElement.setAttribute('data-theme', currentTheme);
+
 // ── Map init ──────────────────────────────────────────────────────────────────
 const map = L.map('map', {
   center: [20, 10],
@@ -465,22 +552,23 @@ const map = L.map('map', {
   maxBoundsViscosity: 1.0,
 });
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+let tileLayer = L.tileLayer(currentTheme === 'dark' ? TILE_DARK : TILE_LIGHT, {
+  attribution: TILE_ATTR,
   subdomains: 'abcd',
   maxZoom: 18,
   noWrap: true,
 }).addTo(map);
+
+// Now set the correct icon based on current theme
+document.getElementById('theme-btn').textContent = currentTheme === 'dark' ? '☀️' : '🌙';
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let markers = [];
 let eventMarkers = [];
 
 function clearMarkers() {
-  markers.forEach(m => m.remove());
-  markers = [];
-  eventMarkers.forEach(m => m.remove());
-  eventMarkers = [];
+  markers.forEach(m => m.remove());      markers = [];
+  eventMarkers.forEach(m => m.remove()); eventMarkers = [];
 }
 
 function makeIcon(isSelf, online) {
@@ -495,12 +583,7 @@ function fmtTs(ts) {
   if (!ts) return '—';
   return new Date(ts * 1000).toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
 }
-
-function fmt(n) {
-  if (n == null) return '—';
-  return Number(n).toLocaleString();
-}
-
+function fmt(n) { return n == null ? '—' : Number(n).toLocaleString(); }
 function timeSince(ts) {
   const s = Math.round(Date.now()/1000 - ts);
   if (s < 60)    return `${s}s ago`;
@@ -508,10 +591,7 @@ function timeSince(ts) {
   if (s < 86400) return `${Math.round(s/3600)}h ago`;
   return `${Math.round(s/86400)}d ago`;
 }
-
-function timeSinceISO(iso) {
-  return timeSince(new Date(iso).getTime() / 1000);
-}
+function timeSinceISO(iso) { return timeSince(new Date(iso).getTime() / 1000); }
 
 // ── Render ────────────────────────────────────────────────────────────────────
 function render(data) {
@@ -521,10 +601,9 @@ function render(data) {
   const mode = chain.mode || 'Offline';
   const badge = document.getElementById('mode-badge');
   badge.textContent = mode;
-  badge.className = '';
-  if (mode === 'Online')       badge.className = 'stat-value mode-online';
-  else if (mode === 'Offline') badge.className = 'stat-value mode-offline';
-  else                         badge.className = 'stat-value mode-syncing';
+  badge.className = mode === 'Online' ? 'stat-value mode-online'
+                  : mode === 'Offline' ? 'stat-value mode-offline'
+                  : 'stat-value mode-syncing';
 
   document.getElementById('stat-slot').textContent   = fmt(chain.slot);
   document.getElementById('stat-height').textContent = fmt(chain.height);
@@ -533,43 +612,28 @@ function render(data) {
   document.getElementById('updated-label').textContent = 'Updated ' + timeSince(data.updated);
 
   const onlineCount = data.nodes.filter(n => n.self || n.online !== false).length;
-  const totalCount  = data.nodes.length;
-  document.getElementById('node-count-num').textContent = `${onlineCount} / ${totalCount}`;
+  document.getElementById('node-count-num').textContent = `${onlineCount} / ${data.nodes.length}`;
 
   clearMarkers();
 
   const showEvents = document.getElementById('toggle-events').checked;
   const events = data.events || [];
-  const upcomingCount = events.filter(e => e.upcoming).length;
   document.getElementById('stat-events').textContent =
-    `${upcomingCount} upcoming / ${events.length} total`;
+    `${events.filter(e => e.upcoming).length} upcoming / ${events.length} total`;
 
   for (const ev of events) {
     const cls = ev.upcoming ? 'event-marker upcoming' : 'event-marker past';
-    const icon = L.divIcon({
-      className: '',
-      html: `<div class="${cls}"></div>`,
-      iconSize: [14, 14],
-      iconAnchor: [7, 7],
-    });
-    const m = L.marker([ev.lat, ev.lon], {
-      icon,
-      zIndexOffset: ev.upcoming ? 500 : -50,
-      opacity: showEvents ? 1 : 0,
-    });
+    const icon = L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [14,14], iconAnchor: [7,7] });
+    const m = L.marker([ev.lat, ev.lon], { icon, zIndexOffset: ev.upcoming ? 500 : -50, opacity: showEvents ? 1 : 0 });
     const date = ev.start ? ev.start.slice(0, 10) : '—';
-    const location = [ev.city, ev.country].filter(Boolean).join(', ') || '—';
+    const loc  = [ev.city, ev.country].filter(Boolean).join(', ') || '—';
     m.bindPopup(`
-      <div style="color:#e879f9;font-weight:600;margin-bottom:6px;">
-        ● ${ev.upcoming ? 'Upcoming Circle' : 'Past Circle'}
-      </div>
-      <div style="font-weight:600;margin-bottom:8px;color:#f0f0f0;">${ev.name}</div>
+      <div style="color:var(--event-color);font-weight:600;margin-bottom:6px;">● ${ev.upcoming ? 'Upcoming Circle' : 'Past Circle'}</div>
+      <div style="font-weight:600;margin-bottom:8px;">${ev.name}</div>
       <div class="popup-row"><span class="popup-key">Date</span><span class="popup-val">${date}</span></div>
-      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${location}</span></div>
+      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${loc}</span></div>
       <div class="popup-row"><span class="popup-key">Address</span><span class="popup-val" style="max-width:160px;word-break:break-word;">${ev.address || '—'}</span></div>
-      <div style="margin-top:8px;">
-        <a href="${ev.url}" target="_blank" style="color:#e879f9;font-size:12px;">View on lu.ma →</a>
-      </div>
+      <div style="margin-top:8px;"><a href="${ev.url}" target="_blank" style="font-size:12px;">View on lu.ma →</a></div>
     `);
     if (showEvents) m.addTo(map);
     eventMarkers.push(m);
@@ -583,30 +647,27 @@ function render(data) {
       zIndexOffset: node.self ? 1000 : (online ? 0 : -100),
       opacity: online ? 1 : 0.6,
     });
-
     const shortPeer = node.peer_id.slice(0, 16) + '…' + node.peer_id.slice(-8);
-    const location  = [node.city, node.country].filter(Boolean).join(', ') || 'Unknown';
-    const selfLabel   = node.self   ? '<div style="color:#f59e0b;font-weight:600;margin-bottom:6px;">⬡ This node</div>' : '';
-    const statusLabel = !node.self  ? `<div style="color:${online ? '#22c55e' : '#6b7280'};font-size:11px;font-weight:600;margin-bottom:6px;">${online ? '● Online' : '● Offline'}</div>` : '';
-
+    const loc = [node.city, node.country].filter(Boolean).join(', ') || 'Unknown';
+    const selfLabel   = node.self  ? '<div style="color:var(--node-self);font-weight:600;margin-bottom:6px;">⬡ This node</div>' : '';
+    const statusLabel = !node.self ? `<div style="color:${online ? '#22c55e' : 'var(--text-muted)'};font-size:11px;font-weight:600;margin-bottom:6px;">${online ? '● Online' : '● Offline'}</div>` : '';
     m.bindPopup(`
       ${selfLabel}${statusLabel}
       <div class="popup-peer-id" title="${node.peer_id}">${shortPeer}</div>
       <div class="popup-row"><span class="popup-key">IP</span><span class="popup-val">${node.ip}</span></div>
-      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${location}</span></div>
+      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${loc}</span></div>
       <div class="popup-row"><span class="popup-key">ISP</span><span class="popup-val">${node.isp || '—'}</span></div>
       <div class="popup-row"><span class="popup-key">Org</span><span class="popup-val">${node.org || '—'}</span></div>
       <div class="popup-row"><span class="popup-key">ASN</span><span class="popup-val">${node.asn || '—'}</span></div>
       ${node.first_seen ? `<div class="popup-row"><span class="popup-key">First seen</span><span class="popup-val">${fmtTs(node.first_seen)}</span></div>` : ''}
       ${node.last_seen  ? `<div class="popup-row"><span class="popup-key">Last seen</span><span class="popup-val">${fmtTs(node.last_seen)}</span></div>` : ''}
     `);
-
     if (showNodes) m.addTo(map);
     markers.push(m);
   }
 }
 
-// ── Network data fetch ────────────────────────────────────────────────────────
+// ── Network data ──────────────────────────────────────────────────────────────
 let firstLoad = true;
 
 async function refresh() {
@@ -623,9 +684,7 @@ async function refresh() {
         ...data.nodes.map(n => [n.lat, n.lon]),
         ...(data.events || []).filter(e => e.upcoming).map(e => [e.lat, e.lon]),
       ];
-      if (pts.length > 0) {
-        map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 6 });
-      }
+      if (pts.length > 0) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 6 });
     }
   } catch (e) {
     document.getElementById('updated-label').textContent = 'Error: ' + e.message;
@@ -660,50 +719,40 @@ function toggleSidebar() {
 
 function switchTab(tab) {
   activeTab = tab;
-  document.querySelectorAll('.stab').forEach(b => {
-    b.classList.toggle('active', b.dataset.tab === tab);
-  });
+  document.querySelectorAll('.stab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   renderFeed();
 }
 
 function renderFeed() {
   const body  = document.getElementById('sidebar-body');
   const items = activeTab === 'dev' ? ghItems : communityItems;
-  if (!items.length) {
-    body.innerHTML = '<div class="feed-empty">Loading…</div>';
-    return;
-  }
-  if (activeTab === 'dev') {
-    body.innerHTML = items.map(item => `
-      <div class="feed-item" onclick="window.open('${item.url}','_blank')">
-        <div class="feed-meta">
-          <span class="feed-repo">${item.repo}</span>
-          <span class="feed-time">${item.ago}</span>
-        </div>
-        <span class="feed-type ${item.typeClass}">${item.typeLabel}</span>
-        <div class="feed-title">${item.title}</div>
-      </div>`).join('');
-  } else {
-    body.innerHTML = items.map(item => `
-      <div class="feed-item" onclick="window.open('${item.url}','_blank')">
-        <div class="feed-meta">
-          <span class="feed-repo community">${item.category}</span>
-          <span class="feed-time">${item.ago}</span>
-        </div>
-        <span class="feed-type type-topic">Forum</span>
-        <div class="feed-title">${item.title}</div>
-      </div>`).join('');
-  }
+  if (!items.length) { body.innerHTML = '<div class="feed-empty">Loading…</div>'; return; }
+  body.innerHTML = items.map(item => activeTab === 'dev' ? `
+    <div class="feed-item" onclick="window.open('${item.url}','_blank')">
+      <div class="feed-meta">
+        <span class="feed-repo">${item.repo}</span>
+        <span class="feed-time">${item.ago}</span>
+      </div>
+      <span class="feed-type ${item.typeClass}">${item.typeLabel}</span>
+      <div class="feed-title">${item.title}</div>
+    </div>` : `
+    <div class="feed-item" onclick="window.open('${item.url}','_blank')">
+      <div class="feed-meta">
+        <span class="feed-repo community">${item.category}</span>
+        <span class="feed-time">${item.ago}</span>
+      </div>
+      <span class="feed-type type-topic">Forum</span>
+      <div class="feed-title">${item.title}</div>
+    </div>`).join('');
 }
 
-// GitHub events
 const GH_TYPE_MAP = {
-  PushEvent:              { label: 'Push',    cls: 'type-push'   },
-  PullRequestEvent:       { label: 'PR',      cls: 'type-pr'     },
-  CreateEvent:            { label: 'Create',  cls: 'type-create' },
-  ReleaseEvent:           { label: 'Release', cls: 'type-release'},
-  IssueCommentEvent:      { label: 'Comment', cls: 'type-create' },
-  PullRequestReviewEvent: { label: 'Review',  cls: 'type-pr'     },
+  PushEvent:              { label: 'Push',    cls: 'type-push'    },
+  PullRequestEvent:       { label: 'PR',      cls: 'type-pr'      },
+  CreateEvent:            { label: 'Create',  cls: 'type-create'  },
+  ReleaseEvent:           { label: 'Release', cls: 'type-release' },
+  IssueCommentEvent:      { label: 'Comment', cls: 'type-create'  },
+  PullRequestReviewEvent: { label: 'Review',  cls: 'type-pr'      },
 };
 
 async function loadGitHub() {
@@ -714,42 +763,34 @@ async function loadGitHub() {
     const seen = new Set();
     ghItems = [];
     for (const e of events) {
-      const map_ = GH_TYPE_MAP[e.type];
-      if (!map_) continue;
+      const mp = GH_TYPE_MAP[e.type]; if (!mp) continue;
       const repo = (e.repo?.name || '').replace('logos-co/', '');
       const p = e.payload || {};
-      let title = '';
-      let url = `https://github.com/${e.repo?.name || 'logos-co'}`;
+      let title = '', url = `https://github.com/${e.repo?.name || 'logos-co'}`;
       if (e.type === 'PushEvent') {
-        const commits = p.commits || [];
-        title = commits[0]?.message?.split('\n')[0] || '';
-        url = `https://github.com/${e.repo?.name}/commit/${commits[0]?.sha || ''}`;
+        const c = p.commits?.[0]; title = c?.message?.split('\n')[0] || '';
+        url = `https://github.com/${e.repo?.name}/commit/${c?.sha || ''}`;
       } else if (e.type === 'PullRequestEvent') {
-        title = p.pull_request?.title || '';
-        url = p.pull_request?.html_url || url;
+        title = p.pull_request?.title || ''; url = p.pull_request?.html_url || url;
       } else if (e.type === 'CreateEvent') {
         title = `new ${p.ref_type} "${p.ref || ''}"`;
       } else if (e.type === 'ReleaseEvent') {
-        title = p.release?.name || p.release?.tag_name || '';
-        url = p.release?.html_url || url;
+        title = p.release?.name || p.release?.tag_name || ''; url = p.release?.html_url || url;
       } else if (e.type === 'IssueCommentEvent') {
-        title = p.issue?.title || '';
-        url = p.comment?.html_url || url;
+        title = p.issue?.title || ''; url = p.comment?.html_url || url;
       } else if (e.type === 'PullRequestReviewEvent') {
-        title = p.pull_request?.title || '';
-        url = p.pull_request?.html_url || url;
+        title = p.pull_request?.title || ''; url = p.pull_request?.html_url || url;
       }
       const key = `${e.type}:${repo}:${title}`;
       if (!title || seen.has(key)) continue;
       seen.add(key);
-      ghItems.push({ repo, typeLabel: map_.label, typeClass: map_.cls, title, ago: timeSinceISO(e.created_at), url });
+      ghItems.push({ repo, typeLabel: mp.label, typeClass: mp.cls, title, ago: timeSinceISO(e.created_at), url });
       if (ghItems.length >= 25) break;
     }
     if (activeTab === 'dev') renderFeed();
   } catch (_) {}
 }
 
-// Discourse forum
 const CATEGORY_NAME = { 4: 'Circles', 6: 'Circles', 8: 'Announcements', 1: 'General' };
 
 async function loadDiscourse() {
@@ -758,8 +799,7 @@ async function loadDiscourse() {
     if (!resp.ok) return;
     const data = await resp.json();
     communityItems = (data.topic_list?.topics || [])
-      .filter(t => !t.pinned)
-      .slice(0, 20)
+      .filter(t => !t.pinned).slice(0, 20)
       .map(t => ({
         title:    t.title,
         category: CATEGORY_NAME[t.category_id] || 'Forum',
@@ -775,7 +815,7 @@ loadDiscourse();
 setInterval(loadGitHub,    5 * 60_000);
 setInterval(loadDiscourse, 5 * 60_000);
 
-// ── YouTube corner widget ─────────────────────────────────────────────────────
+// ── YouTube widget ────────────────────────────────────────────────────────────
 let ytInitialized = false;
 
 function initYouTube(yt) {
