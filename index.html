@@ -124,9 +124,9 @@
     font-weight: 600;
     letter-spacing: 0.05em;
   }
-  .mode-online  { background: #14532d; color: #22c55e; }
-  .mode-syncing { background: #78350f; color: #f59e0b; }
-  .mode-offline { background: #450a0a; color: #ef4444; }
+  .mode-online  { background: rgba(119,136,104,0.22); color: #96aa88; }
+  .mode-syncing { background: rgba(160,140,80,0.22);  color: #b4a872; }
+  .mode-offline { background: rgba(140,90,90,0.22);   color: #b08888; }
 
   #spacer { flex: 1; }
 
@@ -239,13 +239,13 @@
   }
   .node-marker.offline::after { display: none; }
   .node-marker.self {
-    width: 16px; height: 16px;
-    background: var(--node-self);
-    border: 2px solid var(--node-self-b);
+    width: 12px; height: 12px;
+    background: var(--node-online);
+    border: 2px solid var(--node-border);
   }
   .node-marker.self::after {
-    background: color-mix(in srgb, var(--node-self) 30%, transparent);
-    animation: pulse 1.8s ease-out infinite;
+    background: color-mix(in srgb, var(--node-online) 25%, transparent);
+    animation: pulse 2.5s ease-out infinite;
   }
   @keyframes pulse {
     0%   { transform: scale(0.8); opacity: 0.6; }
@@ -388,11 +388,11 @@
     margin-bottom: 4px;
     text-transform: uppercase;
   }
-  .type-push    { background: #1e3a5f; color: #60a5fa; }
-  .type-pr      { background: #1e3a2a; color: #4ade80; }
-  .type-release { background: #3a1e1e; color: #f87171; }
-  .type-create  { background: #2a1e3a; color: #c084fc; }
-  .type-topic   { background: color-mix(in srgb, var(--event-color) 15%, transparent); color: var(--event-color); }
+  .type-push    { background: rgba(119,136,104,0.2); color: #96aa88; }
+  .type-pr      { background: rgba(72,116,158,0.2);  color: #7aaad4; }
+  .type-release { background: rgba(160,140,80,0.2);  color: #b4a462; }
+  .type-create  { background: rgba(180,175,165,0.15);color: #989890; }
+  .type-topic   { background: rgba(72,116,158,0.2);  color: #7aaad4; }
 
   .feed-empty { padding: 24px 14px; color: var(--text-faint); font-size: 12px; text-align: center; }
 
@@ -580,8 +580,7 @@ function makeIcon(isSelf, online) {
   let cls = 'node-marker';
   if (isSelf)        cls += ' self';
   else if (!online)  cls += ' offline';
-  const size = isSelf ? 16 : 12;
-  return L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [size,size], iconAnchor: [size/2,size/2] });
+  return L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [12,12], iconAnchor: [6,6] });
 }
 
 function fmtTs(ts) {
@@ -670,6 +669,76 @@ function render(data) {
     if (showNodes) m.addTo(map);
     markers.push(m);
   }
+
+  // Update gossip animation node pool
+  arcOnlineNodes = data.nodes.filter(n => n.online !== false);
+}
+
+// ── Gossip arc animations ─────────────────────────────────────────────────────
+let arcOnlineNodes = [];
+const activeArcs   = [];
+const MAX_ARCS     = 8;
+const ARC_DURATION = 3200;
+let arcsSvgLayer, arcsGroup;
+const svgNS = 'http://www.w3.org/2000/svg';
+
+function initArcs() {
+  arcsSvgLayer = L.svg({ padding: 0.5 }).addTo(map);
+  arcsGroup = document.createElementNS(svgNS, 'g');
+  arcsSvgLayer._container.appendChild(arcsGroup);
+  setInterval(spawnArc, 1800);
+  animArcs();
+}
+
+function spawnArc() {
+  const ns = arcOnlineNodes.filter(n => !n.offline);
+  if (ns.length < 2 || activeArcs.length >= MAX_ARCS) return;
+  const n1 = ns[Math.floor(Math.random() * ns.length)];
+  let n2, tries = 0;
+  do { n2 = ns[Math.floor(Math.random() * ns.length)]; tries++; }
+  while (n1 === n2 && tries < 10);
+  if (n1 === n2) return;
+
+  const pathEl = document.createElementNS(svgNS, 'path');
+  pathEl.setAttribute('fill', 'none');
+  pathEl.setAttribute('stroke', '#778868');
+  pathEl.setAttribute('stroke-width', '0.8');
+  arcsGroup.appendChild(pathEl);
+
+  const dotEl = document.createElementNS(svgNS, 'circle');
+  dotEl.setAttribute('r', '2.5');
+  dotEl.setAttribute('fill', '#a4b898');
+  arcsGroup.appendChild(dotEl);
+
+  activeArcs.push({ n1, n2, pathEl, dotEl, t0: performance.now(),
+                    dur: ARC_DURATION + Math.random() * 2000 });
+}
+
+function easeIO(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+function animArcs() {
+  const now = performance.now();
+  for (let i = activeArcs.length - 1; i >= 0; i--) {
+    const a = activeArcs[i];
+    const t = Math.min((now - a.t0) / a.dur, 1);
+    const p1 = map.latLngToLayerPoint([a.n1.lat, a.n1.lon]);
+    const p2 = map.latLngToLayerPoint([a.n2.lat, a.n2.lon]);
+    const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2;
+    const dx = p2.x-p1.x, dy = p2.y-p1.y;
+    const len = Math.sqrt(dx*dx+dy*dy) || 1;
+    const off = Math.min(len*0.28, 70);
+    const cx = mx - (dy/len)*off, cy = my + (dx/len)*off;
+    a.pathEl.setAttribute('d', `M${p1.x} ${p1.y} Q${cx} ${cy} ${p2.x} ${p2.y}`);
+    const fade = t < 0.12 ? t/0.12 : t > 0.88 ? (1-t)/0.12 : 1;
+    a.pathEl.setAttribute('opacity', (0.28*fade).toString());
+    const bt = easeIO(t);
+    const bx = (1-bt)*(1-bt)*p1.x + 2*(1-bt)*bt*cx + bt*bt*p2.x;
+    const by = (1-bt)*(1-bt)*p1.y + 2*(1-bt)*bt*cy + bt*bt*p2.y;
+    a.dotEl.setAttribute('cx', bx); a.dotEl.setAttribute('cy', by);
+    a.dotEl.setAttribute('opacity', (0.9*fade).toString());
+    if (t >= 1) { a.pathEl.remove(); a.dotEl.remove(); activeArcs.splice(i, 1); }
+  }
+  requestAnimationFrame(animArcs);
 }
 
 // ── Network data ──────────────────────────────────────────────────────────────
@@ -709,6 +778,7 @@ document.getElementById('toggle-nodes').addEventListener('change', e => {
 refresh();
 setInterval(refresh, 30_000);
 setTimeout(() => map.invalidateSize(), 100);
+initArcs();
 
 // ── Sidebar ───────────────────────────────────────────────────────────────────
 let activeTab = 'dev';
