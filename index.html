@@ -327,6 +327,58 @@
     font-size: 12px;
     text-align: center;
   }
+
+  /* ── YouTube corner widget ── */
+  #yt-widget {
+    position: absolute;
+    bottom: 24px;
+    right: 16px;
+    z-index: 1000;
+    width: 280px;
+    background: #181c24;
+    border: 1px solid #252b38;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  #yt-widget.collapsed #yt-player { display: none; }
+  #yt-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #252b38;
+  }
+  #yt-header:hover { background: #1e2330; }
+  #yt-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    flex-shrink: 0;
+  }
+  #yt-title {
+    font-size: 11px;
+    color: #d1d5db;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #yt-chevron {
+    font-size: 10px;
+    color: #6b7280;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  #yt-widget.collapsed #yt-chevron { transform: rotate(180deg); }
+  #yt-player iframe {
+    display: block;
+    width: 100%;
+    height: 158px;
+    border: none;
+  }
 </style>
 </head>
 <body>
@@ -378,6 +430,15 @@
     <div id="map"></div>
     <div id="node-count"><strong id="node-count-num">—</strong>online / total</div>
     <div id="loading">Loading network data...</div>
+
+    <div id="yt-widget" class="collapsed" style="display:none;">
+      <div id="yt-header" onclick="toggleYT()">
+        <span id="yt-dot"></span>
+        <span id="yt-title">Latest from Logos</span>
+        <span id="yt-chevron">▲</span>
+      </div>
+      <div id="yt-player"></div>
+    </div>
   </div>
 
   <div id="sidebar">
@@ -555,6 +616,7 @@ async function refresh() {
     if (!resp.ok) throw new Error(resp.statusText);
     const data = await resp.json();
     render(data);
+    initYouTube(data.youtube);
     if (firstLoad) {
       firstLoad = false;
       const pts = [
@@ -712,6 +774,25 @@ loadGitHub();
 loadDiscourse();
 setInterval(loadGitHub,    5 * 60_000);
 setInterval(loadDiscourse, 5 * 60_000);
+
+// ── YouTube corner widget ─────────────────────────────────────────────────────
+let ytInitialized = false;
+
+function initYouTube(yt) {
+  if (ytInitialized || !yt?.video_id) return;
+  ytInitialized = true;
+  const widget = document.getElementById('yt-widget');
+  widget.style.display = '';
+  document.getElementById('yt-title').textContent = yt.title || 'Latest from Logos';
+  document.getElementById('yt-player').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${yt.video_id}?rel=0&modestbranding=1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>`;
+}
+
+function toggleYT() {
+  document.getElementById('yt-widget').classList.toggle('collapsed');
+}
 </script>
 </body>
 </html>
