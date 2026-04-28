@@ -41,8 +41,8 @@
     --node-border-offline: #52575f;
     --node-self:    #f0f0ec;
     --node-self-b:  #c8c8c4;
-    --event-color:  #e879f9;
-    --event-border: #d946ef;
+    --event-color:  #48749e;
+    --event-border: #5a87b5;
     --popup-bg:     #22262f;
     --popup-border: rgba(240,240,236,0.12);
     --map-bg:       #1c2028;
@@ -66,8 +66,8 @@
     --node-border-offline: #84887e;
     --node-self:    #1c2028;
     --node-self-b:  #3a3e46;
-    --event-color:  #a21caf;
-    --event-border: #86198f;
+    --event-color:  #2d5a80;
+    --event-border: #48749e;
     --popup-bg:     #f4f2ed;
     --popup-border: rgba(28,32,40,0.15);
     --map-bg:       #d8dbd0;
@@ -470,7 +470,7 @@
   </div>
 
   <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text-muted);font-size:12px;white-space:nowrap;">
-    <input type="checkbox" id="toggle-events" checked style="accent-color:var(--event-color);"> Circles
+    <input type="checkbox" id="toggle-events" checked style="accent-color:#48749e;"> Circles
   </label>
   <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text-muted);font-size:12px;white-space:nowrap;">
     <input type="checkbox" id="toggle-nodes" checked style="accent-color:var(--node-online);"> Nodes
@@ -683,6 +683,7 @@ async function refresh() {
     const data = await resp.json();
     render(data);
     initYouTube(data.youtube);
+    loadFeedsFromData(data);
     if (firstLoad) {
       firstLoad = false;
       const pts = [
@@ -731,94 +732,31 @@ function switchTab(tab) {
 function renderFeed() {
   const body  = document.getElementById('sidebar-body');
   const items = activeTab === 'dev' ? ghItems : communityItems;
-  if (!items.length) { body.innerHTML = '<div class="feed-empty">Loading…</div>'; return; }
+  if (!items.length) { body.innerHTML = '<div class="feed-empty">No data yet</div>'; return; }
   body.innerHTML = items.map(item => activeTab === 'dev' ? `
     <div class="feed-item" onclick="window.open('${item.url}','_blank')">
       <div class="feed-meta">
         <span class="feed-repo">${item.repo}</span>
-        <span class="feed-time">${item.ago}</span>
+        <span class="feed-time">${timeSinceISO(item.timestamp)}</span>
       </div>
-      <span class="feed-type ${item.typeClass}">${item.typeLabel}</span>
+      <span class="feed-type ${item.cls}">${item.type}</span>
       <div class="feed-title">${item.title}</div>
     </div>` : `
     <div class="feed-item" onclick="window.open('${item.url}','_blank')">
       <div class="feed-meta">
         <span class="feed-repo community">${item.category}</span>
-        <span class="feed-time">${item.ago}</span>
+        <span class="feed-time">${timeSinceISO(item.timestamp)}${item.replies ? ` · ${item.replies} replies` : ''}</span>
       </div>
       <span class="feed-type type-topic">Forum</span>
       <div class="feed-title">${item.title}</div>
     </div>`).join('');
 }
 
-const GH_TYPE_MAP = {
-  PushEvent:              { label: 'Push',    cls: 'type-push'    },
-  PullRequestEvent:       { label: 'PR',      cls: 'type-pr'      },
-  CreateEvent:            { label: 'Create',  cls: 'type-create'  },
-  ReleaseEvent:           { label: 'Release', cls: 'type-release' },
-  IssueCommentEvent:      { label: 'Comment', cls: 'type-create'  },
-  PullRequestReviewEvent: { label: 'Review',  cls: 'type-pr'      },
-};
-
-async function loadGitHub() {
-  try {
-    const resp = await fetch('https://api.github.com/orgs/logos-co/events?per_page=50');
-    if (!resp.ok) return;
-    const events = await resp.json();
-    const seen = new Set();
-    ghItems = [];
-    for (const e of events) {
-      const mp = GH_TYPE_MAP[e.type]; if (!mp) continue;
-      const repo = (e.repo?.name || '').replace('logos-co/', '');
-      const p = e.payload || {};
-      let title = '', url = `https://github.com/${e.repo?.name || 'logos-co'}`;
-      if (e.type === 'PushEvent') {
-        const c = p.commits?.[0]; title = c?.message?.split('\n')[0] || '';
-        url = `https://github.com/${e.repo?.name}/commit/${c?.sha || ''}`;
-      } else if (e.type === 'PullRequestEvent') {
-        title = p.pull_request?.title || ''; url = p.pull_request?.html_url || url;
-      } else if (e.type === 'CreateEvent') {
-        title = `new ${p.ref_type} "${p.ref || ''}"`;
-      } else if (e.type === 'ReleaseEvent') {
-        title = p.release?.name || p.release?.tag_name || ''; url = p.release?.html_url || url;
-      } else if (e.type === 'IssueCommentEvent') {
-        title = p.issue?.title || ''; url = p.comment?.html_url || url;
-      } else if (e.type === 'PullRequestReviewEvent') {
-        title = p.pull_request?.title || ''; url = p.pull_request?.html_url || url;
-      }
-      const key = `${e.type}:${repo}:${title}`;
-      if (!title || seen.has(key)) continue;
-      seen.add(key);
-      ghItems.push({ repo, typeLabel: mp.label, typeClass: mp.cls, title, ago: timeSinceISO(e.created_at), url });
-      if (ghItems.length >= 25) break;
-    }
-    if (activeTab === 'dev') renderFeed();
-  } catch (_) {}
+function loadFeedsFromData(data) {
+  ghItems        = data.github    || [];
+  communityItems = data.discourse || [];
+  renderFeed();
 }
-
-const CATEGORY_NAME = { 4: 'Circles', 6: 'Circles', 8: 'Announcements', 1: 'General' };
-
-async function loadDiscourse() {
-  try {
-    const resp = await fetch('https://forum.logos.co/latest.json?limit=30');
-    if (!resp.ok) return;
-    const data = await resp.json();
-    communityItems = (data.topic_list?.topics || [])
-      .filter(t => !t.pinned).slice(0, 20)
-      .map(t => ({
-        title:    t.title,
-        category: CATEGORY_NAME[t.category_id] || 'Forum',
-        url:      `https://forum.logos.co/t/${t.slug}/${t.id}`,
-        ago:      timeSinceISO(t.created_at),
-      }));
-    if (activeTab === 'community') renderFeed();
-  } catch (_) {}
-}
-
-loadGitHub();
-loadDiscourse();
-setInterval(loadGitHub,    5 * 60_000);
-setInterval(loadDiscourse, 5 * 60_000);
 
 // ── YouTube widget ────────────────────────────────────────────────────────────
 let ytInitialized = false;
