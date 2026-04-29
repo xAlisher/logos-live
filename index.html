@@ -1225,12 +1225,8 @@ function getBubbleAnchor(msg) {
   if (msg.lat != null && msg.lon != null) {
     return map.latLngToContainerPoint([msg.lat, msg.lon]);
   }
-  // 2. Random online node
-  if (markers.length) {
-    const m = markers[Math.floor(Math.random() * markers.length)];
-    return map.latLngToContainerPoint(m.getLatLng());
-  }
-  return null;
+  // 2. No geo — Antarctica (unknown location sentinel)
+  return map.latLngToContainerPoint([-72, 2.5]);
 }
 
 function showMapBubble(msg) {
