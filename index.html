@@ -491,7 +491,21 @@
     cursor: default;
     white-space: normal;
     word-break: break-word;
+    padding-right: 20px;
   }
+  .bubble-close {
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+  }
+  .bubble-close:hover { color: var(--text); }
   .map-bubble::after {
     content: '';
     position: absolute;
@@ -1218,48 +1232,77 @@ function renderZone(body) {
 const mapWrap = document.getElementById('map-wrap');
 let bubbleQueue = [];
 let bubbleTimer = null;
-let liveBubbles = [];  // persistent #live markers
+
+// Persistent #live bubbles: sender → DOM element
+let liveBubbleEls  = new Map();
+// Underlying data for re-positioning on map move
+let liveBubbleData = [];
 
 function getBubbleAnchor(msg) {
-  // 1. Geo-linked (exact node location)
   if (msg.lat != null && msg.lon != null) {
     return map.latLngToContainerPoint([msg.lat, msg.lon]);
   }
-  // 2. No geo — Antarctica (unknown location sentinel)
+  // No geo — Antarctica sentinel
   return map.latLngToContainerPoint([-72, 2.5]);
 }
 
-function showMapBubble(msg) {
+function _renderLiveBubble(msg) {
   const pt = getBubbleAnchor(msg);
   if (!pt) return;
-
   const text = msg.text.replace(/#live/gi, '').trim();
   const el = document.createElement('div');
-  el.className = 'map-bubble' + (msg.live ? ' live-bubble' : '');
-  el.innerHTML = `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}${msg.live ? '<span class="live-tag">#live</span>' : ''}`;
+  el.className = 'map-bubble live-bubble';
+  el.style.left = (pt.x + 10) + 'px';
+  el.style.top  = (pt.y - 44) + 'px';
+  el.innerHTML =
+    `<button class="bubble-close" onclick="dismissBubble('${CSS.escape(msg.sender)}')">×</button>` +
+    `<span class="map-bubble-sender">${msg.sender}</span>` +
+    `${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
+  mapWrap.appendChild(el);
+  liveBubbleEls.set(msg.sender, el);
+}
+
+function dismissBubble(sender) {
+  const el = liveBubbleEls.get(sender);
+  if (el) { el.remove(); liveBubbleEls.delete(sender); }
+  liveBubbleData = liveBubbleData.filter(m => m.sender !== sender);
+}
+
+map.on('move zoom', () => {
+  liveBubbleEls.forEach(el => el.remove());
+  liveBubbleEls.clear();
+  liveBubbleData.forEach(m => _renderLiveBubble(m));
+});
+
+function placeLiveBubbles(messages) {
+  liveBubbleEls.forEach(el => el.remove());
+  liveBubbleEls.clear();
+
+  // Dedup: one bubble per sender (messages are newest-first → first hit = latest)
+  const seen = new Set();
+  liveBubbleData = [];
+  for (const m of messages) {
+    if (m.live && !seen.has(m.sender)) {
+      seen.add(m.sender);
+      liveBubbleData.push(m);
+      if (liveBubbleData.length >= 20) break;
+    }
+  }
+  liveBubbleData.forEach(m => _renderLiveBubble(m));
+}
+
+function showMapBubble(msg) {
+  // Transient bubble (non-live new messages)
+  const pt = getBubbleAnchor(msg);
+  if (!pt) return;
+  const text = msg.text.replace(/#live/gi, '').trim();
+  const el = document.createElement('div');
+  el.className = 'map-bubble';
+  el.innerHTML = `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
   el.style.left = (pt.x + 10) + 'px';
   el.style.top  = (pt.y - 44) + 'px';
   mapWrap.appendChild(el);
-
-  if (msg.live) {
-    liveBubbles.push(el);
-  } else {
-    setTimeout(() => el.remove(), 5200);
-  }
-}
-
-function refreshLiveBubblePositions() {
-  // Re-position #live bubbles when map moves
-  liveBubbles.forEach(el => el.remove());
-  liveBubbles = [];
-}
-map.on('move zoom', refreshLiveBubblePositions);
-
-function placeLiveBubbles(messages) {
-  liveBubbles.forEach(el => el.remove());
-  liveBubbles = [];
-  const live = messages.filter(m => m.live).slice(0, 6); // max 6 on map
-  live.forEach(m => showMapBubble(m));
+  setTimeout(() => el.remove(), 5200);
 }
 
 function drainBubbleQueue() {
