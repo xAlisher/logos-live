@@ -855,6 +855,17 @@ tr:hover td {
   margin-top: 8px;
 }
 
+.warning-banner {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(208, 173, 98, 0.34);
+  background: rgba(208, 173, 98, 0.11);
+  color: #f0cf83;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .uptime-wrap {
   overflow: auto;
   max-height: 520px;
@@ -1106,6 +1117,7 @@ tr:hover td {
 
       <section class="view" id="view-telemetry">
         <div class="kpi-grid" id="telemetry-kpis"></div>
+        <div id="telemetry-warnings"></div>
         <div class="two-col">
           <section class="panel">
             <div class="panel-head"><h2 class="panel-title">Active Peers per Hour</h2><span class="panel-sub" id="telemetry-source">-</span></div>
@@ -1590,6 +1602,10 @@ function renderTelemetry() {
   ].map(([label, value, note]) => `
     <div class="kpi"><span class="kpi-label">${label}</span><span class="kpi-value">${value}</span><span class="kpi-note">${note}</span></div>
   `).join('');
+  const warnings = telemetry.warnings || [];
+  $('telemetry-warnings').innerHTML = warnings.length
+    ? warnings.map(warning => `<div class="warning-banner">${esc(warning)}</div>`).join('')
+    : '';
   $('telemetry-source').textContent = telemetry.source || 'unknown';
   $('active-peers-chart').innerHTML = chartSvg(
     telemetry.active_peers_hourly || [],

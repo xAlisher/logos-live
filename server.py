@@ -4,6 +4,7 @@ Reads peer IPs from node logs + Kademlia DHT entries, geolocates them,
 serves data to the frontend map.
 """
 
+import asyncio
 import json
 import os
 import re
@@ -15,7 +16,7 @@ from pathlib import Path
 from typing import Any
 
 import httpx
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -86,6 +87,7 @@ _PEER_ADDR = re.compile(
     r"Added address /ip4/(\d+\.\d+\.\d+\.\d+)/\S+ to peer PeerId\(\"([^\"]+)\"\)"
 )
 _PEER_ID = re.compile(r"\b(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\b")
+PEER_ID_RE = re.compile(r"^12D3KooW[1-9A-HJ-NP-Za-km-z]{20,}$")
 _ISO_TS = re.compile(r"\b(\d{4}-\d{2}-\d{2}[T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?Z?)\b")
 _STAKE_VALUE = re.compile(
     r"\b(?:old_total_stake|total_stake|active_stake|stake_estimate|tsi)\s*[=:]\s*([0-9][0-9_,]*(?:\.\d+)?)",
@@ -95,10 +97,16 @@ _STAKE_VALUE = re.compile(
 # ── Cache ──────────────────────────────────────────────────────────────────────
 _cache: dict | None = None
 _cache_ts: float = 0.0
+_cache_lock = asyncio.Lock()
 
 
 def _is_public(ip: str) -> bool:
-    p = list(map(int, ip.split(".")))
+    try:
+        p = list(map(int, ip.split(".")))
+    except ValueError:
+        return False
+    if len(p) != 4 or any(part < 0 or part > 255 for part in p):
+        return False
     if p[0] == 10:                              return False
     if p[0] == 172 and 16 <= p[1] <= 31:       return False
     if p[0] == 192 and p[1] == 168:            return False
@@ -106,6 +114,12 @@ def _is_public(ip: str) -> bool:
     if p[0] == 100 and 64 <= p[1] <= 127:      return False  # CGNAT
     if p[0] >= 224:                             return False  # multicast/reserved
     return True
+
+
+def validate_peer_id(peer_id: str) -> str:
+    if not PEER_ID_RE.match(peer_id):
+        raise HTTPException(status_code=400, detail="Invalid peer ID format")
+    return peer_id
 
 
 PEERS_FILE = os.getenv("PEERS_FILE", os.path.join(os.path.dirname(__file__), "peers.json"))
@@ -297,7 +311,7 @@ def build_node_verification(peer_id: str, data: dict[str, Any]) -> dict[str, Any
             "Peer has uptime telemetry." if visibility["observed_in_telemetry"] else "No uptime telemetry for this peer yet.",
         ),
     ]
-    required = {"node_api", "consensus_online", "peer_connectivity", "crawler_observed", "map_visible"}
+    required = {"node_api", "consensus_online", "peer_connectivity"}
     failed_required = [stage for stage in stages if stage["id"] in required and stage["status"] != "passed"]
     next_actions = list(visibility["next_actions"])
     if mode == "Bootstrapping":
@@ -642,6 +656,11 @@ def build_telemetry_snapshot(
     if not observations:
         observations = _observations_from_nodes(nodes, now, window_hours)
         source = "crawler-first-last-seen"
+    warnings: list[str] = []
+    if source == "crawler-first-last-seen":
+        warnings.append(
+            "Uptime is synthesized from crawler first_seen/last_seen ranges; treat percentages as visibility estimates, not continuous observed availability."
+        )
 
     buckets: dict[int, set[str]] = {bucket: set() for bucket in range(start, end + 1, 3600)}
     peer_hours: dict[str, set[int]] = {}
@@ -691,6 +710,7 @@ def build_telemetry_snapshot(
         "peer_uptime": peer_uptime,
         "stake_estimate_hourly": stake_series,
         "annotations": annotations,
+        "warnings": warnings,
         "summary": {
             "active_latest": active_hourly[-1]["count"] if active_hourly else 0,
             "active_peak": max((p["count"] for p in active_hourly), default=0),
@@ -721,6 +741,7 @@ def _external_telemetry_snapshot(nodes: list[dict[str, Any]], now: int) -> dict[
             (external.get("stake_estimate_hourly") or [{"value": None}])[-1].get("value"),
         )
         external.setdefault("annotations", [])
+        external.setdefault("warnings", [])
         return external
     return build_telemetry_snapshot(
         nodes=nodes,
@@ -1027,6 +1048,7 @@ async def _geolocate(ips: list[str]) -> dict[str, dict]:
         for i in range(0, len(ips), 100):
             batch = ips[i : i + 100]
             try:
+                # ip-api's free batch endpoint is HTTP-only; HTTPS requires their paid tier.
                 resp = await client.post(
                     "http://ip-api.com/batch",
                     json=[{"query": ip, "fields": fields} for ip in batch],
@@ -1069,7 +1091,7 @@ def _load_published_snapshot_from_file() -> dict[str, Any] | None:
 
 
 def _load_published_snapshot_from_git() -> dict[str, Any] | None:
-    if os.getenv("DISABLE_GIT_SNAPSHOT_FALLBACK") == "1":
+    if os.getenv("ENABLE_GIT_SNAPSHOT_FALLBACK") != "1":
         return None
     try:
         result = subprocess.run(
@@ -1237,9 +1259,10 @@ app = FastAPI(title="Logos Node Visualizer")
 @app.get("/api/network")
 async def api_network():
     global _cache, _cache_ts
-    if _cache is None or (time.time() - _cache_ts) > CACHE_TTL:
-        _cache    = await _build_data()
-        _cache_ts = time.time()
+    async with _cache_lock:
+        if _cache is None or (time.time() - _cache_ts) > CACHE_TTL:
+            _cache    = await _build_data()
+            _cache_ts = time.time()
     return _cache
 
 
@@ -1270,12 +1293,14 @@ async def api_crawler_status():
 
 @app.get("/api/agent/node-visibility/{peer_id}")
 async def api_node_visibility(peer_id: str):
+    validate_peer_id(peer_id)
     data = await api_network()
     return build_node_visibility(peer_id, data)
 
 
 @app.get("/api/agent/verify-node/{peer_id}")
 async def api_verify_node(peer_id: str):
+    validate_peer_id(peer_id)
     data = await api_network()
     return build_node_verification(peer_id, data)
 

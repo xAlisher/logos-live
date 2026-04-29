@@ -1,8 +1,13 @@
+import asyncio
 import copy
 import sys
+from types import SimpleNamespace
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+import server
+from fastapi.testclient import TestClient
 
 from server import (
     build_network_summary,
@@ -283,6 +288,25 @@ def test_build_telemetry_snapshot_summarizes_hourly_activity_uptime_and_stake():
     assert telemetry["annotations"][0]["kind"] == "stake-spike"
 
 
+def test_build_telemetry_snapshot_warns_when_uptime_is_synthesized_from_crawler_seen_range():
+    telemetry = build_telemetry_snapshot(
+        nodes=[
+            {
+                "peer_id": "peer-a",
+                "first_seen": 1777410000,
+                "last_seen": 1777417200,
+                "online": True,
+            }
+        ],
+        observations=[],
+        now=1777417200,
+        window_hours=4,
+    )
+
+    assert telemetry["source"] == "crawler-first-last-seen"
+    assert any("synthesized" in warning for warning in telemetry["warnings"])
+
+
 def test_agent_manifest_exposes_setup_verification_and_release_contracts():
     manifest = build_agent_manifest("https://logos-live.example")
 
@@ -378,6 +402,84 @@ def test_build_node_verification_reports_setup_stages_for_local_and_remote_peers
     assert stages["crawler_observed"] == "passed"
     assert stages["map_visible"] == "passed"
     assert verification["next_actions"] == []
+
+
+def test_build_node_verification_is_ready_before_crawler_visibility_for_healthy_local_node():
+    data = {
+        "chain": {"mode": "Online", "height": 100, "slot": 500},
+        "network": {"peer_id": "peer-local", "n_peers": 8, "n_connections": 10},
+        "nodes": [],
+        "telemetry": {"peer_uptime": []},
+    }
+
+    verification = build_node_verification("peer-local", data)
+    stages = {stage["id"]: stage["status"] for stage in verification["stages"]}
+
+    assert verification["overall_status"] == "ready"
+    assert stages["node_api"] == "passed"
+    assert stages["consensus_online"] == "passed"
+    assert stages["peer_connectivity"] == "passed"
+    assert stages["crawler_observed"] == "warning"
+    assert stages["map_visible"] == "warning"
+    assert verification["next_actions"]
+
+
+def test_invalid_peer_id_path_params_return_400():
+    client = TestClient(server.app)
+
+    assert client.get("/api/agent/verify-node/not-a-peer").status_code == 400
+    assert client.get("/api/agent/node-visibility/not-a-peer").status_code == 400
+
+
+def test_git_snapshot_fallback_is_opt_in(monkeypatch):
+    monkeypatch.delenv("ENABLE_GIT_SNAPSHOT_FALLBACK", raising=False)
+
+    def fail_if_called(*args, **kwargs):
+        raise AssertionError("git fallback should not run unless explicitly enabled")
+
+    monkeypatch.setattr(server.subprocess, "run", fail_if_called)
+
+    assert server._load_published_snapshot_from_git() is None
+
+
+def test_git_snapshot_fallback_reads_snapshot_when_enabled(monkeypatch):
+    monkeypatch.setenv("ENABLE_GIT_SNAPSHOT_FALLBACK", "1")
+
+    def fake_run(*args, **kwargs):
+        return SimpleNamespace(returncode=0, stdout='{"nodes": [{"peer_id": "peer-a"}]}')
+
+    monkeypatch.setattr(server.subprocess, "run", fake_run)
+
+    assert server._load_published_snapshot_from_git()["nodes"][0]["peer_id"] == "peer-a"
+
+
+def test_api_network_serializes_stale_cache_rebuilds(monkeypatch):
+    calls = 0
+
+    async def fake_build_data():
+        nonlocal calls
+        calls += 1
+        await asyncio.sleep(0.01)
+        return {"updated": calls}
+
+    async def run_requests():
+        return await asyncio.gather(*(server.api_network() for _ in range(8)))
+
+    monkeypatch.setattr(server, "_build_data", fake_build_data)
+    monkeypatch.setattr(server, "_cache", None)
+    monkeypatch.setattr(server, "_cache_ts", 0.0)
+    monkeypatch.setattr(server, "CACHE_TTL", 60)
+
+    results = asyncio.run(run_requests())
+
+    assert calls == 1
+    assert all(result == {"updated": 1} for result in results)
+
+
+def test_is_public_rejects_ipv6_and_malformed_addresses():
+    assert server._is_public("::1") is False
+    assert server._is_public("not-an-ip") is False
+    assert server._is_public("999.1.1.1") is False
 
 
 def test_collect_telemetry_from_logs_writes_agent_readable_snapshot(tmp_path):
