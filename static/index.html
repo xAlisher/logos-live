@@ -503,55 +503,6 @@ button, input {
   font-weight: 700;
 }
 
-#yt-widget {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  z-index: 700;
-  width: 300px;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
-  background: rgba(18, 21, 27, 0.94);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-#yt-widget.hidden {
-  display: none;
-}
-
-#yt-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-bottom: 1px solid var(--line);
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-}
-
-#yt-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ef4444;
-  flex: 0 0 auto;
-}
-
-#yt-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-#yt-player iframe {
-  display: block;
-  width: 100%;
-  height: 168px;
-  border: 0;
-}
-
 .messages-list {
   display: grid;
   gap: 0;
@@ -1026,10 +977,6 @@ tr:hover td {
             </div>
             <div class="map-shell" id="map-shell">
               <div id="map"></div>
-              <div id="yt-widget" class="hidden">
-                <div id="yt-head"><span id="yt-dot"></span><span id="yt-title">Latest from Logos</span></div>
-                <div id="yt-player"></div>
-              </div>
             </div>
           </section>
           <div class="grid">
@@ -1215,7 +1162,6 @@ let map = null;
 let markers = [];
 let eventMarkers = [];
 let liveBubbleEls = [];
-let youtubeVideoId = null;
 
 const $ = id => document.getElementById(id);
 const fmt = value => value == null || value === '' ? '-' : Number(value).toLocaleString();
@@ -1318,7 +1264,6 @@ function render() {
   renderInfraMix(summary.infrastructure?.mix || {});
   renderMap(nodes);
   renderMessages();
-  renderYouTube();
   renderPeers();
   renderDecentralization();
   renderBlocks();
@@ -1392,24 +1337,6 @@ function positionLiveBubbles() {
   }
 }
 
-function renderYouTube() {
-  const yt = state.youtube || {};
-  const widget = $('yt-widget');
-  if (!yt.video_id) {
-    widget.classList.add('hidden');
-    return;
-  }
-  widget.classList.remove('hidden');
-  $('yt-title').textContent = yt.title || 'Latest from Logos';
-  if (youtubeVideoId !== yt.video_id) {
-    youtubeVideoId = yt.video_id;
-    $('yt-player').innerHTML = `
-      <iframe src="https://www.youtube.com/embed/${esc(yt.video_id)}?rel=0&modestbranding=1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-    `;
-  }
-}
 
 function renderMap(nodes) {
   if (!map) {
