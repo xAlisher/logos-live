@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "8abe52a809f68e59dd9ebe581ee613c0ee563a90f94f68427c087641f837ac47",
-    "lib_slot": 1358221,
-    "tip": "0ee293a84e6405e7d941d854843214cfe7c303baefb78b7f0f17d542cca1cd83",
-    "slot": 1358928,
-    "height": 72478,
+    "lib": "8eabd1408079a10234ce0616d7ef769d211ae7441466e8e6831a23fbd30c5e61",
+    "lib_slot": 1358374,
+    "tip": "9c6a6e11295fe03ce30ee41506cc52227752e8ca36b03c3ad624c201e4956705",
+    "slot": 1359002,
+    "height": 72484,
     "mode": "Online"
   },
   "network": {
@@ -17,8 +17,8 @@
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
     "n_peers": 26,
-    "n_connections": 35,
-    "n_pending_connections": 9
+    "n_connections": 26,
+    "n_pending_connections": 0
   },
   "nodes": [
     {
@@ -31,7 +31,7 @@
       "isp": "Telefonica de Espana SAU",
       "org": "RIMA (Red IP Multi Acceso)",
       "asn": "AS3352 TELEFONICA DE ESPANA S.A.U.",
-      "self": true,
+      "self": false,
       "online": true,
       "first_seen": 0,
       "last_seen": 0
@@ -2359,8 +2359,8 @@
     "recipients": 64,
     "total_distributed": 21000000,
     "faucet_remainder": 18446744073570293390,
-    "unique_leaders": 707,
-    "total_leader_blocks": 1023,
+    "unique_leaders": 713,
+    "total_leader_blocks": 1054,
     "top_leaders": [
       {
         "pk": "161b63a3a3b3568b",
@@ -2417,14 +2417,44 @@
   "recent_blocks": {
     "window": {
       "blocks": 31,
-      "slot_min": 1358221,
-      "slot_max": 1358928
+      "slot_min": 1358374,
+      "slot_max": 1359002
     },
     "leader_diversity": {
       "unique_leaders": 31,
       "top_leader_share_pct": 3.2
     },
     "top_leaders": [
+      {
+        "leader_key": "c44f4880562ce52f",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "445945c5d9a22900",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "250eb9a19962b8c8",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "980665edd611960e",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "3bc97f104adbe1f3",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "af296958d676baa9",
+        "blocks": 1,
+        "pct": 3.2
+      },
       {
         "leader_key": "9ccac9526f752108",
         "blocks": 1,
@@ -2444,87 +2474,9 @@
         "leader_key": "f879f5a4c5cd40b5",
         "blocks": 1,
         "pct": 3.2
-      },
-      {
-        "leader_key": "33ef76a4b29dae26",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "9f99606e032c9524",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "b750386e2fc49e15",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "13397ebf0a9bfc08",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "4107ea0c0fa62b98",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "fb720f144b2e7358",
-        "blocks": 1,
-        "pct": 3.2
       }
     ],
     "recent": [
-      {
-        "slot": 1358516,
-        "leader_key": "02e96c21f9122801",
-        "txs": 1,
-        "ops": 1,
-        "root": "4dc3d8a716df9d9e",
-        "hash": "f4a3e8362d7ab4d1"
-      },
-      {
-        "slot": 1358522,
-        "leader_key": "47b72749e4c6ff36",
-        "txs": 3,
-        "ops": 3,
-        "root": "7c76b3e275748dab",
-        "hash": "eacbd51fe0bc9910"
-      },
-      {
-        "slot": 1358557,
-        "leader_key": "d9098d80e027018e",
-        "txs": 2,
-        "ops": 2,
-        "root": "d3a1e7ed6c2cff98",
-        "hash": "9b42db2b91096d08"
-      },
-      {
-        "slot": 1358566,
-        "leader_key": "1cb70ad2298fdf12",
-        "txs": 1,
-        "ops": 1,
-        "root": "237a998624dec0f3",
-        "hash": "f44e15f348b4ad8b"
-      },
-      {
-        "slot": 1358585,
-        "leader_key": "397d0800d6a6e36b",
-        "txs": 2,
-        "ops": 2,
-        "root": "18aed6a1a43093a8",
-        "hash": "d00b8b3add89eef2"
-      },
-      {
-        "slot": 1358617,
-        "leader_key": "9b6984efbbfe456e",
-        "txs": 1,
-        "ops": 1,
-        "root": "628dab47ab7d8c11",
-        "hash": "7dde42ee226169cc"
-      },
       {
         "slot": 1358631,
         "leader_key": "8378e6a959344399",
@@ -2636,13 +2588,62 @@
         "ops": 1,
         "root": "ff4d01d55681e21b",
         "hash": "0ee293a84e6405e7"
+      },
+      {
+        "slot": 1358964,
+        "leader_key": "af296958d676baa9",
+        "txs": 4,
+        "ops": 4,
+        "root": "a76b117ce4c3a93c",
+        "hash": "5fde1c0d758cc380"
+      },
+      {
+        "slot": 1358968,
+        "leader_key": "3bc97f104adbe1f3",
+        "txs": 1,
+        "ops": 1,
+        "root": "982ac8cc4bca473a",
+        "hash": "f4c6edcb6223c8f2"
+      },
+      {
+        "slot": 1358977,
+        "leader_key": "980665edd611960e",
+        "txs": 1,
+        "ops": 1,
+        "root": "4b9fe26b30cba0a4",
+        "hash": "f669c7547a663e98"
+      },
+      {
+        "slot": 1358980,
+        "leader_key": "250eb9a19962b8c8",
+        "txs": 0,
+        "ops": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "ced19f5e112c64f1"
+      },
+      {
+        "slot": 1359000,
+        "leader_key": "445945c5d9a22900",
+        "txs": 1,
+        "ops": 1,
+        "root": "e30c803c15ae20be",
+        "hash": "b1a26555c5197bb2"
+      },
+      {
+        "slot": 1359002,
+        "leader_key": "c44f4880562ce52f",
+        "txs": 2,
+        "ops": 2,
+        "root": "8a1a94725f5e9972",
+        "hash": "9c6a6e11295fe03c"
       }
     ],
     "transactions": {
-      "total": 57,
-      "ops": 57
+      "total": 55,
+      "ops": 55
     }
   },
+  "telemetry": {},
   "zone_messages": [
     {
       "sender": "alisher",
@@ -4145,5 +4146,5 @@
       "country": ""
     }
   ],
-  "updated": 1777452519
+  "updated": 1777452636
 }
