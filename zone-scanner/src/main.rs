@@ -19,8 +19,6 @@ const NODE_URL: &str = "http://127.0.0.1:8080";
 const YOLO_HEX: &str = "6c6f676f733a796f6c6f3a";
 /// How many slots to request per batch from /cryptarchia/blocks
 const BATCH_SLOTS: u64 = 2_000;
-/// Max concurrent block fetches
-const CONCURRENCY: usize = 20;
 /// Slots to poll when watching the tip for new blocks
 const POLL_INTERVAL_SECS: u64 = 30;
 /// Output file (relative to cwd, override via ZONE_SCAN_FILE env var)

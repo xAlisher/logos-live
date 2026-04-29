@@ -24,7 +24,7 @@ Live: **https://xalisher.github.io/logos-live/**
 ## Architecture
 
 ```
-crawler/          Rust — polls /cryptarchia/* every 10 min, writes peers.json + geo_cache.json
+crawler/          Rust — crawls libp2p/Kademlia every 10 min, writes peers.json + geo_cache.json
 zone-scanner/     Rust — scans entire chain history for logos:yolo:* inscriptions, writes zone_scan.json
 publish.py        Python — merges all data into network.json, pushes to GitHub Pages
 static/index.html Single-file frontend (Leaflet map, vanilla JS)
@@ -50,15 +50,22 @@ Aggregates peers, geo, events (Luma), GitHub, Discourse, stake distribution, and
 
 ## Running locally
 
+There are two useful local modes:
+
+- **Feedback mode** — run only the website. It can render with published fallback data, so reviewers do not need a local Logos node.
+- **Full live mode** — run the website plus a local Logos node, crawler, zone scanner, and telemetry collector.
+
 ### Prerequisites
 
-- Rust (stable)
 - Python 3.11+
-- A Logos node running at `http://127.0.0.1:8080`
+- Rust stable, only if you want to build the peer crawler or zone scanner
+- A Logos node at `http://127.0.0.1:8080`, only for full live mode
 
 ### Install Python deps
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -69,13 +76,23 @@ pip install -r requirements-dev.txt
 pytest -q
 ```
 
-### Start the local dashboard
+### Start the local dashboard for feedback
 
 ```bash
 uvicorn server:app --host 127.0.0.1 --port 8000
 ```
 
 Open http://127.0.0.1:8000.
+
+If no local Logos node is running, the chain and local health cards will be empty, but the app still serves the UI and uses published fallback data for public map content. This is enough for visual and product feedback.
+
+### Start the local dashboard in full live mode
+
+Run a Logos node first, then start the dashboard with the node URL:
+
+```bash
+NODE_URL=http://127.0.0.1:8080 uvicorn server:app --host 127.0.0.1 --port 8000
+```
 
 Useful machine-readable endpoints:
 

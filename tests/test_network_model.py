@@ -112,6 +112,31 @@ def test_merge_peer_snapshot_uses_published_peers_when_local_has_only_self():
     assert merged["peer_snapshot"]["updated"] == 99
 
 
+def test_merge_peer_snapshot_uses_published_peers_when_local_node_is_unavailable():
+    local = {
+        "chain": {},
+        "network": {},
+        "nodes": [
+            {"peer_id": "", "ip": "45.65.190.91", "self": True, "online": True}
+        ],
+        "updated": 111,
+        "total_peers_in_logs": 0,
+    }
+    fallback = {
+        "nodes": [
+            {"peer_id": "published-a", "ip": "65.109.51.37", "country": "Finland", "online": True},
+            {"peer_id": "published-b", "ip": "1.2.3.4", "country": "Costa Rica", "online": True},
+        ],
+        "updated": 99,
+    }
+
+    merged = merge_peer_snapshot(copy.deepcopy(local), fallback)
+
+    assert [node["peer_id"] for node in merged["nodes"]] == ["", "published-a", "published-b"]
+    assert merged["peer_data_source"] == "published-fallback"
+    assert merged["peer_snapshot"]["nodes"] == 2
+
+
 def test_hydrate_content_snapshot_restores_public_map_content_when_local_lacks_it():
     local = {
         "nodes": [],
@@ -283,9 +308,16 @@ def test_node_setup_skill_contains_verified_assets_bootstrap_peers_and_verificat
 
     assert "logos-blockchain-node-linux-x86_64-0.1.2.tar.gz" in skill
     assert "logos-blockchain-circuits-v0.4.2-linux-x86_64.tar.gz" in skill
+    assert "logos-blockchain-node-macos-aarch64-0.1.2.tar.gz" in skill
+    assert "uname -s" in skill
+    assert "case \"$(uname -s)-$(uname -m)\"" in skill
+    assert "chmod +x ./logos-blockchain-node" in skill
     assert "logos-blockchain-circuits-v0.4.1" not in skill
     assert skill.count("-p /ip4/65.109.51.37/udp/") == 4
     assert "curl -s http://localhost:8080/cryptarchia/info" in skill
+    assert "grep -A3 known_keys user_config.yaml" in skill
+    assert "https://devnet.blockchain.logos.co/web/faucet/" in skill
+    assert "curl -s http://localhost:8080/wallet/<public-key>/balance" in skill
     assert "https://logos-live.example/api/agent/verify-node/{peer_id}" in skill
     assert "xattr -dr com.apple.quarantine ~/.logos-blockchain-circuits" in skill
 

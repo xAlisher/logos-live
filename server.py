@@ -387,14 +387,35 @@ Verified assets:
 
 ## Install
 
-Detect the platform with `uname -s` and `uname -m`, then download the matching node and circuits archives. Example for Linux x86_64:
+Detect the platform with `uname -s` and `uname -m`, then download the matching node and circuits archives:
 
 ```sh
-wget {linux_circuits}
-wget {linux_node}
+case "$(uname -s)-$(uname -m)" in
+  Linux-x86_64)
+    NODE_URL="{linux_node}"
+    CIRCUITS_URL="{linux_circuits}"
+    ;;
+  Linux-aarch64|Linux-arm64)
+    NODE_URL="{pi_node}"
+    CIRCUITS_URL="{pi_circuits}"
+    ;;
+  Darwin-arm64)
+    NODE_URL="{mac_node}"
+    CIRCUITS_URL="{mac_circuits}"
+    ;;
+  *)
+    echo "Unsupported platform: $(uname -s)-$(uname -m)" >&2
+    exit 1
+    ;;
+esac
+
+curl -L -O "$CIRCUITS_URL"
+curl -L -O "$NODE_URL"
 tar -xf logos-blockchain-circuits-*.tar.gz
 tar -xf logos-blockchain-node-*.tar.gz
+rm -rf ~/.logos-blockchain-circuits
 mv logos-blockchain-circuits-*/ ~/.logos-blockchain-circuits
+chmod +x ./logos-blockchain-node
 ```
 
 On macOS, if a circuit witness binary is blocked by Gatekeeper, inspect the real circuit directory first, then clear quarantine on the circuit tree:
@@ -453,6 +474,28 @@ Then ask Logos Live whether that peer is visible:
 ```
 
 The node appears on the map after the libp2p crawler observes its public peer record and geolocates the IP. If it does not appear yet, wait for the crawler, confirm UDP connectivity, and optionally publish a `#geo lat,lon` plus `#live` zone message.
+
+## Optional faucet and consensus participation
+
+Map visibility does not require faucet funds. Consensus participation does require stake. Wait until `/cryptarchia/info` reports `Online`, then find one public key from the node config:
+
+```sh
+grep -A3 known_keys user_config.yaml
+```
+
+Open the testnet faucet and request funds for that public key:
+
+```text
+https://devnet.blockchain.logos.co/web/faucet/
+```
+
+Submitting a faucet request is an external web action. If an agent is operating for a user, ask for confirmation before submitting the form. After 1-2 minutes, check the balance:
+
+```sh
+curl -s http://localhost:8080/wallet/<public-key>/balance | jq .
+```
+
+The faucet UTXO needs to age before the node can participate in the consensus lottery. On the current devnet this is approximately 3.5 hours.
 
 ## Useful machine-readable endpoints
 
@@ -792,8 +835,13 @@ def merge_peer_snapshot(
     local_nodes = local_data.get("nodes") or []
     reported_peers = int((local_data.get("network") or {}).get("n_peers") or 0)
     has_discovered_peers = any(not n.get("self") for n in local_nodes)
+    local_node_available = bool((local_data.get("network") or {}).get("peer_id") or local_data.get("chain"))
 
-    if has_discovered_peers or not fallback_data or reported_peers <= len(local_nodes):
+    if has_discovered_peers or not fallback_data:
+        local_data["peer_data_source"] = "local"
+        return local_data
+
+    if local_node_available and reported_peers <= len(local_nodes):
         local_data["peer_data_source"] = "local"
         return local_data
 
