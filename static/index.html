@@ -1485,10 +1485,10 @@ function placeLiveBubbles() {
     el.className = 'map-bubble';
     el.dataset.lat = String(message.lat);
     el.dataset.lon = String(message.lon);
-    el.style.left = `${point.x - 14}px`;
-    el.style.top = `${point.y - 8 - yOff}px`;
     const z = map.getZoom();
     const yOff = Math.round(Math.max(0, Math.min(1, (z - 3) / 9)) * 25);
+    el.style.left = `${point.x - 14}px`;
+    el.style.top = `${point.y - 8 - yOff}px`;
     const border = 'var(--green-1)';
     const fill = 'rgba(31,37,48,0.95)';
     const tail = `<svg class="bubble-tail" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 2,8" fill="${border}"/><polygon points="1,0 14,0 3,7" fill="${fill}"/></svg>`;
