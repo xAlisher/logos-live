@@ -508,17 +508,33 @@
     padding: 0 2px;
   }
   .bubble-close:hover { color: var(--text); }
+  /* Outer triangle (border colour) */
   .map-bubble::after {
     content: '';
     position: absolute;
-    bottom: -6px;
-    left: 14px;
+    bottom: -7px;
+    left: 12px;
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 7px solid var(--border);
+  }
+  /* Inner triangle (fill colour) */
+  .map-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 13px;
     width: 0; height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid var(--border);
+    border-top: 6px solid var(--bg-raised);
+    z-index: 1;
   }
-  .map-bubble.live-bubble::after { border-top-color: var(--accent); }
+  .map-bubble.live-bubble::after  { border-top-color: var(--accent); }
+  .map-bubble.live-bubble::before { border-top-color: color-mix(in srgb, var(--bg-raised) 92%, var(--accent)); }
+  .map-bubble a { color: inherit; text-decoration: none; display: block; }
+  .map-bubble a:hover { opacity: 0.8; }
   .map-bubble-sender { color: var(--accent); font-weight: 600; margin-right: 5px; }
   .live-tag { font-size: 9px; color: var(--accent); font-weight: 700; margin-left: 4px; opacity: 0.7; }
 
@@ -1251,15 +1267,22 @@ function getBubbleAnchor(msg) {
 function _renderLiveBubble(msg) {
   const pt = getBubbleAnchor(msg);
   if (!pt) return;
-  const text = msg.text.replace(/#live/gi, '').trim();
+  const text = msg.text;
+  const href = msg.block_id
+    ? `https://devnet.blockchain.logos.co/web/explorer/blocks/${msg.block_id}`
+    : null;
   const el = document.createElement('div');
   el.className = 'map-bubble live-bubble';
-  el.style.left = (pt.x + 10) + 'px';
-  el.style.top  = (pt.y - 44) + 'px';
+  // Bottom of bubble (triangle tip) sits exactly on the coordinate
+  el.style.left      = (pt.x - 14) + 'px';
+  el.style.top       = (pt.y - 7)  + 'px';
+  el.style.transform = 'translateY(-100%)';
+  const inner = href
+    ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}</a>`
+    : `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
   el.innerHTML =
     `<button class="bubble-close" onclick="dismissBubble('${CSS.escape(msg.sender)}')">×</button>` +
-    `<span class="map-bubble-sender">${msg.sender}</span>` +
-    `${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
+    inner;
   mapWrap.appendChild(el);
   liveBubbleEls.set(msg.sender, el);
 }
@@ -1294,15 +1317,23 @@ function placeLiveBubbles(messages) {
 }
 
 function showMapBubble(msg) {
-  // Transient bubble (non-live new messages)
+  // Transient bubble for newly-seen messages
   const pt = getBubbleAnchor(msg);
   if (!pt) return;
-  const text = msg.text.replace(/#live/gi, '').trim();
+  const text = msg.text;
+  const href = msg.block_id
+    ? `https://devnet.blockchain.logos.co/web/explorer/blocks/${msg.block_id}`
+    : null;
   const el = document.createElement('div');
   el.className = 'map-bubble';
-  el.innerHTML = `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
-  el.style.left = (pt.x + 10) + 'px';
-  el.style.top  = (pt.y - 44) + 'px';
+  el.style.pointerEvents = href ? 'auto' : 'none';
+  el.style.left      = (pt.x - 14) + 'px';
+  el.style.top       = (pt.y - 7)  + 'px';
+  el.style.transform = 'translateY(-100%)';
+  const inner = href
+    ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}</a>`
+    : `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
+  el.innerHTML = inner;
   mapWrap.appendChild(el);
   setTimeout(() => el.remove(), 5200);
 }
