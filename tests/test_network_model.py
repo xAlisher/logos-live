@@ -6,9 +6,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from server import (
     build_network_summary,
+    build_agent_manifest,
+    build_node_verification,
+    build_node_visibility,
     build_telemetry_snapshot,
     classify_node_environment,
     hydrate_content_snapshot,
+    logos_node_setup_skill,
     merge_peer_snapshot,
     parse_peer_log_observations,
     parse_stake_log_points,
@@ -252,3 +256,132 @@ def test_build_telemetry_snapshot_summarizes_hourly_activity_uptime_and_stake():
     assert telemetry["peer_uptime"][0]["active_hours"] == 2
     assert telemetry["stake_estimate_hourly"][-1]["value"] == 1200000
     assert telemetry["annotations"][0]["kind"] == "stake-spike"
+
+
+def test_agent_manifest_exposes_setup_verification_and_release_contracts():
+    manifest = build_agent_manifest("https://logos-live.example")
+
+    assert manifest["skill_version"] == "1.0.0"
+    assert manifest["release"]["node_version"] == "0.1.2"
+    assert manifest["release"]["circuits_version"] == "0.4.2"
+    assert manifest["capabilities"] == [
+        "network_inspection",
+        "telemetry",
+        "node_setup_guidance",
+        "node_visibility_verification",
+    ]
+    assert manifest["endpoints"]["setup_skill"]["url"] == "https://logos-live.example/agents/logos-node-setup-skill.md"
+    assert manifest["endpoints"]["verify_node"]["url_template"] == "https://logos-live.example/api/agent/verify-node/{peer_id}"
+    assert len(manifest["bootstrap_peers"]) == 4
+    assert manifest["bootstrap_peers"][0]["multiaddr"].startswith("/ip4/65.109.51.37/udp/3000")
+    assert "v0.4.2-linux-x86_64.tar.gz" in manifest["release"]["assets"]["circuits"]["linux-x86_64"]
+    assert "v0.4.1" not in str(manifest)
+
+
+def test_node_setup_skill_contains_verified_assets_bootstrap_peers_and_verification_loop():
+    skill = logos_node_setup_skill("https://logos-live.example")
+
+    assert "logos-blockchain-node-linux-x86_64-0.1.2.tar.gz" in skill
+    assert "logos-blockchain-circuits-v0.4.2-linux-x86_64.tar.gz" in skill
+    assert "logos-blockchain-circuits-v0.4.1" not in skill
+    assert skill.count("-p /ip4/65.109.51.37/udp/") == 4
+    assert "curl -s http://localhost:8080/cryptarchia/info" in skill
+    assert "https://logos-live.example/api/agent/verify-node/{peer_id}" in skill
+    assert "xattr -dr com.apple.quarantine ~/.logos-blockchain-circuits" in skill
+
+
+def test_build_node_visibility_reports_map_visibility_and_missing_peer_actions():
+    data = {
+        "nodes": [
+            {
+                "peer_id": "peer-visible",
+                "ip": "1.2.3.4",
+                "country": "Costa Rica",
+                "city": "San Jose",
+                "online": True,
+                "last_seen": 1777417200,
+            }
+        ],
+        "telemetry": {
+            "peer_uptime": [
+                {"peer_id": "peer-visible", "active_hours": 3, "uptime_pct": 75.0}
+            ]
+        },
+    }
+
+    visible = build_node_visibility("peer-visible", data)
+    missing = build_node_visibility("peer-missing", data)
+
+    assert visible["visible_on_map"] is True
+    assert visible["observed_in_telemetry"] is True
+    assert visible["location"] == "San Jose, Costa Rica"
+    assert missing["visible_on_map"] is False
+    assert missing["next_actions"][0].startswith("Wait for the crawler")
+
+
+def test_build_node_verification_reports_setup_stages_for_local_and_remote_peers():
+    data = {
+        "chain": {"mode": "Online", "height": 100, "slot": 500},
+        "network": {"peer_id": "peer-local", "n_peers": 8, "n_connections": 10},
+        "nodes": [
+            {
+                "peer_id": "peer-local",
+                "ip": "1.2.3.4",
+                "city": "San Jose",
+                "country": "Costa Rica",
+                "online": True,
+                "last_seen": 1777417200,
+            }
+        ],
+        "telemetry": {"peer_uptime": [{"peer_id": "peer-local", "active_hours": 2, "uptime_pct": 50.0}]},
+    }
+
+    verification = build_node_verification("peer-local", data)
+    stages = {stage["id"]: stage["status"] for stage in verification["stages"]}
+
+    assert verification["overall_status"] == "ready"
+    assert stages["node_api"] == "passed"
+    assert stages["consensus_online"] == "passed"
+    assert stages["peer_connectivity"] == "passed"
+    assert stages["crawler_observed"] == "passed"
+    assert stages["map_visible"] == "passed"
+    assert verification["next_actions"] == []
+
+
+def test_collect_telemetry_from_logs_writes_agent_readable_snapshot(tmp_path):
+    from telemetry_collector import collect_telemetry_from_logs
+
+    log_dir = tmp_path / "logs"
+    log_dir.mkdir()
+    (log_dir / "logos-blockchain.001").write_text(
+        "\n".join(
+            [
+                "2026-04-28T22:03:10Z connected 12D3KooW11111111111111111111111111111111111111111111",
+                "2026-04-28T23:00:00Z tsi_update total_stake=1200000",
+            ]
+        )
+    )
+    output = tmp_path / "telemetry.json"
+
+    snapshot = collect_telemetry_from_logs(log_dir, output, now=1777417200, window_hours=4)
+
+    assert output.exists()
+    assert snapshot["source"] == "logs"
+    assert snapshot["summary"]["tracked_peers"] == 1
+    assert snapshot["summary"]["latest_total_stake"] == 1200000
+    assert snapshot["observations"][0]["peer_id"].startswith("12D3KooW")
+    assert snapshot["stake_points"][0]["value"] == 1200000
+
+
+def test_collect_telemetry_from_logs_defaults_window_to_latest_log_timestamp(tmp_path):
+    from telemetry_collector import collect_telemetry_from_logs
+
+    log_dir = tmp_path / "logs"
+    log_dir.mkdir()
+    (log_dir / "logos-blockchain.001").write_text(
+        "2026-04-28T22:03:10Z connected 12D3KooW11111111111111111111111111111111111111111111\n"
+    )
+
+    snapshot = collect_telemetry_from_logs(log_dir, tmp_path / "telemetry.json", window_hours=4)
+
+    assert snapshot["summary"]["tracked_peers"] == 1
