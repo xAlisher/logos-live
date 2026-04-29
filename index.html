@@ -344,8 +344,73 @@
     transition: color 0.15s, border-color 0.15s;
   }
   .stab:hover { color: var(--text); }
-  .stab.active      { color: var(--text); border-bottom-color: var(--accent); }
-  .stab.active.ctab { border-bottom-color: var(--event-color); }
+  .stab.active           { color: var(--text); border-bottom-color: var(--accent); }
+  .stab.active.ctab      { border-bottom-color: var(--event-color); }
+  .stab.active.stab-stake { border-bottom-color: #b4a462; }
+
+  /* ── Stake panel ── */
+  .stake-card {
+    padding: 14px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .stake-card-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .stake-big {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .stake-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .stake-bar-wrap {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .stake-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: #b4a462;
+    transition: width 0.6s ease;
+  }
+  .stake-bar-label {
+    font-size: 10px;
+    color: var(--text-faint);
+    text-align: right;
+  }
+  .stake-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 12px;
+  }
+  .stake-row:last-child { border-bottom: none; }
+  .stake-row-key { color: var(--text-muted); }
+  .stake-row-val { color: var(--text); font-weight: 500; }
+  .leader-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 11px;
+  }
+  .leader-pk { color: var(--text-muted); font-family: var(--font-main); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .leader-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; flex-shrink: 0; }
+  .leader-bar { height: 100%; border-radius: 2px; background: var(--accent); }
+  .leader-pct { width: 36px; text-align: right; color: var(--text-faint); flex-shrink: 0; }
 
   #sidebar-body { flex: 1; overflow-y: auto; }
   #sidebar-body::-webkit-scrollbar { width: 4px; }
@@ -504,6 +569,7 @@
     <div id="sidebar-tabs">
       <button class="stab active" data-tab="dev" onclick="switchTab('dev')">Dev</button>
       <button class="stab ctab" data-tab="community" onclick="switchTab('community')">Community</button>
+      <button class="stab stab-stake" data-tab="stake" onclick="switchTab('stake')">Stake</button>
     </div>
     <div id="sidebar-body">
       <div class="feed-empty">Loading…</div>
@@ -784,6 +850,7 @@ initArcs();
 let activeTab = 'dev';
 let ghItems = [];
 let communityItems = [];
+let stakeData = null;
 
 function toggleSidebar() {
   const sb  = document.getElementById('sidebar');
@@ -800,7 +867,8 @@ function switchTab(tab) {
 }
 
 function renderFeed() {
-  const body  = document.getElementById('sidebar-body');
+  const body = document.getElementById('sidebar-body');
+  if (activeTab === 'stake') { renderStake(body); return; }
   const items = activeTab === 'dev' ? ghItems : communityItems;
   if (!items.length) { body.innerHTML = '<div class="feed-empty">No data yet</div>'; return; }
   body.innerHTML = items.map(item => activeTab === 'dev' ? `
@@ -822,9 +890,63 @@ function renderFeed() {
     </div>`).join('');
 }
 
+function renderStake(body) {
+  const s = stakeData;
+  if (!s) { body.innerHTML = '<div class="feed-empty">No stake data yet</div>'; return; }
+
+  const GOAL_PER_ADDR = 1_000_000;
+  const distributed   = s.total_distributed || 0;
+  const recipients    = s.recipients || 0;
+  // Progress toward 1M per address goal
+  const pct = recipients > 0 ? Math.min(100, Math.round(distributed / (recipients * GOAL_PER_ADDR) * 100)) : 0;
+  const fmtN = n => Number(n).toLocaleString();
+
+  const leadersHtml = (s.top_leaders || []).slice(0, 8).map(l => `
+    <div class="leader-row">
+      <span class="leader-pk">${l.pk}…</span>
+      <div class="leader-bar-wrap"><div class="leader-bar" style="width:${Math.min(100,l.pct)}%"></div></div>
+      <span class="leader-pct">${l.pct}%</span>
+    </div>`).join('');
+
+  body.innerHTML = `
+    <div class="stake-card">
+      <div class="stake-card-title">Faucet Distribution</div>
+      <div class="stake-big">${fmtN(recipients)}</div>
+      <div class="stake-sub">addresses received tokens</div>
+      <div class="stake-bar-wrap">
+        <div class="stake-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <div class="stake-bar-label">${fmtN(distributed)} tokens distributed · goal 1M / addr</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-card-title">Distribution Stats</div>
+      <div class="stake-row">
+        <span class="stake-row-key">Tokens per address</span>
+        <span class="stake-row-val">${fmtN(recipients > 0 ? Math.round(distributed / recipients) : 0)}</span>
+      </div>
+      <div class="stake-row">
+        <span class="stake-row-key">Goal per address</span>
+        <span class="stake-row-val">${fmtN(GOAL_PER_ADDR)}</span>
+      </div>
+      <div class="stake-row">
+        <span class="stake-row-key">Progress</span>
+        <span class="stake-row-val">${pct}%</span>
+      </div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-card-title">Block Leaders (last ${fmtN(s.total_leader_blocks || 0)} blocks)</div>
+      <div class="stake-row" style="margin-bottom:8px;">
+        <span class="stake-row-key">Unique validators</span>
+        <span class="stake-row-val">${fmtN(s.unique_leaders || 0)}</span>
+      </div>
+      ${leadersHtml}
+    </div>`;
+}
+
 function loadFeedsFromData(data) {
   ghItems        = data.github    || [];
   communityItems = data.discourse || [];
+  stakeData      = data.stake     || null;
   renderFeed();
 }
 
