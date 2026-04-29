@@ -1377,9 +1377,10 @@ function computeSummary(nodes) {
     else infraCount.unknown++;
   }
 
-  const topCountries = Object.entries(countryCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({country:k,count:v}));
-  const topCities = Object.entries(cityCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({city:k,count:v}));
-  const topAsns = Object.entries(asnCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({asn:k,count:v}));
+  const total = nodes.length;
+  const topCountries = Object.entries(countryCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({country:k,count:v,pct:total?v/total*100:0}));
+  const topCities = Object.entries(cityCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({city:k,count:v,pct:total?v/total*100:0}));
+  const topAsns = Object.entries(asnCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({asn:k,count:v,pct:total?v/total*100:0}));
   const topCountryShare = nodes.length ? (topCountries[0]?.count || 0) / nodes.length * 100 : 0;
   const topAsnShare = nodes.length ? (topAsns[0]?.count || 0) / nodes.length * 100 : 0;
 
