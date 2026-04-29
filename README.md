@@ -92,6 +92,28 @@ Useful machine-readable endpoints:
 - `GET /agents/logos-network-skill.md`
 - `GET /agents/logos-node-setup-skill.md`
 
+### Which URL to give an agent
+
+For the normal node setup workflow, give the agent the Markdown skill directly:
+
+```
+http://127.0.0.1:8000/agents/logos-node-setup-skill.md
+```
+
+That is the most portable convention today because most agents can read Markdown instructions from a URL.
+
+For agents or tools that support discovery, give them the well-known entrypoint instead:
+
+```
+http://127.0.0.1:8000/.well-known/logos-live.json
+```
+
+The well-known endpoint points to the setup skill, inspection skill, manifest, telemetry, schema, and current network state. Structured clients can also go straight to:
+
+```
+http://127.0.0.1:8000/api/agent/manifest
+```
+
 ### Start the peer crawler
 
 ```bash
