@@ -821,10 +821,10 @@ message:  "Running well today #live"</code>
 
   <div id="sidebar">
     <div id="sidebar-tabs">
-      <button class="stab active" data-tab="dev" onclick="switchTab('dev')">Dev</button>
+      <button class="stab stab-msgs active" data-tab="msgs" onclick="switchTab('msgs')">Messages</button>
+      <button class="stab" data-tab="dev" onclick="switchTab('dev')">Dev</button>
       <button class="stab ctab" data-tab="community" onclick="switchTab('community')">Community</button>
       <button class="stab stab-stake" data-tab="stake" onclick="switchTab('stake')">Stake</button>
-      <button class="stab stab-msgs" data-tab="msgs" onclick="switchTab('msgs')">Messages</button>
     </div>
     <div id="sidebar-body">
       <div class="feed-empty">Loading…</div>
@@ -1102,7 +1102,7 @@ setTimeout(() => map.invalidateSize(), 100);
 initArcs();
 
 // ── Sidebar ───────────────────────────────────────────────────────────────────
-let activeTab = 'dev';
+let activeTab = 'msgs';
 let ghItems = [];
 let communityItems = [];
 let stakeData = null;
