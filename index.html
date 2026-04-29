@@ -477,10 +477,10 @@
     color: var(--text);
     pointer-events: none;
     z-index: 900;
-    max-width: 200px;
+    max-width: 220px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.25);
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     animation: bubbleUp 5s ease forwards;
   }
@@ -1241,7 +1241,7 @@ function renderZone(body) {
         <span class="zone-status ${statusCls}">${m.status}</span>
       </div>
       <div class="zone-text">${m.text}${m.live ? ' <span class="live-tag" style="font-size:10px;opacity:0.8;">📍 on map</span>' : ''}</div>
-      ${m.block_id ? `<div class="zone-block"><a href="https://devnet.blockchain.logos.co/web/explorer/blocks/${m.block_id}" target="_blank" rel="noopener">block ${m.block_id.slice(0,16)}…</a></div>` : ''}
+      ${m.tx_id ? `<div class="zone-block"><a href="https://devnet.blockchain.logos.co/web/explorer/transactions/${m.tx_id}" target="_blank" rel="noopener">tx ${m.tx_id.slice(0,16)}…</a></div>` : ''}
     </div>`;
   }).join('');
 }
@@ -1268,8 +1268,8 @@ function _renderLiveBubble(msg) {
   const pt = getBubbleAnchor(msg);
   if (!pt) return;
   const text = msg.text;
-  const href = msg.block_id
-    ? `https://devnet.blockchain.logos.co/web/explorer/blocks/${msg.block_id}`
+  const href = msg.tx_id
+    ? `https://devnet.blockchain.logos.co/web/explorer/transactions/${msg.tx_id}`
     : null;
   const el = document.createElement('div');
   el.className = 'map-bubble live-bubble';
@@ -1321,8 +1321,8 @@ function showMapBubble(msg) {
   const pt = getBubbleAnchor(msg);
   if (!pt) return;
   const text = msg.text;
-  const href = msg.block_id
-    ? `https://devnet.blockchain.logos.co/web/explorer/blocks/${msg.block_id}`
+  const href = msg.tx_id
+    ? `https://devnet.blockchain.logos.co/web/explorer/transactions/${msg.tx_id}`
     : null;
   const el = document.createElement('div');
   el.className = 'map-bubble';
