@@ -8,9 +8,15 @@ Live: **https://xalisher.github.io/logos-live/**
 
 ## What it shows
 
-- **Map** — all discovered peers with online/offline status, geo location, ISP
+- **Overview** — local chain state, peer count, connections, recent block activity, and leader diversity
+- **Map** — discovered peers with online/offline status, geo location, ISP, ASN, and inferred infrastructure class
+- **Peers** — searchable peer inventory with first/last seen metadata
+- **Decentralization** — top countries, cities, ASNs, and residential/hosting/unknown distribution
 - **Messages** — on-chain zone-board messages from node runners (`logos:yolo:*` channels), linked to the block explorer
 - **Stake** — faucet distribution recipients and block leader activity
+- **Telemetry** — active peers by hour, peer uptime, and total stake estimate when logs provide it
+- **Setup** — agent-ready node setup links and peer visibility verification
+- **Agent** — machine-readable endpoints and Markdown skills for agents inspecting the network or helping set up a node
 - **Dev / Community** — GitHub activity and Discourse topics from the Logos ecosystem
 
 ---
@@ -18,16 +24,19 @@ Live: **https://xalisher.github.io/logos-live/**
 ## Architecture
 
 ```
-crawler/          Rust — polls /cryptarchia/* every 10 min, writes peers.json + geo_cache.json
+crawler/          Rust — crawls libp2p/Kademlia every 10 min, writes peers.json + geo_cache.json
 zone-scanner/     Rust — scans entire chain history for logos:yolo:* inscriptions, writes zone_scan.json
 publish.py        Python — merges all data into network.json, pushes to GitHub Pages
 static/index.html Single-file frontend (Leaflet map, vanilla JS)
+telemetry_collector.py Python — turns Logos node logs into telemetry.json
 pages/            Git worktree — GitHub Pages branch (network.json + index.html)
 ```
 
 ### Crawler (`crawler/src/main.rs`)
 
-Connects to a local Logos node at `http://127.0.0.1:8080`, walks `/cryptarchia/blocks` and `/network/peers`, resolves peer IPs via ip-api.com, and persists `peers.json` and `geo_cache.json`. Runs continuously, crawling every 10 minutes.
+Connects directly to the Logos libp2p network through the four bootstrap peers, runs Kademlia discovery, resolves peer IPs via ip-api.com, and persists `peers.json` and `geo_cache.json`. Runs continuously, crawling every 10 minutes.
+
+Current node builds expose `/network/info`, but the tested local node returns `404` for `/network/peers`. Peer rows therefore come from libp2p discovery or a published `network.json` fallback, not from the node HTTP API.
 
 ### Zone scanner (`zone-scanner/src/main.rs`)
 
@@ -41,16 +50,85 @@ Aggregates peers, geo, events (Luma), GitHub, Discourse, stake distribution, and
 
 ## Running locally
 
+There are two useful local modes:
+
+- **Feedback mode** — run only the website. It can render with published fallback data, so reviewers do not need a local Logos node.
+- **Full live mode** — run the website plus a local Logos node, crawler, zone scanner, and telemetry collector.
+
 ### Prerequisites
 
-- Rust (stable)
 - Python 3.11+
-- A Logos node running at `http://127.0.0.1:8080`
+- Rust stable, only if you want to build the peer crawler or zone scanner
+- A Logos node at `http://127.0.0.1:8080`, only for full live mode
 
 ### Install Python deps
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+For tests:
+
+```bash
+pip install -r requirements-dev.txt
+pytest -q
+```
+
+### Start the local dashboard for feedback
+
+```bash
+uvicorn server:app --host 127.0.0.1 --port 8000
+```
+
+Open http://127.0.0.1:8000.
+
+If no local Logos node is running, the chain and local health cards will be empty, but the app still serves the UI and uses published fallback data for public map content. This is enough for visual and product feedback.
+
+### Start the local dashboard in full live mode
+
+Run a Logos node first, then start the dashboard with the node URL:
+
+```bash
+NODE_URL=http://127.0.0.1:8080 uvicorn server:app --host 127.0.0.1 --port 8000
+```
+
+Useful machine-readable endpoints:
+
+- `GET /api/network`
+- `GET /api/telemetry`
+- `GET /api/agent/manifest`
+- `GET /api/agent/state`
+- `GET /api/agent/schema`
+- `GET /api/agent/bootstrap-peers`
+- `GET /api/agent/verify-node/{peer_id}`
+- `GET /api/agent/node-visibility/{peer_id}`
+- `GET /api/agent/crawler/status`
+- `GET /.well-known/logos-live.json`
+- `GET /agents/logos-network-skill.md`
+- `GET /agents/logos-node-setup-skill.md`
+
+### Which URL to give an agent
+
+For the normal node setup workflow, give the agent the Markdown skill directly:
+
+```
+http://127.0.0.1:8000/agents/logos-node-setup-skill.md
+```
+
+That is the most portable convention today because most agents can read Markdown instructions from a URL.
+
+For agents or tools that support discovery, give them the well-known entrypoint instead:
+
+```
+http://127.0.0.1:8000/.well-known/logos-live.json
+```
+
+The well-known endpoint points to the setup skill, inspection skill, manifest, telemetry, schema, and current network state. Structured clients can also go straight to:
+
+```
+http://127.0.0.1:8000/api/agent/manifest
 ```
 
 ### Start the peer crawler
@@ -60,6 +138,18 @@ cd crawler
 cargo build --release
 CRAWL_INTERVAL_SECS=600 ./target/release/logos-crawler &
 ```
+
+### Generate telemetry from logs
+
+The dashboard reads `telemetry.json` when present. Generate it from Logos node logs:
+
+```bash
+python telemetry_collector.py \
+  --log-dir ~/logos-blockchain-runbook/state/live-v0.1.2/logs \
+  --output telemetry.json
+```
+
+The file includes raw peer observations, raw stake events, hourly active peer buckets, peer uptime rows, and total stake estimates.
 
 ### Start the zone scanner
 
@@ -82,7 +172,13 @@ python3 publish.py
 Node runners can appear on the map by posting zone-board messages.
 
 **1. Run a Logos node**
-Follow the setup guide at https://github.com/logos-co/nomos-node
+Use the local agent setup skill:
+
+```
+http://127.0.0.1:8000/agents/logos-node-setup-skill.md
+```
+
+It contains verified 0.1.2 release assets, current bootstrap peers, and verification steps. The 0.1.2 circuits archive is `v0.4.2`; older `v0.4.1` links are stale.
 
 **2. Announce your location**
 Post a message containing `#geo lat,lon` once in your channel. The scanner picks it up and anchors all your future messages to that location.
@@ -111,6 +207,21 @@ Running well today #live
 ```
 
 Open a PR or ping us to add an entry.
+
+---
+
+## Agent setup loop
+
+The intended agent flow is:
+
+1. Read `/.well-known/logos-live.json`.
+2. Fetch `/api/agent/manifest`.
+3. Fetch `/agents/logos-node-setup-skill.md`.
+4. Install and run the Logos node with the current release assets and bootstrap peers.
+5. Extract the peer id from `http://localhost:8080/network/info`.
+6. Call `/api/agent/verify-node/{peer_id}` until the node is connected, crawler-observed, visible on the map, and represented in telemetry.
+
+`/network/peers` is not part of the current success path because observed node builds return `404` for it. Peer inventory comes from the libp2p crawler and published snapshots.
 
 ---
 
