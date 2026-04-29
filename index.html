@@ -974,7 +974,7 @@ function render(data) {
     });
     const shortPeer = node.peer_id.slice(0, 16) + '…' + node.peer_id.slice(-8);
     const loc = [node.city, node.country].filter(Boolean).join(', ') || 'Unknown';
-    const selfLabel   = node.self ? '<div style="color:var(--node-self);font-size:11px;font-weight:600;margin-bottom:2px;">⬡ This node</div>' : '';
+    const selfLabel   = '';
     const statusLabel = `<div style="color:${online ? '#22c55e' : 'var(--text-muted)'};font-size:11px;font-weight:600;margin-bottom:6px;">${online ? '● Online' : '● Offline'}</div>`;
     m.bindPopup(`
       ${selfLabel}${statusLabel}
