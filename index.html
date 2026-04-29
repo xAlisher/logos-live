@@ -1198,7 +1198,8 @@ function renderZone(body) {
     body.innerHTML = '<div class="feed-empty">No zone messages yet</div>';
     return;
   }
-  body.innerHTML = zoneMessages.map(m => {
+  const cadenceNote = '<div style="font-size:10px;color:var(--text-faint);text-align:center;padding:4px 0 10px;letter-spacing:0.02em;">map data refreshes every ~10 min</div>';
+  body.innerHTML = cadenceNote + zoneMessages.map(m => {
     const statusCls = m.status === 'finalized' ? 'finalized' : m.status === 'pending' ? 'pending' : 'confirmed';
     const when = m.observed_at ? timeSinceISO(m.observed_at) : (m.slot ? `slot ${fmt(m.slot)}` : '');
     return `<div class="zone-msg">
