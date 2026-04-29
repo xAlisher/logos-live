@@ -508,31 +508,7 @@
     padding: 0 2px;
   }
   .bubble-close:hover { color: var(--text); }
-  /* Outer triangle (border colour) */
-  .map-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -7px;
-    left: 12px;
-    width: 0; height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 7px solid var(--border);
-  }
-  /* Inner triangle (fill colour) */
-  .map-bubble::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 13px;
-    width: 0; height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid var(--bg-raised);
-    z-index: 1;
-  }
-  .map-bubble.live-bubble::after  { border-top-color: var(--accent); }
-  .map-bubble.live-bubble::before { border-top-color: color-mix(in srgb, var(--bg-raised) 92%, var(--accent)); }
+  .bubble-tail { display:block; position:absolute; bottom:-8px; left:10px; width:14px; height:8px; }
   .map-bubble a { color: inherit; text-decoration: none; display: block; }
   .map-bubble a:hover { opacity: 0.8; }
   .map-bubble-sender { color: var(--accent); font-weight: 600; margin-right: 5px; }
@@ -1256,6 +1232,15 @@ let liveBubbleEls  = new Map();
 // Underlying data for re-positioning on map move
 let liveBubbleData = [];
 
+function bubbleTail(live) {
+  const border = live ? 'var(--accent)' : 'var(--border)';
+  const fill   = live ? 'color-mix(in srgb, var(--bg-raised) 92%, var(--accent))' : 'var(--bg-raised)';
+  return `<svg class="bubble-tail" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,0 14,0 2,8" fill="${border}"/>
+    <polygon points="1,0 14,0 3,7" fill="${fill}"/>
+  </svg>`;
+}
+
 function getBubbleAnchor(msg) {
   if (msg.lat != null && msg.lon != null) {
     return map.latLngToContainerPoint([msg.lat, msg.lon]);
@@ -1282,7 +1267,7 @@ function _renderLiveBubble(msg) {
     : `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
   el.innerHTML =
     `<button class="bubble-close" onclick="dismissBubble('${CSS.escape(msg.sender)}')">×</button>` +
-    inner;
+    inner + bubbleTail(true);
   mapWrap.appendChild(el);
   liveBubbleEls.set(msg.sender, el);
 }
@@ -1333,7 +1318,7 @@ function showMapBubble(msg) {
   const inner = href
     ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}</a>`
     : `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
-  el.innerHTML = inner;
+  el.innerHTML = inner + bubbleTail(false);
   mapWrap.appendChild(el);
   setTimeout(() => el.remove(), 5200);
 }
