@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,26 @@
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
   --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg:         #f4f2ed;
+  --panel:      #e8e5de;
+  --panel-2:    #dedad2;
+  --panel-3:    #d4d0c8;
+  --line:       rgba(28,32,40,0.10);
+  --line-strong:rgba(28,32,40,0.20);
+  --text:       #1c2028;
+  --muted:      rgba(28,32,40,0.60);
+  --faint:      rgba(28,32,40,0.38);
+  --green:      #778868;
+  --green-2:    #4e5e3e;
+  --blue:       #2d5a80;
+  --gold:       #8a6e20;
+  --red:        #a04040;
+  --purple:     #6e4a9a;
+  --shadow:     0 4px 24px rgba(0,0,0,0.10);
 }
 
 * { box-sizing: border-box; }
@@ -503,6 +523,20 @@ button, input {
   font-weight: 700;
 }
 
+.bubble-tail { display:block; position:absolute; bottom:-8px; left:10px; width:14px; height:8px; }
+.map-bubble a { color: inherit; text-decoration: none; display: block; }
+.map-bubble a:hover { opacity: 0.8; }
+
+.bubble-close {
+  position: absolute;
+  top: 4px; right: 5px;
+  background: none; border: none;
+  color: var(--text-muted);
+  font-size: 14px; line-height: 1;
+  cursor: pointer; padding: 0 2px;
+}
+.bubble-close:hover { color: var(--text); }
+
 .messages-list {
   display: grid;
   gap: 0;
@@ -913,6 +947,41 @@ tr:hover td {
   .bar-track { grid-column: 1 / -1; grid-row: 2; }
   .brand { min-width: 0; }
 }
+
+#modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.55); align-items: center; justify-content: center;
+}
+#modal-overlay.open { display: flex; }
+#modal {
+  background: var(--bg); border: 1px solid var(--line-strong);
+  border-radius: 10px; padding: 24px 28px; max-width: 480px; width: 90%;
+  box-shadow: var(--shadow); position: relative;
+}
+#modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+#modal-head h2 { font-size: 15px; font-weight: 600; }
+#modal-close {
+  background: none; border: none; color: var(--text-muted);
+  font-size: 18px; cursor: pointer; padding: 0 4px; line-height: 1;
+}
+#modal-close:hover { color: var(--text); }
+.modal-step { display: flex; gap: 14px; align-items: flex-start; }
+.modal-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--green-1); color: #fff;
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.modal-step-title { font-weight: 600; margin-bottom: 6px; }
+.modal-step p { color: var(--text-muted); font-size: 12px; line-height: 1.5; margin-bottom: 6px; }
+.modal-step a { color: var(--green-1); }
+.modal-divider { border: none; border-top: 1px solid var(--line); margin: 16px 0; }
+.modal-code {
+  display: block; background: var(--bg-raised); border: 1px solid var(--line);
+  border-radius: 5px; padding: 8px 10px; font-family: var(--mono);
+  font-size: 11px; white-space: pre; margin-top: 6px;
+}
+
 </style>
 </head>
 <body>
@@ -937,6 +1006,8 @@ tr:hover td {
 
     <div class="actions">
       <span class="updated" id="updated">Loading</span>
+      <button id="theme-btn" class="btn" onclick="cycleTheme()" title="Toggle theme"></button>
+      <button class="btn" type="button" onclick="openModal()" title="How to post to the map">?</button>
       <button class="btn" type="button" onclick="refresh()">Refresh</button>
     </div>
   </header>
@@ -1153,8 +1224,72 @@ tr:hover td {
   </div>
 </div>
 
+<div id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div id="modal">
+    <div id="modal-head">
+      <h2>How to post to the map</h2>
+      <button id="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body">
+      <div class="modal-step">
+        <div class="modal-num">1</div>
+        <div>
+          <div class="modal-step-title">Run a Logos node</div>
+          <p>Follow the setup guide and run a local node connected to the Logos testnet.</p>
+          <p><a href="https://github.com/logos-co/nomos-node" target="_blank" rel="noopener">github.com/logos-co/nomos-node →</a></p>
+        </div>
+      </div>
+      <hr class="modal-divider">
+      <div class="modal-step">
+        <div class="modal-num">2</div>
+        <div>
+          <div class="modal-step-title">Announce your location (optional)</div>
+          <p>Post a message with <strong>#geo lat,lon</strong> once. The scanner anchors your future messages to that spot on the map.</p>
+          <code class="modal-code">#geo 51.5074,-0.1278</code>
+        </div>
+      </div>
+      <hr class="modal-divider">
+      <div class="modal-step">
+        <div class="modal-num">3</div>
+        <div>
+          <div class="modal-step-title">Post to the map</div>
+          <p>Send a zone-board message containing <strong>#live</strong>. It appears as a pinned bubble on the map within ~30 seconds of block finalization.</p>
+          <code class="modal-code">channel:  logos:yolo:&lt;your_username&gt;
+message:  "Running well today #live"</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-const TILE_DARK = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+const TILE_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+
+const SVG_SUN  = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+const SVG_MOON = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+
+function isDaytime() { const h = new Date().getHours(); return h >= 7 && h < 20; }
+
+let currentTheme = (() => {
+  const saved = localStorage.getItem('logos-live-theme');
+  return saved || (isDaytime() ? 'light' : 'dark');
+})();
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = document.getElementById('theme-btn');
+  if (btn) btn.innerHTML = theme === 'dark' ? SVG_SUN : SVG_MOON;
+  localStorage.setItem('logos-live-theme', theme);
+  if (typeof tileLayer !== 'undefined' && tileLayer)
+    tileLayer.setUrl(theme === 'dark' ? TILE_DARK : TILE_LIGHT);
+}
+function cycleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+function openModal()  { document.getElementById('modal-overlay').classList.add('open'); }
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
 const TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
 
 
@@ -1350,9 +1485,20 @@ function placeLiveBubbles() {
     el.className = 'map-bubble';
     el.dataset.lat = String(message.lat);
     el.dataset.lon = String(message.lon);
-    el.style.left = `${point.x + 8}px`;
-    el.style.top = `${point.y - 8}px`;
-    el.innerHTML = `<span class="map-bubble-sender">${esc(message.sender)}</span> ${esc((message.text || '').slice(0, 90))}`;
+    el.style.left = `${point.x - 14}px`;
+    el.style.top = `${point.y - 8 - yOff}px`;
+    const z = map.getZoom();
+    const yOff = Math.round(Math.max(0, Math.min(1, (z - 3) / 9)) * 25);
+    const border = 'var(--green-1)';
+    const fill = 'rgba(31,37,48,0.95)';
+    const tail = `<svg class="bubble-tail" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 2,8" fill="${border}"/><polygon points="1,0 14,0 3,7" fill="${fill}"/></svg>`;
+    const href = message.tx_id ? `https://devnet.blockchain.logos.co/web/explorer/transactions/${message.tx_id}` : null;
+    const inner = href
+      ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${esc(message.sender)}</span> ${esc((message.text || '').slice(0, 90))}</a>`
+      : `<span class="map-bubble-sender">${esc(message.sender)}</span> ${esc((message.text || '').slice(0, 90))}`;
+    el.style.transform = 'translateY(-100%)';
+    el.dataset.yoff = String(yOff);
+    el.innerHTML = `<button class="bubble-close" onclick="this.closest('.map-bubble').remove()">×</button>` + inner + tail;
     shell.appendChild(el);
     liveBubbleEls.push(el);
     if (liveBubbleEls.length >= 10) break;
@@ -1365,8 +1511,9 @@ function positionLiveBubbles() {
     const lat = Number(el.dataset.lat);
     const lon = Number(el.dataset.lon);
     const point = map.latLngToContainerPoint([lat, lon]);
-    el.style.left = `${point.x + 8}px`;
-    el.style.top = `${point.y - 8}px`;
+    const yOff2 = Math.round(Math.max(0, Math.min(1, (map.getZoom() - 3) / 9)) * 25);
+    el.style.left = `${point.x - 14}px`;
+    el.style.top = `${point.y - 8 - yOff2}px`;
   }
 }
 
@@ -1380,7 +1527,8 @@ function renderMap(nodes) {
       maxBounds: [[-85, -180], [85, 180]],
       maxBoundsViscosity: 1,
     });
-    L.tileLayer(TILE_DARK, { attribution: TILE_ATTR, subdomains: 'abcd', maxZoom: 18, noWrap: true }).addTo(map);
+    let tileLayer = L.tileLayer(currentTheme === 'dark' ? TILE_DARK : TILE_LIGHT, { attribution: TILE_ATTR, subdomains: 'abcd', maxZoom: 18, noWrap: true }).addTo(map);
+  document.getElementById('theme-btn').innerHTML = currentTheme === 'dark' ? SVG_SUN : SVG_MOON;
     map.on('move zoom', positionLiveBubbles);
   }
   markers.forEach(marker => marker.remove());
