@@ -1157,6 +1157,38 @@ tr:hover td {
 const TILE_DARK = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
 const TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
 
+
+function computeSummary(nodes) {
+  const online = nodes.filter(n => n.online);
+  const countryCount = {};
+  const cityCount = {};
+  const asnCount = {};
+  const infraCount = { hosting: 0, residential: 0, unknown: 0 };
+
+  for (const n of nodes) {
+    if (n.country) countryCount[n.country] = (countryCount[n.country] || 0) + 1;
+    if (n.city) cityCount[n.city] = (cityCount[n.city] || 0) + 1;
+    if (n.asn) asnCount[n.asn] = (asnCount[n.asn] || 0) + 1;
+    const org = (n.org || n.isp || '').toLowerCase();
+    if (/amazon|google|microsoft|hetzner|ovh|digitalocean|linode|vultr|cloudflare|contabo|leaseweb/.test(org)) infraCount.hosting++;
+    else if (n.asn && /residential|comcast|at&t|verizon|charter|cox|telecom|telefonica|deutsche|bt |orange/.test(org.toLowerCase())) infraCount.residential++;
+    else infraCount.unknown++;
+  }
+
+  const topCountries = Object.entries(countryCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({country:k,count:v}));
+  const topCities = Object.entries(cityCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({city:k,count:v}));
+  const topAsns = Object.entries(asnCount).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>({asn:k,count:v}));
+  const topCountryShare = nodes.length ? (topCountries[0]?.count || 0) / nodes.length * 100 : 0;
+  const topAsnShare = nodes.length ? (topAsns[0]?.count || 0) / nodes.length * 100 : 0;
+
+  return {
+    nodes: { discovered: nodes.length, online: online.length, countries: Object.keys(countryCount).length, asns: Object.keys(asnCount).length },
+    health: { reported_peers: null, connections: null },
+    geography: { top_countries: topCountries, top_cities: topCities, top_country_share_pct: topCountryShare },
+    infrastructure: { top_asns: topAsns, top_asn_share_pct: topAsnShare, mix: infraCount }
+  };
+}
+
 let state = null;
 let map = null;
 let markers = [];
@@ -1224,6 +1256,7 @@ async function refresh() {
   $('updated').textContent = 'Loading';
   try {
     state = await fetchData();
+    if (!state.summary && state.nodes) state.summary = computeSummary(state.nodes);
     render();
     $('updated').textContent = `Updated ${since(state.updated)}`;
   } catch (error) {
