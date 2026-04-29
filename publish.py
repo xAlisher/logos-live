@@ -9,6 +9,7 @@ import os
 import re
 import subprocess
 import time
+from collections import defaultdict
 from pathlib import Path
 
 import httpx
@@ -317,39 +318,76 @@ def _hour_bucket(ts_seconds: float) -> int:
     return int(ts_seconds) - (int(ts_seconds) % 3600)
 
 
+_LOG_FILE_RE = re.compile(r"logos-blockchain\.(\d{4}-\d{2}-\d{2})-(\d{2})$")
+
+
+def _log_file_ts(path: Path) -> int | None:
+    """Return Unix timestamp for a log file based on its name, or None."""
+    m = _LOG_FILE_RE.search(path.name)
+    if not m:
+        return None
+    try:
+        return int(time.mktime(time.strptime(f"{m.group(1)} {m.group(2)}", "%Y-%m-%d %H")))
+    except Exception:
+        return None
+
+
+def compact_logs(keep_hours: int = 72) -> None:
+    """Delete log files older than keep_hours. Non-destructive: only removes files
+    whose name indicates they are outside the retention window."""
+    if not LOG_DIR.exists():
+        return
+    cutoff = time.time() - keep_hours * 3600
+    deleted = 0
+    for lf in sorted(LOG_DIR.glob("logos-blockchain.*")):
+        ts = _log_file_ts(lf)
+        if ts is not None and ts < cutoff:
+            try:
+                lf.unlink()
+                deleted += 1
+            except Exception:
+                pass
+    if deleted:
+        print(f"  Log compaction: removed {deleted} files older than {keep_hours}h")
+
+
 def build_telemetry() -> dict:
     """Parse node logs to build hourly active-peer telemetry."""
     if not LOG_DIR.exists():
         return {}
 
-    # Collect (hour_bucket, peer_id) observations from last 72h of logs
     now = int(time.time())
     cutoff = now - 72 * 3600
+
+    # Only read files whose filename indicates they are within the 72h window
+    log_files = [
+        lf for lf in sorted(LOG_DIR.glob("logos-blockchain.*"))
+        if (ts := _log_file_ts(lf)) is not None and ts >= cutoff
+    ]
+    if not log_files:
+        return {}
+
+    from collections import defaultdict
     observations: list[tuple[int, str]] = []
     peer_first: dict[str, int] = {}
     peer_last:  dict[str, int] = {}
 
-    log_files = sorted(LOG_DIR.glob("logos-blockchain.*"))[-200:]
     for lf in log_files:
+        # Derive the hour bucket from the filename (all lines in this file belong to it)
+        file_ts = _log_file_ts(lf)
+        if file_ts is None:
+            continue
+        bucket = _hour_bucket(file_ts)
         try:
-            for raw_line in lf.read_text(errors="replace").splitlines():
-                line = _ANSI_RE.sub("", raw_line)
-                m = _TS_RE.search(line)
-                if not m:
-                    continue
-                try:
-                    ts = int(time.mktime(time.strptime(m.group(1), "%Y-%m-%dT%H:%M:%S")))
-                except Exception:
-                    continue
-                if ts < cutoff:
-                    continue
-                for peer_id in _PEER_RE.findall(line):
-                    bucket = _hour_bucket(ts)
-                    observations.append((bucket, peer_id))
-                    if peer_id not in peer_first or ts < peer_first[peer_id]:
-                        peer_first[peer_id] = ts
-                    if peer_id not in peer_last or ts > peer_last[peer_id]:
-                        peer_last[peer_id] = ts
+            with lf.open(errors="replace") as fh:
+                for raw_line in fh:
+                    line = _ANSI_RE.sub("", raw_line)
+                    for peer_id in _PEER_RE.findall(line):
+                        observations.append((bucket, peer_id))
+                        if peer_id not in peer_first or file_ts < peer_first[peer_id]:
+                            peer_first[peer_id] = file_ts
+                        if peer_id not in peer_last or file_ts > peer_last[peer_id]:
+                            peer_last[peer_id] = file_ts
         except Exception:
             continue
 
@@ -357,7 +395,6 @@ def build_telemetry() -> dict:
         return {}
 
     # Build hourly active-peer counts
-    from collections import defaultdict
     bucket_peers: dict[int, set] = defaultdict(set)
     for bucket, pid in observations:
         bucket_peers[bucket].add(pid)
@@ -818,6 +855,7 @@ async def build_network_json() -> dict:
         discourse       = await fetch_discourse(client)
         stake           = await fetch_stake(client)
         recent_blocks   = await fetch_recent_blocks(client)
+    compact_logs()
     telemetry = build_telemetry()
     save_feed_cache(feed_cache)
 
