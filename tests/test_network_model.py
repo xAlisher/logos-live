@@ -7,6 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from server import (
     build_network_summary,
     classify_node_environment,
+    hydrate_content_snapshot,
     merge_peer_snapshot,
     summarize_recent_blocks,
 )
@@ -102,6 +103,33 @@ def test_merge_peer_snapshot_uses_published_peers_when_local_has_only_self():
     assert [node["peer_id"] for node in merged["nodes"]] == ["local-self", "bootstrap"]
     assert merged["peer_data_source"] == "published-fallback"
     assert merged["peer_snapshot"]["updated"] == 99
+
+
+def test_hydrate_content_snapshot_restores_public_map_content_when_local_lacks_it():
+    local = {
+        "nodes": [],
+        "chain": {},
+        "network": {},
+        "updated": 123,
+    }
+    published = {
+        "events": [{"name": "Logos Circle", "lat": 1, "lon": 2}],
+        "youtube": {"video_id": "abc123", "title": "Latest Logos update"},
+        "zone_messages": [{"sender": "alice", "text": "online #live"}],
+        "github": [{"title": "commit"}],
+        "discourse": [{"title": "topic"}],
+        "stake": {"recipients": 10},
+    }
+
+    hydrated = hydrate_content_snapshot(copy.deepcopy(local), published)
+
+    assert hydrated["events"] == published["events"]
+    assert hydrated["youtube"] == published["youtube"]
+    assert hydrated["zone_messages"] == published["zone_messages"]
+    assert hydrated["github"] == published["github"]
+    assert hydrated["discourse"] == published["discourse"]
+    assert hydrated["stake"] == published["stake"]
+    assert hydrated["content_data_source"] == "published-fallback"
 
 
 def test_summarize_recent_blocks_counts_leaders_transactions_and_empty_slots():

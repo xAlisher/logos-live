@@ -359,6 +359,12 @@ button, input {
   overflow-wrap: anywhere;
 }
 
+.map-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 8px 8px;
+}
+
 #map {
   height: min(62vh, 680px);
   min-height: 430px;
@@ -394,6 +400,209 @@ button, input {
 .marker.unknown { background: var(--gold); box-shadow: 0 0 0 6px rgba(208, 173, 98, 0.14); }
 .marker.offline { background: #525866; box-shadow: none; opacity: 0.8; }
 .marker.self { background: #eff2ea; border-color: var(--green); }
+
+.event-marker {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid rgba(239, 242, 234, 0.8);
+  box-shadow: 0 0 0 7px rgba(110, 164, 191, 0.15);
+}
+
+.event-marker.past {
+  background: #586070;
+  box-shadow: none;
+  opacity: 0.75;
+}
+
+.map-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.map-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.map-toggle input {
+  accent-color: var(--green);
+}
+
+.map-toggle:last-child input {
+  accent-color: var(--blue);
+}
+
+.popup-status {
+  color: var(--green-2);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.popup-status.offline {
+  color: var(--red);
+}
+
+.popup-peer-id {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  word-break: break-all;
+  margin-bottom: 10px;
+}
+
+.popup-row {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 10px;
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.popup-key {
+  color: var(--muted);
+}
+
+.popup-val {
+  color: var(--text);
+  text-align: right;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.map-bubble {
+  position: absolute;
+  z-index: 600;
+  max-width: 260px;
+  padding: 8px 12px;
+  border: 1px solid rgba(143, 169, 121, 0.38);
+  background: rgba(31, 37, 48, 0.95);
+  color: var(--text);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  transform: translateY(-100%);
+  pointer-events: auto;
+}
+
+.map-bubble-sender {
+  color: var(--green-2);
+  font-weight: 700;
+}
+
+#yt-widget {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 700;
+  width: 300px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: rgba(18, 21, 27, 0.94);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+#yt-widget.hidden {
+  display: none;
+}
+
+#yt-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+#yt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex: 0 0 auto;
+}
+
+#yt-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#yt-player iframe {
+  display: block;
+  width: 100%;
+  height: 168px;
+  border: 0;
+}
+
+.messages-list {
+  display: grid;
+  gap: 0;
+  max-height: 340px;
+  overflow: auto;
+}
+
+.zone-msg {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.zone-msg:last-child {
+  border-bottom: 0;
+}
+
+.zone-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.zone-sender {
+  color: var(--green-2);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.zone-time {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 10px;
+  margin-left: auto;
+}
+
+.zone-text {
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.zone-tag {
+  display: inline-flex;
+  margin-left: 6px;
+  color: var(--green-2);
+  font-family: var(--mono);
+  font-size: 10px;
+}
 
 .bar-list {
   display: grid;
@@ -637,9 +846,19 @@ tr:hover td {
           <section class="panel">
             <div class="panel-head">
               <h2 class="panel-title">Network Map</h2>
-              <span class="panel-sub" id="map-sub">-</span>
+              <div class="map-controls">
+                <span class="panel-sub" id="map-sub">-</span>
+                <label class="map-toggle"><input id="toggle-nodes" type="checkbox" checked> Nodes</label>
+                <label class="map-toggle"><input id="toggle-circles" type="checkbox" checked> Circles</label>
+              </div>
             </div>
-            <div id="map"></div>
+            <div class="map-shell" id="map-shell">
+              <div id="map"></div>
+              <div id="yt-widget" class="hidden">
+                <div id="yt-head"><span id="yt-dot"></span><span id="yt-title">Latest from Logos</span></div>
+                <div id="yt-player"></div>
+              </div>
+            </div>
           </section>
           <div class="grid">
             <section class="panel">
@@ -649,6 +868,10 @@ tr:hover td {
             <section class="panel">
               <div class="panel-head"><h2 class="panel-title">Infrastructure Mix</h2><span class="panel-sub">best effort</span></div>
               <div class="panel-body"><div class="bar-list" id="infra-mix"></div></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head"><h2 class="panel-title">Zone Messages</h2><span class="panel-sub" id="msg-sub">latest</span></div>
+              <div class="panel-body"><div class="messages-list" id="zone-messages"></div></div>
             </section>
           </div>
         </div>
@@ -760,6 +983,9 @@ const TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">Open
 let state = null;
 let map = null;
 let markers = [];
+let eventMarkers = [];
+let liveBubbleEls = [];
+let youtubeVideoId = null;
 
 const $ = id => document.getElementById(id);
 const fmt = value => value == null || value === '' ? '-' : Number(value).toLocaleString();
@@ -780,6 +1006,10 @@ const since = ts => {
   if (seconds < 3600) return `${Math.round(seconds / 60)}m ago`;
   if (seconds < 86400) return `${Math.round(seconds / 3600)}h ago`;
   return `${Math.round(seconds / 86400)}d ago`;
+};
+const fmtTs = ts => {
+  if (!ts) return '-';
+  return new Date(ts * 1000).toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
 };
 
 function envClass(value) {
@@ -857,6 +1087,8 @@ function render() {
   $('top-countries').innerHTML = barRows(summary.geography?.top_countries, 'country');
   renderInfraMix(summary.infrastructure?.mix || {});
   renderMap(nodes);
+  renderMessages();
+  renderYouTube();
   renderPeers();
   renderDecentralization();
   renderBlocks();
@@ -874,6 +1106,79 @@ function renderInfraMix(mix) {
   $('infra-mix').innerHTML = barRows(rows, 'environment', 'blue');
 }
 
+function renderMessages() {
+  const messages = state.zone_messages || [];
+  $('msg-sub').textContent = messages.length ? `${fmt(messages.length)} recent` : 'none';
+  $('zone-messages').innerHTML = messages.slice(0, 8).map(message => {
+    const when = message.observed_at ? since(new Date(message.observed_at).getTime()) : (message.slot ? `slot ${fmt(message.slot)}` : '');
+    const txLink = message.tx_id
+      ? ` <a href="https://devnet.blockchain.logos.co/web/explorer/transactions/${esc(message.tx_id)}" target="_blank" rel="noopener">tx</a>`
+      : '';
+    return `
+      <div class="zone-msg">
+        <div class="zone-head">
+          <span class="zone-sender">${esc(message.sender || 'unknown')}</span>
+          <span class="zone-time">${esc(when)}${txLink}</span>
+        </div>
+        <div class="zone-text">${esc(message.text || '')}${message.live ? '<span class="zone-tag">#live</span>' : ''}</div>
+      </div>
+    `;
+  }).join('') || '<div class="empty">No messages yet</div>';
+}
+
+function placeLiveBubbles() {
+  if (!map) return;
+  liveBubbleEls.forEach(el => el.remove());
+  liveBubbleEls = [];
+  const shell = $('map-shell');
+  const seen = new Set();
+  for (const message of state.zone_messages || []) {
+    if (!message.live || message.lat == null || message.lon == null || seen.has(message.sender)) continue;
+    seen.add(message.sender);
+    const point = map.latLngToContainerPoint([message.lat, message.lon]);
+    const el = document.createElement('div');
+    el.className = 'map-bubble';
+    el.dataset.lat = String(message.lat);
+    el.dataset.lon = String(message.lon);
+    el.style.left = `${point.x + 8}px`;
+    el.style.top = `${point.y - 8}px`;
+    el.innerHTML = `<span class="map-bubble-sender">${esc(message.sender)}</span> ${esc((message.text || '').slice(0, 90))}`;
+    shell.appendChild(el);
+    liveBubbleEls.push(el);
+    if (liveBubbleEls.length >= 10) break;
+  }
+}
+
+function positionLiveBubbles() {
+  if (!map) return;
+  for (const el of liveBubbleEls) {
+    const lat = Number(el.dataset.lat);
+    const lon = Number(el.dataset.lon);
+    const point = map.latLngToContainerPoint([lat, lon]);
+    el.style.left = `${point.x + 8}px`;
+    el.style.top = `${point.y - 8}px`;
+  }
+}
+
+function renderYouTube() {
+  const yt = state.youtube || {};
+  const widget = $('yt-widget');
+  if (!yt.video_id) {
+    widget.classList.add('hidden');
+    return;
+  }
+  widget.classList.remove('hidden');
+  $('yt-title').textContent = yt.title || 'Latest from Logos';
+  if (youtubeVideoId !== yt.video_id) {
+    youtubeVideoId = yt.video_id;
+    $('yt-player').innerHTML = `
+      <iframe src="https://www.youtube.com/embed/${esc(yt.video_id)}?rel=0&modestbranding=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    `;
+  }
+}
+
 function renderMap(nodes) {
   if (!map) {
     map = L.map('map', {
@@ -884,32 +1189,81 @@ function renderMap(nodes) {
       maxBoundsViscosity: 1,
     });
     L.tileLayer(TILE_DARK, { attribution: TILE_ATTR, subdomains: 'abcd', maxZoom: 18, noWrap: true }).addTo(map);
+    map.on('move zoom', positionLiveBubbles);
   }
   markers.forEach(marker => marker.remove());
   markers = [];
+  eventMarkers.forEach(marker => marker.remove());
+  eventMarkers = [];
+  liveBubbleEls.forEach(el => el.remove());
+  liveBubbleEls = [];
 
   const points = [];
+  const showNodes = $('toggle-nodes')?.checked !== false;
   for (const node of nodes) {
     if (node.lat == null || node.lon == null) continue;
     const online = node.self || node.online !== false;
     const cls = ['marker', envClass(node.environment), online ? '' : 'offline', node.self ? 'self' : ''].join(' ');
     const icon = L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [14, 14], iconAnchor: [7, 7] });
     const marker = L.marker([node.lat, node.lon], { icon, opacity: online ? 1 : 0.62 });
-    marker.bindPopup(`
-      <strong>${esc(node.city || node.country || 'Unknown')}</strong><br>
-      <span class="mono">${esc(short(node.peer_id, 12, 8))}</span><br>
-      ${esc(node.ip || '-')}<br>
-      ${esc(node.asn || node.org || node.isp || '-')}<br>
-      ${esc(node.environment || 'Unknown')}
-    `);
-    marker.addTo(map);
+    marker.bindPopup(nodePopup(node, online));
+    if (showNodes) marker.addTo(map);
     markers.push(marker);
     points.push([node.lat, node.lon]);
+  }
+  const showCircles = $('toggle-circles')?.checked !== false;
+  for (const event of state.events || []) {
+    if (event.lat == null || event.lon == null) continue;
+    const icon = L.divIcon({
+      className: '',
+      html: `<div class="event-marker ${event.upcoming ? '' : 'past'}"></div>`,
+      iconSize: [15, 15],
+      iconAnchor: [7, 7],
+    });
+    const marker = L.marker([event.lat, event.lon], {
+      icon,
+      zIndexOffset: event.upcoming ? 500 : -50,
+      opacity: event.upcoming ? 1 : 0.72,
+    });
+    marker.bindPopup(eventPopup(event));
+    if (showCircles) marker.addTo(map);
+    eventMarkers.push(marker);
+    if (event.upcoming) points.push([event.lat, event.lon]);
   }
   if (points.length) {
     map.fitBounds(L.latLngBounds(points), { padding: [34, 34], maxZoom: 5 });
   }
+  placeLiveBubbles();
   setTimeout(() => map.invalidateSize(), 50);
+}
+
+function nodePopup(node, online) {
+  const loc = [node.city, node.country].filter(Boolean).join(', ') || '-';
+  return `
+    <div class="popup-status ${online ? '' : 'offline'}">• ${online ? 'Online' : 'Offline'}</div>
+    <div class="popup-peer-id">${esc(short(node.peer_id, 14, 8))}</div>
+    <div class="popup-row"><span class="popup-key">IP</span><span class="popup-val">${esc(node.ip || '-')}</span></div>
+    <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${esc(loc)}</span></div>
+    <div class="popup-row"><span class="popup-key">ISP</span><span class="popup-val">${esc(node.isp || '-')}</span></div>
+    <div class="popup-row"><span class="popup-key">Org</span><span class="popup-val">${esc(node.org || '-')}</span></div>
+    <div class="popup-row"><span class="popup-key">ASN</span><span class="popup-val">${esc(node.asn || '-')}</span></div>
+    <div class="popup-row"><span class="popup-key">Type</span><span class="popup-val">${esc(node.environment || 'Unknown')}</span></div>
+    ${node.first_seen ? `<div class="popup-row"><span class="popup-key">First seen</span><span class="popup-val">${esc(fmtTs(node.first_seen))}</span></div>` : ''}
+    ${node.last_seen ? `<div class="popup-row"><span class="popup-key">Last seen</span><span class="popup-val">${esc(fmtTs(node.last_seen))}</span></div>` : ''}
+  `;
+}
+
+function eventPopup(event) {
+  const loc = [event.city, event.country].filter(Boolean).join(', ') || '-';
+  const date = event.start ? event.start.slice(0, 10) : '-';
+  return `
+    <div class="popup-status">• ${event.upcoming ? 'Upcoming Circle' : 'Past Circle'}</div>
+    <div class="popup-peer-id">${esc(event.name || 'Logos Circle')}</div>
+    <div class="popup-row"><span class="popup-key">Date</span><span class="popup-val">${esc(date)}</span></div>
+    <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${esc(loc)}</span></div>
+    <div class="popup-row"><span class="popup-key">Address</span><span class="popup-val">${esc(event.address || '-')}</span></div>
+    ${event.url ? `<div class="popup-row"><span class="popup-key">Link</span><span class="popup-val"><a href="${esc(event.url)}" target="_blank" rel="noopener">Open</a></span></div>` : ''}
+  `;
 }
 
 function renderPeers() {
@@ -1020,6 +1374,14 @@ document.querySelectorAll('#nav button').forEach(button => {
     document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === `view-${button.dataset.view}`));
     if (button.dataset.view === 'overview' && map) setTimeout(() => map.invalidateSize(), 50);
   });
+});
+
+$('toggle-nodes').addEventListener('change', () => {
+  markers.forEach(marker => $('toggle-nodes').checked ? marker.addTo(map) : marker.remove());
+});
+
+$('toggle-circles').addEventListener('change', () => {
+  eventMarkers.forEach(marker => $('toggle-circles').checked ? marker.addTo(map) : marker.remove());
 });
 
 refresh();

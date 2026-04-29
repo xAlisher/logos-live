@@ -195,6 +195,29 @@ def merge_peer_snapshot(
     return local_data
 
 
+def hydrate_content_snapshot(
+    local_data: dict[str, Any],
+    fallback_data: dict[str, Any] | None,
+) -> dict[str, Any]:
+    """Restore static/public content feeds when the live backend has none."""
+    if not fallback_data:
+        local_data["content_data_source"] = "local"
+        return local_data
+
+    used_fallback = False
+    for key in ("events", "youtube", "zone_messages", "github", "discourse", "stake"):
+        current = local_data.get(key)
+        if current:
+            continue
+        fallback = fallback_data.get(key)
+        if fallback:
+            local_data[key] = fallback
+            used_fallback = True
+
+    local_data["content_data_source"] = "published-fallback" if used_fallback else "local"
+    return local_data
+
+
 def summarize_recent_blocks(blocks: list[dict[str, Any]]) -> dict[str, Any]:
     slots = [
         b.get("header", {}).get("slot")
@@ -505,6 +528,7 @@ async def _build_data() -> dict:
         "updated":  time.time(),
     }
     data = merge_peer_snapshot(data, published_snapshot)
+    data = hydrate_content_snapshot(data, published_snapshot)
     data["nodes"] = [
         {**node, "environment": classify_node_environment(node)}
         for node in data.get("nodes") or []
