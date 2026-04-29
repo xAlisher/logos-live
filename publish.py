@@ -304,6 +304,177 @@ def save_stake_cache(cache: dict):
     STAKE_CACHE.write_text(json.dumps(cache, indent=2))
 
 
+LOG_DIR = Path(os.getenv(
+    "LOG_DIR",
+    os.path.expanduser("~/logos-blockchain-runbook/state/live-v0.1.2/logs"),
+))
+_PEER_RE  = re.compile(r"\b(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\b")
+_TS_RE    = re.compile(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})")
+_ANSI_RE  = re.compile(r"\x1b\[[0-9;]*m")
+
+
+def _hour_bucket(ts_seconds: float) -> int:
+    return int(ts_seconds) - (int(ts_seconds) % 3600)
+
+
+def build_telemetry() -> dict:
+    """Parse node logs to build hourly active-peer telemetry."""
+    if not LOG_DIR.exists():
+        return {}
+
+    # Collect (hour_bucket, peer_id) observations from last 72h of logs
+    now = int(time.time())
+    cutoff = now - 72 * 3600
+    observations: list[tuple[int, str]] = []
+    peer_first: dict[str, int] = {}
+    peer_last:  dict[str, int] = {}
+
+    log_files = sorted(LOG_DIR.glob("logos-blockchain.*"))[-200:]
+    for lf in log_files:
+        try:
+            for raw_line in lf.read_text(errors="replace").splitlines():
+                line = _ANSI_RE.sub("", raw_line)
+                m = _TS_RE.search(line)
+                if not m:
+                    continue
+                try:
+                    ts = int(time.mktime(time.strptime(m.group(1), "%Y-%m-%dT%H:%M:%S")))
+                except Exception:
+                    continue
+                if ts < cutoff:
+                    continue
+                for peer_id in _PEER_RE.findall(line):
+                    bucket = _hour_bucket(ts)
+                    observations.append((bucket, peer_id))
+                    if peer_id not in peer_first or ts < peer_first[peer_id]:
+                        peer_first[peer_id] = ts
+                    if peer_id not in peer_last or ts > peer_last[peer_id]:
+                        peer_last[peer_id] = ts
+        except Exception:
+            continue
+
+    if not observations:
+        return {}
+
+    # Build hourly active-peer counts
+    from collections import defaultdict
+    bucket_peers: dict[int, set] = defaultdict(set)
+    for bucket, pid in observations:
+        bucket_peers[bucket].add(pid)
+
+    end_bucket   = _hour_bucket(now)
+    start_bucket = _hour_bucket(cutoff)
+    hourly = []
+    b = start_bucket
+    while b <= end_bucket:
+        hourly.append({"ts": b, "count": len(bucket_peers.get(b, set()))})
+        b += 3600
+
+    active_latest = len(bucket_peers.get(end_bucket, set()))
+    active_peak   = max((len(v) for v in bucket_peers.values()), default=0)
+
+    # Peer uptime within window
+    window_hours = (end_bucket - start_bucket) // 3600 + 1
+    uptime_rows = []
+    for pid in sorted(peer_last, key=lambda p: -peer_last[p])[:30]:
+        buckets_seen = sum(1 for b, p in observations if p == pid)
+        uptime_pct   = round(buckets_seen / window_hours * 100, 1) if window_hours else 0
+        uptime_rows.append({
+            "peer_id":    pid[:20] + "…",
+            "uptime_pct": uptime_pct,
+            "last_seen":  peer_last[pid],
+        })
+
+    print(f"  Telemetry: {len(hourly)} hourly buckets, "
+          f"{len(peer_first)} unique peers, peak {active_peak}/h")
+    return {
+        "source": "node-logs",
+        "window_hours": window_hours,
+        "active_peers_hourly": hourly,
+        "summary": {
+            "active_latest":      active_latest,
+            "active_peak":        active_peak,
+            "tracked_peers":      len(peer_first),
+            "latest_total_stake": None,
+            "stake_points":       0,
+        },
+        "peer_uptime": uptime_rows,
+        "stake_series": [],
+    }
+
+
+async def fetch_recent_blocks(client: httpx.AsyncClient) -> dict:
+    """Fetch recent block sample for the Blocks view."""
+    try:
+        resp = await client.get(f"{NODE_URL}/cryptarchia/headers?limit=30", timeout=5)
+        if resp.status_code != 200:
+            return {}
+        hashes = resp.json()
+    except Exception:
+        return {}
+
+    recent = []
+    leader_counts: dict[str, int] = {}
+    slots = []
+
+    for h in hashes:
+        try:
+            r = await client.post(
+                f"{NODE_URL}/storage/block",
+                content=json.dumps(h),
+                headers={"Content-Type": "application/json"},
+                timeout=3,
+            )
+            if r.status_code != 200:
+                continue
+            block = r.json()
+        except Exception:
+            continue
+
+        header = block.get("header", {})
+        slot = header.get("slot", 0)
+        lk = header.get("proof_of_leadership", {}).get("leader_key", "")
+        txs = block.get("transactions", [])
+        ops = sum(len(tx.get("mantle_tx", {}).get("ops", [])) for tx in txs)
+        root = header.get("block_root", "")
+
+        slots.append(slot)
+        if lk:
+            leader_counts[lk] = leader_counts.get(lk, 0) + 1
+
+        recent.append({
+            "slot":       slot,
+            "leader_key": lk[:16] if lk else "",
+            "txs":        len(txs),
+            "ops":        ops,
+            "root":       root[:16] if root else "",
+            "hash":       h[:16] if h else "",
+        })
+
+    total = len(recent)
+    total_leader_blocks = sum(leader_counts.values())
+    top_leaders = sorted(leader_counts.items(), key=lambda x: -x[1])[:10]
+
+    print(f"  Blocks: {total} sampled, {len(leader_counts)} unique leaders")
+    return {
+        "window": {
+            "blocks":   total,
+            "slot_min": min(slots) if slots else 0,
+            "slot_max": max(slots) if slots else 0,
+        },
+        "leader_diversity": {
+            "unique_leaders":     len(leader_counts),
+            "top_leader_share_pct": round(100 * top_leaders[0][1] / total_leader_blocks, 1) if top_leaders and total_leader_blocks else 0,
+        },
+        "top_leaders": [
+            {"leader_key": pk[:16], "blocks": n, "pct": round(100 * n / total_leader_blocks, 1) if total_leader_blocks else 0}
+            for pk, n in top_leaders
+        ],
+        "recent": list(reversed(recent[:20])),
+        "transactions": {"total": sum(b["txs"] for b in recent), "ops": sum(b["ops"] for b in recent)},
+    }
+
+
 async def fetch_stake(client: httpx.AsyncClient) -> dict:
     """Scan recent blocks for faucet distribution + block leader counts."""
     cache = load_stake_cache()
@@ -646,6 +817,8 @@ async def build_network_json() -> dict:
         github          = await fetch_github(client, feed_cache)
         discourse       = await fetch_discourse(client)
         stake           = await fetch_stake(client)
+        recent_blocks   = await fetch_recent_blocks(client)
+    telemetry = build_telemetry()
     save_feed_cache(feed_cache)
 
     # Geolocate own IP if not cached
@@ -672,7 +845,7 @@ async def build_network_json() -> dict:
                 "isp":        g.get("isp", ""),
                 "org":        g.get("org", ""),
                 "asn":        g.get("as", ""),
-                "self":       True,
+                "self":       False,
                 "online":     True,
                 "first_seen": 0,
                 "last_seen":  0,
@@ -715,6 +888,8 @@ async def build_network_json() -> dict:
         "github":        github,
         "discourse":     discourse,
         "stake":         stake,
+        "recent_blocks": recent_blocks,
+        "telemetry":     telemetry,
         "zone_messages": zone_messages,
         "updated":       int(time.time()),
     }
