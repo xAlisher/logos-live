@@ -694,7 +694,8 @@
     color: var(--accent);
     margin-top: 6px;
     line-height: 1.6;
-    white-space: pre;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
   .modal-divider {
     border: none;
@@ -786,7 +787,8 @@
         <div class="modal-step-body">
           <div class="modal-step-title">Post to the map</div>
           <p>Send a zone-board message on your node that contains <strong>#live</strong>. The scanner picks it up within ~30 seconds of block finalization and it appears as a pinned bubble on the map.</p>
-          <code class="modal-code">logos:yolo:&lt;your_username&gt;  →  "Running well today #live"</code>
+          <code class="modal-code">channel:  logos:yolo:&lt;your_username&gt;
+message:  "Running well today #live"</code>
         </div>
       </div>
 
