@@ -10,6 +10,7 @@ import re
 import subprocess
 import time
 from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -29,11 +30,18 @@ PUBLISHED_NETWORK_URL = os.getenv(
     "PUBLISHED_NETWORK_URL",
     "https://xalisher.github.io/logos-live/network.json",
 )
+TELEMETRY_FILE = os.getenv("TELEMETRY_FILE", os.path.join(os.path.dirname(__file__), "telemetry.json"))
 
 # ── Compiled patterns ──────────────────────────────────────────────────────────
 _ANSI      = re.compile(r"\x1b\[[0-9;]*m")
 _PEER_ADDR = re.compile(
     r"Added address /ip4/(\d+\.\d+\.\d+\.\d+)/\S+ to peer PeerId\(\"([^\"]+)\"\)"
+)
+_PEER_ID = re.compile(r"\b(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\b")
+_ISO_TS = re.compile(r"\b(\d{4}-\d{2}-\d{2}[T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?Z?)\b")
+_STAKE_VALUE = re.compile(
+    r"\b(?:old_total_stake|total_stake|active_stake|stake_estimate|tsi)\s*[=:]\s*([0-9][0-9_,]*(?:\.\d+)?)",
+    re.IGNORECASE,
 )
 
 # ── Cache ──────────────────────────────────────────────────────────────────────
@@ -87,6 +95,268 @@ def classify_node_environment(node: dict[str, Any]) -> str:
 
 def _pct(part: int | float, total: int | float) -> float:
     return round((part / total) * 100, 2) if total else 0.0
+
+
+def _hour_bucket(ts: int | float) -> int:
+    return int(ts // 3600 * 3600)
+
+
+def _parse_log_ts(line: str) -> int | None:
+    match = _ISO_TS.search(line)
+    if not match:
+        return None
+    raw = match.group(1).replace(" ", "T")
+    if raw.endswith("Z"):
+        raw = raw[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(raw)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return int(parsed.astimezone(timezone.utc).timestamp())
+    except ValueError:
+        return None
+
+
+def parse_peer_log_observations(text: str) -> list[dict[str, Any]]:
+    observations: list[dict[str, Any]] = []
+    for line in _ANSI.sub("", text).splitlines():
+        ts = _parse_log_ts(line)
+        if ts is None:
+            continue
+        for peer_match in _PEER_ID.finditer(line):
+            observations.append({"peer_id": peer_match.group(1), "ts": ts})
+    return observations
+
+
+def parse_stake_log_points(text: str) -> list[dict[str, Any]]:
+    points: list[dict[str, Any]] = []
+    for line in _ANSI.sub("", text).splitlines():
+        ts = _parse_log_ts(line)
+        if ts is None:
+            continue
+        match = _STAKE_VALUE.search(line)
+        if not match:
+            continue
+        value = float(match.group(1).replace(",", "").replace("_", ""))
+        points.append({"ts": ts, "value": value, "source": "log"})
+    return points
+
+
+def _read_log_telemetry(log_dir: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[str]]:
+    log_path = Path(log_dir).expanduser()
+    if not log_path.exists():
+        return [], [], []
+    files = sorted(log_path.glob("logos-blockchain.*"))[-40:]
+    observations: list[dict[str, Any]] = []
+    stake_points: list[dict[str, Any]] = []
+    used_files: list[str] = []
+    for path in files:
+        try:
+            text = path.read_text(errors="ignore")
+        except OSError:
+            continue
+        used_files.append(str(path))
+        observations.extend(parse_peer_log_observations(text))
+        stake_points.extend(parse_stake_log_points(text))
+    return observations, stake_points, used_files
+
+
+def _load_external_telemetry() -> dict[str, Any] | None:
+    try:
+        path = Path(TELEMETRY_FILE).expanduser()
+        if path.exists():
+            return json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    return None
+
+
+def _observations_from_nodes(nodes: list[dict[str, Any]], now: int, window_hours: int) -> list[dict[str, Any]]:
+    start = _hour_bucket(now - window_hours * 3600)
+    observations: list[dict[str, Any]] = []
+    for node in nodes:
+        peer_id = node.get("peer_id")
+        if not peer_id:
+            continue
+        first_seen = int(node.get("first_seen") or node.get("last_seen") or now)
+        last_seen = int(node.get("last_seen") or now)
+        if node.get("self") and not node.get("last_seen"):
+            first_seen = now
+            last_seen = now
+        first_hour = max(_hour_bucket(first_seen), start)
+        last_hour = min(_hour_bucket(last_seen), _hour_bucket(now))
+        for bucket in range(first_hour, last_hour + 1, 3600):
+            observations.append({"peer_id": peer_id, "ts": bucket})
+    return observations
+
+
+def _normalize_stake_points(points: list[dict[str, Any]], window_start: int, window_end: int) -> list[dict[str, Any]]:
+    normalized = sorted(
+        (
+            {
+                "ts": _hour_bucket(float(point["ts"])),
+                "value": float(point["value"]),
+                "source": point.get("source", "telemetry"),
+            }
+            for point in points
+            if point.get("ts") is not None and point.get("value") is not None
+        ),
+        key=lambda p: p["ts"],
+    )
+    if not normalized:
+        return []
+
+    result: list[dict[str, Any]] = []
+    current = normalized[0]["value"]
+    idx = 0
+    for bucket in range(window_start, window_end + 1, 3600):
+        while idx < len(normalized) and normalized[idx]["ts"] <= bucket:
+            current = normalized[idx]["value"]
+            idx += 1
+        result.append({"ts": bucket, "value": current})
+    return result
+
+
+def build_telemetry_snapshot(
+    nodes: list[dict[str, Any]],
+    observations: list[dict[str, Any]] | None = None,
+    stake_points: list[dict[str, Any]] | None = None,
+    now: int | None = None,
+    window_hours: int = 24 * 20,
+    source: str = "derived",
+) -> dict[str, Any]:
+    now = int(now or time.time())
+    end = _hour_bucket(now)
+    start = _hour_bucket(now - window_hours * 3600)
+    observations = list(observations or [])
+    if not observations:
+        observations = _observations_from_nodes(nodes, now, window_hours)
+        source = "crawler-first-last-seen"
+
+    buckets: dict[int, set[str]] = {bucket: set() for bucket in range(start, end + 1, 3600)}
+    peer_hours: dict[str, set[int]] = {}
+    for obs in observations:
+        peer_id = obs.get("peer_id")
+        ts = obs.get("ts")
+        if not peer_id or ts is None:
+            continue
+        bucket = _hour_bucket(float(ts))
+        if bucket < start or bucket > end:
+            continue
+        buckets.setdefault(bucket, set()).add(peer_id)
+        peer_hours.setdefault(peer_id, set()).add(bucket)
+
+    active_hourly = [
+        {"ts": bucket, "count": len(peers)}
+        for bucket, peers in sorted(buckets.items())
+    ]
+    peer_uptime = sorted(
+        (
+            {
+                "peer_id": peer_id,
+                "active_hours": len(hours),
+                "uptime_pct": _pct(len(hours), len(active_hourly)),
+                "hours": sorted(hours),
+            }
+            for peer_id, hours in peer_hours.items()
+        ),
+        key=lambda item: (-item["active_hours"], item["peer_id"]),
+    )[:160]
+
+    stake_series = _normalize_stake_points(stake_points or [], start, end)
+    annotations: list[dict[str, Any]] = []
+    for prev, cur in zip(stake_series, stake_series[1:]):
+        if prev["value"] > 0 and cur["value"] >= prev["value"] * 2:
+            annotations.append({
+                "ts": cur["ts"],
+                "kind": "stake-spike",
+                "label": f"stake spike to {cur['value']:,.0f}",
+            })
+
+    latest_stake = stake_series[-1]["value"] if stake_series else None
+    return {
+        "source": source,
+        "window_hours": window_hours,
+        "active_peers_hourly": active_hourly,
+        "peer_uptime": peer_uptime,
+        "stake_estimate_hourly": stake_series,
+        "annotations": annotations,
+        "summary": {
+            "active_latest": active_hourly[-1]["count"] if active_hourly else 0,
+            "active_peak": max((p["count"] for p in active_hourly), default=0),
+            "tracked_peers": len(peer_hours),
+            "latest_total_stake": latest_stake,
+            "stake_points": len(stake_series),
+        },
+    }
+
+
+def _external_telemetry_snapshot(nodes: list[dict[str, Any]], now: int) -> dict[str, Any] | None:
+    external = _load_external_telemetry()
+    if not external:
+        return None
+    if any(key in external for key in ("active_peers_hourly", "peer_uptime", "stake_estimate_hourly")):
+        external.setdefault("source", "telemetry-file")
+        external.setdefault("summary", {})
+        external["summary"].setdefault(
+            "active_latest",
+            (external.get("active_peers_hourly") or [{"count": 0}])[-1].get("count", 0),
+        )
+        external["summary"].setdefault(
+            "tracked_peers",
+            len(external.get("peer_uptime") or []),
+        )
+        external["summary"].setdefault(
+            "latest_total_stake",
+            (external.get("stake_estimate_hourly") or [{"value": None}])[-1].get("value"),
+        )
+        external.setdefault("annotations", [])
+        return external
+    return build_telemetry_snapshot(
+        nodes=nodes,
+        observations=external.get("observations") or [],
+        stake_points=external.get("stake_points") or [],
+        now=now,
+        source="telemetry-file",
+    )
+
+
+def build_runtime_telemetry(
+    nodes: list[dict[str, Any]],
+    stake: dict[str, Any] | None = None,
+    now: int | None = None,
+) -> dict[str, Any]:
+    now = int(now or time.time())
+    external = _external_telemetry_snapshot(nodes, now)
+    if external:
+        return external
+
+    observations, stake_points, log_files = _read_log_telemetry(LOG_DIR)
+    window_hours = 24 * 20
+    source = "logs" if observations or stake_points else "crawler-first-last-seen"
+    if not observations:
+        seen_values = [
+            int(value)
+            for node in nodes
+            for value in (node.get("first_seen"), node.get("last_seen"))
+            if value
+        ]
+        if seen_values:
+            window_hours = min(window_hours, max(24, int((now - min(seen_values)) // 3600) + 2))
+    if not stake_points and stake:
+        stake_value = stake.get("total_active_stake") or stake.get("stake_estimate")
+        if stake_value:
+            stake_points.append({"ts": now, "value": stake_value, "source": "stake-summary"})
+    telemetry = build_telemetry_snapshot(
+        nodes=nodes,
+        observations=observations,
+        stake_points=stake_points,
+        now=now,
+        window_hours=window_hours,
+        source=source,
+    )
+    telemetry["log_files"] = log_files[-5:]
+    return telemetry
 
 
 def _top_counts(counter: Counter, key_name: str, limit: int = 10) -> list[dict[str, Any]]:
@@ -535,6 +805,7 @@ async def _build_data() -> dict:
     ]
     data["summary"] = build_network_summary(data["nodes"], net, chain)
     data["recent_blocks"] = recent_blocks
+    data["telemetry"] = build_runtime_telemetry(data["nodes"], data.get("stake"), int(data["updated"]))
     data["agent"] = {
         "schema_url": "/api/agent/schema",
         "state_url": "/api/agent/state",
@@ -557,6 +828,12 @@ async def api_network():
     return _cache
 
 
+@app.get("/api/telemetry")
+async def api_telemetry():
+    data = await api_network()
+    return data.get("telemetry", {})
+
+
 @app.get("/api/agent/state")
 async def api_agent_state():
     data = await api_network()
@@ -566,6 +843,7 @@ async def api_agent_state():
         "network": data.get("network"),
         "summary": data.get("summary"),
         "recent_blocks": data.get("recent_blocks"),
+        "telemetry": data.get("telemetry"),
         "peer_data_source": data.get("peer_data_source"),
         "peer_snapshot": data.get("peer_snapshot"),
         "nodes": [
@@ -606,6 +884,10 @@ async def api_agent_schema():
                 "url": "/agents/logos-network-skill.md",
                 "description": "Markdown instructions agents can use to inspect Logos or help set up a node.",
             },
+            "telemetry": {
+                "url": "/api/telemetry",
+                "description": "Historical node activity, uptime, and stake telemetry when logs or telemetry.json are available.",
+            },
         },
         "notes": [
             "Peer infrastructure classes are inferred from public ASN/ISP strings and should be treated as best-effort.",
@@ -620,6 +902,7 @@ async def well_known_logos_live():
         "name": "Logos Live",
         "network": "Logos testnet",
         "api": "/api/agent/state",
+        "telemetry": "/api/telemetry",
         "schema": "/api/agent/schema",
         "skill": "/agents/logos-network-skill.md",
     }
@@ -635,8 +918,9 @@ Use this page as the agent entrypoint for exploring the Logos network.
 
 1. Fetch `/api/agent/schema` to discover available endpoints.
 2. Fetch `/api/agent/state` for the current chain, peer, decentralization, and recent block state.
-3. Treat `environment` as an inference from public ASN/ISP metadata, not a proof that a node is home-hosted or VPS-hosted.
-4. If `peer_data_source` is `published-fallback`, local peer discovery did not expose peer rows and published crawler data was merged in as a temporary network map.
+3. Fetch `/api/telemetry` for hourly active peers, peer uptime, and stake estimate history.
+4. Treat `environment` as an inference from public ASN/ISP metadata, not a proof that a node is home-hosted or VPS-hosted.
+5. If `peer_data_source` is `published-fallback`, local peer discovery did not expose peer rows and published crawler data was merged in as a temporary network map.
 
 ## Helpful questions this endpoint can answer
 
@@ -645,6 +929,9 @@ Use this page as the agent entrypoint for exploring the Logos network.
 - Which countries, ASNs, and hosting categories dominate discovered peers?
 - How concentrated are recent block leaders?
 - Which nodes look residential, hosting, or unknown from public IP metadata?
+- How many peers were active per hour?
+- Which peers have the best observed uptime?
+- Did active stake change abruptly during redistribution or faucet events?
 
 ## Setup guidance for another agent
 
@@ -653,6 +940,8 @@ To help a user set up a Logos node, use the official node setup guide first, the
 - the node HTTP API responds at `/cryptarchia/info`
 - `/network/info` reports a peer id and nonzero peers/connections
 - the local dashboard at this server can read `/api/agent/state`
+- `/api/telemetry` has activity from logs, crawler first/last seen, or a generated `telemetry.json`
+- their public peer id appears in `/api/network` nodes after libp2p crawling, or they can post a `#geo`/`#live` zone message to show on the map
 
 Do not assume `/network/peers` exists. Current observed nodes return `404` for that route; use libp2p crawling or published crawler snapshots for peer rows until a node API exposes them directly.
 """

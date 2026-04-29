@@ -753,6 +753,86 @@ tr:hover td {
   overflow-wrap: anywhere;
 }
 
+.chart {
+  width: 100%;
+  min-height: 260px;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: 260px;
+}
+
+.axis-label {
+  fill: var(--faint);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.chart-note {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 10px;
+  margin-top: 8px;
+}
+
+.uptime-wrap {
+  overflow: auto;
+  max-height: 520px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.uptime-row {
+  display: grid;
+  grid-template-columns: 190px 1fr 58px;
+  align-items: center;
+  min-width: 920px;
+  border-bottom: 1px solid var(--line);
+}
+
+.uptime-row:last-child {
+  border-bottom: 0;
+}
+
+.uptime-peer {
+  padding: 8px 10px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uptime-cells {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 4px;
+  gap: 1px;
+  align-items: center;
+  min-height: 26px;
+}
+
+.uptime-cell {
+  height: 18px;
+  background: rgba(239, 242, 234, 0.06);
+  border-radius: 1px;
+}
+
+.uptime-cell.on {
+  background: var(--green);
+}
+
+.uptime-pct {
+  padding: 8px 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-align: right;
+}
+
 .empty {
   padding: 30px 14px;
   color: var(--faint);
@@ -829,8 +909,9 @@ tr:hover td {
           <button type="button" data-view="peers">Peers <span>02</span></button>
           <button type="button" data-view="decentralization">Decentralization <span>03</span></button>
           <button type="button" data-view="blocks">Blocks <span>04</span></button>
-          <button type="button" data-view="stake">Stake <span>05</span></button>
-          <button type="button" data-view="agent">Agent <span>06</span></button>
+          <button type="button" data-view="telemetry">Telemetry <span>05</span></button>
+          <button type="button" data-view="stake">Stake <span>06</span></button>
+          <button type="button" data-view="agent">Agent <span>07</span></button>
         </nav>
       </div>
       <div class="source-box">
@@ -941,6 +1022,33 @@ tr:hover td {
             </div>
           </section>
         </div>
+      </section>
+
+      <section class="view" id="view-telemetry">
+        <div class="kpi-grid" id="telemetry-kpis"></div>
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Active Peers per Hour</h2><span class="panel-sub" id="telemetry-source">-</span></div>
+            <div class="panel-body">
+              <div class="chart" id="active-peers-chart"></div>
+              <div class="chart-note">Unique peer IDs observed per 1h bucket. Source depends on available logs or crawler first/last seen data.</div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Total Stake Estimate</h2><span class="panel-sub">TSI when available</span></div>
+            <div class="panel-body">
+              <div class="chart" id="stake-telemetry-chart"></div>
+              <div class="chart-note" id="stake-telemetry-note">Stake telemetry appears when logs or telemetry.json provide stake events.</div>
+            </div>
+          </section>
+        </div>
+        <section class="panel" style="margin-top:14px;">
+          <div class="panel-head"><h2 class="panel-title">Peer Uptime</h2><span class="panel-sub" id="uptime-sub">-</span></div>
+          <div class="panel-body">
+            <div class="uptime-wrap" id="uptime-grid"></div>
+            <div class="chart-note">Each cell is one observed hour. This is a visibility signal, not a cryptographic proof of uptime.</div>
+          </div>
+        </section>
       </section>
 
       <section class="view" id="view-stake">
@@ -1092,6 +1200,7 @@ function render() {
   renderPeers();
   renderDecentralization();
   renderBlocks();
+  renderTelemetry();
   renderStake();
   renderAgent();
 }
@@ -1327,6 +1436,91 @@ function renderBlocks() {
   `).join('') || '<tr><td colspan="5"><div class="empty">No block sample available</div></td></tr>';
 }
 
+function chartSvg(points, valueKey, color, fill, formatValue = value => fmt(value)) {
+  if (!points || points.length < 2) return '<div class="empty">No telemetry available</div>';
+  const width = 1000;
+  const height = 260;
+  const pad = { top: 18, right: 22, bottom: 34, left: 58 };
+  const values = points.map(point => Number(point[valueKey] || 0));
+  const max = Math.max(...values, 1);
+  const minTs = Math.min(...points.map(point => Number(point.ts)));
+  const maxTs = Math.max(...points.map(point => Number(point.ts)));
+  const span = Math.max(maxTs - minTs, 1);
+  const x = ts => pad.left + ((Number(ts) - minTs) / span) * (width - pad.left - pad.right);
+  const y = value => height - pad.bottom - (Number(value || 0) / max) * (height - pad.top - pad.bottom);
+  const line = points.map(point => `${x(point.ts).toFixed(1)},${y(point[valueKey]).toFixed(1)}`).join(' ');
+  const area = `${pad.left},${height - pad.bottom} ${line} ${width - pad.right},${height - pad.bottom}`;
+  const grid = [0, 0.25, 0.5, 0.75, 1].map(t => {
+    const gy = pad.top + t * (height - pad.top - pad.bottom);
+    const label = formatValue(max * (1 - t));
+    return `<line x1="${pad.left}" y1="${gy}" x2="${width - pad.right}" y2="${gy}" stroke="rgba(239,242,234,0.08)"/><text x="8" y="${gy + 4}" class="axis-label">${esc(label)}</text>`;
+  }).join('');
+  const startLabel = new Date(minTs * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  const endLabel = new Date(maxTs * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  return `
+    <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" role="img">
+      ${grid}
+      <polygon points="${area}" fill="${fill}"></polygon>
+      <polyline points="${line}" fill="none" stroke="${color}" stroke-width="3" vector-effect="non-scaling-stroke"></polyline>
+      <text x="${pad.left}" y="${height - 10}" class="axis-label">${esc(startLabel)}</text>
+      <text x="${width - pad.right - 80}" y="${height - 10}" class="axis-label">${esc(endLabel)}</text>
+    </svg>
+  `;
+}
+
+function renderTelemetry() {
+  const telemetry = state.telemetry || {};
+  const summary = telemetry.summary || {};
+  $('telemetry-kpis').innerHTML = [
+    ['Active Now', fmt(summary.active_latest), `peak ${fmt(summary.active_peak)} peers / hour`],
+    ['Tracked Peers', fmt(summary.tracked_peers), `${fmt(telemetry.window_hours || 0)}h window`],
+    ['Stake Estimate', summary.latest_total_stake == null ? '-' : fmt(summary.latest_total_stake), `${fmt(summary.stake_points || 0)} hourly points`],
+    ['Telemetry Source', esc(telemetry.source || 'unknown'), 'logs, telemetry file, or crawler state'],
+  ].map(([label, value, note]) => `
+    <div class="kpi"><span class="kpi-label">${label}</span><span class="kpi-value">${value}</span><span class="kpi-note">${note}</span></div>
+  `).join('');
+  $('telemetry-source').textContent = telemetry.source || 'unknown';
+  $('active-peers-chart').innerHTML = chartSvg(
+    telemetry.active_peers_hourly || [],
+    'count',
+    '#ff9f1a',
+    'rgba(255,159,26,0.16)',
+  );
+  $('stake-telemetry-chart').innerHTML = chartSvg(
+    telemetry.stake_estimate_hourly || [],
+    'value',
+    '#65bd68',
+    'rgba(101,189,104,0.15)',
+    value => value >= 1_000_000 ? `${(value / 1_000_000).toFixed(1)}M` : `${Math.round(value / 1000)}K`,
+  );
+  const annotations = telemetry.annotations || [];
+  $('stake-telemetry-note').textContent = annotations.length
+    ? annotations.map(annotation => annotation.label).join(' · ')
+    : 'Stake telemetry appears when logs or telemetry.json provide stake events.';
+  renderUptimeGrid(telemetry);
+}
+
+function renderUptimeGrid(telemetry) {
+  const peers = (telemetry.peer_uptime || []).slice(0, 80);
+  const hours = (telemetry.active_peers_hourly || []).map(point => point.ts).slice(-168);
+  $('uptime-sub').textContent = peers.length ? `${fmt(peers.length)} peers · last ${fmt(hours.length)}h shown` : 'no data';
+  if (!peers.length || !hours.length) {
+    $('uptime-grid').innerHTML = '<div class="empty">No uptime telemetry available</div>';
+    return;
+  }
+  $('uptime-grid').innerHTML = peers.map(peer => {
+    const active = new Set((peer.hours || []).map(Number));
+    const cells = hours.map(hour => `<span class="uptime-cell ${active.has(hour) ? 'on' : ''}" title="${esc(new Date(hour * 1000).toISOString())}"></span>`).join('');
+    return `
+      <div class="uptime-row">
+        <div class="uptime-peer" title="${esc(peer.peer_id)}">${esc(short(peer.peer_id, 16, 8))}</div>
+        <div class="uptime-cells">${cells}</div>
+        <div class="uptime-pct">${pct(peer.uptime_pct)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
 function renderStake() {
   const stake = state.stake || {};
   if (!Object.keys(stake).length) {
@@ -1355,6 +1549,7 @@ function renderAgent() {
   const links = {
     schema: `${origin}/api/agent/schema`,
     state: `${origin}/api/agent/state`,
+    telemetry: `${origin}/api/telemetry`,
     skill: `${origin}/agents/logos-network-skill.md`,
     well_known: `${origin}/.well-known/logos-live.json`,
   };
@@ -1363,6 +1558,8 @@ function renderAgent() {
     chain: state.chain,
     network: state.network,
     summary: state.summary,
+    telemetry_summary: state.telemetry?.summary,
+    telemetry_source: state.telemetry?.source,
     peer_data_source: state.peer_data_source,
     peer_snapshot: state.peer_snapshot,
   }, null, 2);

@@ -6,9 +6,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from server import (
     build_network_summary,
+    build_telemetry_snapshot,
     classify_node_environment,
     hydrate_content_snapshot,
     merge_peer_snapshot,
+    parse_peer_log_observations,
+    parse_stake_log_points,
     summarize_recent_blocks,
 )
 
@@ -171,3 +174,81 @@ def test_summarize_recent_blocks_counts_leaders_transactions_and_empty_slots():
     assert summary["leader_diversity"]["unique_leaders"] == 2
     assert summary["leader_diversity"]["top_leader_share_pct"] == 66.67
     assert summary["top_leaders"][0]["leader_key"] == "leader-a"
+
+
+def test_parse_peer_log_observations_buckets_peer_mentions_from_logs():
+    text = "\n".join(
+        [
+            "2026-04-28T22:03:10Z connected 12D3KooW11111111111111111111111111111111111111111111",
+            "2026-04-28T22:44:10Z identify 12D3KooW11111111111111111111111111111111111111111111",
+            "2026-04-28 23:02:00 added 12D3KooW22222222222222222222222222222222222222222222",
+        ]
+    )
+
+    observations = parse_peer_log_observations(text)
+
+    assert observations == [
+        {"peer_id": "12D3KooW11111111111111111111111111111111111111111111", "ts": 1777413790},
+        {"peer_id": "12D3KooW11111111111111111111111111111111111111111111", "ts": 1777416250},
+        {"peer_id": "12D3KooW22222222222222222222222222222222222222222222", "ts": 1777417320},
+    ]
+
+
+def test_parse_stake_log_points_extracts_total_stake_events():
+    text = "\n".join(
+        [
+            "2026-04-28T22:00:00Z tsi_update old_total_stake=400000",
+            "2026-04-28T23:00:00Z tsi_update total_stake=1200000 peer=Psiyol",
+        ]
+    )
+
+    points = parse_stake_log_points(text)
+
+    assert points == [
+        {"ts": 1777413600, "value": 400000.0, "source": "log"},
+        {"ts": 1777417200, "value": 1200000.0, "source": "log"},
+    ]
+
+
+def test_build_telemetry_snapshot_summarizes_hourly_activity_uptime_and_stake():
+    nodes = [
+        {
+            "peer_id": "peer-a",
+            "first_seen": 1777410000,
+            "last_seen": 1777417200,
+            "online": True,
+        },
+        {
+            "peer_id": "peer-b",
+            "first_seen": 1777413600,
+            "last_seen": 1777417200,
+            "online": True,
+        },
+    ]
+    observations = [
+        {"peer_id": "peer-a", "ts": 1777410200},
+        {"peer_id": "peer-a", "ts": 1777410500},
+        {"peer_id": "peer-b", "ts": 1777410500},
+        {"peer_id": "peer-a", "ts": 1777417500},
+    ]
+    stake_points = [
+        {"ts": 1777410000, "value": 400000},
+        {"ts": 1777417200, "value": 1200000},
+    ]
+
+    telemetry = build_telemetry_snapshot(
+        nodes=nodes,
+        observations=observations,
+        stake_points=stake_points,
+        now=1777417200,
+        window_hours=4,
+    )
+
+    assert telemetry["summary"]["active_peak"] == 2
+    assert telemetry["summary"]["tracked_peers"] == 2
+    assert telemetry["summary"]["latest_total_stake"] == 1200000
+    assert telemetry["active_peers_hourly"][-1]["count"] == 1
+    assert telemetry["peer_uptime"][0]["peer_id"] == "peer-a"
+    assert telemetry["peer_uptime"][0]["active_hours"] == 2
+    assert telemetry["stake_estimate_hourly"][-1]["value"] == 1200000
+    assert telemetry["annotations"][0]["kind"] == "stake-spike"
