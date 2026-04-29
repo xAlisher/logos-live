@@ -456,6 +456,8 @@
     margin-top: 3px;
     font-family: var(--font-main);
   }
+  .zone-block a { color: var(--text-faint); text-decoration: none; }
+  .zone-block a:hover { color: var(--accent); text-decoration: underline; }
 
   /* ── Map speech bubble ── */
   @keyframes bubbleUp {
@@ -1223,7 +1225,7 @@ function renderZone(body) {
         <span class="zone-status ${statusCls}">${m.status}</span>
       </div>
       <div class="zone-text">${m.text}${m.live ? ' <span class="live-tag" style="font-size:10px;opacity:0.8;">📍 on map</span>' : ''}</div>
-      ${m.block_id ? `<div class="zone-block">block ${m.block_id}…</div>` : ''}
+      ${m.block_id ? `<div class="zone-block"><a href="https://devnet.blockchain.logos.co/web/explorer/blocks/${m.block_id}" target="_blank" rel="noopener">block ${m.block_id.slice(0,16)}…</a></div>` : ''}
     </div>`;
   }).join('');
 }
