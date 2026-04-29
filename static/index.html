@@ -464,7 +464,10 @@ button, input {
   color: var(--text);
   border: 1px solid var(--line-strong);
   border-radius: 8px;
+  min-width: 300px;
+  box-shadow: var(--shadow);
 }
+.leaflet-popup-content { margin: 14px 16px; width: auto !important; }
 
 .leaflet-popup-tip { background: var(--panel-2); }
 
@@ -545,11 +548,12 @@ button, input {
 
 .popup-row {
   display: grid;
-  grid-template-columns: 74px minmax(0, 1fr);
-  gap: 10px;
-  padding: 6px 0;
+  grid-template-columns: 90px 1fr;
+  gap: 8px;
+  padding: 7px 0;
   border-top: 1px solid var(--line);
-  font-size: 13px;
+  font-size: 12px;
+  align-items: baseline;
 }
 
 .popup-key {
@@ -558,9 +562,9 @@ button, input {
 
 .popup-val {
   color: var(--text);
-  text-align: right;
+  text-align: left;
   font-weight: 600;
-  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .map-bubble {
