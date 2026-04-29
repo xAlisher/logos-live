@@ -1260,7 +1260,7 @@ function _renderLiveBubble(msg) {
   el.className = 'map-bubble live-bubble';
   // Bottom of bubble (triangle tip) sits exactly on the coordinate
   el.style.left      = (pt.x - 14) + 'px';
-  el.style.top       = (pt.y - 7)  + 'px';
+  el.style.top       = (pt.y - 32) + 'px';
   el.style.transform = 'translateY(-100%)';
   const inner = href
     ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}</a>`
@@ -1313,7 +1313,7 @@ function showMapBubble(msg) {
   el.className = 'map-bubble';
   el.style.pointerEvents = href ? 'auto' : 'none';
   el.style.left      = (pt.x - 14) + 'px';
-  el.style.top       = (pt.y - 7)  + 'px';
+  el.style.top       = (pt.y - 32) + 'px';
   el.style.transform = 'translateY(-100%)';
   const inner = href
     ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}</a>`
