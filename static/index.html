@@ -1313,6 +1313,7 @@ message:  "Running well today #live"</code>
 </div>
 
 <script>
+let tileLayer = null;
 const TILE_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
 const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 
@@ -1332,8 +1333,7 @@ function applyTheme(theme) {
   const btn = document.getElementById('theme-btn');
   if (btn) btn.innerHTML = theme === 'dark' ? SVG_SUN : SVG_MOON;
   localStorage.setItem('logos-live-theme', theme);
-  if (typeof tileLayer !== 'undefined' && tileLayer)
-    tileLayer.setUrl(theme === 'dark' ? TILE_DARK : TILE_LIGHT);
+  if (tileLayer) tileLayer.setUrl(theme === 'dark' ? TILE_DARK : TILE_LIGHT);
 }
 function cycleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
 document.documentElement.setAttribute('data-theme', currentTheme);
@@ -1578,7 +1578,7 @@ function renderMap(nodes) {
       maxBounds: [[-85, -180], [85, 180]],
       maxBoundsViscosity: 1,
     });
-    let tileLayer = L.tileLayer(currentTheme === 'dark' ? TILE_DARK : TILE_LIGHT, { attribution: TILE_ATTR, subdomains: 'abcd', maxZoom: 18, noWrap: true }).addTo(map);
+    tileLayer = L.tileLayer(currentTheme === 'dark' ? TILE_DARK : TILE_LIGHT, { attribution: TILE_ATTR, subdomains: 'abcd', maxZoom: 18, noWrap: true }).addTo(map);
   document.getElementById('theme-btn').innerHTML = currentTheme === 'dark' ? SVG_SUN : SVG_MOON;
     map.on('move zoom', positionLiveBubbles);
   }
