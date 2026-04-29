@@ -475,12 +475,22 @@
     color: var(--text);
     pointer-events: none;
     z-index: 900;
-    max-width: 180px;
+    max-width: 200px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.25);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     animation: bubbleUp 5s ease forwards;
+  }
+  .map-bubble.live-bubble {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--bg-raised) 92%, var(--accent));
+    animation: none;
+    opacity: 1;
+    pointer-events: auto;
+    cursor: default;
+    white-space: normal;
+    word-break: break-word;
   }
   .map-bubble::after {
     content: '';
@@ -492,7 +502,9 @@
     border-right: 5px solid transparent;
     border-top: 6px solid var(--border);
   }
+  .map-bubble.live-bubble::after { border-top-color: var(--accent); }
   .map-bubble-sender { color: var(--accent); font-weight: 600; margin-right: 5px; }
+  .live-tag { font-size: 9px; color: var(--accent); font-weight: 700; margin-left: 4px; opacity: 0.7; }
 
   #sidebar-body { flex: 1; overflow-y: auto; }
   #sidebar-body::-webkit-scrollbar { width: 4px; }
@@ -1043,7 +1055,7 @@ function renderZone(body) {
         <span class="zone-time">${when}</span>
         <span class="zone-status ${statusCls}">${m.status}</span>
       </div>
-      <div class="zone-text">${m.text}</div>
+      <div class="zone-text">${m.text}${m.live ? ' <span class="live-tag" style="font-size:10px;opacity:0.8;">📍 on map</span>' : ''}</div>
       ${m.block_id ? `<div class="zone-block">block ${m.block_id}…</div>` : ''}
     </div>`;
   }).join('');
@@ -1053,22 +1065,52 @@ function renderZone(body) {
 const mapWrap = document.getElementById('map-wrap');
 let bubbleQueue = [];
 let bubbleTimer = null;
+let liveBubbles = [];  // persistent #live markers
+
+function getBubbleAnchor(msg) {
+  // 1. Geo-linked (exact node location)
+  if (msg.lat != null && msg.lon != null) {
+    return map.latLngToContainerPoint([msg.lat, msg.lon]);
+  }
+  // 2. Random online node
+  if (markers.length) {
+    const m = markers[Math.floor(Math.random() * markers.length)];
+    return map.latLngToContainerPoint(m.getLatLng());
+  }
+  return null;
+}
 
 function showMapBubble(msg) {
-  if (!markers.length) return;
-  // Pick a random online node marker position
-  const onlineMarkers = markers.filter((_, i) => true); // all visible
-  if (!onlineMarkers.length) return;
-  const m = onlineMarkers[Math.floor(Math.random() * onlineMarkers.length)];
-  const pt = map.latLngToContainerPoint(m.getLatLng());
+  const pt = getBubbleAnchor(msg);
+  if (!pt) return;
 
+  const text = msg.text.replace(/#live/gi, '').trim();
   const el = document.createElement('div');
-  el.className = 'map-bubble';
-  el.innerHTML = `<span class="map-bubble-sender">${msg.sender}</span>${msg.text.slice(0, 60)}${msg.text.length > 60 ? '…' : ''}`;
+  el.className = 'map-bubble' + (msg.live ? ' live-bubble' : '');
+  el.innerHTML = `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}${msg.live ? '<span class="live-tag">#live</span>' : ''}`;
   el.style.left = (pt.x + 10) + 'px';
-  el.style.top  = (pt.y - 40) + 'px';
+  el.style.top  = (pt.y - 44) + 'px';
   mapWrap.appendChild(el);
-  setTimeout(() => el.remove(), 5200);
+
+  if (msg.live) {
+    liveBubbles.push(el);
+  } else {
+    setTimeout(() => el.remove(), 5200);
+  }
+}
+
+function refreshLiveBubblePositions() {
+  // Re-position #live bubbles when map moves
+  liveBubbles.forEach(el => el.remove());
+  liveBubbles = [];
+}
+map.on('move zoom', refreshLiveBubblePositions);
+
+function placeLiveBubbles(messages) {
+  liveBubbles.forEach(el => el.remove());
+  liveBubbles = [];
+  const live = messages.filter(m => m.live).slice(0, 6); // max 6 on map
+  live.forEach(m => showMapBubble(m));
 }
 
 function drainBubbleQueue() {
@@ -1092,6 +1134,9 @@ function loadFeedsFromData(data) {
   }
   if (newHighSlot > 0) lastZoneSlot = newHighSlot;
   zoneMessages = newMsgs;
+
+  // Place persistent #live bubbles on map
+  placeLiveBubbles(zoneMessages);
 
   renderFeed();
 }
