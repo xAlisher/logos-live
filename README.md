@@ -1,6 +1,6 @@
 # Logos Live
 
-A real-time network visualizer for the [Logos](https://logos.co) testnet. Shows peer nodes on a world map, zone-board messages from node runners, stake distribution, and upcoming community events.
+A network visualizer for the [Logos](https://logos.co) testnet. Shows peer nodes on a world map, zone-board messages from node runners, stake distribution, and upcoming community events.
 
 Live: **https://xalisher.github.io/logos-live/**
 
