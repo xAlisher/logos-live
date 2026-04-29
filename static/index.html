@@ -726,6 +726,9 @@ tr:hover td {
 .pill.residential { color: #c7e4ad; border-color: rgba(143, 169, 121, 0.38); background: rgba(143, 169, 121, 0.13); }
 .pill.unknown { color: #f0cf83; border-color: rgba(208, 173, 98, 0.34); background: rgba(208, 173, 98, 0.12); }
 .pill.offline { color: var(--red); border-color: rgba(201, 125, 125, 0.34); background: rgba(201, 125, 125, 0.1); }
+.pill.passed { color: #c7e4ad; border-color: rgba(143, 169, 121, 0.38); background: rgba(143, 169, 121, 0.13); }
+.pill.warning { color: #f0cf83; border-color: rgba(208, 173, 98, 0.34); background: rgba(208, 173, 98, 0.12); }
+.pill.failed { color: var(--red); border-color: rgba(201, 125, 125, 0.34); background: rgba(201, 125, 125, 0.1); }
 
 .two-col {
   display: grid;
@@ -751,6 +754,81 @@ tr:hover td {
   line-height: 1.7;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+.setup-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.15fr);
+  gap: 14px;
+}
+
+.setup-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.setup-list {
+  display: grid;
+  gap: 10px;
+}
+
+.setup-item {
+  display: grid;
+  gap: 5px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.setup-item:last-child {
+  border-bottom: 0;
+}
+
+.setup-item strong {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.setup-item span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.stage-list {
+  display: grid;
+  gap: 8px;
+}
+
+.stage-row {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(239, 242, 234, 0.025);
+}
+
+.stage-status {
+  align-self: start;
+  justify-self: start;
+  min-width: 76px;
+  text-align: center;
+}
+
+.stage-row strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.stage-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .chart {
@@ -859,7 +937,7 @@ tr:hover td {
   }
   .nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .source-box { display: none; }
-  .overview-grid, .two-col, .three-col { grid-template-columns: 1fr; }
+  .overview-grid, .two-col, .three-col, .setup-grid { grid-template-columns: 1fr; }
   .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #map { min-height: 360px; }
 }
@@ -868,6 +946,7 @@ tr:hover td {
   .content { padding: 12px; }
   .nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .kpi-grid, .status-strip { grid-template-columns: 1fr; }
+  .setup-form, .stage-row { grid-template-columns: 1fr; }
   .bar-row { grid-template-columns: 1fr 80px; }
   .bar-track { grid-column: 1 / -1; grid-row: 2; }
   .brand { min-width: 0; }
@@ -911,7 +990,8 @@ tr:hover td {
           <button type="button" data-view="blocks">Blocks <span>04</span></button>
           <button type="button" data-view="telemetry">Telemetry <span>05</span></button>
           <button type="button" data-view="stake">Stake <span>06</span></button>
-          <button type="button" data-view="agent">Agent <span>07</span></button>
+          <button type="button" data-view="setup">Setup <span>07</span></button>
+          <button type="button" data-view="agent">Agent <span>08</span></button>
         </nav>
       </div>
       <div class="source-box">
@@ -1064,6 +1144,36 @@ tr:hover td {
         </div>
       </section>
 
+      <section class="view" id="view-setup">
+        <div class="setup-grid">
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Node Setup</h2><span class="panel-sub">agent-ready</span></div>
+            <div class="panel-body">
+              <div class="setup-list" id="setup-checklist"></div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Verify Peer</h2><span class="panel-sub">map visibility</span></div>
+            <div class="panel-body">
+              <div class="setup-form">
+                <input class="search" id="verify-peer-id" placeholder="Peer ID, e.g. 12D3KooW..." />
+                <button class="btn" type="button" id="verify-peer-button">Verify</button>
+              </div>
+              <div style="height:12px"></div>
+              <div id="verify-result" class="stage-list">
+                <div class="empty">Enter a peer id to check local API health, connectivity, crawler visibility, map placement, and telemetry.</div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <section class="panel" style="margin-top:14px;">
+          <div class="panel-head"><h2 class="panel-title">Agent Contract</h2><span class="panel-sub">copyable endpoints</span></div>
+          <div class="panel-body">
+<pre class="code-block" id="setup-agent-contract"></pre>
+          </div>
+        </section>
+      </section>
+
       <section class="view" id="view-agent">
         <div class="two-col">
           <section class="panel">
@@ -1202,6 +1312,7 @@ function render() {
   renderBlocks();
   renderTelemetry();
   renderStake();
+  renderSetup();
   renderAgent();
 }
 
@@ -1544,12 +1655,83 @@ function renderStake() {
   $('stake-leaders').innerHTML = barRows(leaders, 'leader', 'gold');
 }
 
+function renderSetup() {
+  const origin = window.location.origin;
+  const peerIdInput = $('verify-peer-id');
+  if (peerIdInput && !peerIdInput.value && state.network?.peer_id) {
+    peerIdInput.value = state.network.peer_id;
+  }
+  const contract = {
+    manifest: `${origin}/api/agent/manifest`,
+    setup_skill: `${origin}/agents/logos-node-setup-skill.md`,
+    bootstrap_peers: `${origin}/api/agent/bootstrap-peers`,
+    verify_node: `${origin}/api/agent/verify-node/{peer_id}`,
+    node_visibility: `${origin}/api/agent/node-visibility/{peer_id}`,
+    crawler_status: `${origin}/api/agent/crawler/status`,
+  };
+  $('setup-agent-contract').textContent = JSON.stringify(contract, null, 2);
+  $('setup-checklist').innerHTML = [
+    ['Read the manifest', 'Fetch /api/agent/manifest for release assets, bootstrap peers, capabilities, and endpoint templates.'],
+    ['Download verified assets', 'Use the 0.1.2 node archive and 0.4.2 circuits archive matching the target architecture.'],
+    ['Initialize with bootstrap peers', 'Run init with the four current multiaddrs from /api/agent/bootstrap-peers.'],
+    ['Run and verify locally', 'Check /cryptarchia/info for mode, slot, and height, then /network/info for peer id and connections.'],
+    ['Verify visibility here', 'Paste the peer id below and use /api/agent/verify-node/{peer_id} to see crawler, map, and telemetry status.'],
+  ].map(([title, text]) => `
+    <div class="setup-item">
+      <strong>${esc(title)}</strong>
+      <span>${esc(text)}</span>
+    </div>
+  `).join('');
+}
+
+function renderVerification(result) {
+  const status = result.overall_status || 'pending';
+  const actions = result.next_actions || [];
+  $('verify-result').innerHTML = `
+    <div class="kpi-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 12px">
+      <div class="kpi"><span class="kpi-label">Overall</span><span class="kpi-value">${esc(status)}</span></div>
+      <div class="kpi"><span class="kpi-label">Local Node</span><span class="kpi-value">${result.is_local_node ? 'yes' : 'no'}</span></div>
+      <div class="kpi"><span class="kpi-label">Map Visible</span><span class="kpi-value">${result.visibility?.visible_on_map ? 'yes' : 'no'}</span></div>
+    </div>
+    ${(result.stages || []).map(stage => `
+      <div class="stage-row">
+        <span class="pill ${esc(stage.status)} stage-status">${esc(stage.status)}</span>
+        <div>
+          <strong>${esc(stage.label)}</strong>
+          <p>${esc(stage.detail)}</p>
+        </div>
+      </div>
+    `).join('')}
+    ${actions.length ? `<div class="code-block" style="margin-top:10px">${esc(actions.join('\n'))}</div>` : ''}
+  `;
+}
+
+async function verifyPeer() {
+  const peerId = $('verify-peer-id').value.trim();
+  if (!peerId) {
+    $('verify-result').innerHTML = '<div class="empty">Enter a peer id first</div>';
+    return;
+  }
+  $('verify-result').innerHTML = '<div class="empty">Checking peer visibility...</div>';
+  try {
+    const response = await fetch(`/api/agent/verify-node/${encodeURIComponent(peerId)}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    renderVerification(await response.json());
+  } catch (error) {
+    $('verify-result').innerHTML = `<div class="empty">Verification failed: ${esc(error.message)}</div>`;
+  }
+}
+
 function renderAgent() {
   const origin = window.location.origin;
   const links = {
+    manifest: `${origin}/api/agent/manifest`,
     schema: `${origin}/api/agent/schema`,
     state: `${origin}/api/agent/state`,
     telemetry: `${origin}/api/telemetry`,
+    bootstrap_peers: `${origin}/api/agent/bootstrap-peers`,
+    setup_skill: `${origin}/agents/logos-node-setup-skill.md`,
+    verify_node: `${origin}/api/agent/verify-node/{peer_id}`,
     skill: `${origin}/agents/logos-network-skill.md`,
     well_known: `${origin}/.well-known/logos-live.json`,
   };
@@ -1579,6 +1761,11 @@ $('toggle-nodes').addEventListener('change', () => {
 
 $('toggle-circles').addEventListener('change', () => {
   eventMarkers.forEach(marker => $('toggle-circles').checked ? marker.addTo(map) : marker.remove());
+});
+
+$('verify-peer-button').addEventListener('click', verifyPeer);
+$('verify-peer-id').addEventListener('keydown', event => {
+  if (event.key === 'Enter') verifyPeer();
 });
 
 refresh();

@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 import httpx
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -31,6 +31,54 @@ PUBLISHED_NETWORK_URL = os.getenv(
     "https://xalisher.github.io/logos-live/network.json",
 )
 TELEMETRY_FILE = os.getenv("TELEMETRY_FILE", os.path.join(os.path.dirname(__file__), "telemetry.json"))
+
+PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
+LOGOS_NODE_VERSION = "0.1.2"
+LOGOS_CIRCUITS_VERSION = "0.4.2"
+LOGOS_RELEASE_URL = "https://github.com/logos-blockchain/logos-blockchain/releases/tag/0.1.2"
+LOGOS_RELEASE_DOWNLOAD_BASE = "https://github.com/logos-blockchain/logos-blockchain/releases/download/0.1.2"
+
+RELEASE_ASSETS = {
+    "node": {
+        "linux-x86_64": f"{LOGOS_RELEASE_DOWNLOAD_BASE}/logos-blockchain-node-linux-x86_64-{LOGOS_NODE_VERSION}.tar.gz",
+        "linux-aarch64": f"{LOGOS_RELEASE_DOWNLOAD_BASE}/logos-blockchain-node-linux-aarch64-{LOGOS_NODE_VERSION}.tar.gz",
+        "macos-aarch64": f"{LOGOS_RELEASE_DOWNLOAD_BASE}/logos-blockchain-node-macos-aarch64-{LOGOS_NODE_VERSION}.tar.gz",
+    },
+    "circuits": {
+        "linux-x86_64": f"{LOGOS_RELEASE_DOWNLOAD_BASE}/logos-blockchain-circuits-v{LOGOS_CIRCUITS_VERSION}-linux-x86_64.tar.gz",
+        "linux-aarch64": f"{LOGOS_RELEASE_DOWNLOAD_BASE}/logos-blockchain-circuits-v{LOGOS_CIRCUITS_VERSION}-linux-aarch64.tar.gz",
+        "macos-aarch64": f"{LOGOS_RELEASE_DOWNLOAD_BASE}/logos-blockchain-circuits-v{LOGOS_CIRCUITS_VERSION}-macos-aarch64.tar.gz",
+    },
+}
+
+BOOTSTRAP_PEERS = [
+    {
+        "name": "bootstrap-3000",
+        "ip": "65.109.51.37",
+        "udp_port": 3000,
+        "peer_id": "12D3KooWL7a8LBbLRYnabptHPFBCmAs49Y7cVMqvzuSdd43tAJk8",
+    },
+    {
+        "name": "bootstrap-3001",
+        "ip": "65.109.51.37",
+        "udp_port": 3001,
+        "peer_id": "12D3KooWPLeAcachoUm68NXGD7tmNziZkVeMmeBS5NofyukuMRJh",
+    },
+    {
+        "name": "bootstrap-3002",
+        "ip": "65.109.51.37",
+        "udp_port": 3002,
+        "peer_id": "12D3KooWKFNe4gS5DcCcRUVGdMjZp3fUWu6q6gG5R846Ui1pccHD",
+    },
+    {
+        "name": "bootstrap-3003",
+        "ip": "65.109.51.37",
+        "udp_port": 3003,
+        "peer_id": "12D3KooWAnriLgXyQnGTYz1zPWPkQL3rthTKYLzuAP7MMnbgsxzR",
+    },
+]
+for peer in BOOTSTRAP_PEERS:
+    peer["multiaddr"] = f"/ip4/{peer['ip']}/udp/{peer['udp_port']}/quic-v1/p2p/{peer['peer_id']}"
 
 # ── Compiled patterns ──────────────────────────────────────────────────────────
 _ANSI      = re.compile(r"\x1b\[[0-9;]*m")
@@ -95,6 +143,368 @@ def classify_node_environment(node: dict[str, Any]) -> str:
 
 def _pct(part: int | float, total: int | float) -> float:
     return round((part / total) * 100, 2) if total else 0.0
+
+
+def _base_url(request: Request | None = None) -> str:
+    if PUBLIC_BASE_URL:
+        return PUBLIC_BASE_URL
+    if request:
+        return str(request.base_url).rstrip("/")
+    return "http://127.0.0.1:8000"
+
+
+def _url(base_url: str, path: str) -> str:
+    return f"{base_url.rstrip('/')}/{path.lstrip('/')}"
+
+
+def build_bootstrap_peers() -> list[dict[str, Any]]:
+    return [dict(peer) for peer in BOOTSTRAP_PEERS]
+
+
+def build_agent_manifest(base_url: str) -> dict[str, Any]:
+    base = base_url.rstrip("/")
+    return {
+        "name": "Logos Live Agent Manifest",
+        "network": "Logos testnet",
+        "skill_version": "1.0.0",
+        "capabilities": [
+            "network_inspection",
+            "telemetry",
+            "node_setup_guidance",
+            "node_visibility_verification",
+        ],
+        "release": {
+            "node_version": LOGOS_NODE_VERSION,
+            "circuits_version": LOGOS_CIRCUITS_VERSION,
+            "release_url": LOGOS_RELEASE_URL,
+            "assets": RELEASE_ASSETS,
+        },
+        "bootstrap_peers": build_bootstrap_peers(),
+        "defaults": {
+            "node_api_url": NODE_URL,
+            "node_api_port": 8080,
+            "p2p_udp_port": 3000,
+            "circuits_dir": "~/.logos-blockchain-circuits",
+        },
+        "endpoints": {
+            "network": {"url": _url(base, "/api/network")},
+            "agent_state": {"url": _url(base, "/api/agent/state")},
+            "telemetry": {"url": _url(base, "/api/telemetry")},
+            "bootstrap_peers": {"url": _url(base, "/api/agent/bootstrap-peers")},
+            "crawler_status": {"url": _url(base, "/api/agent/crawler/status")},
+            "visibility": {"url_template": _url(base, "/api/agent/node-visibility/{peer_id}")},
+            "verify_node": {"url_template": _url(base, "/api/agent/verify-node/{peer_id}")},
+            "inspect_skill": {"url": _url(base, "/agents/logos-network-skill.md")},
+            "setup_skill": {"url": _url(base, "/agents/logos-node-setup-skill.md")},
+            "well_known": {"url": _url(base, "/.well-known/logos-live.json")},
+        },
+        "limitations": [
+            "/network/peers currently returns 404 on observed node builds; use libp2p crawler observations for peer rows.",
+            "Public map visibility requires the crawler to observe the peer or the node runner to publish a #geo/#live zone message.",
+            "Residential versus hosting classification is inferred from public ASN/ISP metadata.",
+        ],
+    }
+
+
+def _find_node(peer_id: str, data: dict[str, Any]) -> dict[str, Any] | None:
+    for node in data.get("nodes") or []:
+        if node.get("peer_id") == peer_id:
+            return node
+    return None
+
+
+def _find_uptime(peer_id: str, data: dict[str, Any]) -> dict[str, Any] | None:
+    telemetry = data.get("telemetry") or {}
+    for peer in telemetry.get("peer_uptime") or []:
+        if peer.get("peer_id") == peer_id:
+            return peer
+    return None
+
+
+def build_node_visibility(peer_id: str, data: dict[str, Any]) -> dict[str, Any]:
+    node = _find_node(peer_id, data)
+    uptime = _find_uptime(peer_id, data)
+    location = ""
+    if node:
+        location = ", ".join(part for part in (node.get("city"), node.get("country")) if part)
+    visible = node is not None
+    next_actions: list[str] = []
+    if not visible:
+        next_actions.append("Wait for the crawler to observe this peer, then refresh the dashboard.")
+        next_actions.append("Confirm the node is reachable from bootstrap peers and reports nonzero peers in /network/info.")
+        next_actions.append("Optionally post a #geo lat,lon and #live zone message so the map can anchor the node manually.")
+    elif not location:
+        next_actions.append("Add a #geo lat,lon zone message or a geo_hints.json entry to improve map placement.")
+    return {
+        "peer_id": peer_id,
+        "visible_on_map": visible,
+        "observed_in_telemetry": uptime is not None,
+        "node": node,
+        "uptime": uptime,
+        "location": location or None,
+        "next_actions": next_actions,
+    }
+
+
+def _stage(stage_id: str, label: str, status: str, detail: str) -> dict[str, str]:
+    return {"id": stage_id, "label": label, "status": status, "detail": detail}
+
+
+def build_node_verification(peer_id: str, data: dict[str, Any]) -> dict[str, Any]:
+    chain = data.get("chain") or {}
+    network = data.get("network") or {}
+    visibility = build_node_visibility(peer_id, data)
+    local_peer_id = network.get("peer_id")
+    n_peers = int(network.get("n_peers") or 0)
+    n_connections = int(network.get("n_connections") or 0)
+    mode = chain.get("mode") or "Unknown"
+
+    stages = [
+        _stage(
+            "node_api",
+            "Node API",
+            "passed" if local_peer_id else "failed",
+            f"Local API reports peer id {local_peer_id}" if local_peer_id else "Local /network/info did not return a peer id.",
+        ),
+        _stage(
+            "consensus_online",
+            "Consensus mode",
+            "passed" if mode == "Online" else "warning" if mode == "Bootstrapping" else "failed",
+            f"Consensus mode is {mode}.",
+        ),
+        _stage(
+            "peer_connectivity",
+            "Peer connectivity",
+            "passed" if n_peers > 0 and n_connections > 0 else "failed",
+            f"/network/info reports {n_peers} peers and {n_connections} connections.",
+        ),
+        _stage(
+            "crawler_observed",
+            "Crawler observed peer",
+            "passed" if visibility["node"] else "warning",
+            "Peer is present in the map node set." if visibility["node"] else "Peer has not appeared in crawler or published map data yet.",
+        ),
+        _stage(
+            "map_visible",
+            "Map visibility",
+            "passed" if visibility["visible_on_map"] else "warning",
+            f"Visible at {visibility['location']}." if visibility["location"] else "Peer is not geolocated on the map yet.",
+        ),
+        _stage(
+            "telemetry",
+            "Telemetry",
+            "passed" if visibility["observed_in_telemetry"] else "warning",
+            "Peer has uptime telemetry." if visibility["observed_in_telemetry"] else "No uptime telemetry for this peer yet.",
+        ),
+    ]
+    required = {"node_api", "consensus_online", "peer_connectivity", "crawler_observed", "map_visible"}
+    failed_required = [stage for stage in stages if stage["id"] in required and stage["status"] != "passed"]
+    next_actions = list(visibility["next_actions"])
+    if mode == "Bootstrapping":
+        next_actions.insert(0, "Wait for the node to finish bootstrapping before expecting consensus participation.")
+    if n_peers == 0 or n_connections == 0:
+        next_actions.insert(0, "Re-run init with the current bootstrap peers and confirm UDP connectivity to port 3000.")
+    return {
+        "peer_id": peer_id,
+        "local_peer_id": local_peer_id,
+        "is_local_node": peer_id == local_peer_id,
+        "overall_status": "ready" if not failed_required else "pending",
+        "stages": stages,
+        "visibility": visibility,
+        "next_actions": next_actions,
+    }
+
+
+def build_crawler_status(now: int | None = None) -> dict[str, Any]:
+    now = int(now or time.time())
+    path = Path(PEERS_FILE).expanduser()
+    status: dict[str, Any] = {
+        "peers_file": str(path),
+        "peers_file_exists": path.exists(),
+        "crawler_observations": 0,
+        "last_crawl": None,
+        "last_crawl_age_seconds": None,
+        "healthy": False,
+        "notes": [],
+    }
+    if not path.exists():
+        status["notes"].append("No peers.json file exists yet. Start the crawler to populate map peer rows.")
+        return status
+    try:
+        payload = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        status["notes"].append("peers.json exists but could not be read as JSON.")
+        return status
+    last_crawl = payload.get("last_crawl")
+    nodes = payload.get("nodes") or {}
+    status["crawler_observations"] = len(nodes)
+    status["last_crawl"] = last_crawl
+    if last_crawl:
+        status["last_crawl_age_seconds"] = max(now - int(last_crawl), 0)
+    status["healthy"] = bool(nodes) and (
+        status["last_crawl_age_seconds"] is None or status["last_crawl_age_seconds"] < 1800
+    )
+    if not nodes:
+        status["notes"].append("Crawler file has no nodes.")
+    elif not status["healthy"]:
+        status["notes"].append("Crawler data exists but looks stale.")
+    return status
+
+
+def logos_node_setup_skill(base_url: str) -> str:
+    base = base_url.rstrip("/")
+    peer_flags = (" \\" + "\n    ").join(f"-p {peer['multiaddr']}" for peer in BOOTSTRAP_PEERS)
+    linux_node = RELEASE_ASSETS["node"]["linux-x86_64"]
+    linux_circuits = RELEASE_ASSETS["circuits"]["linux-x86_64"]
+    pi_node = RELEASE_ASSETS["node"]["linux-aarch64"]
+    pi_circuits = RELEASE_ASSETS["circuits"]["linux-aarch64"]
+    mac_node = RELEASE_ASSETS["node"]["macos-aarch64"]
+    mac_circuits = RELEASE_ASSETS["circuits"]["macos-aarch64"]
+    return f"""# Logos Node Setup Agent Skill
+
+Use this skill to help a user install, run, and verify a Logos Blockchain node on testnet.
+
+## Safety and scope
+
+- Installing software, running downloaded binaries, changing firewall settings, or requesting faucet funds can require explicit user confirmation in many agent environments.
+- Prefer read-only checks first. Explain each command before executing it when it changes the machine.
+- The node's wallet is an internal staking key store, not a general-purpose wallet.
+
+## Release
+
+- Node version: `{LOGOS_NODE_VERSION}`
+- Circuits version: `{LOGOS_CIRCUITS_VERSION}`
+- Release page: {LOGOS_RELEASE_URL}
+
+Verified assets:
+
+- Linux x86_64 node: {linux_node}
+- Linux x86_64 circuits: {linux_circuits}
+- Linux aarch64 node: {pi_node}
+- Linux aarch64 circuits: {pi_circuits}
+- macOS aarch64 node: {mac_node}
+- macOS aarch64 circuits: {mac_circuits}
+
+## Install
+
+Detect the platform with `uname -s` and `uname -m`, then download the matching node and circuits archives:
+
+```sh
+case "$(uname -s)-$(uname -m)" in
+  Linux-x86_64)
+    NODE_URL="{linux_node}"
+    CIRCUITS_URL="{linux_circuits}"
+    ;;
+  Linux-aarch64|Linux-arm64)
+    NODE_URL="{pi_node}"
+    CIRCUITS_URL="{pi_circuits}"
+    ;;
+  Darwin-arm64)
+    NODE_URL="{mac_node}"
+    CIRCUITS_URL="{mac_circuits}"
+    ;;
+  *)
+    echo "Unsupported platform: $(uname -s)-$(uname -m)" >&2
+    exit 1
+    ;;
+esac
+
+curl -L -O "$CIRCUITS_URL"
+curl -L -O "$NODE_URL"
+tar -xf logos-blockchain-circuits-*.tar.gz
+tar -xf logos-blockchain-node-*.tar.gz
+rm -rf ~/.logos-blockchain-circuits
+mv logos-blockchain-circuits-*/ ~/.logos-blockchain-circuits
+chmod +x ./logos-blockchain-node
+```
+
+On macOS, if a circuit witness binary is blocked by Gatekeeper, inspect the real circuit directory first, then clear quarantine on the circuit tree:
+
+```sh
+xattr -lr ~/.logos-blockchain-circuits | grep quarantine || true
+xattr -dr com.apple.quarantine ~/.logos-blockchain-circuits
+```
+
+## Initialize
+
+Run `init` with all current bootstrap peers:
+
+```sh
+./logos-blockchain-node init \\
+    {peer_flags}
+```
+
+The default node API port is `8080`. Change `api_port` in `user_config.yaml` only when another local service already uses it.
+
+## Run
+
+```sh
+./logos-blockchain-node user_config.yaml
+```
+
+Keep this process running while checking status from another terminal.
+
+## Verify locally
+
+```sh
+curl -s http://localhost:8080/cryptarchia/info | jq .
+curl -s http://localhost:8080/network/info | jq .
+```
+
+Expected signals:
+
+- `/cryptarchia/info` returns a mode, slot, height, tip, and lib.
+- `mode` starts as `Bootstrapping` and eventually becomes `Online`.
+- `/network/info` returns a `peer_id`, `n_peers > 0`, and `n_connections > 0`.
+- `/network/peers` is not required. Observed node builds return `404` for that route.
+
+## Verify on Logos Live
+
+Extract the peer id:
+
+```sh
+curl -s http://localhost:8080/network/info | jq -r .peer_id
+```
+
+Then ask Logos Live whether that peer is visible:
+
+```text
+{base}/api/agent/verify-node/{{peer_id}}
+{base}/api/agent/node-visibility/{{peer_id}}
+```
+
+The node appears on the map after the libp2p crawler observes its public peer record and geolocates the IP. If it does not appear yet, wait for the crawler, confirm UDP connectivity, and optionally publish a `#geo lat,lon` plus `#live` zone message.
+
+## Optional faucet and consensus participation
+
+Map visibility does not require faucet funds. Consensus participation does require stake. Wait until `/cryptarchia/info` reports `Online`, then find one public key from the node config:
+
+```sh
+grep -A3 known_keys user_config.yaml
+```
+
+Open the testnet faucet and request funds for that public key:
+
+```text
+https://devnet.blockchain.logos.co/web/faucet/
+```
+
+Submitting a faucet request is an external web action. If an agent is operating for a user, ask for confirmation before submitting the form. After 1-2 minutes, check the balance:
+
+```sh
+curl -s http://localhost:8080/wallet/<public-key>/balance | jq .
+```
+
+The faucet UTXO needs to age before the node can participate in the consensus lottery. On the current devnet this is approximately 3.5 hours.
+
+## Useful machine-readable endpoints
+
+- Manifest: {base}/api/agent/manifest
+- Bootstrap peers: {base}/api/agent/bootstrap-peers
+- Network state: {base}/api/agent/state
+- Telemetry: {base}/api/telemetry
+- Crawler status: {base}/api/agent/crawler/status
+"""
 
 
 def _hour_bucket(ts: int | float) -> int:
@@ -425,8 +835,13 @@ def merge_peer_snapshot(
     local_nodes = local_data.get("nodes") or []
     reported_peers = int((local_data.get("network") or {}).get("n_peers") or 0)
     has_discovered_peers = any(not n.get("self") for n in local_nodes)
+    local_node_available = bool((local_data.get("network") or {}).get("peer_id") or local_data.get("chain"))
 
-    if has_discovered_peers or not fallback_data or reported_peers <= len(local_nodes):
+    if has_discovered_peers or not fallback_data:
+        local_data["peer_data_source"] = "local"
+        return local_data
+
+    if local_node_available and reported_peers <= len(local_nodes):
         local_data["peer_data_source"] = "local"
         return local_data
 
@@ -834,6 +1249,37 @@ async def api_telemetry():
     return data.get("telemetry", {})
 
 
+@app.get("/api/agent/manifest")
+async def api_agent_manifest(request: Request):
+    return build_agent_manifest(_base_url(request))
+
+
+@app.get("/api/agent/bootstrap-peers")
+async def api_bootstrap_peers():
+    return {
+        "network": "Logos testnet",
+        "release": LOGOS_NODE_VERSION,
+        "bootstrap_peers": build_bootstrap_peers(),
+    }
+
+
+@app.get("/api/agent/crawler/status")
+async def api_crawler_status():
+    return build_crawler_status()
+
+
+@app.get("/api/agent/node-visibility/{peer_id}")
+async def api_node_visibility(peer_id: str):
+    data = await api_network()
+    return build_node_visibility(peer_id, data)
+
+
+@app.get("/api/agent/verify-node/{peer_id}")
+async def api_verify_node(peer_id: str):
+    data = await api_network()
+    return build_node_verification(peer_id, data)
+
+
 @app.get("/api/agent/state")
 async def api_agent_state():
     data = await api_network()
@@ -867,10 +1313,12 @@ async def api_agent_state():
 
 
 @app.get("/api/agent/schema")
-async def api_agent_schema():
+async def api_agent_schema(request: Request):
+    base = _base_url(request)
     return {
         "name": "Logos Network Intelligence",
         "description": "Machine-readable entrypoint for inspecting the current Logos network state.",
+        "manifest": _url(base, "/api/agent/manifest"),
         "endpoints": {
             "network": {
                 "url": "/api/network",
@@ -888,6 +1336,22 @@ async def api_agent_schema():
                 "url": "/api/telemetry",
                 "description": "Historical node activity, uptime, and stake telemetry when logs or telemetry.json are available.",
             },
+            "bootstrap_peers": {
+                "url": "/api/agent/bootstrap-peers",
+                "description": "Current bootstrap multiaddrs for node init.",
+            },
+            "verify_node": {
+                "url": "/api/agent/verify-node/{peer_id}",
+                "description": "Checks local API health, connectivity, crawler observation, map visibility, and telemetry for a peer id.",
+            },
+            "node_visibility": {
+                "url": "/api/agent/node-visibility/{peer_id}",
+                "description": "Explains whether a peer id is visible on the map and what to do next.",
+            },
+            "setup_skill": {
+                "url": "/agents/logos-node-setup-skill.md",
+                "description": "Concrete setup and verification instructions for agents installing a Logos node.",
+            },
         },
         "notes": [
             "Peer infrastructure classes are inferred from public ASN/ISP strings and should be treated as best-effort.",
@@ -897,25 +1361,32 @@ async def api_agent_schema():
 
 
 @app.get("/.well-known/logos-live.json")
-async def well_known_logos_live():
+async def well_known_logos_live(request: Request):
+    base = _base_url(request)
     return {
         "name": "Logos Live",
         "network": "Logos testnet",
-        "api": "/api/agent/state",
-        "telemetry": "/api/telemetry",
-        "schema": "/api/agent/schema",
-        "skill": "/agents/logos-network-skill.md",
+        "skill_version": "1.0.0",
+        "api": _url(base, "/api/agent/state"),
+        "manifest": _url(base, "/api/agent/manifest"),
+        "telemetry": _url(base, "/api/telemetry"),
+        "schema": _url(base, "/api/agent/schema"),
+        "skill": _url(base, "/agents/logos-network-skill.md"),
+        "setup_skill": _url(base, "/agents/logos-node-setup-skill.md"),
+        "capabilities": build_agent_manifest(base)["capabilities"],
     }
 
 
 @app.get("/agents/logos-network-skill.md", response_class=PlainTextResponse)
-async def logos_network_skill():
-    return """# Logos Network Agent Skill
+async def logos_network_skill(request: Request):
+    base = _base_url(request)
+    return f"""# Logos Network Agent Skill
 
 Use this page as the agent entrypoint for exploring the Logos network.
 
 ## Inspect the network
 
+0. Fetch `{base}/api/agent/manifest` for the complete agent contract.
 1. Fetch `/api/agent/schema` to discover available endpoints.
 2. Fetch `/api/agent/state` for the current chain, peer, decentralization, and recent block state.
 3. Fetch `/api/telemetry` for hourly active peers, peer uptime, and stake estimate history.
@@ -935,16 +1406,25 @@ Use this page as the agent entrypoint for exploring the Logos network.
 
 ## Setup guidance for another agent
 
-To help a user set up a Logos node, use the official node setup guide first, then verify:
+To help a user set up a Logos node, fetch the dedicated setup skill first:
+
+`{base}/agents/logos-node-setup-skill.md`
+
+Then verify:
 
 - the node HTTP API responds at `/cryptarchia/info`
 - `/network/info` reports a peer id and nonzero peers/connections
 - the local dashboard at this server can read `/api/agent/state`
 - `/api/telemetry` has activity from logs, crawler first/last seen, or a generated `telemetry.json`
-- their public peer id appears in `/api/network` nodes after libp2p crawling, or they can post a `#geo`/`#live` zone message to show on the map
+- their public peer id passes `{base}/api/agent/verify-node/{{peer_id}}`
 
 Do not assume `/network/peers` exists. Current observed nodes return `404` for that route; use libp2p crawling or published crawler snapshots for peer rows until a node API exposes them directly.
 """
+
+
+@app.get("/agents/logos-node-setup-skill.md", response_class=PlainTextResponse)
+async def logos_node_setup_skill_endpoint(request: Request):
+    return logos_node_setup_skill(_base_url(request))
 
 
 # Serve frontend last so /api/* routes take priority
