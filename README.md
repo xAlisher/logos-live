@@ -8,9 +8,13 @@ Live: **https://xalisher.github.io/logos-live/**
 
 ## What it shows
 
-- **Map** — all discovered peers with online/offline status, geo location, ISP
+- **Overview** — local chain state, peer count, connections, recent block activity, and leader diversity
+- **Map** — discovered peers with online/offline status, geo location, ISP, ASN, and inferred infrastructure class
+- **Peers** — searchable peer inventory with first/last seen metadata
+- **Decentralization** — top countries, cities, ASNs, and residential/hosting/unknown distribution
 - **Messages** — on-chain zone-board messages from node runners (`logos:yolo:*` channels), linked to the block explorer
 - **Stake** — faucet distribution recipients and block leader activity
+- **Agent** — machine-readable endpoints and a Markdown skill for agents inspecting the network
 - **Dev / Community** — GitHub activity and Discourse topics from the Logos ecosystem
 
 ---
@@ -27,7 +31,9 @@ pages/            Git worktree — GitHub Pages branch (network.json + index.htm
 
 ### Crawler (`crawler/src/main.rs`)
 
-Connects to a local Logos node at `http://127.0.0.1:8080`, walks `/cryptarchia/blocks` and `/network/peers`, resolves peer IPs via ip-api.com, and persists `peers.json` and `geo_cache.json`. Runs continuously, crawling every 10 minutes.
+Connects directly to the Logos libp2p network through the four bootstrap peers, runs Kademlia discovery, resolves peer IPs via ip-api.com, and persists `peers.json` and `geo_cache.json`. Runs continuously, crawling every 10 minutes.
+
+Current node builds expose `/network/info`, but the tested local node returns `404` for `/network/peers`. Peer rows therefore come from libp2p discovery or a published `network.json` fallback, not from the node HTTP API.
 
 ### Zone scanner (`zone-scanner/src/main.rs`)
 
@@ -52,6 +58,29 @@ Aggregates peers, geo, events (Luma), GitHub, Discourse, stake distribution, and
 ```bash
 pip install -r requirements.txt
 ```
+
+For tests:
+
+```bash
+pip install -r requirements-dev.txt
+pytest -q
+```
+
+### Start the local dashboard
+
+```bash
+uvicorn server:app --host 127.0.0.1 --port 8000
+```
+
+Open http://127.0.0.1:8000.
+
+Useful machine-readable endpoints:
+
+- `GET /api/network`
+- `GET /api/agent/state`
+- `GET /api/agent/schema`
+- `GET /.well-known/logos-live.json`
+- `GET /agents/logos-network-skill.md`
 
 ### Start the peer crawler
 
