@@ -740,7 +740,7 @@ def push_to_pages(data: dict):
         ["git", "-C", str(PAGES_DIR), "add", "index.html", "network.json"],
         ["git", "-C", str(PAGES_DIR), "commit", "--allow-empty", "-m",
          f"chore: network snapshot {ts} — {online}/{total} nodes online"],
-        ["git", "-C", str(PAGES_DIR), "push", "origin", "HEAD:main", "--force"],
+        ["git", "-C", str(PAGES_DIR), "push", "origin", "HEAD:gh-pages", "--force"],
     ]
     for cmd in cmds:
         result = subprocess.run(cmd, capture_output=True, text=True)
