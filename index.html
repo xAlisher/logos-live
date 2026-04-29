@@ -1108,13 +1108,14 @@ tr:hover td {
         <div class="nav-kicker">Views</div>
         <nav class="nav" id="nav">
           <button class="active" type="button" data-view="overview">Overview <span>01</span></button>
-          <button type="button" data-view="peers">Peers <span>02</span></button>
-          <button type="button" data-view="decentralization">Decentralization <span>03</span></button>
-          <button type="button" data-view="blocks">Blocks <span>04</span></button>
-          <button type="button" data-view="telemetry">Telemetry <span>05</span></button>
-          <button type="button" data-view="stake">Stake <span>06</span></button>
-          <button type="button" data-view="setup">Setup <span>07</span></button>
-          <button type="button" data-view="agent">Agent <span>08</span></button>
+          <button type="button" data-view="pulse">Pulse <span>02</span></button>
+          <button type="button" data-view="peers">Peers <span>03</span></button>
+          <button type="button" data-view="decentralization">Decentralization <span>04</span></button>
+          <button type="button" data-view="blocks">Blocks <span>05</span></button>
+          <button type="button" data-view="telemetry">Telemetry <span>06</span></button>
+          <button type="button" data-view="stake">Stake <span>07</span></button>
+          <button type="button" data-view="setup">Setup <span>08</span></button>
+          <button type="button" data-view="agent">Agent <span>09</span></button>
         </nav>
       </div>
       <div class="source-box">
@@ -1154,6 +1155,29 @@ tr:hover td {
               <div class="panel-body"><div class="messages-list" id="zone-messages"></div></div>
             </section>
           </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-pulse">
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Dev Activity</h2><span class="panel-sub" id="pulse-gh-sub">GitHub</span></div>
+            <div class="panel-body"><div class="feed-list" id="pulse-github"></div></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Community</h2><span class="panel-sub">forum.logos.co</span></div>
+            <div class="panel-body"><div class="feed-list" id="pulse-discourse"></div></div>
+          </section>
+        </div>
+        <div class="two-col" style="margin-top:14px;">
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Zone Messages</h2><span class="panel-sub" id="pulse-zone-sub">on-chain</span></div>
+            <div class="panel-body"><div class="feed-list" id="pulse-zone"></div></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Stake Streams</h2><span class="panel-sub" id="pulse-stake-sub">current snapshot</span></div>
+            <div class="panel-body"><div class="feed-list" id="pulse-stake"></div></div>
+          </section>
         </div>
       </section>
 
@@ -1635,8 +1659,8 @@ function renderMap(nodes) {
   const showNodes = $('toggle-nodes')?.checked !== false;
   for (const node of nodes) {
     if (node.lat == null || node.lon == null) continue;
-    const online = node.self || node.online !== false;
-    const cls = ['marker', envClass(node.environment), online ? '' : 'offline', node.self ? 'self' : ''].join(' ');
+    const online = node.online !== false;
+    const cls = ['marker', envClass(node.environment), online ? '' : 'offline'].join(' ');
     const icon = L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [14, 14], iconAnchor: [7, 7] });
     const marker = L.marker([node.lat, node.lon], { icon, opacity: online ? 1 : 0.62 });
     marker.bindPopup(nodePopup(node, online));
@@ -1710,8 +1734,8 @@ function renderPeers() {
   });
   $('peer-count').textContent = `${fmt(nodes.length)} rows`;
   $('peer-rows').innerHTML = nodes.map(node => {
-    const online = node.self || node.online !== false;
-    const seen = node.self ? 'self' : `${node.last_seen ? `last ${since(node.last_seen)}` : '-'}${node.first_seen ? `<br>first ${since(node.first_seen)}` : ''}`;
+    const online = node.online !== false;
+    const seen = `${node.last_seen ? `last ${since(node.last_seen)}` : '-'}${node.first_seen ? `<br>first ${since(node.first_seen)}` : ''}`;
     return `
       <tr>
         <td><span class="pill ${online ? '' : 'offline'}">${online ? 'Online' : 'Offline'}</span></td>
