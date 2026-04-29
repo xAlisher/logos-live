@@ -347,6 +347,7 @@
   .stab.active           { color: var(--text); border-bottom-color: var(--accent); }
   .stab.active.ctab      { border-bottom-color: var(--event-color); }
   .stab.active.stab-stake { border-bottom-color: #b4a462; }
+  .stab.active.stab-msgs  { border-bottom-color: var(--accent); }
 
   /* ── Stake panel ── */
   .stake-card {
@@ -411,6 +412,87 @@
   .leader-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; flex-shrink: 0; }
   .leader-bar { height: 100%; border-radius: 2px; background: var(--accent); }
   .leader-pct { width: 36px; text-align: right; color: var(--text-faint); flex-shrink: 0; }
+
+  /* ── Zone messages ── */
+  .zone-msg {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .zone-msg-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .zone-sender {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .zone-time {
+    font-size: 10px;
+    color: var(--text-faint);
+    flex: 1;
+  }
+  .zone-status {
+    font-size: 9px;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .zone-status.finalized { background: rgba(119,136,104,0.18); color: #96aa88; }
+  .zone-status.confirmed { background: rgba(119,136,104,0.12); color: #7a8e6e; }
+  .zone-status.pending   { background: rgba(160,140,80,0.18);  color: #b4a462; }
+  .zone-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  .zone-block {
+    font-size: 9px;
+    color: var(--text-faint);
+    margin-top: 3px;
+    font-family: var(--font-main);
+  }
+
+  /* ── Map speech bubble ── */
+  @keyframes bubbleUp {
+    0%   { opacity: 0; transform: translateY(6px) scale(0.92); }
+    15%  { opacity: 1; transform: translateY(0) scale(1); }
+    80%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .map-bubble {
+    position: absolute;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    color: var(--text);
+    pointer-events: none;
+    z-index: 900;
+    max-width: 180px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: bubbleUp 5s ease forwards;
+  }
+  .map-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 14px;
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--border);
+  }
+  .map-bubble-sender { color: var(--accent); font-weight: 600; margin-right: 5px; }
 
   #sidebar-body { flex: 1; overflow-y: auto; }
   #sidebar-body::-webkit-scrollbar { width: 4px; }
@@ -570,6 +652,7 @@
       <button class="stab active" data-tab="dev" onclick="switchTab('dev')">Dev</button>
       <button class="stab ctab" data-tab="community" onclick="switchTab('community')">Community</button>
       <button class="stab stab-stake" data-tab="stake" onclick="switchTab('stake')">Stake</button>
+      <button class="stab stab-msgs" data-tab="msgs" onclick="switchTab('msgs')">Messages</button>
     </div>
     <div id="sidebar-body">
       <div class="feed-empty">Loading…</div>
@@ -851,6 +934,8 @@ let activeTab = 'dev';
 let ghItems = [];
 let communityItems = [];
 let stakeData = null;
+let zoneMessages = [];
+let lastZoneSlot = 0;
 
 function toggleSidebar() {
   const sb  = document.getElementById('sidebar');
@@ -869,6 +954,7 @@ function switchTab(tab) {
 function renderFeed() {
   const body = document.getElementById('sidebar-body');
   if (activeTab === 'stake') { renderStake(body); return; }
+  if (activeTab === 'msgs')  { renderZone(body);  return; }
   const items = activeTab === 'dev' ? ghItems : communityItems;
   if (!items.length) { body.innerHTML = '<div class="feed-empty">No data yet</div>'; return; }
   body.innerHTML = items.map(item => activeTab === 'dev' ? `
@@ -943,10 +1029,70 @@ function renderStake(body) {
     </div>`;
 }
 
+function renderZone(body) {
+  if (!zoneMessages.length) {
+    body.innerHTML = '<div class="feed-empty">No zone messages yet</div>';
+    return;
+  }
+  body.innerHTML = zoneMessages.map(m => {
+    const statusCls = m.status === 'finalized' ? 'finalized' : m.status === 'pending' ? 'pending' : 'confirmed';
+    const when = m.observed_at ? timeSinceISO(m.observed_at) : (m.slot ? `slot ${fmt(m.slot)}` : '');
+    return `<div class="zone-msg">
+      <div class="zone-msg-header">
+        <span class="zone-sender">${m.sender}</span>
+        <span class="zone-time">${when}</span>
+        <span class="zone-status ${statusCls}">${m.status}</span>
+      </div>
+      <div class="zone-text">${m.text}</div>
+      ${m.block_id ? `<div class="zone-block">block ${m.block_id}…</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ── Map speech bubbles ────────────────────────────────────────────────────────
+const mapWrap = document.getElementById('map-wrap');
+let bubbleQueue = [];
+let bubbleTimer = null;
+
+function showMapBubble(msg) {
+  if (!markers.length) return;
+  // Pick a random online node marker position
+  const onlineMarkers = markers.filter((_, i) => true); // all visible
+  if (!onlineMarkers.length) return;
+  const m = onlineMarkers[Math.floor(Math.random() * onlineMarkers.length)];
+  const pt = map.latLngToContainerPoint(m.getLatLng());
+
+  const el = document.createElement('div');
+  el.className = 'map-bubble';
+  el.innerHTML = `<span class="map-bubble-sender">${msg.sender}</span>${msg.text.slice(0, 60)}${msg.text.length > 60 ? '…' : ''}`;
+  el.style.left = (pt.x + 10) + 'px';
+  el.style.top  = (pt.y - 40) + 'px';
+  mapWrap.appendChild(el);
+  setTimeout(() => el.remove(), 5200);
+}
+
+function drainBubbleQueue() {
+  if (!bubbleQueue.length) { bubbleTimer = null; return; }
+  showMapBubble(bubbleQueue.shift());
+  bubbleTimer = setTimeout(drainBubbleQueue, 3500);
+}
+
 function loadFeedsFromData(data) {
-  ghItems        = data.github    || [];
-  communityItems = data.discourse || [];
-  stakeData      = data.stake     || null;
+  ghItems        = data.github        || [];
+  communityItems = data.discourse     || [];
+  stakeData      = data.stake         || null;
+  const newMsgs  = data.zone_messages || [];
+
+  // Find messages newer than last seen
+  const newHighSlot = newMsgs.length ? newMsgs[0].slot : 0;
+  if (newHighSlot > lastZoneSlot && lastZoneSlot > 0) {
+    const fresh = newMsgs.filter(m => m.slot > lastZoneSlot && m.status !== 'pending');
+    fresh.slice(0, 3).forEach(m => bubbleQueue.push(m));
+    if (!bubbleTimer && bubbleQueue.length) bubbleTimer = setTimeout(drainBubbleQueue, 800);
+  }
+  if (newHighSlot > 0) lastZoneSlot = newHighSlot;
+  zoneMessages = newMsgs;
+
   renderFeed();
 }
 
