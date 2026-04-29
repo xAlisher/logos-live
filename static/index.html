@@ -1367,8 +1367,8 @@ function computeSummary(nodes) {
   const topAsnShare = nodes.length ? (topAsns[0]?.count || 0) / nodes.length * 100 : 0;
 
   return {
-    nodes: { discovered: nodes.length, online: online.length, countries: Object.keys(countryCount).length, asns: Object.keys(asnCount).length },
-    health: { reported_peers: null, connections: null },
+    nodes: { total: nodes.length, online: online.length, countries: Object.keys(countryCount).length, asns: Object.keys(asnCount).length, online_pct: nodes.length ? online.length / nodes.length * 100 : 0 },
+    health: { reported_peers: data.network?.n_peers ?? null, connections: data.network?.n_connections ?? null },
     geography: { top_countries: topCountries, top_cities: topCities, top_country_share_pct: topCountryShare },
     infrastructure: { top_asns: topAsns, top_asn_share_pct: topAsnShare, mix: infraCount }
   };
