@@ -627,6 +627,55 @@ button, input {
 }
 .bubble-close:hover { color: var(--text); }
 
+.feed-list {
+  display: grid;
+  gap: 0;
+  max-height: 360px;
+  overflow: auto;
+}
+
+.feed-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.feed-item:last-child { border-bottom: 0; }
+
+.feed-item a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.feed-item a:hover { color: var(--green-2); }
+
+.feed-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.feed-type {
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 10px;
+  background: var(--bg-raised);
+  color: var(--subtle);
+}
+
+.feed-type.type-push, .feed-type.type-create { color: var(--green-2); background: var(--green-a1); }
+.feed-type.type-pullrequest { color: var(--blue); background: var(--blue-a1); }
+.feed-type.type-issues { color: var(--gold); background: var(--gold-a1); }
+.feed-type.stake-top { color: var(--green-2); background: var(--green-a1); }
+.feed-type.stake-mid { color: var(--gold); background: var(--gold-a1); }
+
 .messages-list {
   display: grid;
   gap: 0;
@@ -1550,6 +1599,7 @@ function render() {
   renderMessages();
   renderPeers();
   renderDecentralization();
+  renderPulse();
   renderBlocks();
   renderTelemetry();
   renderStake();
@@ -1871,6 +1921,77 @@ function renderUptimeGrid(telemetry) {
       </div>
     `;
   }).join('');
+}
+
+function renderPulse() {
+  // GitHub dev activity
+  const ghEvents = state.github || [];
+  $('pulse-gh-sub').textContent = ghEvents.length ? `${ghEvents.length} recent events` : 'GitHub';
+  $('pulse-github').innerHTML = ghEvents.length ? ghEvents.map(ev => `
+    <div class="feed-item">
+      <a href="${esc(ev.url)}" target="_blank" rel="noopener">${esc(ev.title)}</a>
+      <div class="feed-meta">
+        <span class="feed-type ${esc(ev.cls || '')}">${esc(ev.type || 'event')}</span>
+        <span>${esc(ev.repo || '')}</span>
+        <span style="margin-left:auto">${ev.timestamp ? since(new Date(ev.timestamp).getTime() / 1000) + ' ago' : ''}</span>
+      </div>
+    </div>
+  `).join('') : '<div class="empty">No GitHub events available</div>';
+
+  // Discourse community
+  const topics = state.discourse || [];
+  $('pulse-discourse').innerHTML = topics.length ? topics.map(t => `
+    <div class="feed-item">
+      <a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.title)}</a>
+      <div class="feed-meta">
+        <span class="feed-type">${esc(t.category || 'topic')}</span>
+        <span>${t.replies != null ? t.replies + ' replies' : ''}</span>
+        <span style="margin-left:auto">${t.timestamp ? since(new Date(t.timestamp).getTime() / 1000) + ' ago' : ''}</span>
+      </div>
+    </div>
+  `).join('') : '<div class="empty">No forum topics available</div>';
+
+  // Zone messages
+  const zm = state.zone_messages;
+  const allMsgs = Array.isArray(zm) ? zm : (zm?.messages || []);
+  const liveMsgs = allMsgs.filter(m => m.live);
+  const zoneMsgs = liveMsgs.length ? liveMsgs : allMsgs.slice(0, 20);
+  $('pulse-zone-sub').textContent = allMsgs.length
+    ? `${liveMsgs.length} #live · ${allMsgs.length} total`
+    : 'on-chain';
+  $('pulse-zone').innerHTML = zoneMsgs.length ? zoneMsgs.map(m => `
+    <div class="feed-item">
+      <div class="feed-meta">
+        <span class="zone-sender">${esc(m.sender || '?')}</span>
+        <span class="feed-type">${m.live ? '#live' : 'zone'}</span>
+        <span style="margin-left:auto;font-family:var(--mono);font-size:10px">slot ${fmt(m.slot)}</span>
+      </div>
+      <div class="zone-text">${esc(m.text || '')}</div>
+    </div>
+  `).join('') : '<div class="empty">No zone messages found</div>';
+
+  // Stake streams
+  const stake = state.stake || {};
+  const leaders = (stake.top_leaders || []).slice(0, 20);
+  const total = (stake.total_leader_blocks || 0);
+  $('pulse-stake-sub').textContent = stake.unique_leaders
+    ? `${fmt(stake.unique_leaders)} leaders · ${fmt(stake.total_distributed)} distributed`
+    : 'current snapshot';
+  $('pulse-stake').innerHTML = leaders.length ? leaders.map((item, i) => {
+    const pk = item.pk || item.leader_key || '?';
+    const blocks = item.blocks || 0;
+    const p = total ? Math.round(blocks / total * 100) : (item.pct || 0);
+    const tier = i < 3 ? 'stake-top' : 'stake-mid';
+    return `
+      <div class="feed-item">
+        <div class="feed-meta">
+          <span class="feed-type ${tier}">#${i + 1}</span>
+          <span class="mono" style="font-size:11px">${esc(pk.slice(0, 20))}…</span>
+          <span style="margin-left:auto">${fmt(blocks)} blocks · ${p}%</span>
+        </div>
+      </div>
+    `;
+  }).join('') : '<div class="empty">No stake data available</div>';
 }
 
 function renderStake() {
