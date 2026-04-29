@@ -1,0 +1,19 @@
+[package]
+name = "logos-crawler"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libp2p = { version = "0.55", features = [
+    "tokio",
+    "quic",
+    "kad",
+    "identify",
+    "macros",
+] }
+tokio      = { version = "1", features = ["full"] }
+futures    = "0.3"
+rand       = "0.8"
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow     = "1"

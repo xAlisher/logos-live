@@ -1,0 +1,23 @@
+# Runtime data (generated, not source)
+peers.json
+geo_cache.json
+zone_scan.json
+feed_cache.json
+stake_cache.json
+crawler.log
+publish.log
+zone-scanner.log
+
+# Python
+__pycache__/
+*.pyc
+
+# Rust build artifacts
+crawler/target/
+zone-scanner/target/
+
+# Pages worktree (managed separately)
+pages/
+
+# Debug dir
+debug/

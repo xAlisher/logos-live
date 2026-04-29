@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logos Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  /* ── Theme tokens ── */
+  :root {
+    --font-main: 'Fira Code', 'Fira Mono', monospace;
+    --font-heading: Georgia, 'Times New Roman', serif;
+  }
+
+  /* Logos brand palette (from λ icon screenshot) */
+  :root {
+    --logos-dark:  #1c2028;
+    --logos-sage:  #778868;
+    --logos-light: #d8dbd0;
+  }
+
+  [data-theme="dark"] {
+    --bg:           #1c2028;
+    --bg-raised:    #22262f;
+    --bg-hover:     #2a2f3a;
+    --bg-overlay:   rgba(28,32,40,0.92);
+    --text:         #f0f0ec;
+    --text-muted:   rgba(240,240,236,0.55);
+    --text-faint:   rgba(240,240,236,0.28);
+    --border:       rgba(240,240,236,0.1);
+    --border-subtle:rgba(240,240,236,0.06);
+    --accent:       #778868;
+    --accent-hover: #8a9c78;
+    --node-online:  #778868;
+    --node-border:  #8a9c78;
+    --node-offline: #3a3e46;
+    --node-border-offline: #52575f;
+    --node-self:    #f0f0ec;
+    --node-self-b:  #c8c8c4;
+    --event-color:  #48749e;
+    --event-border: #5a87b5;
+    --popup-bg:     #22262f;
+    --popup-border: rgba(240,240,236,0.12);
+    --map-bg:       #1c2028;
+  }
+
+  [data-theme="light"] {
+    --bg:           #f4f2ed;
+    --bg-raised:    #d8dbd0;
+    --bg-hover:     #c8ccc0;
+    --bg-overlay:   rgba(244,242,237,0.92);
+    --text:         #1c2028;
+    --text-muted:   rgba(28,32,40,0.6);
+    --text-faint:   rgba(28,32,40,0.35);
+    --border:       rgba(28,32,40,0.15);
+    --border-subtle:rgba(28,32,40,0.07);
+    --accent:       #778868;
+    --accent-hover: #5e6e52;
+    --node-online:  #778868;
+    --node-border:  #5e6e52;
+    --node-offline: #a0a49c;
+    --node-border-offline: #84887e;
+    --node-self:    #1c2028;
+    --node-self-b:  #3a3e46;
+    --event-color:  #2d5a80;
+    --event-border: #48749e;
+    --popup-bg:     #f4f2ed;
+    --popup-border: rgba(28,32,40,0.15);
+    --map-bg:       #d8dbd0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  /* ── Header ── */
+  #header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 10px 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  #header h1 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .stat-label { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat-value { color: var(--text); font-size: 13px; font-weight: 500; }
+
+  #mode-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .mode-online  { background: rgba(119,136,104,0.22); color: #96aa88; }
+  .mode-syncing { background: rgba(160,140,80,0.22);  color: #b4a872; }
+  .mode-offline { background: rgba(140,90,90,0.22);   color: #b08888; }
+
+  #spacer { flex: 1; }
+
+  #updated-label {
+    color: var(--text-faint);
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .hdr-btn {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .hdr-btn:hover { background: var(--bg-hover); color: var(--text); }
+  .hdr-btn.active { color: var(--event-color); border-color: var(--event-color); }
+
+  /* ── Theme switcher ── */
+  #theme-btn {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 4px;
+    padding: 5px 9px;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    transition: background 0.15s, color 0.15s;
+  }
+  #theme-btn:hover { background: var(--bg-hover); color: var(--text); }
+  #theme-btn svg { display: block; }
+
+  /* ── Main layout ── */
+  #main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* ── Map ── */
+  #map-wrap {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+    background: var(--map-bg);
+  }
+
+  /* ── Popup ── */
+  .leaflet-popup-content-wrapper {
+    background: var(--popup-bg);
+    border: 1px solid var(--popup-border);
+    border-radius: 6px;
+    color: var(--text);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .leaflet-popup-tip { background: var(--popup-bg); }
+  .leaflet-popup-content { margin: 12px 14px; min-width: 220px; }
+  .leaflet-popup-content a { color: var(--event-color); }
+
+  .popup-peer-id {
+    font-size: 10px;
+    color: var(--text-muted);
+    word-break: break-all;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .popup-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 3px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .popup-row:last-child { border-bottom: none; }
+  .popup-key { color: var(--text-muted); }
+  .popup-val { color: var(--text); text-align: right; }
+
+  /* ── Markers ── */
+  .node-marker {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--node-online);
+    border: 2px solid var(--node-border);
+    position: relative;
+  }
+  .node-marker::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--node-online) 25%, transparent);
+    animation: pulse 2.5s ease-out infinite;
+  }
+  .node-marker.offline {
+    background: var(--node-offline);
+    border: 2px solid var(--node-border-offline);
+  }
+  .node-marker.offline::after { display: none; }
+  .node-marker.self {
+    width: 12px; height: 12px;
+    background: var(--node-online);
+    border: 2px solid var(--node-border);
+  }
+  .node-marker.self::after {
+    background: color-mix(in srgb, var(--node-online) 25%, transparent);
+    animation: pulse 2.5s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { transform: scale(0.8); opacity: 0.6; }
+    70%  { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  .event-marker {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .event-marker.upcoming {
+    background: var(--event-color);
+    border: 2px solid var(--event-border);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--event-color) 60%, transparent);
+  }
+  .event-marker.upcoming::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--event-color) 20%, transparent);
+    animation: pulse 2s ease-out infinite;
+  }
+  .event-marker.past {
+    background: color-mix(in srgb, var(--event-border) 25%, transparent);
+    border: 2px solid color-mix(in srgb, var(--event-border) 50%, transparent);
+  }
+
+  /* ── Node count overlay ── */
+  #node-count {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    z-index: 1000;
+    background: var(--bg-overlay);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    pointer-events: none;
+    font-family: var(--font-main);
+    backdrop-filter: blur(4px);
+  }
+  #node-count strong { color: var(--node-online); font-size: 20px; margin-right: 6px; }
+
+  /* ── Loading ── */
+  #loading {
+    position: absolute;
+    inset: 0;
+    z-index: 2000;
+    background: var(--bg-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    font-family: var(--font-main);
+  }
+  #loading.hidden { display: none; }
+
+  /* ── Feed sidebar ── */
+  #sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 0.2s ease, border-color 0.25s;
+  }
+  #sidebar.hidden { width: 0; border-left: none; }
+
+  #sidebar-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .stab {
+    flex: 1;
+    padding: 9px 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .stab:hover { color: var(--text); }
+  .stab.active           { color: var(--text); border-bottom-color: var(--accent); }
+  .stab.active.ctab      { border-bottom-color: var(--event-color); }
+  .stab.active.stab-stake { border-bottom-color: #b4a462; }
+  .stab.active.stab-msgs  { border-bottom-color: var(--accent); }
+
+  /* ── Stake panel ── */
+  .stake-card {
+    padding: 14px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .stake-card-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .stake-big {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .stake-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .stake-bar-wrap {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .stake-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: #b4a462;
+    transition: width 0.6s ease;
+  }
+  .stake-bar-label {
+    font-size: 10px;
+    color: var(--text-faint);
+    text-align: right;
+  }
+  .stake-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 12px;
+  }
+  .stake-row:last-child { border-bottom: none; }
+  .stake-row-key { color: var(--text-muted); }
+  .stake-row-val { color: var(--text); font-weight: 500; }
+  .leader-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 11px;
+  }
+  .leader-pk { color: var(--text-muted); font-family: var(--font-main); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .leader-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; flex-shrink: 0; }
+  .leader-bar { height: 100%; border-radius: 2px; background: var(--accent); }
+  .leader-pct { width: 36px; text-align: right; color: var(--text-faint); flex-shrink: 0; }
+
+  /* ── Zone messages ── */
+  .zone-msg {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .zone-msg-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .zone-sender {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .zone-time {
+    font-size: 10px;
+    color: var(--text-faint);
+    flex: 1;
+  }
+  .zone-status {
+    font-size: 9px;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .zone-status.finalized { background: rgba(119,136,104,0.18); color: #96aa88; }
+  .zone-status.confirmed { background: rgba(119,136,104,0.12); color: #7a8e6e; }
+  .zone-status.pending   { background: rgba(160,140,80,0.18);  color: #b4a462; }
+  .zone-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  .zone-block {
+    font-size: 9px;
+    color: var(--text-faint);
+    margin-top: 3px;
+    font-family: var(--font-main);
+  }
+  .zone-block a { color: var(--text-faint); text-decoration: none; }
+  .zone-block a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* ── Map speech bubble ── */
+  @keyframes bubbleUp {
+    0%   { opacity: 0; transform: translateY(6px) scale(0.92); }
+    15%  { opacity: 1; transform: translateY(0) scale(1); }
+    80%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .map-bubble {
+    position: absolute;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    color: var(--text);
+    pointer-events: none;
+    z-index: 900;
+    max-width: 220px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
+    animation: bubbleUp 5s ease forwards;
+  }
+  .map-bubble.live-bubble {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--bg-raised) 92%, var(--accent));
+    animation: none;
+    opacity: 1;
+    pointer-events: auto;
+    cursor: default;
+    white-space: normal;
+    word-break: break-word;
+    padding-right: 20px;
+  }
+  .bubble-close {
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+  }
+  .bubble-close:hover { color: var(--text); }
+  .bubble-tail { display:block; position:absolute; bottom:-8px; left:10px; width:14px; height:8px; }
+  .map-bubble a { color: inherit; text-decoration: none; display: block; }
+  .map-bubble a:hover { opacity: 0.8; }
+  .map-bubble-sender { color: var(--accent); font-weight: 600; margin-right: 5px; }
+  .live-tag { font-size: 9px; color: var(--accent); font-weight: 700; margin-left: 4px; opacity: 0.7; }
+
+  #sidebar-body { flex: 1; overflow-y: auto; }
+  #sidebar-body::-webkit-scrollbar { width: 4px; }
+  #sidebar-body::-webkit-scrollbar-track { background: transparent; }
+  #sidebar-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .feed-item {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .feed-item:hover { background: var(--bg-raised); }
+
+  .feed-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .feed-repo {
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 170px;
+  }
+  .feed-repo.community { color: var(--event-color); }
+  .feed-time { font-size: 10px; color: var(--text-faint); white-space: nowrap; flex-shrink: 0; }
+  .feed-title { font-size: 12px; color: var(--text); line-height: 1.4; word-break: break-word; }
+  .feed-type {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .type-push    { background: rgba(119,136,104,0.2); color: #96aa88; }
+  .type-pr      { background: rgba(72,116,158,0.2);  color: #7aaad4; }
+  .type-release { background: rgba(160,140,80,0.2);  color: #b4a462; }
+  .type-create  { background: rgba(180,175,165,0.15);color: #989890; }
+  .type-topic   { background: rgba(72,116,158,0.2);  color: #7aaad4; }
+
+  .feed-empty { padding: 24px 14px; color: var(--text-faint); font-size: 12px; text-align: center; }
+
+  /* ── YouTube corner widget ── */
+  #yt-widget {
+    position: absolute;
+    bottom: 24px;
+    right: 16px;
+    z-index: 1000;
+    width: 280px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    backdrop-filter: blur(4px);
+  }
+  #yt-widget.collapsed #yt-player { display: none; }
+  #yt-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-main);
+  }
+  #yt-header:hover { background: var(--bg-raised); }
+  #yt-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
+  #yt-title { font-size: 11px; color: var(--text-muted); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #yt-chevron { font-size: 10px; color: var(--text-faint); flex-shrink: 0; transition: transform 0.2s; }
+  #yt-widget.collapsed #yt-chevron { transform: rotate(180deg); }
+  #yt-player iframe { display: block; width: 100%; height: 158px; border: none; }
+
+  /* Leaflet attribution themed */
+  .leaflet-control-attribution {
+    background: var(--bg-overlay) !important;
+    color: var(--text-faint) !important;
+    border-radius: 4px 0 0 0;
+    font-family: var(--font-main);
+    font-size: 10px;
+  }
+  .leaflet-control-attribution a { color: var(--accent) !important; }
+
+  /* ── How-to modal ── */
+  #modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(3px);
+    align-items: center;
+    justify-content: center;
+  }
+  #modal-overlay.open { display: flex; }
+  #modal {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 440px;
+    max-width: 94vw;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    font-family: var(--font-main);
+  }
+  #modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  #modal-head h2 {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+  }
+  #modal-close {
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  #modal-close:hover { background: var(--bg-hover); color: var(--text); }
+  #modal-body { padding: 20px; }
+  .modal-step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .modal-step:last-child { margin-bottom: 0; }
+  .modal-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(119,136,104,0.2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .modal-step-body {}
+  .modal-step-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+  .modal-step-body p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .modal-step-body p:last-child { margin-bottom: 0; }
+  .modal-step-body a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .modal-step-body a:hover { text-decoration: underline; }
+  .modal-code {
+    display: block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 6px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .modal-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 18px 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>Logos Live</h1>
+
+  <div class="stat">
+    <span class="stat-label">Status</span>
+    <span id="mode-badge" class="stat-value mode-offline">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">Slot</span>
+    <span class="stat-value" id="stat-slot">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">Height</span>
+    <span class="stat-value" id="stat-height">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">LIB Slot</span>
+    <span class="stat-value" id="stat-lib">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">Peers</span>
+    <span class="stat-value" id="stat-peers">—</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">Circles</span>
+    <span class="stat-value" id="stat-events">—</span>
+  </div>
+
+  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text-muted);font-size:12px;white-space:nowrap;">
+    <input type="checkbox" id="toggle-events" checked style="accent-color:#48749e;"> Circles
+  </label>
+  <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text-muted);font-size:12px;white-space:nowrap;">
+    <input type="checkbox" id="toggle-nodes" checked style="accent-color:var(--node-online);"> Nodes
+  </label>
+
+  <div id="spacer"></div>
+
+  <span id="updated-label">—</span>
+  <button id="theme-btn" onclick="cycleTheme()" title="Toggle theme"></button>
+  <button class="hdr-btn" onclick="refresh()">Refresh</button>
+  <button class="hdr-btn active" id="feed-btn" onclick="toggleSidebar()">Feed</button>
+  <button class="hdr-btn" onclick="openModal()" title="How to post to the map">?</button>
+</div>
+
+<!-- How-to-post modal -->
+<div id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div id="modal">
+    <div id="modal-head">
+      <h2>How to post to the map</h2>
+      <button id="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body">
+
+      <div class="modal-step">
+        <div class="modal-num">1</div>
+        <div class="modal-step-body">
+          <div class="modal-step-title">Run a Logos node</div>
+          <p>Follow the setup guide and run a local node connected to the Logos testnet.</p>
+          <p><a href="https://github.com/logos-co/nomos-node" target="_blank" rel="noopener">github.com/logos-co/nomos-node →</a></p>
+        </div>
+      </div>
+
+      <div class="modal-divider"></div>
+
+      <div class="modal-step">
+        <div class="modal-num">2</div>
+        <div class="modal-step-body">
+          <div class="modal-step-title">Announce your location (optional)</div>
+          <p>Post a message with <strong>#geo lat,lon</strong> once in your channel. The scanner picks it up and anchors all your future messages to that spot on the map.</p>
+          <code class="modal-code">#geo 51.5074,-0.1278</code>
+        </div>
+      </div>
+
+      <div class="modal-divider"></div>
+
+      <div class="modal-step">
+        <div class="modal-num">3</div>
+        <div class="modal-step-body">
+          <div class="modal-step-title">Post to the map</div>
+          <p>Send a zone-board message on your node that contains <strong>#live</strong>. The scanner picks it up within ~30 seconds of block finalization and it appears as a pinned bubble on the map.</p>
+          <code class="modal-code">channel:  logos:yolo:&lt;your_username&gt;
+message:  "Running well today #live"</code>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="main">
+  <div id="map-wrap">
+    <div id="map"></div>
+    <div id="node-count"><strong id="node-count-num">—</strong>online / total</div>
+    <div id="loading">Loading network data...</div>
+
+    <div id="yt-widget" style="display:none;">
+      <div id="yt-header" onclick="toggleYT()">
+        <span id="yt-dot"></span>
+        <span id="yt-title">Latest from Logos</span>
+        <span id="yt-chevron">▲</span>
+      </div>
+      <div id="yt-player"></div>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <div id="sidebar-tabs">
+      <button class="stab stab-msgs active" data-tab="msgs" onclick="switchTab('msgs')">Messages</button>
+      <button class="stab" data-tab="dev" onclick="switchTab('dev')">Dev</button>
+      <button class="stab ctab" data-tab="community" onclick="switchTab('community')">Community</button>
+      <button class="stab stab-stake" data-tab="stake" onclick="switchTab('stake')">Stake</button>
+    </div>
+    <div id="sidebar-body">
+      <div class="feed-empty">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Theme ─────────────────────────────────────────────────────────────────────
+const TILE_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+const TILE_ATTR  = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
+
+function isDaytime() {
+  const h = new Date().getHours();
+  return h >= 7 && h < 20;
+}
+
+let currentTheme = (() => {
+  const saved = localStorage.getItem('logos-live-theme');
+  return saved || (isDaytime() ? 'light' : 'dark');
+})();
+
+const SVG_SUN  = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+const SVG_MOON = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+
+function applyTheme(theme) {
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('theme-btn').innerHTML = theme === 'dark' ? SVG_SUN : SVG_MOON;
+  localStorage.setItem('logos-live-theme', theme);
+  if (tileLayer) tileLayer.setUrl(theme === 'dark' ? TILE_DARK : TILE_LIGHT);
+}
+
+function cycleTheme() {
+  applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+}
+
+// Apply immediately (before map init)
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+// ── Map init ──────────────────────────────────────────────────────────────────
+const map = L.map('map', {
+  center: [20, 10],
+  zoom: 2,
+  minZoom: 2,
+  zoomControl: true,
+  attributionControl: true,
+  worldCopyJump: false,
+  maxBounds: [[-85, -180], [85, 180]],
+  maxBoundsViscosity: 1.0,
+});
+
+let tileLayer = L.tileLayer(currentTheme === 'dark' ? TILE_DARK : TILE_LIGHT, {
+  attribution: TILE_ATTR,
+  subdomains: 'abcd',
+  maxZoom: 18,
+  noWrap: true,
+}).addTo(map);
+
+// Set initial icon now that SVGs are defined
+document.getElementById('theme-btn').innerHTML = currentTheme === 'dark' ? SVG_SUN : SVG_MOON;
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let markers = [];
+let eventMarkers = [];
+
+function clearMarkers() {
+  markers.forEach(m => m.remove());      markers = [];
+  eventMarkers.forEach(m => m.remove()); eventMarkers = [];
+}
+
+function makeIcon(isSelf, online) {
+  let cls = 'node-marker';
+  if (isSelf)        cls += ' self';
+  else if (!online)  cls += ' offline';
+  return L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [12,12], iconAnchor: [6,6] });
+}
+
+function fmtTs(ts) {
+  if (!ts) return '—';
+  return new Date(ts * 1000).toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+}
+function fmt(n) { return n == null ? '—' : Number(n).toLocaleString(); }
+function timeSince(ts) {
+  const s = Math.round(Date.now()/1000 - ts);
+  if (s < 60)    return `${s}s ago`;
+  if (s < 3600)  return `${Math.round(s/60)}m ago`;
+  if (s < 86400) return `${Math.round(s/3600)}h ago`;
+  return `${Math.round(s/86400)}d ago`;
+}
+function timeSinceISO(iso) { return timeSince(new Date(iso).getTime() / 1000); }
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render(data) {
+  const chain = data.chain || {};
+  const net   = data.network || {};
+
+  const mode = chain.mode || 'Offline';
+  const badge = document.getElementById('mode-badge');
+  badge.textContent = mode;
+  badge.className = mode === 'Online' ? 'stat-value mode-online'
+                  : mode === 'Offline' ? 'stat-value mode-offline'
+                  : 'stat-value mode-syncing';
+
+  document.getElementById('stat-slot').textContent   = fmt(chain.slot);
+  document.getElementById('stat-height').textContent = fmt(chain.height);
+  document.getElementById('stat-lib').textContent    = fmt(chain.lib_slot);
+  document.getElementById('stat-peers').textContent  = fmt(net.n_peers);
+  document.getElementById('updated-label').textContent = 'Updated ' + timeSince(data.updated);
+
+  const onlineCount = data.nodes.filter(n => n.self || n.online !== false).length;
+  document.getElementById('node-count-num').textContent = `${onlineCount} / ${data.nodes.length}`;
+
+  clearMarkers();
+
+  const showEvents = document.getElementById('toggle-events').checked;
+  const events = data.events || [];
+  document.getElementById('stat-events').textContent =
+    `${events.filter(e => e.upcoming).length} upcoming / ${events.length} total`;
+
+  for (const ev of events) {
+    const cls = ev.upcoming ? 'event-marker upcoming' : 'event-marker past';
+    const icon = L.divIcon({ className: '', html: `<div class="${cls}"></div>`, iconSize: [14,14], iconAnchor: [7,7] });
+    const m = L.marker([ev.lat, ev.lon], { icon, zIndexOffset: ev.upcoming ? 500 : -50, opacity: showEvents ? 1 : 0 });
+    const date = ev.start ? ev.start.slice(0, 10) : '—';
+    const loc  = [ev.city, ev.country].filter(Boolean).join(', ') || '—';
+    m.bindPopup(`
+      <div style="color:var(--event-color);font-weight:600;margin-bottom:6px;">● ${ev.upcoming ? 'Upcoming Circle' : 'Past Circle'}</div>
+      <div style="font-weight:600;margin-bottom:8px;">${ev.name}</div>
+      <div class="popup-row"><span class="popup-key">Date</span><span class="popup-val">${date}</span></div>
+      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${loc}</span></div>
+      <div class="popup-row"><span class="popup-key">Address</span><span class="popup-val" style="max-width:160px;word-break:break-word;">${ev.address || '—'}</span></div>
+      <div style="margin-top:8px;"><a href="${ev.url}" target="_blank" style="font-size:12px;">View on lu.ma →</a></div>
+    `);
+    if (showEvents) m.addTo(map);
+    eventMarkers.push(m);
+  }
+
+  const showNodes = document.getElementById('toggle-nodes').checked;
+  for (const node of data.nodes) {
+    const online = node.self || node.online !== false;
+    const m = L.marker([node.lat, node.lon], {
+      icon: makeIcon(node.self, online),
+      zIndexOffset: node.self ? 1000 : (online ? 0 : -100),
+      opacity: online ? 1 : 0.6,
+    });
+    const shortPeer = node.peer_id.slice(0, 16) + '…' + node.peer_id.slice(-8);
+    const loc = [node.city, node.country].filter(Boolean).join(', ') || 'Unknown';
+    const selfLabel   = '';
+    const statusLabel = `<div style="color:${online ? '#22c55e' : 'var(--text-muted)'};font-size:11px;font-weight:600;margin-bottom:6px;">${online ? '● Online' : '● Offline'}</div>`;
+    m.bindPopup(`
+      ${selfLabel}${statusLabel}
+      <div class="popup-peer-id" title="${node.peer_id}">${shortPeer}</div>
+      <div class="popup-row"><span class="popup-key">IP</span><span class="popup-val">${node.ip}</span></div>
+      <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${loc}</span></div>
+      <div class="popup-row"><span class="popup-key">ISP</span><span class="popup-val">${node.isp || '—'}</span></div>
+      <div class="popup-row"><span class="popup-key">Org</span><span class="popup-val">${node.org || '—'}</span></div>
+      <div class="popup-row"><span class="popup-key">ASN</span><span class="popup-val">${node.asn || '—'}</span></div>
+      ${node.first_seen ? `<div class="popup-row"><span class="popup-key">First seen</span><span class="popup-val">${fmtTs(node.first_seen)}</span></div>` : ''}
+      ${node.last_seen  ? `<div class="popup-row"><span class="popup-key">Last seen</span><span class="popup-val">${fmtTs(node.last_seen)}</span></div>` : ''}
+    `);
+    if (showNodes) m.addTo(map);
+    markers.push(m);
+  }
+
+  // Update gossip animation node pool
+  arcOnlineNodes = data.nodes.filter(n => n.online !== false);
+}
+
+// ── Gossip arc animations ─────────────────────────────────────────────────────
+let arcOnlineNodes = [];
+const activeArcs   = [];
+const MAX_ARCS     = 8;
+const ARC_DURATION = 3200;
+let arcsSvgLayer, arcsGroup;
+const svgNS = 'http://www.w3.org/2000/svg';
+
+function initArcs() {
+  arcsSvgLayer = L.svg({ padding: 0.5 }).addTo(map);
+  arcsGroup = document.createElementNS(svgNS, 'g');
+  arcsSvgLayer._container.appendChild(arcsGroup);
+  setInterval(spawnArc, 1800);
+  animArcs();
+}
+
+function spawnArc() {
+  const ns = arcOnlineNodes.filter(n => !n.offline);
+  if (ns.length < 2 || activeArcs.length >= MAX_ARCS) return;
+  const n1 = ns[Math.floor(Math.random() * ns.length)];
+  let n2, tries = 0;
+  do { n2 = ns[Math.floor(Math.random() * ns.length)]; tries++; }
+  while (n1 === n2 && tries < 10);
+  if (n1 === n2) return;
+
+  const pathEl = document.createElementNS(svgNS, 'path');
+  pathEl.setAttribute('fill', 'none');
+  pathEl.setAttribute('stroke', '#778868');
+  pathEl.setAttribute('stroke-width', '0.8');
+  arcsGroup.appendChild(pathEl);
+
+  const dotEl = document.createElementNS(svgNS, 'circle');
+  dotEl.setAttribute('r', '2.5');
+  dotEl.setAttribute('fill', '#a4b898');
+  arcsGroup.appendChild(dotEl);
+
+  activeArcs.push({ n1, n2, pathEl, dotEl, t0: performance.now(),
+                    dur: ARC_DURATION + Math.random() * 2000 });
+}
+
+function easeIO(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+function animArcs() {
+  const now = performance.now();
+  for (let i = activeArcs.length - 1; i >= 0; i--) {
+    const a = activeArcs[i];
+    const t = Math.min((now - a.t0) / a.dur, 1);
+    const p1 = map.latLngToLayerPoint([a.n1.lat, a.n1.lon]);
+    const p2 = map.latLngToLayerPoint([a.n2.lat, a.n2.lon]);
+    const mx = (p1.x+p2.x)/2, my = (p1.y+p2.y)/2;
+    const dx = p2.x-p1.x, dy = p2.y-p1.y;
+    const len = Math.sqrt(dx*dx+dy*dy) || 1;
+    const off = Math.min(len*0.28, 70);
+    const cx = mx - (dy/len)*off, cy = my + (dx/len)*off;
+    a.pathEl.setAttribute('d', `M${p1.x} ${p1.y} Q${cx} ${cy} ${p2.x} ${p2.y}`);
+    const fade = t < 0.12 ? t/0.12 : t > 0.88 ? (1-t)/0.12 : 1;
+    a.pathEl.setAttribute('opacity', (0.28*fade).toString());
+    const bt = easeIO(t);
+    const bx = (1-bt)*(1-bt)*p1.x + 2*(1-bt)*bt*cx + bt*bt*p2.x;
+    const by = (1-bt)*(1-bt)*p1.y + 2*(1-bt)*bt*cy + bt*bt*p2.y;
+    a.dotEl.setAttribute('cx', bx); a.dotEl.setAttribute('cy', by);
+    a.dotEl.setAttribute('opacity', (0.9*fade).toString());
+    if (t >= 1) { a.pathEl.remove(); a.dotEl.remove(); activeArcs.splice(i, 1); }
+  }
+  requestAnimationFrame(animArcs);
+}
+
+// ── Network data ──────────────────────────────────────────────────────────────
+let firstLoad = true;
+
+async function refresh() {
+  document.getElementById('loading').classList.remove('hidden');
+  try {
+    const resp = await fetch('./network.json');
+    if (!resp.ok) throw new Error(resp.statusText);
+    const data = await resp.json();
+    render(data);
+    initYouTube(data.youtube);
+    loadFeedsFromData(data);
+    if (firstLoad) {
+      firstLoad = false;
+      const pts = [
+        ...data.nodes.map(n => [n.lat, n.lon]),
+        ...(data.events || []).filter(e => e.upcoming).map(e => [e.lat, e.lon]),
+      ];
+      if (pts.length > 0) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 6 });
+    }
+  } catch (e) {
+    document.getElementById('updated-label').textContent = 'Error: ' + e.message;
+  } finally {
+    document.getElementById('loading').classList.add('hidden');
+  }
+}
+
+document.getElementById('toggle-events').addEventListener('change', e => {
+  eventMarkers.forEach(m => e.target.checked ? m.addTo(map) : m.remove());
+});
+document.getElementById('toggle-nodes').addEventListener('change', e => {
+  markers.forEach(m => e.target.checked ? m.addTo(map) : m.remove());
+});
+
+refresh();
+setInterval(refresh, 30_000);
+setTimeout(() => map.invalidateSize(), 100);
+initArcs();
+
+// ── Sidebar ───────────────────────────────────────────────────────────────────
+let activeTab = 'msgs';
+let ghItems = [];
+let communityItems = [];
+let stakeData = null;
+let zoneMessages = [];
+let lastZoneSlot = 0;
+
+function toggleSidebar() {
+  const sb  = document.getElementById('sidebar');
+  const btn = document.getElementById('feed-btn');
+  const hidden = sb.classList.toggle('hidden');
+  btn.classList.toggle('active', !hidden);
+  setTimeout(() => map.invalidateSize(), 220);
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.stab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  renderFeed();
+}
+
+function renderFeed() {
+  const body = document.getElementById('sidebar-body');
+  if (activeTab === 'stake') { renderStake(body); return; }
+  if (activeTab === 'msgs')  { renderZone(body);  return; }
+  const items = activeTab === 'dev' ? ghItems : communityItems;
+  if (!items.length) { body.innerHTML = '<div class="feed-empty">No data yet</div>'; return; }
+  body.innerHTML = items.map(item => activeTab === 'dev' ? `
+    <div class="feed-item" onclick="window.open('${item.url}','_blank')">
+      <div class="feed-meta">
+        <span class="feed-repo">${item.repo}</span>
+        <span class="feed-time">${timeSinceISO(item.timestamp)}</span>
+      </div>
+      <span class="feed-type ${item.cls}">${item.type}</span>
+      <div class="feed-title">${item.title}</div>
+    </div>` : `
+    <div class="feed-item" onclick="window.open('${item.url}','_blank')">
+      <div class="feed-meta">
+        <span class="feed-repo community">${item.category}</span>
+        <span class="feed-time">${timeSinceISO(item.timestamp)}${item.replies ? ` · ${item.replies} replies` : ''}</span>
+      </div>
+      <span class="feed-type type-topic">Forum</span>
+      <div class="feed-title">${item.title}</div>
+    </div>`).join('');
+}
+
+function renderStake(body) {
+  const s = stakeData;
+  if (!s) { body.innerHTML = '<div class="feed-empty">No stake data yet</div>'; return; }
+
+  const GOAL_PER_ADDR = 1_000_000;
+  const distributed   = s.total_distributed || 0;
+  const recipients    = s.recipients || 0;
+  // Progress toward 1M per address goal
+  const pct = recipients > 0 ? Math.min(100, Math.round(distributed / (recipients * GOAL_PER_ADDR) * 100)) : 0;
+  const fmtN = n => Number(n).toLocaleString();
+
+  const leadersHtml = (s.top_leaders || []).slice(0, 8).map(l => `
+    <div class="leader-row">
+      <span class="leader-pk">${l.pk}…</span>
+      <div class="leader-bar-wrap"><div class="leader-bar" style="width:${Math.min(100,l.pct)}%"></div></div>
+      <span class="leader-pct">${l.pct}%</span>
+    </div>`).join('');
+
+  body.innerHTML = `
+    <div class="stake-card">
+      <div class="stake-card-title">Faucet Distribution</div>
+      <div class="stake-big">${fmtN(recipients)}</div>
+      <div class="stake-sub">addresses received tokens</div>
+      <div class="stake-bar-wrap">
+        <div class="stake-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <div class="stake-bar-label">${fmtN(distributed)} tokens distributed · goal 1M / addr</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-card-title">Distribution Stats</div>
+      <div class="stake-row">
+        <span class="stake-row-key">Tokens per address</span>
+        <span class="stake-row-val">${fmtN(recipients > 0 ? Math.round(distributed / recipients) : 0)}</span>
+      </div>
+      <div class="stake-row">
+        <span class="stake-row-key">Goal per address</span>
+        <span class="stake-row-val">${fmtN(GOAL_PER_ADDR)}</span>
+      </div>
+      <div class="stake-row">
+        <span class="stake-row-key">Progress</span>
+        <span class="stake-row-val">${pct}%</span>
+      </div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-card-title">Block Leaders (last ${fmtN(s.total_leader_blocks || 0)} blocks)</div>
+      <div class="stake-row" style="margin-bottom:8px;">
+        <span class="stake-row-key">Unique validators</span>
+        <span class="stake-row-val">${fmtN(s.unique_leaders || 0)}</span>
+      </div>
+      ${leadersHtml}
+    </div>`;
+}
+
+function renderZone(body) {
+  if (!zoneMessages.length) {
+    body.innerHTML = '<div class="feed-empty">No zone messages yet</div>';
+    return;
+  }
+  const cadenceNote = '<div style="font-size:10px;color:var(--text-faint);text-align:center;padding:4px 0 10px;letter-spacing:0.02em;">map data refreshes every ~10 min</div>';
+  body.innerHTML = cadenceNote + zoneMessages.map(m => {
+    const statusCls = m.status === 'finalized' ? 'finalized' : m.status === 'pending' ? 'pending' : 'confirmed';
+    const when = m.observed_at ? timeSinceISO(m.observed_at) : (m.slot ? `slot ${fmt(m.slot)}` : '');
+    return `<div class="zone-msg">
+      <div class="zone-msg-header">
+        <span class="zone-sender">${m.sender}</span>
+        <span class="zone-time">${when}</span>
+        <span class="zone-status ${statusCls}">${m.status}</span>
+      </div>
+      <div class="zone-text">${m.text}${m.live ? ' <span class="live-tag" style="font-size:10px;opacity:0.8;">📍 on map</span>' : ''}</div>
+      ${m.tx_id ? `<div class="zone-block"><a href="https://devnet.blockchain.logos.co/web/explorer/transactions/${m.tx_id}" target="_blank" rel="noopener">tx ${m.tx_id.slice(0,16)}…</a></div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ── Map speech bubbles ────────────────────────────────────────────────────────
+const mapWrap = document.getElementById('map-wrap');
+let bubbleQueue = [];
+let bubbleTimer = null;
+
+// Persistent #live bubbles: sender → DOM element
+let liveBubbleEls  = new Map();
+// Underlying data for re-positioning on map move
+let liveBubbleData = [];
+
+function bubbleTail(live) {
+  const border = live ? 'var(--accent)' : 'var(--border)';
+  const fill   = live ? 'color-mix(in srgb, var(--bg-raised) 92%, var(--accent))' : 'var(--bg-raised)';
+  return `<svg class="bubble-tail" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,0 14,0 2,8" fill="${border}"/>
+    <polygon points="1,0 14,0 3,7" fill="${fill}"/>
+  </svg>`;
+}
+
+function bubbleYOffset() {
+  const z = map.getZoom();
+  const t = Math.max(0, Math.min(1, (z - 3) / 9)); // 0 at zoom≤3, 1 at zoom≥12
+  return Math.round(t * 25);
+}
+
+function getBubbleAnchor(msg) {
+  if (msg.lat != null && msg.lon != null) {
+    return map.latLngToContainerPoint([msg.lat, msg.lon]);
+  }
+  // No geo — Antarctica sentinel
+  return map.latLngToContainerPoint([-72, 2.5]);
+}
+
+function _renderLiveBubble(msg) {
+  const pt = getBubbleAnchor(msg);
+  if (!pt) return;
+  const text = msg.text;
+  const href = msg.tx_id
+    ? `https://devnet.blockchain.logos.co/web/explorer/transactions/${msg.tx_id}`
+    : null;
+  const el = document.createElement('div');
+  el.className = 'map-bubble live-bubble';
+  // Bottom of bubble (triangle tip) sits exactly on the coordinate
+  el.style.left      = (pt.x - 14) + 'px';
+  el.style.top       = (pt.y - 7 - bubbleYOffset()) + 'px';
+  el.style.transform = 'translateY(-100%)';
+  const inner = href
+    ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}</a>`
+    : `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
+  el.innerHTML =
+    `<button class="bubble-close" onclick="dismissBubble('${CSS.escape(msg.sender)}')">×</button>` +
+    inner + bubbleTail(true);
+  mapWrap.appendChild(el);
+  liveBubbleEls.set(msg.sender, el);
+}
+
+function dismissBubble(sender) {
+  const el = liveBubbleEls.get(sender);
+  if (el) { el.remove(); liveBubbleEls.delete(sender); }
+  liveBubbleData = liveBubbleData.filter(m => m.sender !== sender);
+}
+
+map.on('move zoom', () => {
+  liveBubbleEls.forEach(el => el.remove());
+  liveBubbleEls.clear();
+  liveBubbleData.forEach(m => _renderLiveBubble(m));
+});
+
+function placeLiveBubbles(messages) {
+  liveBubbleEls.forEach(el => el.remove());
+  liveBubbleEls.clear();
+
+  // Dedup: one bubble per sender (messages are newest-first → first hit = latest)
+  const seen = new Set();
+  liveBubbleData = [];
+  for (const m of messages) {
+    if (m.live && !seen.has(m.sender)) {
+      seen.add(m.sender);
+      liveBubbleData.push(m);
+      if (liveBubbleData.length >= 20) break;
+    }
+  }
+  liveBubbleData.forEach(m => _renderLiveBubble(m));
+}
+
+function showMapBubble(msg) {
+  // Transient bubble for newly-seen messages
+  const pt = getBubbleAnchor(msg);
+  if (!pt) return;
+  const text = msg.text;
+  const href = msg.tx_id
+    ? `https://devnet.blockchain.logos.co/web/explorer/transactions/${msg.tx_id}`
+    : null;
+  const el = document.createElement('div');
+  el.className = 'map-bubble';
+  el.style.pointerEvents = href ? 'auto' : 'none';
+  el.style.left      = (pt.x - 14) + 'px';
+  el.style.top       = (pt.y - 7 - bubbleYOffset()) + 'px';
+  el.style.transform = 'translateY(-100%)';
+  const inner = href
+    ? `<a href="${href}" target="_blank" rel="noopener"><span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}</a>`
+    : `<span class="map-bubble-sender">${msg.sender}</span>${text.slice(0, 80)}${text.length > 80 ? '…' : ''}`;
+  el.innerHTML = inner + bubbleTail(false);
+  mapWrap.appendChild(el);
+  setTimeout(() => el.remove(), 5200);
+}
+
+function drainBubbleQueue() {
+  if (!bubbleQueue.length) { bubbleTimer = null; return; }
+  showMapBubble(bubbleQueue.shift());
+  bubbleTimer = setTimeout(drainBubbleQueue, 3500);
+}
+
+function loadFeedsFromData(data) {
+  ghItems        = data.github        || [];
+  communityItems = data.discourse     || [];
+  stakeData      = data.stake         || null;
+  const newMsgs  = data.zone_messages || [];
+
+  // Find messages newer than last seen
+  const newHighSlot = newMsgs.length ? newMsgs[0].slot : 0;
+  if (newHighSlot > lastZoneSlot && lastZoneSlot > 0) {
+    const fresh = newMsgs.filter(m => m.slot > lastZoneSlot && m.status !== 'pending');
+    fresh.slice(0, 3).forEach(m => bubbleQueue.push(m));
+    if (!bubbleTimer && bubbleQueue.length) bubbleTimer = setTimeout(drainBubbleQueue, 800);
+  }
+  if (newHighSlot > 0) lastZoneSlot = newHighSlot;
+  zoneMessages = newMsgs;
+
+  // Place persistent #live bubbles on map
+  placeLiveBubbles(zoneMessages);
+
+  renderFeed();
+}
+
+// ── YouTube widget ────────────────────────────────────────────────────────────
+let ytInitialized = false;
+
+function initYouTube(yt) {
+  if (ytInitialized || !yt?.video_id) return;
+  ytInitialized = true;
+  const widget = document.getElementById('yt-widget');
+  widget.style.display = '';
+  document.getElementById('yt-title').textContent = yt.title || 'Latest from Logos';
+  document.getElementById('yt-player').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${yt.video_id}?rel=0&modestbranding=1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>`;
+}
+
+function toggleYT() {
+  document.getElementById('yt-widget').classList.toggle('collapsed');
+}
+
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
