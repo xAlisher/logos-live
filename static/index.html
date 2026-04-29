@@ -30,6 +30,32 @@
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
   --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* structural */
+  --bg-deep:       #0d1016;
+  --bg-mid:        #101319;
+  --bg-raised:     #151a22;
+  --bg-overlay:    rgba(18, 21, 27, 0.96);
+  --subtle:        rgba(239, 242, 234, 0.06);
+  --subtle-hover:  rgba(239, 242, 234, 0.09);
+  --node-border-c: rgba(239, 242, 234, 0.80);
+  --node-offline-c:#586070;
+  --bubble-bg:     rgba(31, 37, 48, 0.95);
+  --bubble-border: rgba(143, 169, 121, 0.38);
+  /* semantic alpha */
+  --green-a1:      rgba(143, 169, 121, 0.13);
+  --green-a2:      rgba(143, 169, 121, 0.35);
+  --red-a1:        rgba(201, 125, 125, 0.12);
+  --red-a2:        rgba(201, 125, 125, 0.35);
+  --blue-a1:       rgba(110, 164, 191, 0.12);
+  --blue-a2:       rgba(110, 164, 191, 0.15);
+  --gold-a1:       rgba(208, 173, 98, 0.11);
+  --gold-a2:       rgba(208, 173, 98, 0.34);
+  --pill-hosting-text:     #b8deef;
+  --pill-residential-text: #c7e4ad;
+  --pill-unknown-text:     #f0cf83;
+  --code-bg:       #0d1016;
+  --code-text:     #dbe6d1;
+  --map-bg:        #0d1017;
 }
 
 [data-theme="light"] {
@@ -50,6 +76,30 @@
   --red:        #a04040;
   --purple:     #6e4a9a;
   --shadow:     0 4px 24px rgba(0,0,0,0.10);
+  --bg-deep:       #dedad2;
+  --bg-mid:        #e4e1da;
+  --bg-raised:     #eae7e0;
+  --bg-overlay:    rgba(244, 242, 237, 0.96);
+  --subtle:        rgba(28, 32, 40, 0.06);
+  --subtle-hover:  rgba(28, 32, 40, 0.09);
+  --node-border-c: rgba(28, 32, 40, 0.70);
+  --node-offline-c:#9aa09a;
+  --bubble-bg:     rgba(244, 242, 237, 0.97);
+  --bubble-border: rgba(100, 130, 80, 0.45);
+  --green-a1:      rgba(100, 130, 80, 0.12);
+  --green-a2:      rgba(100, 130, 80, 0.35);
+  --red-a1:        rgba(160, 64, 64, 0.10);
+  --red-a2:        rgba(160, 64, 64, 0.30);
+  --blue-a1:       rgba(45, 90, 128, 0.10);
+  --blue-a2:       rgba(45, 90, 128, 0.18);
+  --gold-a1:       rgba(138, 110, 32, 0.10);
+  --gold-a2:       rgba(138, 110, 32, 0.30);
+  --pill-hosting-text:     #2d5a80;
+  --pill-residential-text: #4e5e3e;
+  --pill-unknown-text:     #7a5e10;
+  --code-bg:       #dedad2;
+  --code-text:     #1c2028;
+  --map-bg:        #d8dbd0;
 }
 
 * { box-sizing: border-box; }
@@ -79,7 +129,7 @@ button, input {
   gap: 24px;
   align-items: center;
   padding: 14px 20px;
-  background: rgba(18, 21, 27, 0.96);
+  background: var(--bg-overlay);
   border-bottom: 1px solid var(--line);
 }
 
@@ -96,8 +146,8 @@ button, input {
   display: grid;
   place-items: center;
   border: 1px solid var(--line-strong);
-  background: #d8dbd0;
-  color: #1c2028;
+  background: var(--bg-raised);
+  color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 24px;
   line-height: 1;
@@ -160,15 +210,15 @@ button, input {
   width: fit-content;
   gap: 6px;
   padding: 3px 8px;
-  border: 1px solid rgba(143, 169, 121, 0.35);
-  background: rgba(143, 169, 121, 0.14);
+  border: 1px solid var(--green-a2);
+  background: var(--green-a1);
   color: var(--green-2);
   font-size: 12px;
 }
 
 .mode-pill.offline {
-  border-color: rgba(201, 125, 125, 0.35);
-  background: rgba(201, 125, 125, 0.12);
+  border-color: var(--red-a2);
+  background: var(--red-a1);
   color: var(--red);
 }
 
@@ -209,7 +259,7 @@ button, input {
   min-height: 0;
   padding: 16px 12px;
   border-right: 1px solid var(--line);
-  background: #101319;
+  background: var(--bg-mid);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -388,7 +438,7 @@ button, input {
 #map {
   height: min(62vh, 680px);
   min-height: 430px;
-  background: #151a22;
+  background: var(--bg-raised);
   border-radius: 0 0 8px 8px;
 }
 
@@ -410,14 +460,14 @@ button, input {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  border: 2px solid rgba(239, 242, 234, 0.8);
+  border: 2px solid var(--node-border-c);
   background: var(--green);
-  box-shadow: 0 0 0 6px rgba(143, 169, 121, 0.15);
+  box-shadow: 0 0 0 6px var(--green-a2);
 }
 
-.marker.hosting { background: var(--blue); box-shadow: 0 0 0 6px rgba(110, 164, 191, 0.15); }
+.marker.hosting { background: var(--blue); box-shadow: 0 0 0 6px var(--blue-a2); }
 .marker.residential { background: var(--green); }
-.marker.unknown { background: var(--gold); box-shadow: 0 0 0 6px rgba(208, 173, 98, 0.14); }
+.marker.unknown { background: var(--gold); box-shadow: 0 0 0 6px var(--gold-a2); }
 .marker.offline { background: #525866; box-shadow: none; opacity: 0.8; }
 .marker.self { background: #eff2ea; border-color: var(--green); }
 
@@ -426,12 +476,12 @@ button, input {
   height: 15px;
   border-radius: 50%;
   background: var(--blue);
-  border: 2px solid rgba(239, 242, 234, 0.8);
-  box-shadow: 0 0 0 7px rgba(110, 164, 191, 0.15);
+  border: 2px solid var(--node-border-c);
+  box-shadow: 0 0 0 7px var(--blue-a2);
 }
 
 .event-marker.past {
-  background: #586070;
+  background: var(--node-offline-c);
   box-shadow: none;
   opacity: 0.75;
 }
@@ -506,8 +556,8 @@ button, input {
   z-index: 600;
   max-width: 260px;
   padding: 8px 12px;
-  border: 1px solid rgba(143, 169, 121, 0.38);
-  background: rgba(31, 37, 48, 0.95);
+  border: 1px solid var(--bubble-border);
+  background: var(--bubble-bg);
   color: var(--text);
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -611,7 +661,7 @@ button, input {
 
 .bar-track {
   height: 8px;
-  background: rgba(239, 242, 234, 0.08);
+  background: var(--subtle-hover);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -644,7 +694,7 @@ button, input {
   min-width: 0;
   height: 36px;
   border: 1px solid var(--line);
-  background: #101319;
+  background: var(--bg-mid);
   color: var(--text);
   border-radius: 6px;
   padding: 0 12px;
@@ -686,7 +736,7 @@ td {
 }
 
 tr:hover td {
-  background: rgba(239, 242, 234, 0.025);
+  background: var(--subtle);
 }
 
 .mono {
@@ -707,12 +757,12 @@ tr:hover td {
   white-space: nowrap;
 }
 
-.pill.hosting { color: #b8deef; border-color: rgba(110, 164, 191, 0.36); background: rgba(110, 164, 191, 0.12); }
-.pill.residential { color: #c7e4ad; border-color: rgba(143, 169, 121, 0.38); background: rgba(143, 169, 121, 0.13); }
-.pill.unknown { color: #f0cf83; border-color: rgba(208, 173, 98, 0.34); background: rgba(208, 173, 98, 0.12); }
+.pill.hosting { color: var(--pill-hosting-text); border-color: var(--blue-a2); background: var(--blue-a1); }
+.pill.residential { color: var(--pill-residential-text); border-color: var(--green-a2); background: var(--green-a1); }
+.pill.unknown { color: var(--pill-unknown-text); border-color: var(--gold-a2); background: var(--gold-a1); }
 .pill.offline { color: var(--red); border-color: rgba(201, 125, 125, 0.34); background: rgba(201, 125, 125, 0.1); }
-.pill.passed { color: #c7e4ad; border-color: rgba(143, 169, 121, 0.38); background: rgba(143, 169, 121, 0.13); }
-.pill.warning { color: #f0cf83; border-color: rgba(208, 173, 98, 0.34); background: rgba(208, 173, 98, 0.12); }
+.pill.passed { color: var(--pill-residential-text); border-color: var(--green-a2); background: var(--green-a1); }
+.pill.warning { color: var(--pill-unknown-text); border-color: var(--gold-a2); background: var(--gold-a1); }
 .pill.failed { color: var(--red); border-color: rgba(201, 125, 125, 0.34); background: rgba(201, 125, 125, 0.1); }
 
 .two-col {
@@ -731,9 +781,9 @@ tr:hover td {
   margin: 0;
   padding: 14px;
   border: 1px solid var(--line);
-  background: #0d1016;
+  background: var(--code-bg);
   border-radius: 8px;
-  color: #dbe6d1;
+  color: var(--code-text);
   font-family: var(--mono);
   font-size: 12px;
   line-height: 1.7;
@@ -793,7 +843,7 @@ tr:hover td {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(239, 242, 234, 0.025);
+  background: var(--subtle);
 }
 
 .stage-status {
@@ -843,9 +893,9 @@ tr:hover td {
 .warning-banner {
   margin: 0 0 14px;
   padding: 10px 12px;
-  border: 1px solid rgba(208, 173, 98, 0.34);
-  background: rgba(208, 173, 98, 0.11);
-  color: #f0cf83;
+  border: 1px solid var(--gold-a2);
+  background: var(--gold-a1);
+  color: var(--gold);
   border-radius: 8px;
   font-size: 12px;
   line-height: 1.5;
@@ -891,7 +941,7 @@ tr:hover td {
 
 .uptime-cell {
   height: 18px;
-  background: rgba(239, 242, 234, 0.06);
+  background: var(--subtle);
   border-radius: 1px;
 }
 
@@ -1490,7 +1540,8 @@ function placeLiveBubbles() {
     el.style.left = `${point.x - 14}px`;
     el.style.top = `${point.y - 8 - yOff}px`;
     const border = 'var(--green-1)';
-    const fill = 'rgba(31,37,48,0.95)';
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const fill = isDark ? 'rgba(31,37,48,0.95)' : 'rgba(244,242,237,0.97)';
     const tail = `<svg class="bubble-tail" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 2,8" fill="${border}"/><polygon points="1,0 14,0 3,7" fill="${fill}"/></svg>`;
     const href = message.tx_id ? `https://devnet.blockchain.logos.co/web/explorer/transactions/${message.tx_id}` : null;
     const inner = href
