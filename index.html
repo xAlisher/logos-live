@@ -1058,18 +1058,21 @@ tr:hover td {
 }
 
 @media (max-width: 1100px) {
-  body { overflow: auto; }
-  .app { min-height: 100vh; height: auto; }
+  html, body { height: auto; overflow: auto; }
+  .app { height: auto; min-height: 100vh; display: flex; flex-direction: column; }
   .topbar { grid-template-columns: 1fr; }
   .status-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .layout { grid-template-columns: 1fr; }
+  .layout { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
   .sidebar {
     position: sticky;
     top: 0;
     z-index: 10;
     border-right: none;
     border-bottom: 1px solid var(--line);
+    flex-shrink: 0;
   }
+  .content { overflow: visible; height: auto; padding-bottom: 40px; }
+  .view.active { height: auto; }
   .nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .source-box { display: none; }
   .overview-grid, .two-col, .three-col, .setup-grid { grid-template-columns: 1fr; }
@@ -1078,13 +1081,19 @@ tr:hover td {
 }
 
 @media (max-width: 640px) {
-  .content { padding: 12px; }
+  .content { padding: 12px; padding-bottom: 40px; }
   .nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nav button { height: 34px; font-size: 12px; padding: 0 8px; }
   .kpi-grid, .status-strip { grid-template-columns: 1fr; }
   .setup-form, .stage-row { grid-template-columns: 1fr; }
   .bar-row { grid-template-columns: 1fr 80px; }
   .bar-track { grid-column: 1 / -1; grid-row: 2; }
   .brand { min-width: 0; }
+  .topbar { padding: 10px 12px; gap: 10px; }
+  .brand-name { font-size: 14px; }
+  .feed-list, .messages-list { max-height: none; }
+  .panel-body table { font-size: 11px; }
+  .table-wrap { overflow-x: auto; }
 }
 
 #modal-overlay {
