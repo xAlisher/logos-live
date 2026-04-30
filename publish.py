@@ -4,6 +4,7 @@ Generate network.json from node_db.json + geo cache and push to GitHub Pages.
 Run hourly via cron or: watch -n 3600 python3 publish.py
 """
 import asyncio
+import datetime
 import json
 import os
 import re
@@ -97,7 +98,7 @@ ZONE_BOARD_DIR  = Path(os.getenv(
     "ZONE_BOARD_DIR",
     os.path.expanduser("~/logos-blockchain-runbook/state/zone-board-v0.2.2"),
 ))
-ZONE_SCAN_FILE  = BASE / "zone_scan.json"
+ZONE_SCAN_FILE  = Path(os.getenv("ZONE_SCAN_FILE", str(BASE.parent / "zone_scan.json")))
 GEO_HINTS_FILE  = BASE / "geo_hints.json"
 
 LUMA_CALENDAR   = "cal-S3pdMJmDQDY9aT4"
@@ -313,6 +314,8 @@ _PEER_RE  = re.compile(r"\b(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\b")
 _TS_RE    = re.compile(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})")
 _ANSI_RE  = re.compile(r"\x1b\[[0-9;]*m")
 
+TELEMETRY_CACHE = BASE / "telemetry_cache.json"
+
 
 def _hour_bucket(ts_seconds: float) -> int:
     return int(ts_seconds) - (int(ts_seconds) % 3600)
@@ -352,52 +355,101 @@ def compact_logs(keep_hours: int = 72) -> None:
 
 
 def build_telemetry() -> dict:
-    """Parse node logs to build hourly active-peer telemetry."""
+    """Parse node logs incrementally — only reads new/grown bytes since last run.
+
+    Cache layout (telemetry_cache.json):
+      {
+        "files": {"filename": {"size": N, "peers_by_bucket": {"ts_str": ["pid", ...]}}},
+        "peer_first": {"pid": ts},
+        "peer_last":  {"pid": ts},
+      }
+    """
     if not LOG_DIR.exists():
         return {}
 
-    now = int(time.time())
-    cutoff = now - 72 * 3600
+    from collections import defaultdict
 
-    # Only read files whose filename indicates they are within the 72h window
+    now     = int(time.time())
+    cutoff  = now - 72 * 3600
+
+    # Load incremental cache
+    cache: dict = {}
+    if TELEMETRY_CACHE.exists():
+        try:
+            cache = json.loads(TELEMETRY_CACHE.read_text())
+        except Exception:
+            cache = {}
+    file_cache: dict = cache.get("files", {})
+    peer_first: dict[str, int] = cache.get("peer_first", {})
+    peer_last:  dict[str, int] = cache.get("peer_last", {})
+
     log_files = [
         lf for lf in sorted(LOG_DIR.glob("logos-blockchain.*"))
         if (ts := _log_file_ts(lf)) is not None and ts >= cutoff
     ]
-    if not log_files:
-        return {}
 
-    from collections import defaultdict
-    observations: list[tuple[int, str]] = []
-    peer_first: dict[str, int] = {}
-    peer_last:  dict[str, int] = {}
-
+    files_read = 0
+    bytes_read = 0
     for lf in log_files:
-        # Derive the hour bucket from the filename (all lines in this file belong to it)
         file_ts = _log_file_ts(lf)
         if file_ts is None:
             continue
-        bucket = _hour_bucket(file_ts)
+        bucket    = _hour_bucket(file_ts)
+        bkey      = str(bucket)
+        cur_size  = lf.stat().st_size
+        cached    = file_cache.get(lf.name, {})
+        prev_size = cached.get("size", 0)
+
+        if cur_size == prev_size:
+            continue  # file hasn't grown — skip
+
+        # Read only the new bytes (seek to where we left off)
+        peers_by_bucket: dict[str, list] = cached.get("peers_by_bucket", {})
+        new_peers: set[str] = set()
         try:
-            with lf.open(errors="replace") as fh:
-                for raw_line in fh:
-                    line = _ANSI_RE.sub("", raw_line)
-                    for peer_id in _PEER_RE.findall(line):
-                        observations.append((bucket, peer_id))
-                        if peer_id not in peer_first or file_ts < peer_first[peer_id]:
-                            peer_first[peer_id] = file_ts
-                        if peer_id not in peer_last or file_ts > peer_last[peer_id]:
-                            peer_last[peer_id] = file_ts
+            with lf.open("rb") as fh:
+                fh.seek(prev_size)
+                chunk = fh.read()
+            bytes_read += len(chunk)
+            text = chunk.decode("utf-8", errors="replace")
+            for raw_line in text.splitlines():
+                line = _ANSI_RE.sub("", raw_line)
+                for pid in _PEER_RE.findall(line):
+                    new_peers.add(pid)
+                    if pid not in peer_first or file_ts < peer_first[pid]:
+                        peer_first[pid] = file_ts
+                    if pid not in peer_last or file_ts > peer_last[pid]:
+                        peer_last[pid] = file_ts
         except Exception:
             continue
 
-    if not observations:
-        return {}
+        existing = set(peers_by_bucket.get(bkey, []))
+        existing.update(new_peers)
+        peers_by_bucket[bkey] = list(existing)
+        file_cache[lf.name] = {"size": cur_size, "peers_by_bucket": peers_by_bucket}
+        files_read += 1
 
-    # Build hourly active-peer counts
+    # Expire cache entries for files outside the 72h window
+    active_names = {lf.name for lf in log_files}
+    file_cache = {k: v for k, v in file_cache.items() if k in active_names}
+
+    # Persist updated cache
+    try:
+        TELEMETRY_CACHE.write_text(json.dumps(
+            {"files": file_cache, "peer_first": peer_first, "peer_last": peer_last},
+            separators=(",", ":"),
+        ))
+    except Exception:
+        pass
+
+    # Aggregate bucket → peer sets across all cached files
     bucket_peers: dict[int, set] = defaultdict(set)
-    for bucket, pid in observations:
-        bucket_peers[bucket].add(pid)
+    for fc in file_cache.values():
+        for bkey, pids in fc.get("peers_by_bucket", {}).items():
+            bucket_peers[int(bkey)].update(pids)
+
+    if not bucket_peers:
+        return {}
 
     end_bucket   = _hour_bucket(now)
     start_bucket = _hour_bucket(cutoff)
@@ -410,11 +462,16 @@ def build_telemetry() -> dict:
     active_latest = len(bucket_peers.get(end_bucket, set()))
     active_peak   = max((len(v) for v in bucket_peers.values()), default=0)
 
-    # Peer uptime within window
+    # Peer uptime: count how many buckets each peer appeared in
     window_hours = (end_bucket - start_bucket) // 3600 + 1
+    peer_bucket_count: dict[str, int] = defaultdict(int)
+    for peers in bucket_peers.values():
+        for pid in peers:
+            peer_bucket_count[pid] += 1
+
     uptime_rows = []
     for pid in sorted(peer_last, key=lambda p: -peer_last[p])[:30]:
-        buckets_seen = sum(1 for b, p in observations if p == pid)
+        buckets_seen = peer_bucket_count.get(pid, 0)
         uptime_pct   = round(buckets_seen / window_hours * 100, 1) if window_hours else 0
         uptime_rows.append({
             "peer_id":    pid[:20] + "…",
@@ -422,8 +479,10 @@ def build_telemetry() -> dict:
             "last_seen":  peer_last[pid],
         })
 
+    MB = bytes_read / 1_048_576
     print(f"  Telemetry: {len(hourly)} hourly buckets, "
-          f"{len(peer_first)} unique peers, peak {active_peak}/h")
+          f"{len(peer_first)} unique peers, peak {active_peak}/h "
+          f"({files_read} files / {MB:.1f} MB read)")
     return {
         "source": "node-logs",
         "window_hours": window_hours,
@@ -629,6 +688,125 @@ def _channel_hex_to_name(hex_id: str) -> str:
         return hex_id[:12] + "…"
 
 
+_YOLO_HEX  = "6c6f676f733a796f6c6f3a"   # "logos:yolo:" as hex
+_GAP_BATCH = 2_000                        # slots per API call
+_GAP_MIN   = 1_000                        # only gap-fill if lag > this many slots
+
+
+def _decode_yolo_channel(hex_id: str) -> str:
+    """Decode a 32-byte zero-padded channel hex ID to a sender name."""
+    try:
+        raw = bytes.fromhex(hex_id).rstrip(b"\x00")
+        name = raw.decode("utf-8")
+        parts = name.split(":")
+        return parts[-1] if len(parts) >= 3 else name
+    except Exception:
+        return hex_id[:12] + "…"
+
+
+def _scan_local_gap() -> None:
+    """If zone_scan.json lags the chain tip by >1000 slots, query the local node
+    directly and merge any found zone messages into zone_scan.json.
+
+    Idempotent: deduplicates by (block_id, tx_id, sender, text).
+    Called before fetch_zone_messages() on every publish run.
+    """
+    if not ZONE_SCAN_FILE.exists():
+        return
+    try:
+        scan = json.loads(ZONE_SCAN_FILE.read_text())
+    except Exception:
+        return
+
+    messages: list[dict] = scan.get("messages", [])
+    max_slot = max((m.get("slot", 0) for m in messages), default=0)
+
+    import urllib.request as _ur
+    try:
+        with _ur.urlopen(f"{NODE_URL}/cryptarchia/info", timeout=5) as r:
+            tip_slot: int = json.loads(r.read()).get("slot", 0)
+    except Exception as e:
+        print(f"  Gap fill: node unreachable ({e})")
+        return
+
+    gap = tip_slot - max_slot
+    if gap <= _GAP_MIN:
+        return
+
+    batches = (gap + _GAP_BATCH - 1) // _GAP_BATCH
+    print(f"  Gap fill: {gap} slots behind tip — scanning {batches} batches ({max_slot}→{tip_slot})")
+
+    seen_blocks: set[str] = {m.get("block_id", "") for m in messages if m.get("block_id")}
+    new_msgs: list[dict] = []
+
+    slot_lo = max_slot
+    while slot_lo < tip_slot:
+        slot_hi = min(slot_lo + _GAP_BATCH, tip_slot)
+        url = f"{NODE_URL}/cryptarchia/blocks?slot_from={slot_lo}&slot_to={slot_hi}"
+        try:
+            with _ur.urlopen(url, timeout=15) as r:
+                blocks = json.loads(r.read())
+        except Exception as e:
+            print(f"    Gap fill: error at {slot_lo}–{slot_hi}: {e}")
+            slot_lo = slot_hi
+            continue
+
+        for block in blocks:
+            block_id = (block.get("header") or {}).get("id", "")
+            if block_id in seen_blocks:
+                continue
+            seen_blocks.add(block_id)
+            slot = (block.get("header") or {}).get("slot", 0)
+            for tx in block.get("transactions", []):
+                mantle = tx.get("mantle_tx") or {}
+                tx_id = mantle.get("hash", "")
+                for op in mantle.get("ops", []):
+                    if op.get("opcode") != 17:
+                        continue
+                    payload = op.get("payload") or {}
+                    ch = payload.get("channel_id", "")
+                    if not ch.startswith(_YOLO_HEX):
+                        continue
+                    sender = _decode_yolo_channel(ch)
+                    inscription = payload.get("inscription")
+                    if not isinstance(inscription, list):
+                        continue
+                    try:
+                        text = bytes(int(b) for b in inscription).decode("utf-8").strip()
+                    except Exception:
+                        continue
+                    if not text or (text.startswith("{") and '"type"' in text):
+                        continue
+                    new_msgs.append({
+                        "sender":   sender, "text": text, "slot": slot,
+                        "block_id": block_id, "tx_id": tx_id,
+                        "live":     "#live" in text.lower(),
+                    })
+        slot_lo = slot_hi
+
+    if not new_msgs:
+        print("  Gap fill: no new messages found")
+        return
+
+    print(f"  Gap fill: +{len(new_msgs)} messages found")
+    for m in new_msgs:
+        print(f"    [{m['slot']}] {m['sender']}: {m['text'][:60]}")
+
+    # Merge and dedup by (block_id, tx_id, sender, text)
+    all_msgs = messages + new_msgs
+    seen_keys: set[tuple] = set()
+    deduped: list[dict] = []
+    for m in sorted(all_msgs, key=lambda x: x.get("slot", 0)):
+        key = (m.get("block_id", ""), m.get("tx_id", ""), m.get("sender", ""), m.get("text", ""))
+        if key not in seen_keys:
+            seen_keys.add(key)
+            deduped.append(m)
+
+    scan["messages"] = deduped
+    ZONE_SCAN_FILE.write_text(json.dumps(scan, indent=2))
+    print(f"  Gap fill: zone_scan.json updated ({len(deduped)} total messages)")
+
+
 _GEO_RE = re.compile(
     r"#geo\s+(-?\d{1,3}(?:\.\d+)?)[,\s]+(-?\d{1,3}(?:\.\d+)?)",
     re.IGNORECASE,
@@ -688,73 +866,63 @@ def _build_geo_index(geo_cache: dict, nodes: list[dict],
 
 def fetch_zone_messages(geo_cache: dict | None = None,
                         nodes: list[dict] | None = None) -> list[dict]:
-    """Read zone-board cache + scanner output. Returns messages newest-first."""
-    messages: list[dict] = []
-    seen_keys: set[str] = set()
+    """Read zone-board cache + scanner output. Returns messages newest-first.
 
-    # Extract #geo announcements solely from the chain scanner (covers all senders)
-    onchain_geo: dict[str, dict] = {}
-    if ZONE_SCAN_FILE.exists():
-        try:
-            scan_raw = json.loads(ZONE_SCAN_FILE.read_text())
-            onchain_geo = _parse_onchain_geo(scan_raw.get("messages", []))
-        except Exception:
-            pass
-
-    geo_index = _build_geo_index(geo_cache or {}, nodes or [], onchain=onchain_geo)
-
-    def add_msg(sender: str, text: str, slot: int, block_id: str,
-                status: str, observed_at: str, signer: str, tx_id: str = "") -> None:
-        text = text.strip()
-        if not text or (text.startswith("{") and '"type"' in text):
-            return
-        key = f"{(block_id or '')[:16]}:{text}"
-        if key in seen_keys:
-            return
-        seen_keys.add(key)
-        geo = geo_index.get(sender)
-        messages.append({
-            "sender":      sender,
-            "text":        text,
-            "slot":        slot,
-            "block_id":    block_id or "",
-            "tx_id":       tx_id or "",
-            "status":      status,
-            "observed_at": observed_at,
-            "signer":      signer[:16] if signer else "",
-            "live":        "#live" in text.lower(),
-            "lat":         geo["lat"]     if geo else None,
-            "lon":         geo["lon"]     if geo else None,
-            "city":        geo.get("city", "")    if geo else "",
-            "country":     geo.get("country", "") if geo else "",
-        })
-
-    # 1. Background scanner output (broadest coverage)
+    Priority:
+      1. Finalized (zone_scan.json) — sorted by blockchain slot DESC
+      2. Pending  (dashboard/cache) — sorted by observed_at DESC, only if not
+         already in the finalized set (dedup key uses 120-char text prefix to
+         handle dashboard truncation).
+    """
+    # ── 1. Finalized messages from zone scanner ───────────────────────────────
+    finalized_raw: list[dict] = []
     if ZONE_SCAN_FILE.exists():
         try:
             scan = json.loads(ZONE_SCAN_FILE.read_text())
-            for m in scan.get("messages", []):
-                add_msg(m.get("sender", "?"), m.get("text", ""),
-                        m.get("slot", 0), m.get("block_id", ""),
-                        "finalized", "", "", m.get("tx_id", ""))
+            finalized_raw = scan.get("messages", [])
         except Exception as e:
             print(f"  Zone scan error: {e}")
 
-    # 2. Local zone-board dashboard (full metadata, subscribed channels)
+    # Key set for cross-source dedup — 120-char prefix handles dashboard truncation
+    finalized_keys: set[str] = {
+        f"{m.get('sender', '')}:{m.get('text', '')[:120]}"
+        for m in finalized_raw
+    }
+    onchain_geo = _parse_onchain_geo(finalized_raw)
+    geo_index = _build_geo_index(geo_cache or {}, nodes or [], onchain=onchain_geo)
+
+    # ── 2. Pending from dashboard + cache (not already finalized) ─────────────
+    pending_raw: list[dict] = []
+    seen_pending: set[str] = set()
+
+    def _add_pending(sender: str, text: str, status: str,
+                     observed_at: str, signer: str, block_id: str) -> None:
+        text = text.strip()
+        if not text or (text.startswith("{") and '"type"' in text):
+            return
+        if f"{sender}:{text[:120]}" in finalized_keys:
+            return
+        key = f"{sender}:{text}"
+        if key in seen_pending:
+            return
+        seen_pending.add(key)
+        pending_raw.append({
+            "sender": sender, "text": text, "status": status,
+            "observed_at": observed_at, "signer": signer, "block_id": block_id,
+        })
+
     dashboard = ZONE_BOARD_DIR / "dashboard-live-channels.json"
     if dashboard.exists():
         try:
             data = json.loads(dashboard.read_text())
             for sender, msgs in data.get("channels", {}).items():
                 for m in msgs:
-                    add_msg(sender, m.get("text", ""),
-                            m.get("slot", 0), m.get("block_id", ""),
-                            m.get("status", "unknown"), m.get("observed_at", ""),
-                            m.get("signer", ""))
+                    _add_pending(sender, m.get("text", ""),
+                                 m.get("status", "pending"), m.get("observed_at", ""),
+                                 m.get("signer", ""), m.get("block_id", ""))
         except Exception as e:
             print(f"  Zone dashboard error: {e}")
 
-    # 3. Individual channel cache files
     cache_dir = ZONE_BOARD_DIR / "cache"
     if cache_dir.exists():
         for f in sorted(cache_dir.glob("*.json")):
@@ -763,21 +931,75 @@ def fetch_zone_messages(geo_cache: dict | None = None,
                 raw = json.loads(f.read_text())
                 if isinstance(raw, list):
                     for m in raw:
-                        add_msg(sender, m.get("text", ""),
-                                m.get("slot", 0), m.get("block_id", ""),
-                                "confirmed" if not m.get("pending") else "pending",
-                                "", "")
+                        _add_pending(sender, m.get("text", ""),
+                                     "confirmed" if not m.get("pending") else "pending",
+                                     "", "", m.get("block_id", ""))
             except Exception:
                 pass
 
-    messages.sort(key=lambda x: (x["slot"], x["observed_at"]))
+    # Drop stale pending (>7 days old) and "(pending…)" duplicates
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)
+    clean_pending_texts = {m["text"] for m in pending_raw
+                           if not m["text"].endswith(" (pending…)")}
+    fresh_pending: list[dict] = []
+    for m in pending_raw:
+        if m["text"].endswith(" (pending…)") and \
+                m["text"].removesuffix(" (pending…)") in clean_pending_texts:
+            continue
+        obs = m.get("observed_at", "")
+        if obs:
+            try:
+                if datetime.datetime.fromisoformat(obs) <= cutoff:
+                    continue
+            except ValueError:
+                pass
+        fresh_pending.append(m)
+
+    # ── 3. Enrich with geo and build output ───────────────────────────────────
+    def _enrich(sender: str, text: str, slot: int, slot_unknown: bool,
+                block_id: str, tx_id: str, status: str,
+                observed_at: str, signer: str) -> dict:
+        geo = geo_index.get(sender)
+        return {
+            "sender":       sender,
+            "text":         text,
+            "slot":         slot,
+            "slot_unknown": slot_unknown,
+            "block_id":     block_id,
+            "tx_id":        tx_id,
+            "status":       status,
+            "observed_at":  observed_at,
+            "signer":       signer[:16] if signer else "",
+            "live":         "#live" in text.lower(),
+            "lat":          geo["lat"]          if geo else None,
+            "lon":          geo["lon"]          if geo else None,
+            "city":         geo.get("city", "") if geo else "",
+            "country":      geo.get("country", "") if geo else "",
+        }
+
+    # Finalized: blockchain slot DESC (newest on-chain message first)
+    finalized_sorted = sorted(finalized_raw, key=lambda x: x.get("slot", 0), reverse=True)
+    finalized_out = [
+        _enrich(m.get("sender", "?"), m.get("text", ""), m.get("slot", 0),
+                False, m.get("block_id", ""), m.get("tx_id", ""), "finalized", "", "")
+        for m in finalized_sorted[:100]
+    ]
+
+    # Pending: observed_at DESC (most recently seen first)
+    pending_sorted = sorted(fresh_pending, key=lambda x: x.get("observed_at", ""), reverse=True)
+    pending_out = [
+        _enrich(m["sender"], m["text"], 0, True,
+                m.get("block_id", ""), "", m["status"],
+                m.get("observed_at", ""), m.get("signer", ""))
+        for m in pending_sorted[:20]
+    ]
+
+    messages = finalized_out + pending_out
     live_count = sum(1 for m in messages if m.get("live"))
     geo_count  = sum(1 for m in messages if m.get("lat") is not None)
-    print(f"  Zone messages: {len(messages)} from "
-          f"{len(set(m['sender'] for m in messages))} senders "
+    print(f"  Zone messages: {len(finalized_out)} finalized + {len(pending_out)} pending "
           f"({live_count} #live, {geo_count} geo-linked)")
-
-    return list(reversed(messages[-100:]))
+    return messages
 
 
 async def fetch_events(client: httpx.AsyncClient) -> list[dict]:
@@ -928,7 +1150,12 @@ async def build_network_json() -> dict:
             "last_seen":   node.get("last_seen", 0),
         })
 
+    _scan_local_gap()
     zone_messages = fetch_zone_messages(geo_cache=geo_cache, nodes=nodes)
+
+    # Approximate genesis timestamp: current unix time minus current tip slot (1 slot ≈ 1s).
+    # Used by the frontend to convert slot numbers to human-readable relative times.
+    genesis_ts = int(time.time()) - chain.get("slot", 0) if chain.get("slot") else None
 
     return {
         "chain":            chain,
@@ -942,6 +1169,7 @@ async def build_network_json() -> dict:
         "recent_blocks":    recent_blocks,
         "telemetry":        telemetry,
         "zone_messages":    zone_messages,
+        "genesis_ts":       genesis_ts,
         "peer_data_source": "crawler",
         "peer_snapshot":    time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "updated":          int(time.time()),

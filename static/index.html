@@ -420,6 +420,16 @@ button, input {
   font-size: 10px;
   white-space: nowrap;
 }
+.panel-link {
+  margin-left: auto;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.panel-link:hover { color: var(--text); }
 
 .panel-body {
   padding: 14px;
@@ -1193,7 +1203,6 @@ tr:hover td {
     <div class="actions">
       <span class="updated" id="updated">Loading</span>
       <button id="theme-btn" class="btn" onclick="cycleTheme()" title="Toggle theme"></button>
-      <button class="btn" type="button" onclick="openModal()" title="How to post to the map">?</button>
       <button class="btn" type="button" onclick="refresh()">Refresh</button>
     </div>
   </header>
@@ -1247,7 +1256,7 @@ tr:hover td {
               <div class="panel-body"><div class="bar-list" id="infra-mix"></div></div>
             </section>
             <section class="panel">
-              <div class="panel-head"><h2 class="panel-title">Zone Messages</h2><span class="panel-sub" id="msg-sub">latest</span></div>
+              <div class="panel-head"><h2 class="panel-title">Zone Messages</h2><span class="panel-sub" id="msg-sub">latest</span><a class="panel-link" onclick="openModal()" href="#">How to inscribe</a></div>
               <div class="panel-body"><div class="messages-list" id="zone-messages"></div></div>
             </section>
           </div>
@@ -1267,7 +1276,7 @@ tr:hover td {
         </div>
         <div class="two-col" style="margin-top:14px;">
           <section class="panel">
-            <div class="panel-head"><h2 class="panel-title">Zone Messages</h2><span class="panel-sub" id="pulse-zone-sub">on-chain</span></div>
+            <div class="panel-head"><h2 class="panel-title">Zone Messages</h2><span class="panel-sub" id="pulse-zone-sub">on-chain</span><a class="panel-link" onclick="openModal()" href="#">How to inscribe</a></div>
             <div class="panel-body"><div class="feed-list" id="pulse-zone"></div></div>
           </section>
           <section class="panel">
@@ -1575,6 +1584,7 @@ const short = (value, a = 10, b = 8) => {
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[ch]));
+const slotToMs = slot => state.genesis_ts && slot ? (state.genesis_ts + slot) * 1000 : null;
 const since = ts => {
   if (!ts) return '-';
   const ms = ts > 10_000_000_000 ? ts : ts * 1000;
@@ -1688,9 +1698,13 @@ function renderInfraMix(mix) {
 
 function renderMessages() {
   const messages = state.zone_messages || [];
-  $('msg-sub').textContent = messages.length ? `${fmt(messages.length)} recent` : 'none';
-  $('zone-messages').innerHTML = messages.slice(0, 8).map(message => {
-    const when = message.observed_at ? since(new Date(message.observed_at).getTime()) : (message.slot ? `slot ${fmt(message.slot)}` : '');
+  const shown = Math.min(20, messages.length);
+  $('msg-sub').textContent = messages.length ? `${shown} of ${fmt(messages.length)}` : 'none';
+  $('zone-messages').innerHTML = messages.slice(0, 20).map(message => {
+    const slotMs = slotToMs(message.slot);
+    const when = message.slot_unknown
+      ? (message.observed_at ? since(new Date(message.observed_at).getTime()) : 'pending')
+      : (slotMs ? since(slotMs) : (message.slot ? `slot ${fmt(message.slot)}` : ''));
     const txLink = message.tx_id
       ? ` <a href="https://devnet.blockchain.logos.co/web/explorer/transactions/${esc(message.tx_id)}" target="_blank" rel="noopener">tx</a>`
       : '';

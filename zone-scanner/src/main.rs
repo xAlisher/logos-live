@@ -23,6 +23,15 @@ fn out_file() -> String {
     std::env::var("ZONE_SCAN_FILE").unwrap_or_else(|_| "../zone_scan.json".into())
 }
 
+/// Derive the state file path from the messages file path.
+fn state_file(msgs_path: &str) -> String {
+    if let Some(stem) = msgs_path.strip_suffix(".json") {
+        format!("{stem}_state.json")
+    } else {
+        format!("{msgs_path}_state")
+    }
+}
+
 // ── Data model ────────────────────────────────────────────────────────────────
 #[derive(Serialize, Deserialize, Clone, Debug)]
 struct ZoneMessage {
@@ -35,7 +44,7 @@ struct ZoneMessage {
     live: bool,
 }
 
-#[derive(Serialize, Deserialize, Default)]
+#[derive(Default)]
 struct ScanDb {
     /// Messages found, sorted by slot ascending
     messages: Vec<ZoneMessage>,
@@ -44,6 +53,22 @@ struct ScanDb {
     /// Lowest slot we have scanned down to (for backward walk)
     scanned_to: u64,
     /// Highest slot we have seen (for forward watch)
+    scanned_tip: u64,
+}
+
+/// Serializable messages-only view — written to zone_scan.json.
+/// External tools (gap fills, manual edits) can safely modify this file;
+/// scanner saves never clobber it.
+#[derive(Serialize, Deserialize, Default)]
+struct ScanMessages {
+    messages: Vec<ZoneMessage>,
+}
+
+/// Internal scanner bookkeeping — written to zone_scan_state.json.
+#[derive(Serialize, Deserialize, Default)]
+struct ScanState {
+    seen_blocks: HashSet<String>,
+    scanned_to: u64,
     scanned_tip: u64,
 }
 
@@ -116,6 +141,8 @@ async fn main() -> Result<()> {
     }
 
     // ── Phase 2: watch tip for new blocks ─────────────────────────────────────
+    // Scan forward in BATCH_SLOTS chunks so a large gap (e.g. after a restart)
+    // never results in a single oversized request that times out and gets skipped.
     eprintln!("Watching tip for new messages…");
     loop {
         sleep(Duration::from_secs(POLL_INTERVAL_SECS)).await;
@@ -132,32 +159,42 @@ async fn main() -> Result<()> {
             continue;
         }
 
-        let new_msgs =
-            match get_zone_messages_in_range(&client, db.scanned_tip, new_tip, &mut db.seen_blocks)
-                .await
+        // Walk forward in batches so each API call stays small.
+        let mut batch_lo = db.scanned_tip;
+        while batch_lo < new_tip {
+            let batch_hi = (batch_lo + BATCH_SLOTS).min(new_tip);
+            let new_msgs = match get_zone_messages_in_range(
+                &client,
+                batch_lo,
+                batch_hi,
+                &mut db.seen_blocks,
+            )
+            .await
             {
                 Ok(m) => m,
                 Err(e) => {
-                    eprintln!("Blocks error: {e}");
-                    continue;
+                    eprintln!("Blocks error ({batch_lo}–{batch_hi}): {e}");
+                    break; // retry this batch next poll cycle
                 }
             };
-        if !new_msgs.is_empty() {
-            eprintln!("+{} new zone messages at tip", new_msgs.len());
-            for m in &new_msgs {
-                eprintln!(
-                    "  [{slot}] {sender}: {text}",
-                    slot = m.slot,
-                    sender = m.sender,
-                    text = preview_text(&m.text, 80)
-                );
+            if !new_msgs.is_empty() {
+                eprintln!("+{} new zone messages at tip", new_msgs.len());
+                for m in &new_msgs {
+                    eprintln!(
+                        "  [{slot}] {sender}: {text}",
+                        slot = m.slot,
+                        sender = m.sender,
+                        text = preview_text(&m.text, 80)
+                    );
+                }
+                db.messages.extend(new_msgs);
+                dedup_messages(&mut db.messages);
             }
-            db.messages.extend(new_msgs);
-            dedup_messages(&mut db.messages);
+            // Advance scanned_tip only after each successful batch.
+            db.scanned_tip = batch_hi;
+            save_db(&path, &db);
+            batch_lo = batch_hi;
         }
-
-        db.scanned_tip = new_tip;
-        save_db(&path, &db);
     }
 }
 
@@ -295,15 +332,48 @@ fn preview_text(text: &str, max_chars: usize) -> String {
 
 // ── Persistence ───────────────────────────────────────────────────────────────
 fn load_db(path: &str) -> ScanDb {
-    std::fs::read_to_string(path)
+    // Messages file — externally editable; gap fills added here survive scanner saves.
+    let msgs: ScanMessages = std::fs::read_to_string(path)
         .ok()
         .and_then(|s| serde_json::from_str(&s).ok())
-        .unwrap_or_default()
+        .unwrap_or_default();
+
+    // State file — internal scanner bookkeeping.
+    // On first migration the state file doesn't exist yet; fall back to reading
+    // scanned_to/scanned_tip/seen_blocks from the old combined zone_scan.json.
+    let state: ScanState = std::fs::read_to_string(&state_file(path))
+        .ok()
+        .and_then(|s| serde_json::from_str(&s).ok())
+        .unwrap_or_else(|| {
+            std::fs::read_to_string(path)
+                .ok()
+                .and_then(|s| serde_json::from_str(&s).ok())
+                .unwrap_or_default()
+        });
+
+    ScanDb {
+        messages:    msgs.messages,
+        seen_blocks: state.seen_blocks,
+        scanned_to:  state.scanned_to,
+        scanned_tip: state.scanned_tip,
+    }
 }
 
 fn save_db(path: &str, db: &ScanDb) {
-    if let Ok(json) = serde_json::to_string_pretty(db) {
+    // Write messages-only file — safe for external edits and gap fills.
+    let msgs = ScanMessages { messages: db.messages.clone() };
+    if let Ok(json) = serde_json::to_string_pretty(&msgs) {
         let _ = std::fs::write(path, json);
+    }
+
+    // Write internal state separately — scanner saves never clobber the messages file.
+    let state = ScanState {
+        seen_blocks: db.seen_blocks.clone(),
+        scanned_to:  db.scanned_to,
+        scanned_tip: db.scanned_tip,
+    };
+    if let Ok(json) = serde_json::to_string_pretty(&state) {
+        let _ = std::fs::write(state_file(path), json);
     }
 }
 
