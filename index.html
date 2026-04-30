@@ -1584,6 +1584,7 @@ const short = (value, a = 10, b = 8) => {
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[ch]));
+const slotToMs = slot => state.genesis_ts && slot ? (state.genesis_ts + slot) * 1000 : null;
 const since = ts => {
   if (!ts) return '-';
   const ms = ts > 10_000_000_000 ? ts : ts * 1000;
@@ -1700,7 +1701,10 @@ function renderMessages() {
   const shown = Math.min(20, messages.length);
   $('msg-sub').textContent = messages.length ? `${shown} of ${fmt(messages.length)}` : 'none';
   $('zone-messages').innerHTML = messages.slice(0, 20).map(message => {
-    const when = message.observed_at ? since(new Date(message.observed_at).getTime()) : (message.slot ? `slot ${fmt(message.slot)}` : '');
+    const slotMs = slotToMs(message.slot);
+    const when = message.slot_unknown
+      ? (message.observed_at ? since(new Date(message.observed_at).getTime()) : 'pending')
+      : (slotMs ? since(slotMs) : (message.slot ? `slot ${fmt(message.slot)}` : ''));
     const txLink = message.tx_id
       ? ` <a href="https://devnet.blockchain.logos.co/web/explorer/transactions/${esc(message.tx_id)}" target="_blank" rel="noopener">tx</a>`
       : '';
