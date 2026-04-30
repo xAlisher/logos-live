@@ -435,8 +435,8 @@ def build_telemetry() -> dict:
             "latest_total_stake": None,
             "stake_points":       0,
         },
-        "peer_uptime": uptime_rows,
-        "stake_series": [],
+        "peer_uptime":            uptime_rows,
+        "stake_estimate_hourly": [],
     }
 
 
@@ -480,27 +480,40 @@ async def fetch_recent_blocks(client: httpx.AsyncClient) -> dict:
             leader_counts[lk] = leader_counts.get(lk, 0) + 1
 
         recent.append({
-            "slot":       slot,
-            "leader_key": lk[:16] if lk else "",
-            "txs":        len(txs),
-            "ops":        ops,
-            "root":       root[:16] if root else "",
-            "hash":       h[:16] if h else "",
+            "slot":         slot,
+            "leader_key":   lk[:16] if lk else "",
+            "transactions": len(txs),
+            "operations":   ops,
+            "root":         root[:16] if root else "",
+            "hash":         h[:16] if h else "",
         })
 
     total = len(recent)
     total_leader_blocks = sum(leader_counts.values())
     top_leaders = sorted(leader_counts.items(), key=lambda x: -x[1])[:10]
 
+    slot_min = min(slots) if slots else 0
+    slot_max = max(slots) if slots else 0
+    slot_span = slot_max - slot_min + 1 if slots else 0
+    total_txs  = sum(b["transactions"] for b in recent)
+    total_ops  = sum(b["operations"]   for b in recent)
+    empty_blocks = sum(1 for b in recent if b["transactions"] == 0)
+    missed_or_unseen = max(0, slot_span - total)
+
     print(f"  Blocks: {total} sampled, {len(leader_counts)} unique leaders")
     return {
         "window": {
-            "blocks":   total,
-            "slot_min": min(slots) if slots else 0,
-            "slot_max": max(slots) if slots else 0,
+            "blocks":                total,
+            "slot_min":              slot_min,
+            "slot_max":              slot_max,
+            "slot_span":             slot_span,
+            "transactions":          total_txs,
+            "operations":            total_ops,
+            "empty_blocks":          empty_blocks,
+            "missed_or_unseen_slots": missed_or_unseen,
         },
         "leader_diversity": {
-            "unique_leaders":     len(leader_counts),
+            "unique_leaders":       len(leader_counts),
             "top_leader_share_pct": round(100 * top_leaders[0][1] / total_leader_blocks, 1) if top_leaders and total_leader_blocks else 0,
         },
         "top_leaders": [
@@ -508,7 +521,6 @@ async def fetch_recent_blocks(client: httpx.AsyncClient) -> dict:
             for pk, n in top_leaders
         ],
         "recent": list(reversed(recent[:20])),
-        "transactions": {"total": sum(b["txs"] for b in recent), "ops": sum(b["ops"] for b in recent)},
     }
 
 
@@ -900,36 +912,39 @@ async def build_network_json() -> dict:
             continue
         seen_ips.add(ip)
         nodes.append({
-            "peer_id":    pid,
-            "ip":         ip,
-            "lat":        g["lat"],
-            "lon":        g["lon"],
-            "country":    g.get("country", ""),
-            "city":       g.get("city", ""),
-            "isp":        g.get("isp", ""),
-            "org":        g.get("org", ""),
-            "asn":        g.get("as", ""),
-            "self":       False,
-            "online":     node.get("last_seen", 0) == last_crawl,
-            "first_seen": node.get("first_seen", 0),
-            "last_seen":  node.get("last_seen", 0),
+            "peer_id":     pid,
+            "ip":          ip,
+            "lat":         g["lat"],
+            "lon":         g["lon"],
+            "country":     g.get("country", ""),
+            "city":        g.get("city", ""),
+            "isp":         g.get("isp", ""),
+            "org":         g.get("org", ""),
+            "asn":         g.get("as", ""),
+            "environment": node.get("environment", ""),
+            "self":        False,
+            "online":      node.get("last_seen", 0) == last_crawl,
+            "first_seen":  node.get("first_seen", 0),
+            "last_seen":   node.get("last_seen", 0),
         })
 
     zone_messages = fetch_zone_messages(geo_cache=geo_cache, nodes=nodes)
 
     return {
-        "chain":         chain,
-        "network":       net_info,
-        "nodes":         nodes,
-        "events":        events,
-        "youtube":       youtube,
-        "github":        github,
-        "discourse":     discourse,
-        "stake":         stake,
-        "recent_blocks": recent_blocks,
-        "telemetry":     telemetry,
-        "zone_messages": zone_messages,
-        "updated":       int(time.time()),
+        "chain":            chain,
+        "network":          net_info,
+        "nodes":            nodes,
+        "events":           events,
+        "youtube":          youtube,
+        "github":           github,
+        "discourse":        discourse,
+        "stake":            stake,
+        "recent_blocks":    recent_blocks,
+        "telemetry":        telemetry,
+        "zone_messages":    zone_messages,
+        "peer_data_source": "crawler",
+        "peer_snapshot":    time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "updated":          int(time.time()),
     }
 
 
