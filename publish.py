@@ -984,11 +984,27 @@ def push_to_pages(data: dict):
             print(f"  {' '.join(cmd[2:4])}: ok")
 
 
+def resync_zone_board():
+    """Trigger zone-board /resync so newly finalized messages appear in the next snapshot."""
+    try:
+        result = subprocess.run(
+            ["tmux", "send-keys", "-t", "zone-board", "/resync", "Enter"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if result.returncode == 0:
+            print("  zone-board: /resync sent")
+        else:
+            print(f"  zone-board: resync skipped ({result.stderr.strip() or 'session not found'})")
+    except Exception as e:
+        print(f"  zone-board: resync skipped ({e})")
+
+
 async def main():
     print(f"[{time.strftime('%H:%M:%S')}] Building network.json…")
     data = await build_network_json()
     print(f"[{time.strftime('%H:%M:%S')}] Pushing to GitHub Pages…")
     push_to_pages(data)
+    resync_zone_board()
     print(f"[{time.strftime('%H:%M:%S')}] Done.")
 
 
