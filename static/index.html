@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Logos Live</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<meta property="og:title" content="Logos Live">
+<meta property="og:description" content="Logos network intelligence — live node map, telemetry, and chain stats.">
+<meta property="og:image" content="https://logos.live/social.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logos.live">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://logos.live/social.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -161,12 +169,12 @@ button, input {
   height: 34px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--line-strong);
-  background: var(--bg-raised);
   color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 24px;
-  line-height: 1;
+  flex-shrink: 0;
+}
+.brand-mark svg {
+  width: 34px;
+  height: 34px;
 }
 
 .brand-title {
@@ -289,7 +297,7 @@ button, input {
 .nav button {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 38px;
   padding: 0 11px;
   border: 1px solid transparent;
@@ -367,7 +375,18 @@ button, input {
 
 .overview-grid {
   grid-template-columns: minmax(520px, 1.5fr) minmax(360px, 0.9fr);
-  align-items: start;
+  align-items: stretch;
+}
+.overview-grid > .panel {
+  display: flex;
+  flex-direction: column;
+}
+.overview-grid > .panel .map-shell {
+  flex: 1;
+}
+.overview-grid > .panel #map {
+  height: 100%;
+  min-height: 430px;
 }
 
 .panel {
@@ -562,11 +581,30 @@ button, input {
   color: var(--red);
 }
 
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 2px 3px;
+  border-radius: 3px;
+  line-height: 1;
+  opacity: 0.65;
+  transition: opacity 0.15s, color 0.15s;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.copy-btn:hover { opacity: 1; color: var(--text); }
+.copy-btn.copied { color: var(--green); opacity: 1; }
+
 .popup-peer-id {
   color: var(--muted);
   font-family: var(--mono);
   font-size: 11px;
   word-break: break-all;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   margin-bottom: 10px;
 }
 
@@ -1136,7 +1174,7 @@ tr:hover td {
 <div class="app">
   <header class="topbar">
     <div class="brand">
-      <div class="brand-mark">λ</div>
+      <div class="brand-mark"><svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.1439 33.9999C22.9533 33.9999 21.9289 33.7198 21.0705 33.1593C20.2122 32.5991 19.5615 31.7165 19.1185 30.512C18.8416 29.6993 18.6478 28.705 18.537 27.5284C18.4263 26.3516 18.3571 25.1189 18.3294 23.8302C18.3017 22.5135 18.274 21.2387 18.2463 20.006C18.2463 19.6698 18.1633 19.5018 17.9971 19.5018C17.8587 19.5018 17.7202 19.6138 17.5818 19.8379C17.0557 20.8185 16.4327 21.9391 15.7128 23.1998C15.0206 24.4605 14.3284 25.7212 13.6362 26.9819C12.944 28.2426 12.321 29.3773 11.7673 30.3859C11.2412 31.3663 10.8674 32.0808 10.6459 32.5292C10.369 33.1453 9.92599 33.5375 9.31685 33.7058C8.7354 33.9018 8.00167 33.944 7.11564 33.8319C6.22961 33.7198 5.60663 33.3695 5.24668 32.7813C4.85904 32.1649 4.92826 31.5206 5.45434 30.848C5.81429 30.3999 6.32652 29.7276 6.99104 28.8311C7.65556 27.9066 8.40314 26.8699 9.23379 25.7212C10.0644 24.5446 10.9089 23.3399 11.7673 22.1072C12.6533 20.8465 13.484 19.6418 14.2592 18.4932C15.0345 17.3165 15.6852 16.294 16.2112 15.4255C16.765 14.529 17.1249 13.8706 17.2911 13.4504C17.4572 13.0582 17.6372 12.6239 17.831 12.1476C18.0248 11.6714 18.1217 11.1811 18.1217 10.6768C18.1217 8.82778 17.9417 7.441 17.5818 6.51649C17.2495 5.56396 16.7927 4.93358 16.2112 4.62541C15.6575 4.28923 15.0483 4.12114 14.3838 4.12114C13.8854 4.12114 13.3455 4.2192 12.764 4.4153C12.2103 4.61141 11.8503 4.79353 11.6842 4.96162C11.3796 5.26979 11.0889 5.32582 10.812 5.12971C10.5351 4.93358 10.4521 4.61141 10.5628 4.16315C10.8674 3.12659 11.4212 2.20207 12.2241 1.38961C13.0271 0.54914 14.1485 0.128906 15.5883 0.128906C17.1111 0.128906 18.3155 0.563151 19.2016 1.43164C20.0876 2.30012 20.7244 3.68689 21.1121 5.59197C21.4997 7.49702 21.6935 10.0184 21.6935 13.1562C21.6935 16.8543 21.7489 19.8099 21.8597 22.0232C21.9704 24.2364 22.1504 25.9033 22.3996 27.0241C22.6488 28.1165 22.9949 28.845 23.4379 29.2093C23.9086 29.5733 24.49 29.7555 25.1822 29.7555C25.8467 29.7555 26.4697 29.6155 27.0512 29.3354C27.6603 29.055 28.1864 28.691 28.6294 28.2426C28.8233 28.0184 29.0448 27.9346 29.2939 27.9905C29.5431 28.0466 29.737 28.2007 29.8754 28.4528C30.0415 28.677 30.0415 28.9711 29.8754 29.3354C29.294 30.6241 28.5187 31.7305 27.5496 32.6553C26.6082 33.5518 25.473 33.9999 24.1439 33.9999Z" fill="currentColor"/></svg></div>
       <div class="brand-title">
         <h1>Logos Live</h1>
         <span>network intelligence</span>
@@ -1165,15 +1203,15 @@ tr:hover td {
       <div>
         <div class="nav-kicker">Views</div>
         <nav class="nav" id="nav">
-          <button class="active" type="button" data-view="overview">Overview <span>01</span></button>
-          <button type="button" data-view="pulse">Pulse <span>02</span></button>
-          <button type="button" data-view="peers">Peers <span>03</span></button>
-          <button type="button" data-view="decentralization">Decentralization <span>04</span></button>
-          <button type="button" data-view="blocks">Blocks <span>05</span></button>
-          <button type="button" data-view="telemetry">Telemetry <span>06</span></button>
-          <button type="button" data-view="stake">Stake <span>07</span></button>
-          <button type="button" data-view="setup">Setup <span>08</span></button>
-          <button type="button" data-view="agent">Agent <span>09</span></button>
+          <button class="active" type="button" data-view="overview">Overview</button>
+          <button type="button" data-view="pulse">Pulse</button>
+          <button type="button" data-view="peers">Peers</button>
+          <button type="button" data-view="decentralization">Decentralization</button>
+          <button type="button" data-view="blocks">Blocks</button>
+          <button type="button" data-view="telemetry">Telemetry</button>
+          <button type="button" data-view="stake">Stake</button>
+          <button type="button" data-view="setup">Setup</button>
+          <button type="button" data-view="agent">Agent</button>
         </nav>
       </div>
       <div class="source-box">
@@ -1441,6 +1479,17 @@ const TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.p
 
 const SVG_SUN  = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
 const SVG_MOON = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+const SVG_COPY = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+
+function cpBtn(text) {
+  return `<button class="copy-btn" onclick="copyText(this,${JSON.stringify(text)})" title="Copy to clipboard">${SVG_COPY}</button>`;
+}
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    setTimeout(() => btn.classList.remove('copied'), 1500);
+  });
+}
 
 function isDaytime() { const h = new Date().getHours(); return h >= 7 && h < 20; }
 
@@ -1757,7 +1806,7 @@ function nodePopup(node, online) {
   const loc = [node.city, node.country].filter(Boolean).join(', ') || '-';
   return `
     <div class="popup-status ${online ? '' : 'offline'}">• ${online ? 'Online' : 'Offline'}</div>
-    <div class="popup-peer-id">${esc(short(node.peer_id, 14, 8))}</div>
+    <div class="popup-peer-id"><span>${esc(short(node.peer_id, 14, 8))}</span>${node.peer_id ? cpBtn(node.peer_id) : ''}</div>
     <div class="popup-row"><span class="popup-key">IP</span><span class="popup-val">${esc(node.ip || '-')}</span></div>
     <div class="popup-row"><span class="popup-key">Location</span><span class="popup-val">${esc(loc)}</span></div>
     <div class="popup-row"><span class="popup-key">ISP</span><span class="popup-val">${esc(node.isp || '-')}</span></div>
@@ -1798,7 +1847,7 @@ function renderPeers() {
     return `
       <tr>
         <td><span class="pill ${online ? '' : 'offline'}">${online ? 'Online' : 'Offline'}</span></td>
-        <td class="mono" title="${esc(node.peer_id)}">${esc(short(node.peer_id, 14, 8))}</td>
+        <td class="mono" title="${esc(node.peer_id)}" style="white-space:nowrap">${esc(short(node.peer_id, 14, 8))}${node.peer_id ? cpBtn(node.peer_id) : ''}</td>
         <td class="mono">${esc(node.ip || '-')}</td>
         <td>${esc([node.city, node.country].filter(Boolean).join(', ') || '-')}</td>
         <td><span class="pill ${envClass(node.environment)}">${esc(node.environment || 'Unknown')}</span></td>
@@ -1924,7 +1973,7 @@ function renderUptimeGrid(telemetry) {
     if (!hasHours) {
       return `
         <div class="uptime-row">
-          <div class="uptime-peer" title="${esc(peer.peer_id)}">${esc(short(peer.peer_id, 16, 8))}</div>
+          <div class="uptime-peer" title="${esc(peer.peer_id)}" style="display:flex;align-items:center;gap:4px"><span>${esc(short(peer.peer_id, 16, 8))}</span>${peer.peer_id ? cpBtn(peer.peer_id) : ''}</div>
           <div class="uptime-pct">${pct(peer.uptime_pct)}</div>
         </div>
       `;

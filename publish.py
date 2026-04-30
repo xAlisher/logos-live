@@ -952,10 +952,11 @@ def push_to_pages(data: dict):
     PAGES_DIR.mkdir(exist_ok=True)
 
     # Copy static assets
-    src_html = BASE / "static" / "index.html"
-    dst_html = PAGES_DIR / "index.html"
-    if src_html.exists():
-        dst_html.write_text(src_html.read_text())
+    static = BASE / "static"
+    for name in ("index.html", "logo.svg", "social.png"):
+        src = static / name
+        if src.exists():
+            (PAGES_DIR / name).write_bytes(src.read_bytes())
 
     # Ensure CNAME is always present so the custom domain survives force-pushes
     cname = PAGES_DIR / "CNAME"
@@ -970,7 +971,7 @@ def push_to_pages(data: dict):
 
     ts = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
     cmds = [
-        ["git", "-C", str(PAGES_DIR), "add", "index.html", "network.json", "CNAME"],
+        ["git", "-C", str(PAGES_DIR), "add", "index.html", "network.json", "CNAME", "logo.svg", "social.png"],
         ["git", "-C", str(PAGES_DIR), "commit", "--allow-empty", "-m",
          f"chore: network snapshot {ts} — {online}/{total} nodes online"],
         ["git", "-C", str(PAGES_DIR), "push", "origin", "HEAD:gh-pages", "--force"],
