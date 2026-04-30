@@ -1000,11 +1000,14 @@ def resync_zone_board():
 
 
 async def main():
+    # Resync zone-board first so any newly finalized messages are in the dashboard
+    # before we read it. Sleep briefly to let zone-board process the response.
+    resync_zone_board()
+    await asyncio.sleep(8)
     print(f"[{time.strftime('%H:%M:%S')}] Building network.json…")
     data = await build_network_json()
     print(f"[{time.strftime('%H:%M:%S')}] Pushing to GitHub Pages…")
     push_to_pages(data)
-    resync_zone_board()
     print(f"[{time.strftime('%H:%M:%S')}] Done.")
 
 
