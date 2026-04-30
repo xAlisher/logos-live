@@ -1482,10 +1482,21 @@ const SVG_MOON = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" st
 const SVG_COPY = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
 
 function cpBtn(text) {
-  return `<button class="copy-btn" onclick="copyText(this,${JSON.stringify(text)})" title="Copy to clipboard">${SVG_COPY}</button>`;
+  return `<button class="copy-btn" data-copy="${esc(text)}" onclick="copyText(this)" title="Copy to clipboard">${SVG_COPY}</button>`;
 }
-function copyText(btn, text) {
+function copyText(btn) {
+  const text = btn.dataset.copy;
   navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    setTimeout(() => btn.classList.remove('copied'), 1500);
+  }).catch(() => {
+    /* fallback for non-secure contexts */
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
     btn.classList.add('copied');
     setTimeout(() => btn.classList.remove('copied'), 1500);
   });
@@ -2135,20 +2146,67 @@ function renderVerification(result) {
   `;
 }
 
+function buildVerificationFromState(peerId) {
+  const nodes = state.nodes || [];
+  const telemetry = state.telemetry || {};
+  const uptimePeers = telemetry.peer_uptime || [];
+  const chain = state.chain || {};
+  const network = state.network || {};
+
+  const node = nodes.find(n => n.peer_id === peerId);
+  const uptimePeer = uptimePeers.find(p => (p.peer_id || '').startsWith(peerId.slice(0, 20)));
+  const isLocalNode = network.peer_id === peerId;
+
+  const crawlerObserved = !!node;
+  const mapVisible = !!(node && node.lat != null && node.lon != null);
+  const inTelemetry = !!uptimePeer;
+
+  const stages = [];
+  if (isLocalNode) {
+    const apiOk = chain.mode === 'Online';
+    const connOk = (network.n_peers || 0) >= 1;
+    stages.push({ id: 'node_api',          label: 'Node API',          status: apiOk  ? 'passed' : 'warning', detail: apiOk  ? `Mode: ${chain.mode}, slot ${chain.slot}` : 'Node offline or unreachable' });
+    stages.push({ id: 'consensus_online',  label: 'Consensus',         status: apiOk  ? 'passed' : 'warning', detail: apiOk  ? `Slot ${chain.slot}, height ${chain.height}` : 'Check local node' });
+    stages.push({ id: 'peer_connectivity', label: 'Peer Connectivity', status: connOk ? 'passed' : 'warning', detail: connOk ? `${network.n_peers} peers, ${network.n_connections} connections` : 'No peers connected' });
+  }
+  stages.push({ id: 'crawler_observed', label: 'Crawler Observed', status: crawlerObserved ? 'passed' : 'warning', detail: crawlerObserved ? `IP: ${node.ip || '-'}, ${node.online ? 'online' : 'offline'}` : 'Not yet seen by crawler (may take up to 1h)' });
+  stages.push({ id: 'map_visible',      label: 'Map Visible',      status: mapVisible    ? 'passed' : 'warning', detail: mapVisible    ? ([node.city, node.country].filter(Boolean).join(', ') || 'Located') : 'No geo data for this IP' });
+  stages.push({ id: 'telemetry',        label: 'Telemetry',        status: inTelemetry   ? 'passed' : 'warning', detail: inTelemetry   ? `${uptimePeer.uptime_pct}% uptime in log window` : 'Not seen in node logs (72h window)' });
+
+  const next_actions = [];
+  if (!crawlerObserved) next_actions.push('Not yet discovered by the crawler. Ensure your node is reachable and wait up to 1 hour.');
+  if (!mapVisible) next_actions.push('No geo location found. The crawler may not have seen your external IP yet.');
+  if (!inTelemetry) next_actions.push('Not seen in node logs. Check that your node is running and connected to peers.');
+
+  const allOk = stages.every(s => s.status === 'passed');
+  return {
+    peer_id: peerId,
+    overall_status: allOk ? 'ready' : (crawlerObserved ? 'partial' : 'not-found'),
+    is_local_node: isLocalNode,
+    stages,
+    next_actions,
+    visibility: { visible_on_map: mapVisible, observed_in_telemetry: inTelemetry, location: node ? [node.city, node.country].filter(Boolean).join(', ') : '' },
+  };
+}
+
 async function verifyPeer() {
   const peerId = $('verify-peer-id').value.trim();
   if (!peerId) {
     $('verify-result').innerHTML = '<div class="empty">Enter a peer id first</div>';
     return;
   }
-  $('verify-result').innerHTML = '<div class="empty">Checking peer visibility...</div>';
-  try {
-    const response = await fetch(`/api/agent/verify-node/${encodeURIComponent(peerId)}`, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
-    renderVerification(await response.json());
-  } catch (error) {
-    $('verify-result').innerHTML = `<div class="empty">Verification failed: ${esc(error.message)}</div>`;
+  $('verify-result').innerHTML = '<div class="empty">Checking…</div>';
+
+  /* Try local API first (only works when served from the local server) */
+  if (state.loaded_from === '/api/network') {
+    try {
+      const response = await fetch(`/api/agent/verify-node/${encodeURIComponent(peerId)}`, { cache: 'no-store' });
+      if (response.ok) { renderVerification(await response.json()); return; }
+    } catch {}
   }
+
+  /* Client-side check using already-loaded state */
+  renderVerification(buildVerificationFromState(peerId));
 }
 
 function renderAgent() {
