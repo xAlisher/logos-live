@@ -1737,7 +1737,7 @@ function placeLiveBubbles() {
     el.innerHTML = `<button class="bubble-close" onclick="this.closest('.map-bubble').remove()">×</button>` + inner + tail;
     shell.appendChild(el);
     liveBubbleEls.push(el);
-    if (liveBubbleEls.length >= 10) break;
+    if (liveBubbleEls.length >= 3) break;
   }
 }
 
@@ -2011,7 +2011,7 @@ function renderPulse() {
       <div class="feed-meta">
         <span class="feed-type ${esc(ev.cls || '')}">${esc(ev.type || 'event')}</span>
         <span>${esc(ev.repo || '')}</span>
-        <span style="margin-left:auto">${ev.timestamp ? since(new Date(ev.timestamp).getTime() / 1000) + ' ago' : ''}</span>
+        <span style="margin-left:auto">${ev.timestamp ? since(new Date(ev.timestamp).getTime() / 1000) : ''}</span>
       </div>
     </div>
   `).join('') : '<div class="empty">No GitHub events available</div>';
