@@ -1919,7 +1919,16 @@ function renderUptimeGrid(telemetry) {
     $('uptime-grid').innerHTML = '<div class="empty">No uptime telemetry available</div>';
     return;
   }
+  const hasHours = peers.some(peer => peer.hours && peer.hours.length > 0);
   $('uptime-grid').innerHTML = peers.map(peer => {
+    if (!hasHours) {
+      return `
+        <div class="uptime-row">
+          <div class="uptime-peer" title="${esc(peer.peer_id)}">${esc(short(peer.peer_id, 16, 8))}</div>
+          <div class="uptime-pct">${pct(peer.uptime_pct)}</div>
+        </div>
+      `;
+    }
     const active = new Set((peer.hours || []).map(Number));
     const cells = hours.map(hour => `<span class="uptime-cell ${active.has(hour) ? 'on' : ''}" title="${esc(new Date(hour * 1000).toISOString())}"></span>`).join('');
     return `
