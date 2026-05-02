@@ -1657,13 +1657,6 @@ function render() {
   $('m-lib').textContent = fmt(chain.lib_slot);
   $('m-peers').textContent = fmt(network.n_peers);
   $('m-connections').textContent = `${fmt(network.n_connections)} / ${fmt(network.n_pending_connections)} pending`;
-  const disk = state.disk || {};
-  if (disk.free_gb != null) {
-    const pct = disk.used_pct;
-    const color = pct >= 90 ? 'var(--red, #e05)' : pct >= 75 ? 'var(--yellow, #f90)' : '';
-    $('m-disk').textContent = disk.free_gb + ' GB';
-    $('m-disk').style.color = color;
-  }
 
   $('peer-source').textContent = state.peer_data_source === 'published-fallback'
     ? `published fallback (${fmt(state.peer_snapshot?.nodes)} nodes), local API ${state.loaded_from}`
