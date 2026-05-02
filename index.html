@@ -1657,20 +1657,13 @@ function render() {
   $('m-lib').textContent = fmt(chain.lib_slot);
   $('m-peers').textContent = fmt(network.n_peers);
   $('m-connections').textContent = `${fmt(network.n_connections)} / ${fmt(network.n_pending_connections)} pending`;
-  const disk = state.disk || {};
-  if (disk.free_gb != null) {
-    const pct = disk.used_pct;
-    const color = pct >= 90 ? 'var(--red, #e05)' : pct >= 75 ? 'var(--yellow, #f90)' : '';
-    $('m-disk').textContent = disk.free_gb + ' GB';
-    $('m-disk').style.color = color;
-  }
 
   $('peer-source').textContent = state.peer_data_source === 'published-fallback'
     ? `published fallback (${fmt(state.peer_snapshot?.nodes)} nodes), local API ${state.loaded_from}`
     : `local (${state.loaded_from})`;
 
   $('kpis').innerHTML = [
-    ['Discovered Nodes', fmt(nodeSummary.total), `${fmt(nodeSummary.online)} online`],
+    ['Mapped Nodes', fmt(nodeSummary.total), `${fmt(nodeSummary.online)} online · ${fmt((state.telemetry?.summary?.tracked_peers) || 0)} total discovered`],
     ['Countries', fmt(nodeSummary.countries), `${pct(nodeSummary.online_pct)} node availability`],
     ['ASNs', fmt(nodeSummary.asns), `${pct(summary.infrastructure?.top_asn_share_pct)} largest ASN share`],
     ['Reported Peers', fmt(health.reported_peers), `${fmt(health.connections)} active connections`],
@@ -1678,7 +1671,7 @@ function render() {
     <div class="kpi"><span class="kpi-label">${label}</span><span class="kpi-value">${value}</span><span class="kpi-note">${note}</span></div>
   `).join('');
 
-  $('map-sub').textContent = `${fmt(nodes.length)} discovered nodes`;
+  $('map-sub').textContent = `${fmt(nodes.length)} mapped · ${fmt((state.telemetry?.summary?.tracked_peers) || 0)} discovered`;
   $('top-countries').innerHTML = barRows(summary.geography?.top_countries, 'country');
   renderInfraMix(summary.infrastructure?.mix || {});
   renderMap(nodes);
@@ -1961,7 +1954,7 @@ function renderTelemetry() {
   const summary = telemetry.summary || {};
   $('telemetry-kpis').innerHTML = [
     ['Active Now', fmt(summary.active_latest), `peak ${fmt(summary.active_peak)} peers / hour`],
-    ['Tracked Peers', fmt(summary.tracked_peers), `${fmt(telemetry.window_hours || 0)}h window`],
+    ['Total Discovered', fmt(summary.tracked_peers), `${fmt((state.summary?.nodes?.total) || 0)} geo-mapped · ${fmt(telemetry.window_hours || 0)}h window`],
     ['Stake Estimate', summary.latest_total_stake == null ? '-' : fmt(summary.latest_total_stake), `${fmt(summary.stake_points || 0)} hourly points`],
     ['Telemetry Source', esc(telemetry.source || 'unknown'), 'logs, telemetry file, or crawler state'],
   ].map(([label, value, note]) => `
