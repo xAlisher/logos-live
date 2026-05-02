@@ -8,6 +8,7 @@ import datetime
 import json
 import os
 import re
+import shutil
 import subprocess
 import time
 from collections import defaultdict
@@ -335,7 +336,7 @@ def _log_file_ts(path: Path) -> int | None:
         return None
 
 
-def compact_logs(keep_hours: int = 72) -> None:
+def compact_logs(keep_hours: int = 24) -> None:
     """Delete log files older than keep_hours. Non-destructive: only removes files
     whose name indicates they are outside the retention window."""
     if not LOG_DIR.exists():
@@ -370,7 +371,7 @@ def build_telemetry() -> dict:
     from collections import defaultdict
 
     now     = int(time.time())
-    cutoff  = now - 72 * 3600
+    cutoff  = now - 24 * 3600
 
     # Load incremental cache
     cache: dict = {}
@@ -429,7 +430,7 @@ def build_telemetry() -> dict:
         file_cache[lf.name] = {"size": cur_size, "peers_by_bucket": peers_by_bucket}
         files_read += 1
 
-    # Expire cache entries for files outside the 72h window
+    # Expire cache entries for files outside the 24h window
     active_names = {lf.name for lf in log_files}
     file_cache = {k: v for k, v in file_cache.items() if k in active_names}
 
@@ -1153,6 +1154,20 @@ async def build_network_json() -> dict:
     _scan_local_gap()
     zone_messages = fetch_zone_messages(geo_cache=geo_cache, nodes=nodes)
 
+    # /data disk usage
+    disk: dict = {}
+    try:
+        du = shutil.disk_usage("/data")
+        disk = {
+            "total_gb":  round(du.total / 1e9, 1),
+            "used_gb":   round(du.used  / 1e9, 1),
+            "free_gb":   round(du.free  / 1e9, 1),
+            "used_pct":  round(du.used  / du.total * 100, 1),
+        }
+        print(f"  Disk /data: {disk['free_gb']} GB free ({disk['used_pct']}% used)")
+    except Exception as e:
+        print(f"  Disk check failed: {e}")
+
     # Approximate genesis timestamp: current unix time minus current tip slot (1 slot ≈ 1s).
     # Used by the frontend to convert slot numbers to human-readable relative times.
     genesis_ts = int(time.time()) - chain.get("slot", 0) if chain.get("slot") else None
@@ -1170,6 +1185,7 @@ async def build_network_json() -> dict:
         "telemetry":        telemetry,
         "zone_messages":    zone_messages,
         "genesis_ts":       genesis_ts,
+        "disk":             disk,
         "peer_data_source": "crawler",
         "peer_snapshot":    time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "updated":          int(time.time()),
