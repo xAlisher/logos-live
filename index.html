@@ -2185,7 +2185,7 @@ function buildVerificationFromState(peerId) {
   }
   stages.push({ id: 'crawler_observed', label: 'Crawler Observed', status: crawlerObserved ? 'passed' : 'warning', detail: crawlerObserved ? `IP: ${node.ip || '-'}, ${node.online ? 'online' : 'offline'}` : 'Not yet seen by crawler (may take up to 1h)' });
   stages.push({ id: 'map_visible',      label: 'Map Visible',      status: mapVisible    ? 'passed' : 'warning', detail: mapVisible    ? ([node.city, node.country].filter(Boolean).join(', ') || 'Located') : 'No geo data for this IP' });
-  stages.push({ id: 'telemetry',        label: 'Telemetry',        status: inTelemetry   ? 'passed' : 'warning', detail: inTelemetry   ? `${uptimePeer.uptime_pct}% uptime in log window` : 'Not seen in node logs (24h window)' });
+  stages.push({ id: 'telemetry',        label: 'Telemetry',        status: inTelemetry   ? 'passed' : 'warning', detail: inTelemetry   ? `${uptimePeer.uptime_pct}% uptime in log window` : 'Not seen in node logs (12h window)' });
 
   const next_actions = [];
   if (!crawlerObserved) next_actions.push('Not yet discovered by the crawler. Ensure your node is reachable and wait up to 1 hour.');
