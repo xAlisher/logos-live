@@ -336,7 +336,7 @@ def _log_file_ts(path: Path) -> int | None:
         return None
 
 
-def compact_logs(keep_hours: int = 24) -> None:
+def compact_logs(keep_hours: int = 12) -> None:
     """Delete log files older than keep_hours. Non-destructive: only removes files
     whose name indicates they are outside the retention window."""
     if not LOG_DIR.exists():
@@ -371,7 +371,7 @@ def build_telemetry() -> dict:
     from collections import defaultdict
 
     now     = int(time.time())
-    cutoff  = now - 24 * 3600
+    cutoff  = now - 12 * 3600
 
     # Load incremental cache
     cache: dict = {}
