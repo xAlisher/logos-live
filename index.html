@@ -1195,9 +1195,9 @@ tr:hover td {
       <div class="metric"><span class="metric-label">Mode</span><span class="metric-value" id="m-mode">-</span></div>
       <div class="metric"><span class="metric-label">Slot</span><span class="metric-value" id="m-slot">-</span></div>
       <div class="metric"><span class="metric-label">Height</span><span class="metric-value" id="m-height">-</span></div>
-      <div class="metric"><span class="metric-label">LIB Slot <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Last Irreversible Block — slot permanently finalized by consensus. Cannot be reorganized.">ⓘ</a></span><span class="metric-value" id="m-lib">-</span></div>
-      <div class="metric"><span class="metric-label">Peers <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Direct peers connected to this node, reported by /network/info. Not total network size.">ⓘ</a></span><span class="metric-value" id="m-peers">-</span></div>
-      <div class="metric"><span class="metric-label">Connections <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Active libp2p connections / pending dials, per /network/info.">ⓘ</a></span><span class="metric-value" id="m-connections">-</span></div>
+      <div class="metric"><span class="metric-label">LIB Slot</span><span class="metric-value" id="m-lib">-</span></div>
+      <div class="metric"><span class="metric-label">Peers</span><span class="metric-value" id="m-peers">-</span></div>
+      <div class="metric"><span class="metric-label">Connections</span><span class="metric-value" id="m-connections">-</span></div>
     </div>
 
     <div class="actions">
@@ -1248,7 +1248,7 @@ tr:hover td {
           </section>
           <div class="grid">
             <section class="panel">
-              <div class="panel-head"><h2 class="panel-title">Top Countries</h2><span class="panel-sub">by mapped nodes</span></div>
+              <div class="panel-head"><h2 class="panel-title">Top Countries</h2><span class="panel-sub">by discovered nodes</span></div>
               <div class="panel-body"><div class="bar-list" id="top-countries"></div></div>
             </section>
             <section class="panel">
@@ -1306,7 +1306,7 @@ tr:hover td {
                     <th>Location</th>
                     <th>Environment</th>
                     <th>ASN / Org</th>
-                    <th>First / Last Seen</th>
+                    <th>Seen</th>
                   </tr>
                 </thead>
                 <tbody id="peer-rows"></tbody>
@@ -1364,7 +1364,7 @@ tr:hover td {
             </div>
           </section>
           <section class="panel">
-            <div class="panel-head"><h2 class="panel-title">Total Stake Estimate</h2><span class="panel-sub">Total Stake Index <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Estimated total active stake across observed peers per hour. Derived from log events when available.">ⓘ</a></span></div>
+            <div class="panel-head"><h2 class="panel-title">Total Stake Estimate</h2><span class="panel-sub">TSI when available</span></div>
             <div class="panel-body">
               <div class="chart" id="stake-telemetry-chart"></div>
               <div class="chart-note" id="stake-telemetry-note">Stake telemetry appears when logs or telemetry.json provide stake events.</div>
@@ -1383,7 +1383,7 @@ tr:hover td {
       <section class="view" id="view-stake">
         <div class="two-col">
           <section class="panel">
-            <div class="panel-head"><h2 class="panel-title">Stake Snapshot</h2><span class="panel-sub">cumulative · live testnet</span></div>
+            <div class="panel-head"><h2 class="panel-title">Stake Snapshot</h2><span class="panel-sub">when available</span></div>
             <div class="panel-body" id="stake-summary"></div>
           </section>
           <section class="panel">
@@ -1664,9 +1664,9 @@ function render() {
 
   $('kpis').innerHTML = [
     ['Mapped Nodes', fmt(nodeSummary.total), `${fmt(nodeSummary.online)} online · ${fmt((state.telemetry?.summary?.tracked_peers) || 0)} total discovered`],
-    ['Countries', fmt(nodeSummary.countries), `${pct(nodeSummary.online_pct)} online rate`],
-    ['ASNs', fmt(nodeSummary.asns), `${pct(summary.infrastructure?.top_asn_share_pct)} largest ASN share <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Share of mapped nodes on one autonomous system. Lower = more decentralized.">ⓘ</a>`],
-    ['Connected Peers <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Peers currently connected to this node per /network/info. Updated each publish run.">ⓘ</a>', fmt(health.reported_peers), `${fmt(health.connections)} active connections`],
+    ['Countries', fmt(nodeSummary.countries), `${pct(nodeSummary.online_pct)} node availability`],
+    ['ASNs', fmt(nodeSummary.asns), `${pct(summary.infrastructure?.top_asn_share_pct)} largest ASN share`],
+    ['Reported Peers', fmt(health.reported_peers), `${fmt(health.connections)} active connections`],
   ].map(([label, value, note]) => `
     <div class="kpi"><span class="kpi-label">${label}</span><span class="kpi-value">${value}</span><span class="kpi-note">${note}</span></div>
   `).join('');
@@ -1871,7 +1871,7 @@ function renderPeers() {
     const seen = `${node.last_seen ? `last ${since(node.last_seen)}` : '-'}${node.first_seen ? `<br>first ${since(node.first_seen)}` : ''}`;
     return `
       <tr>
-        <td><span class="pill ${online ? '' : 'offline'}" title="${online ? 'Reached on last crawler sweep' : 'Not reached on last crawler sweep'}">${online ? 'Online' : 'Offline'}</span></td>
+        <td><span class="pill ${online ? '' : 'offline'}">${online ? 'Online' : 'Offline'}</span></td>
         <td class="mono" title="${esc(node.peer_id)}" style="white-space:nowrap">${esc(short(node.peer_id, 14, 8))}${node.peer_id ? cpBtn(node.peer_id) : ''}</td>
         <td class="mono">${esc(node.ip || '-')}</td>
         <td>${esc([node.city, node.country].filter(Boolean).join(', ') || '-')}</td>
@@ -1897,10 +1897,10 @@ function renderBlocks() {
   const window = blocks.window || {};
   const diversity = blocks.leader_diversity || {};
   $('block-kpis').innerHTML = [
-    ['Recent Blocks <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Last N blocks fetched from this node&#39;s chain API.">ⓘ</a>', fmt(window.blocks), `slots ${fmt(window.slot_min)} to ${fmt(window.slot_max)}`],
+    ['Blocks Sampled', fmt(window.blocks), `slots ${fmt(window.slot_min)} to ${fmt(window.slot_max)}`],
     ['Unique Leaders', fmt(diversity.unique_leaders), `${pct(diversity.top_leader_share_pct)} top share`],
     ['Transactions', fmt(window.transactions), `${fmt(window.operations)} operations`],
-    ['Empty / Missed <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Empty: blocks with no transactions. Missed: slots where no block was observed by this node.">ⓘ</a>', `${fmt(window.empty_blocks)} / ${fmt(window.missed_or_unseen_slots)}`, `${fmt(window.slot_span)} slot span`],
+    ['Empty / Unseen', `${fmt(window.empty_blocks)} / ${fmt(window.missed_or_unseen_slots)}`, `${fmt(window.slot_span)} slot span`],
   ].map(([label, value, note]) => `
     <div class="kpi"><span class="kpi-label">${label}</span><span class="kpi-value">${value}</span><span class="kpi-note">${note}</span></div>
   `).join('');
@@ -1953,7 +1953,7 @@ function renderTelemetry() {
   const telemetry = state.telemetry || {};
   const summary = telemetry.summary || {};
   $('telemetry-kpis').innerHTML = [
-    ['Active (last hr) <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Unique peer IDs seen in the most recent 1-hour log bucket.">ⓘ</a>', fmt(summary.active_latest), `peak ${fmt(summary.active_peak)} peers / hour`],
+    ['Active Now', fmt(summary.active_latest), `peak ${fmt(summary.active_peak)} peers / hour`],
     ['Total Discovered', fmt(summary.tracked_peers), `${fmt((state.summary?.nodes?.total) || 0)} geo-mapped · ${fmt(telemetry.window_hours || 0)}h window`],
     ['Stake Estimate', summary.latest_total_stake == null ? '-' : fmt(summary.latest_total_stake), `${fmt(summary.stake_points || 0)} hourly points`],
     ['Telemetry Source', esc(telemetry.source || 'unknown'), 'logs, telemetry file, or crawler state'],
