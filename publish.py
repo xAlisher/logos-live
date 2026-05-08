@@ -70,7 +70,7 @@ async def geolocate_batch(ips: list[str]) -> dict:
 
 
 async def get_own_ip(client: httpx.AsyncClient) -> str | None:
-    for url in ("https://api.ipify.org", "https://ifconfig.me/ip"):
+    for url in ("https://ipinfo.io/ip", "https://api.ipify.org", "https://ifconfig.me/ip"):
         try:
             r = await client.get(url, timeout=5)
             if r.status_code == 200:
@@ -324,6 +324,26 @@ def _hour_bucket(ts_seconds: float) -> int:
 
 _LOG_FILE_RE = re.compile(r"logos-blockchain\.(\d{4}-\d{2}-\d{2})-(\d{2})$")
 
+_HOSTING_KEYWORDS = {
+    "hetzner", "contabo", "ovh", "digitalocean", "amazon", "aws",
+    "azure", "microsoft", "google", "linode", "vultr", "scaleway",
+    "upcloud", "leaseweb", "choopa", "constant", "equinix", "cogent",
+    "tencent", "alibaba", "aliyun", "datacamp", "hosting", "server",
+    "datacenter", "datacentre", "cloud", "vps", "dedicated",
+}
+
+def _classify_environment(geo: dict) -> str:
+    text = " ".join([
+        geo.get("isp", ""),
+        geo.get("org", ""),
+        geo.get("as", ""),
+    ]).lower()
+    for kw in _HOSTING_KEYWORDS:
+        if kw in text:
+            return "hosting"
+    return "residential"
+
+
 
 def _log_file_ts(path: Path) -> int | None:
     """Return Unix timestamp for a log file based on its name, or None."""
@@ -458,7 +478,8 @@ def build_telemetry() -> dict:
         hourly.append({"ts": b, "count": len(bucket_peers.get(b, set()))})
         b += 3600
 
-    active_latest = len(bucket_peers.get(end_bucket, set()))
+    _latest_nonempty = max((b for b in bucket_peers if bucket_peers[b]), default=None)
+    active_latest = len(bucket_peers[_latest_nonempty]) if _latest_nonempty is not None else 0
     active_peak   = max((len(v) for v in bucket_peers.values()), default=0)
 
     # Peer uptime: count how many buckets each peer appeared in
@@ -646,7 +667,7 @@ async def fetch_stake(client: httpx.AsyncClient) -> dict:
     cache["recipients"] = list(known_recipients)
     cache["total_distributed"] = cumulative_distributed
     cache["leader_blocks"] = leader_blocks
-    if faucet_remainder is not None:
+    if faucet_remainder is not None and faucet_remainder < 10 ** 15:
         cache["faucet_remainder"] = faucet_remainder
     save_stake_cache(cache)
 
@@ -664,7 +685,10 @@ def _stake_summary(cache: dict) -> dict:
     return {
         "recipients":        len(cache.get("recipients", [])),
         "total_distributed": cache.get("total_distributed", 0),
-        "faucet_remainder":  cache.get("faucet_remainder"),
+        "faucet_remainder":  (
+            fr if (fr := cache.get("faucet_remainder")) is not None and fr < 10 ** 15
+            else None
+        ),
         "unique_leaders":    len(leader_blocks),
         "total_leader_blocks": total_leader_blocks,
         "top_leaders": [
@@ -1116,7 +1140,8 @@ async def build_network_json() -> dict:
                 "isp":        g.get("isp", ""),
                 "org":        g.get("org", ""),
                 "asn":        g.get("as", ""),
-                "self":       False,
+                "environment": _classify_environment(g),
+                "self":       True,
                 "online":     True,
                 "first_seen": 0,
                 "last_seen":  0,
@@ -1142,7 +1167,7 @@ async def build_network_json() -> dict:
             "isp":         g.get("isp", ""),
             "org":         g.get("org", ""),
             "asn":         g.get("as", ""),
-            "environment": node.get("environment", ""),
+            "environment": _classify_environment(g),
             "self":        False,
             "online":      node.get("last_seen", 0) == last_crawl,
             "first_seen":  node.get("first_seen", 0),
