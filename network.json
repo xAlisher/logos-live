@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "0e2f2e6d5a39ee5b3fb68dacfa4c5f76fdb3f31a88d56dab0f0d8603c1b75e7b",
-    "lib_slot": 2182257,
-    "tip": "d76a0a06576fe068ea95b3d54784bb1df9bad73d8e051065dff0dca37f54c33f",
-    "slot": 2182828,
-    "height": 114202,
+    "lib": "16281d5f4607aa8ef78e99b81960a3a44e8da16d3269c26b6b958dffdf9d2300",
+    "lib_slot": 2182462,
+    "tip": "7752e84bb56c93c36156119ff613eed45a1d72226f337619ca04a921b8ba5418",
+    "slot": 2183104,
+    "height": 114215,
     "mode": "Online"
   },
   "network": {
@@ -15,9 +15,9 @@
       "/ip4/172.17.0.1/udp/3000/quic-v1"
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
-    "n_peers": 25,
-    "n_connections": 28,
-    "n_pending_connections": 3
+    "n_peers": 24,
+    "n_connections": 24,
+    "n_pending_connections": 0
   },
   "nodes": [
     {
@@ -2538,8 +2538,8 @@
     "recipients": 76,
     "total_distributed": 21145000,
     "faucet_remainder": 18446744073563412390,
-    "unique_leaders": 7706,
-    "total_leader_blocks": 8339,
+    "unique_leaders": 7719,
+    "total_leader_blocks": 8370,
     "top_leaders": [
       {
         "pk": "161b63a3a3b3568b",
@@ -2596,13 +2596,13 @@
   "recent_blocks": {
     "window": {
       "blocks": 31,
-      "slot_min": 2182257,
-      "slot_max": 2182828,
-      "slot_span": 572,
+      "slot_min": 2182462,
+      "slot_max": 2183104,
+      "slot_span": 643,
       "transactions": 10,
       "operations": 10,
-      "empty_blocks": 22,
-      "missed_or_unseen_slots": 541
+      "empty_blocks": 21,
+      "missed_or_unseen_slots": 612
     },
     "leader_diversity": {
       "unique_leaders": 31,
@@ -2610,161 +2610,57 @@
     },
     "top_leaders": [
       {
-        "leader_key": "38429ca14b4958da",
+        "leader_key": "f7418f64101646fa",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "fbc870a7cd369eb0",
+        "leader_key": "035067c76c161f4a",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "2205ff46fe4454c7",
+        "leader_key": "678b1cb8d1802ac1",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "14ee2133b77c1cb5",
+        "leader_key": "2d0f28897ceadf0e",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "d933cb40183e8eef",
+        "leader_key": "a4b75755004897b9",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "d5f127e8c9a4a2ba",
+        "leader_key": "1d9c485b7414ddef",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "16589217784c66ce",
+        "leader_key": "9d7adfcca488399b",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "010e32758ffa97f5",
+        "leader_key": "2143a0f2a985ddae",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "7a27097877971bee",
+        "leader_key": "3c6bc39295929bff",
         "blocks": 1,
         "pct": 3.2
       },
       {
-        "leader_key": "33a763485544abcf",
+        "leader_key": "dd00799143f5fa31",
         "blocks": 1,
         "pct": 3.2
       }
     ],
     "recent": [
-      {
-        "slot": 2182448,
-        "leader_key": "3fbbb6d1f30d27a4",
-        "transactions": 2,
-        "operations": 2,
-        "root": "2676619280970ee8",
-        "hash": "65db682261591a97"
-      },
-      {
-        "slot": 2182460,
-        "leader_key": "29a4789297adc912",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "29ddcdf4701de64a"
-      },
-      {
-        "slot": 2182462,
-        "leader_key": "1fb9dfc4750cbebd",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "16281d5f4607aa8e"
-      },
-      {
-        "slot": 2182467,
-        "leader_key": "e908b93060aaa634",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "2968e1b9e2e1e922"
-      },
-      {
-        "slot": 2182503,
-        "leader_key": "d5f166609e8ea818",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "8c7d06022cdfa96c"
-      },
-      {
-        "slot": 2182515,
-        "leader_key": "56faee6f2a513820",
-        "transactions": 1,
-        "operations": 1,
-        "root": "96efc6566c10e68d",
-        "hash": "98b127e4d336d5a9"
-      },
-      {
-        "slot": 2182548,
-        "leader_key": "23ec9798e0ce8e32",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "e8d4b0aee587af2f"
-      },
-      {
-        "slot": 2182560,
-        "leader_key": "9c97720ecf664058",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "e38b578a2a699dc1"
-      },
-      {
-        "slot": 2182602,
-        "leader_key": "baff98389b539693",
-        "transactions": 1,
-        "operations": 1,
-        "root": "80b79f9532451c21",
-        "hash": "5993d7326e2b8523"
-      },
-      {
-        "slot": 2182610,
-        "leader_key": "ed40f5ae56afd263",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "c44bbed744a6f742"
-      },
-      {
-        "slot": 2182647,
-        "leader_key": "33a763485544abcf",
-        "transactions": 1,
-        "operations": 1,
-        "root": "fdd392c1ce03b969",
-        "hash": "e2f19b95a15010d1"
-      },
-      {
-        "slot": 2182660,
-        "leader_key": "7a27097877971bee",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "6ba19e99aea01dae"
-      },
-      {
-        "slot": 2182720,
-        "leader_key": "010e32758ffa97f5",
-        "transactions": 1,
-        "operations": 1,
-        "root": "c058d45da9cfa33b",
-        "hash": "04327b44d48f2f9b"
-      },
       {
         "slot": 2182734,
         "leader_key": "16589217784c66ce",
@@ -2820,13 +2716,741 @@
         "operations": 0,
         "root": "89eb0d6a8a691dae",
         "hash": "d76a0a06576fe068"
+      },
+      {
+        "slot": 2182865,
+        "leader_key": "9d349592d3ae0ebe",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "aa1d47b80b62e8fe"
+      },
+      {
+        "slot": 2182911,
+        "leader_key": "e2da7e793797cb4d",
+        "transactions": 1,
+        "operations": 1,
+        "root": "2c300d62ee144f9a",
+        "hash": "4409f425158dc1f2"
+      },
+      {
+        "slot": 2182917,
+        "leader_key": "e6a6ec2eaa674938",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "ababfc9d27d5844d"
+      },
+      {
+        "slot": 2182927,
+        "leader_key": "dd00799143f5fa31",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "0412517a451d8c87"
+      },
+      {
+        "slot": 2182965,
+        "leader_key": "3c6bc39295929bff",
+        "transactions": 1,
+        "operations": 1,
+        "root": "5f4c18d38c649312",
+        "hash": "448175197021aee7"
+      },
+      {
+        "slot": 2182986,
+        "leader_key": "2143a0f2a985ddae",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "a7660884487f544a"
+      },
+      {
+        "slot": 2183005,
+        "leader_key": "9d7adfcca488399b",
+        "transactions": 1,
+        "operations": 1,
+        "root": "f668cc0defae01aa",
+        "hash": "220dac312106c3e6"
+      },
+      {
+        "slot": 2183034,
+        "leader_key": "1d9c485b7414ddef",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "6caad96676194d03"
+      },
+      {
+        "slot": 2183041,
+        "leader_key": "a4b75755004897b9",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "a73240ddcd6a016c"
+      },
+      {
+        "slot": 2183055,
+        "leader_key": "2d0f28897ceadf0e",
+        "transactions": 1,
+        "operations": 1,
+        "root": "2952c18a10f99c1d",
+        "hash": "9e334a37852e482b"
+      },
+      {
+        "slot": 2183066,
+        "leader_key": "678b1cb8d1802ac1",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "f8a6d87e8ce5402a"
+      },
+      {
+        "slot": 2183087,
+        "leader_key": "035067c76c161f4a",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "f2f951b143e19832"
+      },
+      {
+        "slot": 2183104,
+        "leader_key": "f7418f64101646fa",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "7752e84bb56c93c3"
       }
     ]
   },
   "telemetry": {
     "source": "node-logs",
-    "window_hours": 13,
+    "window_hours": 169,
     "active_peers_hourly": [
+      {
+        "ts": 1777669200,
+        "count": 0
+      },
+      {
+        "ts": 1777672800,
+        "count": 0
+      },
+      {
+        "ts": 1777676400,
+        "count": 0
+      },
+      {
+        "ts": 1777680000,
+        "count": 0
+      },
+      {
+        "ts": 1777683600,
+        "count": 0
+      },
+      {
+        "ts": 1777687200,
+        "count": 0
+      },
+      {
+        "ts": 1777690800,
+        "count": 0
+      },
+      {
+        "ts": 1777694400,
+        "count": 0
+      },
+      {
+        "ts": 1777698000,
+        "count": 0
+      },
+      {
+        "ts": 1777701600,
+        "count": 0
+      },
+      {
+        "ts": 1777705200,
+        "count": 0
+      },
+      {
+        "ts": 1777708800,
+        "count": 0
+      },
+      {
+        "ts": 1777712400,
+        "count": 0
+      },
+      {
+        "ts": 1777716000,
+        "count": 0
+      },
+      {
+        "ts": 1777719600,
+        "count": 0
+      },
+      {
+        "ts": 1777723200,
+        "count": 0
+      },
+      {
+        "ts": 1777726800,
+        "count": 0
+      },
+      {
+        "ts": 1777730400,
+        "count": 0
+      },
+      {
+        "ts": 1777734000,
+        "count": 0
+      },
+      {
+        "ts": 1777737600,
+        "count": 0
+      },
+      {
+        "ts": 1777741200,
+        "count": 0
+      },
+      {
+        "ts": 1777744800,
+        "count": 0
+      },
+      {
+        "ts": 1777748400,
+        "count": 0
+      },
+      {
+        "ts": 1777752000,
+        "count": 0
+      },
+      {
+        "ts": 1777755600,
+        "count": 0
+      },
+      {
+        "ts": 1777759200,
+        "count": 0
+      },
+      {
+        "ts": 1777762800,
+        "count": 0
+      },
+      {
+        "ts": 1777766400,
+        "count": 0
+      },
+      {
+        "ts": 1777770000,
+        "count": 0
+      },
+      {
+        "ts": 1777773600,
+        "count": 0
+      },
+      {
+        "ts": 1777777200,
+        "count": 0
+      },
+      {
+        "ts": 1777780800,
+        "count": 0
+      },
+      {
+        "ts": 1777784400,
+        "count": 0
+      },
+      {
+        "ts": 1777788000,
+        "count": 0
+      },
+      {
+        "ts": 1777791600,
+        "count": 0
+      },
+      {
+        "ts": 1777795200,
+        "count": 0
+      },
+      {
+        "ts": 1777798800,
+        "count": 0
+      },
+      {
+        "ts": 1777802400,
+        "count": 0
+      },
+      {
+        "ts": 1777806000,
+        "count": 0
+      },
+      {
+        "ts": 1777809600,
+        "count": 0
+      },
+      {
+        "ts": 1777813200,
+        "count": 0
+      },
+      {
+        "ts": 1777816800,
+        "count": 0
+      },
+      {
+        "ts": 1777820400,
+        "count": 0
+      },
+      {
+        "ts": 1777824000,
+        "count": 0
+      },
+      {
+        "ts": 1777827600,
+        "count": 0
+      },
+      {
+        "ts": 1777831200,
+        "count": 0
+      },
+      {
+        "ts": 1777834800,
+        "count": 0
+      },
+      {
+        "ts": 1777838400,
+        "count": 0
+      },
+      {
+        "ts": 1777842000,
+        "count": 0
+      },
+      {
+        "ts": 1777845600,
+        "count": 0
+      },
+      {
+        "ts": 1777849200,
+        "count": 0
+      },
+      {
+        "ts": 1777852800,
+        "count": 0
+      },
+      {
+        "ts": 1777856400,
+        "count": 0
+      },
+      {
+        "ts": 1777860000,
+        "count": 0
+      },
+      {
+        "ts": 1777863600,
+        "count": 0
+      },
+      {
+        "ts": 1777867200,
+        "count": 0
+      },
+      {
+        "ts": 1777870800,
+        "count": 0
+      },
+      {
+        "ts": 1777874400,
+        "count": 0
+      },
+      {
+        "ts": 1777878000,
+        "count": 0
+      },
+      {
+        "ts": 1777881600,
+        "count": 0
+      },
+      {
+        "ts": 1777885200,
+        "count": 0
+      },
+      {
+        "ts": 1777888800,
+        "count": 0
+      },
+      {
+        "ts": 1777892400,
+        "count": 0
+      },
+      {
+        "ts": 1777896000,
+        "count": 0
+      },
+      {
+        "ts": 1777899600,
+        "count": 0
+      },
+      {
+        "ts": 1777903200,
+        "count": 0
+      },
+      {
+        "ts": 1777906800,
+        "count": 0
+      },
+      {
+        "ts": 1777910400,
+        "count": 0
+      },
+      {
+        "ts": 1777914000,
+        "count": 0
+      },
+      {
+        "ts": 1777917600,
+        "count": 0
+      },
+      {
+        "ts": 1777921200,
+        "count": 0
+      },
+      {
+        "ts": 1777924800,
+        "count": 0
+      },
+      {
+        "ts": 1777928400,
+        "count": 0
+      },
+      {
+        "ts": 1777932000,
+        "count": 0
+      },
+      {
+        "ts": 1777935600,
+        "count": 0
+      },
+      {
+        "ts": 1777939200,
+        "count": 0
+      },
+      {
+        "ts": 1777942800,
+        "count": 0
+      },
+      {
+        "ts": 1777946400,
+        "count": 0
+      },
+      {
+        "ts": 1777950000,
+        "count": 0
+      },
+      {
+        "ts": 1777953600,
+        "count": 0
+      },
+      {
+        "ts": 1777957200,
+        "count": 0
+      },
+      {
+        "ts": 1777960800,
+        "count": 0
+      },
+      {
+        "ts": 1777964400,
+        "count": 0
+      },
+      {
+        "ts": 1777968000,
+        "count": 0
+      },
+      {
+        "ts": 1777971600,
+        "count": 0
+      },
+      {
+        "ts": 1777975200,
+        "count": 0
+      },
+      {
+        "ts": 1777978800,
+        "count": 0
+      },
+      {
+        "ts": 1777982400,
+        "count": 0
+      },
+      {
+        "ts": 1777986000,
+        "count": 0
+      },
+      {
+        "ts": 1777989600,
+        "count": 0
+      },
+      {
+        "ts": 1777993200,
+        "count": 0
+      },
+      {
+        "ts": 1777996800,
+        "count": 0
+      },
+      {
+        "ts": 1778000400,
+        "count": 0
+      },
+      {
+        "ts": 1778004000,
+        "count": 0
+      },
+      {
+        "ts": 1778007600,
+        "count": 0
+      },
+      {
+        "ts": 1778011200,
+        "count": 0
+      },
+      {
+        "ts": 1778014800,
+        "count": 0
+      },
+      {
+        "ts": 1778018400,
+        "count": 0
+      },
+      {
+        "ts": 1778022000,
+        "count": 0
+      },
+      {
+        "ts": 1778025600,
+        "count": 0
+      },
+      {
+        "ts": 1778029200,
+        "count": 0
+      },
+      {
+        "ts": 1778032800,
+        "count": 0
+      },
+      {
+        "ts": 1778036400,
+        "count": 0
+      },
+      {
+        "ts": 1778040000,
+        "count": 0
+      },
+      {
+        "ts": 1778043600,
+        "count": 0
+      },
+      {
+        "ts": 1778047200,
+        "count": 0
+      },
+      {
+        "ts": 1778050800,
+        "count": 0
+      },
+      {
+        "ts": 1778054400,
+        "count": 0
+      },
+      {
+        "ts": 1778058000,
+        "count": 0
+      },
+      {
+        "ts": 1778061600,
+        "count": 0
+      },
+      {
+        "ts": 1778065200,
+        "count": 0
+      },
+      {
+        "ts": 1778068800,
+        "count": 0
+      },
+      {
+        "ts": 1778072400,
+        "count": 0
+      },
+      {
+        "ts": 1778076000,
+        "count": 0
+      },
+      {
+        "ts": 1778079600,
+        "count": 0
+      },
+      {
+        "ts": 1778083200,
+        "count": 0
+      },
+      {
+        "ts": 1778086800,
+        "count": 0
+      },
+      {
+        "ts": 1778090400,
+        "count": 0
+      },
+      {
+        "ts": 1778094000,
+        "count": 0
+      },
+      {
+        "ts": 1778097600,
+        "count": 0
+      },
+      {
+        "ts": 1778101200,
+        "count": 0
+      },
+      {
+        "ts": 1778104800,
+        "count": 0
+      },
+      {
+        "ts": 1778108400,
+        "count": 0
+      },
+      {
+        "ts": 1778112000,
+        "count": 0
+      },
+      {
+        "ts": 1778115600,
+        "count": 0
+      },
+      {
+        "ts": 1778119200,
+        "count": 0
+      },
+      {
+        "ts": 1778122800,
+        "count": 0
+      },
+      {
+        "ts": 1778126400,
+        "count": 0
+      },
+      {
+        "ts": 1778130000,
+        "count": 0
+      },
+      {
+        "ts": 1778133600,
+        "count": 0
+      },
+      {
+        "ts": 1778137200,
+        "count": 0
+      },
+      {
+        "ts": 1778140800,
+        "count": 0
+      },
+      {
+        "ts": 1778144400,
+        "count": 0
+      },
+      {
+        "ts": 1778148000,
+        "count": 0
+      },
+      {
+        "ts": 1778151600,
+        "count": 0
+      },
+      {
+        "ts": 1778155200,
+        "count": 0
+      },
+      {
+        "ts": 1778158800,
+        "count": 0
+      },
+      {
+        "ts": 1778162400,
+        "count": 0
+      },
+      {
+        "ts": 1778166000,
+        "count": 0
+      },
+      {
+        "ts": 1778169600,
+        "count": 0
+      },
+      {
+        "ts": 1778173200,
+        "count": 0
+      },
+      {
+        "ts": 1778176800,
+        "count": 0
+      },
+      {
+        "ts": 1778180400,
+        "count": 0
+      },
+      {
+        "ts": 1778184000,
+        "count": 0
+      },
+      {
+        "ts": 1778187600,
+        "count": 0
+      },
+      {
+        "ts": 1778191200,
+        "count": 0
+      },
+      {
+        "ts": 1778194800,
+        "count": 0
+      },
+      {
+        "ts": 1778198400,
+        "count": 0
+      },
+      {
+        "ts": 1778202000,
+        "count": 0
+      },
+      {
+        "ts": 1778205600,
+        "count": 0
+      },
+      {
+        "ts": 1778209200,
+        "count": 0
+      },
+      {
+        "ts": 1778212800,
+        "count": 0
+      },
+      {
+        "ts": 1778216400,
+        "count": 0
+      },
+      {
+        "ts": 1778220000,
+        "count": 0
+      },
+      {
+        "ts": 1778223600,
+        "count": 0
+      },
+      {
+        "ts": 1778227200,
+        "count": 0
+      },
       {
         "ts": 1778230800,
         "count": 0
@@ -2890,152 +3514,152 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWBPCt1C78DatL\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJPYv9vEmuyFp\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWCydUyhZxP92M\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWKCogiyR9sk17\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWApqRyAErJLDL\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWSmroE8u98uiD\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 38.5,
+        "uptime_pct": 3.0,
         "last_seen": 1778248800
       }
     ],
@@ -4666,7 +5290,7 @@
       "block_id": null,
       "tx_id": "",
       "status": "pending",
-      "observed_at": "2026-05-03T21:00:56+00:00",
+      "observed_at": "2026-05-03T22:01:02+00:00",
       "signer": "",
       "live": false,
       "lat": 38.9067,
@@ -4682,7 +5306,7 @@
       "block_id": null,
       "tx_id": "",
       "status": "pending",
-      "observed_at": "2026-05-03T21:00:56+00:00",
+      "observed_at": "2026-05-03T22:01:02+00:00",
       "signer": "",
       "live": false,
       "lat": 38.9067,
@@ -4698,7 +5322,7 @@
       "block_id": null,
       "tx_id": "",
       "status": "pending",
-      "observed_at": "2026-05-03T21:00:56+00:00",
+      "observed_at": "2026-05-03T22:01:02+00:00",
       "signer": "",
       "live": false,
       "lat": 38.9067,
@@ -4714,7 +5338,7 @@
       "block_id": null,
       "tx_id": "",
       "status": "pending",
-      "observed_at": "2026-05-03T20:01:03+00:00",
+      "observed_at": "2026-05-03T22:01:02+00:00",
       "signer": "",
       "live": true,
       "lat": 38.9067,
@@ -4739,7 +5363,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776093598,
+  "genesis_ts": 1776093582,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 0.0,
@@ -4747,6 +5371,6 @@
     "used_pct": 0.0
   },
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-08T21:40:26Z",
-  "updated": 1778276426
+  "peer_snapshot": "2026-05-08T21:44:46Z",
+  "updated": 1778276686
 }
