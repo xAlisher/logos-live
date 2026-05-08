@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "8c9ce8c716069bc68882f844a26171ab61ceededdb5be3e0b15786ca11558655",
-    "lib_slot": 2184311,
-    "tip": "36e70a6b0dba3e8ef5dccdc8465a4c1483dbb9d32d9ec3182b608bdd6ffb0f33",
-    "slot": 2185049,
-    "height": 114309,
+    "lib": "eaa5788ea82a112c844b44e02a49b785650b55f901ff9af1ffa8a502448c6d27",
+    "lib_slot": 2184357,
+    "tip": "c9e361e12e11c15a6640203e35ec9a50208b12801a1b231377f7c6b1f311702d",
+    "slot": 2185145,
+    "height": 114313,
     "mode": "Online"
   },
   "network": {
@@ -20,6 +20,22 @@
     "n_pending_connections": 0
   },
   "nodes": [
+    {
+      "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
+      "ip": "88.19.213.217",
+      "lat": 39.5012,
+      "lon": -0.4313,
+      "country": "Spain",
+      "city": "Paterna",
+      "isp": "Telefonica de Espana SAU",
+      "org": "RIMA (Red IP Multi Acceso)",
+      "asn": "AS3352 TELEFONICA DE ESPANA S.A.U.",
+      "environment": "residential",
+      "self": true,
+      "online": true,
+      "first_seen": 0,
+      "last_seen": 0
+    },
     {
       "peer_id": "12D3KooWKWmLVf4ysVivr8Qf4bJ215hthMtAoctVtifEHwHcYKtm",
       "ip": "68.166.187.55",
@@ -2521,10 +2537,15 @@
   "stake": {
     "recipients": 76,
     "total_distributed": 21145000,
-    "faucet_remainder": 18446744073563412390,
-    "unique_leaders": 7813,
-    "total_leader_blocks": 8618,
+    "faucet_remainder": null,
+    "unique_leaders": 7817,
+    "total_leader_blocks": 8649,
     "top_leaders": [
+      {
+        "pk": "536cdfdb1f115b4e",
+        "blocks": 5,
+        "pct": 0.1
+      },
       {
         "pk": "161b63a3a3b3568b",
         "blocks": 4,
@@ -2569,30 +2590,45 @@
         "pk": "8f7747d9471a9180",
         "blocks": 4,
         "pct": 0.0
-      },
-      {
-        "pk": "3738a73ac472cd17",
-        "blocks": 4,
-        "pct": 0.0
       }
     ]
   },
   "recent_blocks": {
     "window": {
       "blocks": 31,
-      "slot_min": 2184311,
-      "slot_max": 2185049,
-      "slot_span": 739,
+      "slot_min": 2184357,
+      "slot_max": 2185145,
+      "slot_span": 789,
       "transactions": 14,
       "operations": 14,
       "empty_blocks": 18,
-      "missed_or_unseen_slots": 708
+      "missed_or_unseen_slots": 758
     },
     "leader_diversity": {
       "unique_leaders": 31,
       "top_leader_share_pct": 3.2
     },
     "top_leaders": [
+      {
+        "leader_key": "c79b93072df4fddb",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "6ff7a220304e17b8",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "5e901092425a8ba2",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "c4c6e983a724e368",
+        "blocks": 1,
+        "pct": 3.2
+      },
       {
         "leader_key": "34ccd6b91f8592af",
         "blocks": 1,
@@ -2622,61 +2658,9 @@
         "leader_key": "7c2f8a9b274215ed",
         "blocks": 1,
         "pct": 3.2
-      },
-      {
-        "leader_key": "9ffb04bf67391f83",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "527bcd4bd6733dc9",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "9b1c6055e55740f4",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "5b54d57b13e230ce",
-        "blocks": 1,
-        "pct": 3.2
       }
     ],
     "recent": [
-      {
-        "slot": 2184520,
-        "leader_key": "8bbe61535befd434",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "9fcfa4bcaa6d75e8"
-      },
-      {
-        "slot": 2184526,
-        "leader_key": "16a5853f6e19059a",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "f45a60a4fbb33fc6"
-      },
-      {
-        "slot": 2184555,
-        "leader_key": "8e5dd2705cc65eff",
-        "transactions": 1,
-        "operations": 1,
-        "root": "88cbd5f2c5c3cb09",
-        "hash": "f0cd3a7465d164a0"
-      },
-      {
-        "slot": 2184595,
-        "leader_key": "e8db030a1dbac168",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "102548299cda01f8"
-      },
       {
         "slot": 2184619,
         "leader_key": "216aa0ed8d74fdcd",
@@ -2804,6 +2788,38 @@
         "operations": 0,
         "root": "89eb0d6a8a691dae",
         "hash": "36e70a6b0dba3e8e"
+      },
+      {
+        "slot": 2185071,
+        "leader_key": "c4c6e983a724e368",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "43e481e2cbe7a257"
+      },
+      {
+        "slot": 2185072,
+        "leader_key": "5e901092425a8ba2",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "fc3ba51f4a9b32f5"
+      },
+      {
+        "slot": 2185128,
+        "leader_key": "6ff7a220304e17b8",
+        "transactions": 1,
+        "operations": 1,
+        "root": "64d2f7aa0f5f5fbd",
+        "hash": "56d3ed495812994e"
+      },
+      {
+        "slot": 2185145,
+        "leader_key": "c79b93072df4fddb",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "c9e361e12e11c15a"
       }
     ]
   },
@@ -5268,13 +5284,45 @@
     },
     {
       "sender": "alisher",
+      "text": "If you're not lost, you're not much of an ex",
+      "slot": 0,
+      "slot_unknown": true,
+      "block_id": null,
+      "tx_id": "",
+      "status": "pending",
+      "observed_at": "2026-05-08T21:44:38+00:00",
+      "signer": "",
+      "live": false,
+      "lat": 38.9067,
+      "lon": 1.4206,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "alisher",
+      "text": "Happy weekend, Logos Node runners! May your",
+      "slot": 0,
+      "slot_unknown": true,
+      "block_id": null,
+      "tx_id": "",
+      "status": "pending",
+      "observed_at": "2026-05-08T21:44:38+00:00",
+      "signer": "",
+      "live": false,
+      "lat": 38.9067,
+      "lon": 1.4206,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "alisher",
       "text": "migrating modules to https://github.com/logo",
       "slot": 0,
       "slot_unknown": true,
       "block_id": null,
       "tx_id": "",
       "status": "pending",
-      "observed_at": "2026-05-08T21:40:23+00:00",
+      "observed_at": "2026-05-08T21:44:38+00:00",
       "signer": "",
       "live": false,
       "lat": 38.9067,
@@ -5299,38 +5347,6 @@
       "country": ""
     },
     {
-      "sender": "alisher",
-      "text": "If you're not lost, you're not much of an ex",
-      "slot": 0,
-      "slot_unknown": true,
-      "block_id": null,
-      "tx_id": "",
-      "status": "pending",
-      "observed_at": "2026-05-08T21:40:18+00:00",
-      "signer": "",
-      "live": false,
-      "lat": 38.9067,
-      "lon": 1.4206,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "alisher",
-      "text": "Happy weekend, Logos Node runners! May your",
-      "slot": 0,
-      "slot_unknown": true,
-      "block_id": null,
-      "tx_id": "",
-      "status": "pending",
-      "observed_at": "2026-05-08T21:40:18+00:00",
-      "signer": "",
-      "live": false,
-      "lat": 38.9067,
-      "lon": 1.4206,
-      "city": "",
-      "country": ""
-    },
-    {
       "sender": "bad1d8b427b2\u2026",
       "text": "Hi from Fergie",
       "slot": 0,
@@ -5347,7 +5363,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776093591,
+  "genesis_ts": 1776093583,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 0.0,
@@ -5355,6 +5371,6 @@
     "used_pct": 0.0
   },
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-08T22:17:20Z",
-  "updated": 1778278640
+  "peer_snapshot": "2026-05-08T22:18:48Z",
+  "updated": 1778278728
 }
