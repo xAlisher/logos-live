@@ -506,6 +506,10 @@ button, input {
   font-weight: 400;
   text-transform: none;
 }
+.topbar .info-icon[data-tip]:hover::before {
+  bottom: auto;
+  top: calc(100% + 6px);
+}
 
 .map-shell {
   position: relative;
@@ -747,8 +751,8 @@ button, input {
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 10px;
-  background: var(--bg-raised);
-  color: var(--subtle);
+  background: var(--line);
+  color: var(--text);
 }
 
 .feed-type.type-push, .feed-type.type-create { color: var(--green-2); background: var(--green-a1); }
@@ -756,6 +760,7 @@ button, input {
 .feed-type.type-issues { color: var(--gold); background: var(--gold-a1); }
 .feed-type.stake-top { color: var(--green-2); background: var(--green-a1); }
 .feed-type.stake-mid { color: var(--gold); background: var(--gold-a1); }
+.feed-type.type-release { color: var(--purple); background: rgba(178,139,210,0.18); }
 
 .messages-list {
   display: grid;
