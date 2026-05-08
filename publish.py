@@ -21,7 +21,7 @@ DB_FILE   = BASE / "peers.json"
 GEO_CACHE = BASE / "geo_cache.json"
 PAGES_DIR = BASE / "pages"
 OUT_FILE  = PAGES_DIR / "network.json"
-NODE_URL  = os.getenv("NODE_URL", "http://127.0.0.1:8080")
+NODE_URL  = os.getenv("NODE_URL", "http://127.0.0.1:8085")
 
 
 def load_db() -> dict:
@@ -371,7 +371,7 @@ def build_telemetry() -> dict:
     from collections import defaultdict
 
     now     = int(time.time())
-    cutoff  = now - 12 * 3600
+    cutoff  = now - 168 * 3600
 
     # Load incremental cache
     cache: dict = {}
@@ -410,17 +410,15 @@ def build_telemetry() -> dict:
         try:
             with lf.open("rb") as fh:
                 fh.seek(prev_size)
-                chunk = fh.read()
-            bytes_read += len(chunk)
-            text = chunk.decode("utf-8", errors="replace")
-            for raw_line in text.splitlines():
-                line = _ANSI_RE.sub("", raw_line)
-                for pid in _PEER_RE.findall(line):
-                    new_peers.add(pid)
-                    if pid not in peer_first or file_ts < peer_first[pid]:
-                        peer_first[pid] = file_ts
-                    if pid not in peer_last or file_ts > peer_last[pid]:
-                        peer_last[pid] = file_ts
+                for raw_line in fh:
+                    bytes_read += len(raw_line)
+                    line = _ANSI_RE.sub("", raw_line.decode("utf-8", errors="replace").rstrip())
+                    for pid in _PEER_RE.findall(line):
+                        new_peers.add(pid)
+                        if pid not in peer_first or file_ts < peer_first[pid]:
+                            peer_first[pid] = file_ts
+                        if pid not in peer_last or file_ts > peer_last[pid]:
+                            peer_last[pid] = file_ts
         except Exception:
             continue
 
@@ -1090,7 +1088,7 @@ async def build_network_json() -> dict:
         discourse       = await fetch_discourse(client)
         stake           = await fetch_stake(client)
         recent_blocks   = await fetch_recent_blocks(client)
-    compact_logs()
+    compact_logs(keep_hours=168)
     telemetry = build_telemetry()
     save_feed_cache(feed_cache)
 
@@ -1157,14 +1155,14 @@ async def build_network_json() -> dict:
     # /data disk usage
     disk: dict = {}
     try:
-        du = shutil.disk_usage("/data")
+        du = shutil.disk_usage("/mnt/tc-hdd")
         disk = {
             "total_gb":  round(du.total / 1e9, 1),
             "used_gb":   round(du.used  / 1e9, 1),
             "free_gb":   round(du.free  / 1e9, 1),
             "used_pct":  round(du.used  / du.total * 100, 1),
         }
-        print(f"  Disk /data: {disk['free_gb']} GB free ({disk['used_pct']}% used)")
+        print(f"  Disk /mnt/tc-hdd: {disk['free_gb']} GB free ({disk['used_pct']}% used)")
     except Exception as e:
         print(f"  Disk check failed: {e}")
 
