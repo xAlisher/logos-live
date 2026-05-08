@@ -1,24 +1,6 @@
 {
-  "chain": {
-    "lib": "cdb32f4c13b554d6689176fbce5c4430904375b11cf9ae1cf0a2a58a4bcfecf8",
-    "lib_slot": 2164207,
-    "tip": "5bb2e2c3923ef4caa5a52b85ec66dfffb653b2f8afb91e303aed9a66cb62cc7d",
-    "slot": 2164715,
-    "height": 113252,
-    "mode": "Online"
-  },
-  "network": {
-    "listen_addresses": [
-      "/ip4/127.0.0.1/udp/3000/quic-v1",
-      "/ip4/192.168.1.45/udp/3000/quic-v1",
-      "/ip4/100.110.208.65/udp/3000/quic-v1",
-      "/ip4/172.17.0.1/udp/3000/quic-v1"
-    ],
-    "peer_id": "12D3KooWRNu9R82AP62eXkL4qwc7FPoGeP7v6vKRGJAD2QFTGXmq",
-    "n_peers": 25,
-    "n_connections": 25,
-    "n_pending_connections": 0
-  },
+  "chain": {},
+  "network": {},
   "nodes": [
     {
       "peer_id": "12D3KooWKWmLVf4ysVivr8Qf4bJ215hthMtAoctVtifEHwHcYKtm",
@@ -2234,6 +2216,70 @@
   },
   "github": [
     {
+      "repo": "roadmap",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"storage/roadmap-update\"",
+      "url": "https://github.com/logos-co/roadmap",
+      "timestamp": "2026-05-08T20:16:21Z"
+    },
+    {
+      "repo": "logos-lez-rln",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/redundant-extend-erase-param\"",
+      "url": "https://github.com/logos-co/logos-lez-rln",
+      "timestamp": "2026-05-08T20:04:09Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"simplify_api\"",
+      "url": "https://github.com/logos-co/logos-liblogos",
+      "timestamp": "2026-05-08T19:46:12Z"
+    },
+    {
+      "repo": "logos-docs",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Automated dogfooding report for Priority 1 docs (aarch64 / Pi 5)",
+      "url": "https://github.com/logos-co/logos-docs/pull/240#issuecomment-4409328912",
+      "timestamp": "2026-05-08T19:39:14Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "Pre-release pre-release-b44a5cf-260",
+      "url": "https://github.com/logos-co/logos-basecamp/releases/tag/pre-release-b44a5cf-260",
+      "timestamp": "2026-05-08T18:48:23Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "bump dependencies",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/183#issuecomment-4408822777",
+      "timestamp": "2026-05-08T18:16:05Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"bump-dependencies\"",
+      "url": "https://github.com/logos-co/logos-basecamp",
+      "timestamp": "2026-05-08T18:11:04Z"
+    },
+    {
+      "repo": "ideas",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[Idea]: Web of Trust for Logos",
+      "url": "https://github.com/logos-co/ideas/issues/34#issuecomment-4408449343",
+      "timestamp": "2026-05-08T17:22:39Z"
+    },
+    {
       "repo": "logos-lips",
       "type": "Create",
       "cls": "type-create",
@@ -2256,70 +2302,6 @@
       "title": "Stake-Weighted Mix RLN DoS Protection spec",
       "url": "https://github.com/logos-co/logos-lips/pull/327#issuecomment-4407365757",
       "timestamp": "2026-05-08T14:49:27Z"
-    },
-    {
-      "repo": "logos-liblogos",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"consistent-token-socket-path\"",
-      "url": "https://github.com/logos-co/logos-liblogos",
-      "timestamp": "2026-05-08T14:40:43Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(macros): support #[self_program_id] parameter injection in handlers",
-      "url": "https://github.com/logos-co/spel/pull/188#issuecomment-4406910635",
-      "timestamp": "2026-05-08T13:47:31Z"
-    },
-    {
-      "repo": "logos-view-module-runtime",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"bump-dependencies\"",
-      "url": "https://github.com/logos-co/logos-view-module-runtime",
-      "timestamp": "2026-05-08T13:03:24Z"
-    },
-    {
-      "repo": "eth-lez-atomic-swaps",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/logos-module-builder\"",
-      "url": "https://github.com/logos-co/eth-lez-atomic-swaps",
-      "timestamp": "2026-05-08T12:45:10Z"
-    },
-    {
-      "repo": "logos-module-builder",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"bump-dependencies\"",
-      "url": "https://github.com/logos-co/logos-module-builder",
-      "timestamp": "2026-05-08T12:39:21Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "Pre-release pre-release-243b487-257",
-      "url": "https://github.com/logos-co/logos-basecamp/releases/tag/pre-release-243b487-257",
-      "timestamp": "2026-05-08T12:34:46Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "ci: sanity check for prize submissions",
-      "url": "https://github.com/logos-co/lambda-prize/pull/43#issuecomment-4406427874",
-      "timestamp": "2026-05-08T12:33:23Z"
-    },
-    {
-      "repo": "logos-standalone-app",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"bump-dependencies\"",
-      "url": "https://github.com/logos-co/logos-standalone-app",
-      "timestamp": "2026-05-08T12:29:53Z"
     }
   ],
   "discourse": [
@@ -2593,259 +2575,14 @@
       }
     ]
   },
-  "recent_blocks": {
-    "window": {
-      "blocks": 31,
-      "slot_min": 2164207,
-      "slot_max": 2164715,
-      "slot_span": 509,
-      "transactions": 8,
-      "operations": 8,
-      "empty_blocks": 23,
-      "missed_or_unseen_slots": 478
-    },
-    "leader_diversity": {
-      "unique_leaders": 31,
-      "top_leader_share_pct": 3.2
-    },
-    "top_leaders": [
-      {
-        "leader_key": "4d65cb189c6598fe",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "036539ad68354418",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "b79cdcfeb0b862cd",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "62f7dd85331d8f5e",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "6156f2ec4251a897",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "7bfee5e009ea6acf",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "b1d82cabbaecc0ba",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "a8faf8baf15e053f",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "3387958c922cf8aa",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "625cc3ab64ac90bf",
-        "blocks": 1,
-        "pct": 3.2
-      }
-    ],
-    "recent": [
-      {
-        "slot": 2164369,
-        "leader_key": "b73a6677d48815e9",
-        "transactions": 1,
-        "operations": 1,
-        "root": "ac57d0a2b377bbce",
-        "hash": "bc6b2b6a1699324c"
-      },
-      {
-        "slot": 2164396,
-        "leader_key": "84a93ef12f0eff6f",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "ad5b5c6737421d34"
-      },
-      {
-        "slot": 2164430,
-        "leader_key": "5f02700f150387e9",
-        "transactions": 1,
-        "operations": 1,
-        "root": "6e533d3996db346f",
-        "hash": "6dc91f698666bcea"
-      },
-      {
-        "slot": 2164450,
-        "leader_key": "c42aaa0bcc07cce7",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "33e7a978682b2a8a"
-      },
-      {
-        "slot": 2164465,
-        "leader_key": "c3db684b8cb174a6",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "5cc95be04a8c0804"
-      },
-      {
-        "slot": 2164503,
-        "leader_key": "0089ebe0fdc30bbe",
-        "transactions": 1,
-        "operations": 1,
-        "root": "31c96d5ad2e2d56b",
-        "hash": "5e543e20f3c38b9b"
-      },
-      {
-        "slot": 2164504,
-        "leader_key": "7751a81af1e7ada6",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "736b96fff67327f5"
-      },
-      {
-        "slot": 2164510,
-        "leader_key": "6eb648cf725ba369",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "3076ef6b22e7dd87"
-      },
-      {
-        "slot": 2164513,
-        "leader_key": "211146f01249295b",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "6dd971306c2b93df"
-      },
-      {
-        "slot": 2164518,
-        "leader_key": "7d6f7221344b2238",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "ff2749f27dca396a"
-      },
-      {
-        "slot": 2164574,
-        "leader_key": "625cc3ab64ac90bf",
-        "transactions": 1,
-        "operations": 1,
-        "root": "adaf71d9f162fecb",
-        "hash": "22351706f90074cc"
-      },
-      {
-        "slot": 2164601,
-        "leader_key": "3387958c922cf8aa",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "1e96f42c2c250818"
-      },
-      {
-        "slot": 2164618,
-        "leader_key": "a8faf8baf15e053f",
-        "transactions": 1,
-        "operations": 1,
-        "root": "ee538a057cf365dd",
-        "hash": "7f1f792d3175e39c"
-      },
-      {
-        "slot": 2164627,
-        "leader_key": "b1d82cabbaecc0ba",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "8e725a4cad72052e"
-      },
-      {
-        "slot": 2164647,
-        "leader_key": "7bfee5e009ea6acf",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "7e76387c9366f47b"
-      },
-      {
-        "slot": 2164671,
-        "leader_key": "6156f2ec4251a897",
-        "transactions": 1,
-        "operations": 1,
-        "root": "32c84697c4a6f68c",
-        "hash": "111ea3e58cb6956c"
-      },
-      {
-        "slot": 2164676,
-        "leader_key": "62f7dd85331d8f5e",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "72d3a86dabef5aeb"
-      },
-      {
-        "slot": 2164685,
-        "leader_key": "b79cdcfeb0b862cd",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "775db38446d30dfe"
-      },
-      {
-        "slot": 2164702,
-        "leader_key": "036539ad68354418",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "66e6182dab3470b7"
-      },
-      {
-        "slot": 2164715,
-        "leader_key": "4d65cb189c6598fe",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "5bb2e2c3923ef4ca"
-      }
-    ]
-  },
+  "recent_blocks": {},
   "telemetry": {
     "source": "node-logs",
     "window_hours": 13,
     "active_peers_hourly": [
       {
-        "ts": 1778212800,
-        "count": 0
-      },
-      {
-        "ts": 1778216400,
-        "count": 58
-      },
-      {
-        "ts": 1778220000,
-        "count": 58
-      },
-      {
-        "ts": 1778223600,
-        "count": 58
-      },
-      {
         "ts": 1778227200,
-        "count": 58
+        "count": 0
       },
       {
         "ts": 1778230800,
@@ -2878,6 +2615,22 @@
       {
         "ts": 1778256000,
         "count": 0
+      },
+      {
+        "ts": 1778259600,
+        "count": 0
+      },
+      {
+        "ts": 1778263200,
+        "count": 0
+      },
+      {
+        "ts": 1778266800,
+        "count": 0
+      },
+      {
+        "ts": 1778270400,
+        "count": 0
       }
     ],
     "summary": {
@@ -2890,152 +2643,152 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWBPCt1C78DatL\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJPYv9vEmuyFp\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWCydUyhZxP92M\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWKCogiyR9sk17\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWApqRyAErJLDL\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWSmroE8u98uiD\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 76.9,
+        "uptime_pct": 46.2,
         "last_seen": 1778248800
       }
     ],
@@ -4723,9 +4476,9 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776093597,
+  "genesis_ts": null,
   "disk": {},
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-08T16:38:32Z",
-  "updated": 1778258312
+  "peer_snapshot": "2026-05-08T20:35:16Z",
+  "updated": 1778272516
 }
