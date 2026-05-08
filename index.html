@@ -474,6 +474,38 @@ button, input {
   overflow-wrap: anywhere;
 }
 
+.info-icon {
+  color: var(--muted);
+  font-size: 10px;
+  cursor: pointer;
+  margin-left: 2px;
+  text-decoration: none;
+  opacity: 0.6;
+  position: relative;
+  white-space: nowrap;
+}
+.info-icon:hover { opacity: 1; color: var(--text); }
+.info-icon[data-tip]:hover::before {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 7px 10px;
+  border-radius: 6px;
+  white-space: normal;
+  min-width: 200px;
+  max-width: 260px;
+  z-index: 999;
+  pointer-events: none;
+  font-weight: 400;
+}
+
 .map-shell {
   position: relative;
   overflow: hidden;
@@ -1663,7 +1695,7 @@ function render() {
     : `local (${state.loaded_from})`;
 
   $('kpis').innerHTML = [
-    ['Mapped Nodes', fmt(nodeSummary.total), `${fmt(nodeSummary.online)} online · ${fmt((state.telemetry?.summary?.tracked_peers) || 0)} total discovered`],
+    ['Mapped Nodes', fmt(nodeSummary.total), `${fmt(nodeSummary.online)} reachable <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Nodes the libp2p crawler successfully reached on its last sweep. Click to audit the source.">ⓘ</a> · ${fmt((state.telemetry?.summary?.tracked_peers) || 0)} seen (7d) <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py#:~:text=build_telemetry" target="_blank" rel="noopener" data-tip="Unique peer IDs seen in this node's log files over the past 7 days. Click to audit the source.">ⓘ</a>`],
     ['Countries', fmt(nodeSummary.countries), `${pct(nodeSummary.online_pct)} node availability`],
     ['ASNs', fmt(nodeSummary.asns), `${pct(summary.infrastructure?.top_asn_share_pct)} largest ASN share`],
     ['Reported Peers', fmt(health.reported_peers), `${fmt(health.connections)} active connections`],
@@ -1671,7 +1703,7 @@ function render() {
     <div class="kpi"><span class="kpi-label">${label}</span><span class="kpi-value">${value}</span><span class="kpi-note">${note}</span></div>
   `).join('');
 
-  $('map-sub').textContent = `${fmt(nodes.length)} mapped · ${fmt((state.telemetry?.summary?.tracked_peers) || 0)} discovered`;
+  $('map-sub').textContent = `${fmt(nodes.length)} mapped · ${fmt((state.telemetry?.summary?.tracked_peers) || 0)} seen (7d)`;
   $('top-countries').innerHTML = barRows(summary.geography?.top_countries, 'country');
   renderInfraMix(summary.infrastructure?.mix || {});
   renderMap(nodes);
@@ -1954,7 +1986,7 @@ function renderTelemetry() {
   const summary = telemetry.summary || {};
   $('telemetry-kpis').innerHTML = [
     ['Active Now', fmt(summary.active_latest), `peak ${fmt(summary.active_peak)} peers / hour`],
-    ['Total Discovered', fmt(summary.tracked_peers), `${fmt((state.summary?.nodes?.total) || 0)} geo-mapped · ${fmt(telemetry.window_hours || 0)}h window`],
+    ['Seen (7d)', fmt(summary.tracked_peers), `${fmt((state.summary?.nodes?.total) || 0)} geo-mapped · ${fmt(telemetry.window_hours || 0)}h window <a class="info-icon" href="https://github.com/xAlisher/logos-node-visualizer/blob/main/publish.py#:~:text=build_telemetry" target="_blank" rel="noopener" data-tip="Unique peer IDs seen in this node's log files. Window is 7 days (168h). Click to audit the source.">ⓘ</a>`],
     ['Stake Estimate', summary.latest_total_stake == null ? '-' : fmt(summary.latest_total_stake), `${fmt(summary.stake_points || 0)} hourly points`],
     ['Telemetry Source', esc(telemetry.source || 'unknown'), 'logs, telemetry file, or crawler state'],
   ].map(([label, value, note]) => `
