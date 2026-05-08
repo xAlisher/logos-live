@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "266ed6337858215092ee03f8d0248c89355971e95bf2975e0af395b7e4c5a0ad",
-    "lib_slot": 2183759,
-    "tip": "eaa5788ea82a112c844b44e02a49b785650b55f901ff9af1ffa8a502448c6d27",
-    "slot": 2184357,
-    "height": 114283,
+    "lib": "4d785d279be07479158e0ae825c78ea1feee8151c8eefdd3032a93866f77abeb",
+    "lib_slot": 2183869,
+    "tip": "dca84df12d79cc2ef2e7945c871522ed2777cf9235d1eabe8d26d6915152eaca",
+    "slot": 2184495,
+    "height": 114288,
     "mode": "Online"
   },
   "network": {
@@ -15,9 +15,9 @@
       "/ip4/172.17.0.1/udp/3000/quic-v1"
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
-    "n_peers": 25,
-    "n_connections": 35,
-    "n_pending_connections": 10
+    "n_peers": 24,
+    "n_connections": 24,
+    "n_pending_connections": 0
   },
   "nodes": [
     {
@@ -2538,8 +2538,8 @@
     "recipients": 76,
     "total_distributed": 21145000,
     "faucet_remainder": 18446744073563412390,
-    "unique_leaders": 7787,
-    "total_leader_blocks": 8525,
+    "unique_leaders": 7792,
+    "total_leader_blocks": 8556,
     "top_leaders": [
       {
         "pk": "161b63a3a3b3568b",
@@ -2596,19 +2596,44 @@
   "recent_blocks": {
     "window": {
       "blocks": 31,
-      "slot_min": 2183759,
-      "slot_max": 2184357,
-      "slot_span": 599,
-      "transactions": 10,
-      "operations": 10,
-      "empty_blocks": 21,
-      "missed_or_unseen_slots": 568
+      "slot_min": 2183869,
+      "slot_max": 2184495,
+      "slot_span": 627,
+      "transactions": 11,
+      "operations": 11,
+      "empty_blocks": 20,
+      "missed_or_unseen_slots": 596
     },
     "leader_diversity": {
       "unique_leaders": 31,
       "top_leader_share_pct": 3.2
     },
     "top_leaders": [
+      {
+        "leader_key": "d60d00e17261d549",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "b5e5866a684b683f",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "16b585e5d19570f4",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "4a2ddf7d1bafea39",
+        "blocks": 1,
+        "pct": 3.2
+      },
+      {
+        "leader_key": "c1fba94d0d4aa745",
+        "blocks": 1,
+        "pct": 3.2
+      },
       {
         "leader_key": "536cdfdb1f115b4e",
         "blocks": 1,
@@ -2633,74 +2658,9 @@
         "leader_key": "05deb576230b3a37",
         "blocks": 1,
         "pct": 3.2
-      },
-      {
-        "leader_key": "a7186c42ee0b8836",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "9df6e911dd07003c",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "610746da8abc769b",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "35258ee8b40d4fce",
-        "blocks": 1,
-        "pct": 3.2
-      },
-      {
-        "leader_key": "8b05d5f9d90bd9bf",
-        "blocks": 1,
-        "pct": 3.2
       }
     ],
     "recent": [
-      {
-        "slot": 2183996,
-        "leader_key": "f1e0faf2bd539046",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "eee96b2f18e52a05"
-      },
-      {
-        "slot": 2184020,
-        "leader_key": "33246c29c49168ce",
-        "transactions": 1,
-        "operations": 1,
-        "root": "82746a56e317a86b",
-        "hash": "0cd0096e50bcc853"
-      },
-      {
-        "slot": 2184064,
-        "leader_key": "dd18d6ba3b61f00d",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "80e2b00879b8e7a2"
-      },
-      {
-        "slot": 2184072,
-        "leader_key": "c3db4689703e3685",
-        "transactions": 1,
-        "operations": 1,
-        "root": "18ee1b57ef290b01",
-        "hash": "6e1c802f2a6e9b27"
-      },
-      {
-        "slot": 2184135,
-        "leader_key": "a2f66b63b93e0f8b",
-        "transactions": 1,
-        "operations": 1,
-        "root": "13a039baac9d97ce",
-        "hash": "42900dc97f6b08f1"
-      },
       {
         "slot": 2184153,
         "leader_key": "3bc87e58ea0953c0",
@@ -2820,6 +2780,46 @@
         "operations": 0,
         "root": "89eb0d6a8a691dae",
         "hash": "eaa5788ea82a112c"
+      },
+      {
+        "slot": 2184424,
+        "leader_key": "c1fba94d0d4aa745",
+        "transactions": 1,
+        "operations": 1,
+        "root": "420ac931b5fa49cf",
+        "hash": "c1d63d18a6825a80"
+      },
+      {
+        "slot": 2184438,
+        "leader_key": "4a2ddf7d1bafea39",
+        "transactions": 1,
+        "operations": 1,
+        "root": "7b8d0ab0745bd05f",
+        "hash": "4b20dd8b504bc96a"
+      },
+      {
+        "slot": 2184439,
+        "leader_key": "16b585e5d19570f4",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "01532dfe553e2ae1"
+      },
+      {
+        "slot": 2184448,
+        "leader_key": "b5e5866a684b683f",
+        "transactions": 0,
+        "operations": 0,
+        "root": "89eb0d6a8a691dae",
+        "hash": "fef67152dd605315"
+      },
+      {
+        "slot": 2184495,
+        "leader_key": "d60d00e17261d549",
+        "transactions": 1,
+        "operations": 1,
+        "root": "cf4025b8309bb586",
+        "hash": "dca84df12d79cc2e"
       }
     ]
   },
@@ -3493,7 +3493,7 @@
       },
       {
         "ts": 1778270400,
-        "count": 56
+        "count": 57
       },
       {
         "ts": 1778274000,
@@ -5268,6 +5268,54 @@
     },
     {
       "sender": "alisher",
+      "text": "If you're not lost, you're not much of an ex",
+      "slot": 0,
+      "slot_unknown": true,
+      "block_id": null,
+      "tx_id": "",
+      "status": "pending",
+      "observed_at": "2026-05-08T21:03:33+00:00",
+      "signer": "",
+      "live": false,
+      "lat": 38.9067,
+      "lon": 1.4206,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "alisher",
+      "text": "Happy weekend, Logos Node runners! May your",
+      "slot": 0,
+      "slot_unknown": true,
+      "block_id": null,
+      "tx_id": "",
+      "status": "pending",
+      "observed_at": "2026-05-08T21:03:33+00:00",
+      "signer": "",
+      "live": false,
+      "lat": 38.9067,
+      "lon": 1.4206,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "alisher",
+      "text": "migrating modules to https://github.com/logo",
+      "slot": 0,
+      "slot_unknown": true,
+      "block_id": null,
+      "tx_id": "",
+      "status": "pending",
+      "observed_at": "2026-05-08T21:03:33+00:00",
+      "signer": "",
+      "live": false,
+      "lat": 38.9067,
+      "lon": 1.4206,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "alisher",
       "text": "Hello from farm server (pending\u2026)",
       "slot": 0,
       "slot_unknown": true,
@@ -5284,61 +5332,13 @@
     },
     {
       "sender": "alisher",
-      "text": "If you're not lost, you're not much of an ex",
-      "slot": 0,
-      "slot_unknown": true,
-      "block_id": null,
-      "tx_id": "",
-      "status": "pending",
-      "observed_at": "2026-05-04T03:01:14+00:00",
-      "signer": "",
-      "live": false,
-      "lat": 38.9067,
-      "lon": 1.4206,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "alisher",
-      "text": "Happy weekend, Logos Node runners! May your",
-      "slot": 0,
-      "slot_unknown": true,
-      "block_id": null,
-      "tx_id": "",
-      "status": "pending",
-      "observed_at": "2026-05-04T03:01:14+00:00",
-      "signer": "",
-      "live": false,
-      "lat": 38.9067,
-      "lon": 1.4206,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "alisher",
-      "text": "migrating modules to https://github.com/logo",
-      "slot": 0,
-      "slot_unknown": true,
-      "block_id": null,
-      "tx_id": "",
-      "status": "pending",
-      "observed_at": "2026-05-04T03:01:14+00:00",
-      "signer": "",
-      "live": false,
-      "lat": 38.9067,
-      "lon": 1.4206,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "alisher",
       "text": "When I add #live to my message it appears he",
       "slot": 0,
       "slot_unknown": true,
       "block_id": null,
       "tx_id": "",
       "status": "pending",
-      "observed_at": "2026-05-04T02:01:13+00:00",
+      "observed_at": "2026-05-08T20:53:24+00:00",
       "signer": "",
       "live": true,
       "lat": 38.9067,
@@ -5371,6 +5371,6 @@
     "used_pct": 0.0
   },
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-08T22:05:34Z",
-  "updated": 1778277934
+  "peer_snapshot": "2026-05-08T22:07:52Z",
+  "updated": 1778278072
 }
