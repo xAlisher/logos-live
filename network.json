@@ -2311,6 +2311,14 @@
   "github": [
     {
       "repo": "spel",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "v0.3.0",
+      "url": "https://github.com/logos-co/spel/releases/tag/v0.3.0",
+      "timestamp": "2026-05-13T13:01:30Z"
+    },
+    {
+      "repo": "spel",
       "type": "Create",
       "cls": "type-create",
       "title": "new branch \"release/v0.3.0\"",
@@ -2404,38 +2412,6 @@
       "title": "new branch \"sim-on-spel\"",
       "url": "https://github.com/logos-co/logos-lez-rln",
       "timestamp": "2026-05-12T19:24:23Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Add SURB specification (\u00a78.7)",
-      "url": "https://github.com/logos-co/logos-lips/pull/307#issuecomment-4432618767",
-      "timestamp": "2026-05-12T16:25:52Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Solution: LP-0017 \u2014 Whistleblower",
-      "url": "https://github.com/logos-co/lambda-prize/pull/48#issuecomment-4432327662",
-      "timestamp": "2026-05-12T15:50:44Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/mix-surbs-rebased\"",
-      "url": "https://github.com/logos-co/logos-lips",
-      "timestamp": "2026-05-12T16:01:01Z"
-    },
-    {
-      "repo": "scaffold",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "refactor: move GUEST_BIN_REL_PATH to constants to avoid duplication",
-      "url": "https://github.com/logos-co/scaffold/pull/45#issuecomment-4431826402",
-      "timestamp": "2026-05-12T15:00:38Z"
     }
   ],
   "discourse": [
@@ -2655,56 +2631,56 @@
     "total_distributed": 21148000,
     "faucet_remainder": null,
     "unique_leaders": 10758,
-    "total_leader_blocks": 12060,
+    "total_leader_blocks": 12091,
     "top_leaders": [
       {
         "pk": "7bcc36b302970043",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "a35f94666177301b",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "b0abcee2938a4405",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "ea0a4437e7fe6c2c",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "d58b158b8ddf7ed1",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "2a6ae0a805d63beb",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "df1b0f8d3f6ce45d",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "d8b19daff1367b12",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "0d9384815bba7bf6",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       },
       {
         "pk": "0773cd893626edef",
-        "blocks": 16,
+        "blocks": 17,
         "pct": 0.1
       }
     ]
@@ -2943,10 +2919,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1778072400,
-        "count": 0
-      },
       {
         "ts": 1778076000,
         "count": 0
@@ -3609,19 +3581,23 @@
       },
       {
         "ts": 1778670000,
-        "count": 18
+        "count": 60
       },
       {
         "ts": 1778673600,
-        "count": 0
+        "count": 17
       },
       {
         "ts": 1778677200,
         "count": 0
+      },
+      {
+        "ts": 1778680800,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 18,
+      "active_latest": 17,
       "active_peak": 61,
       "tracked_peers": 72,
       "latest_total_stake": null,
@@ -3630,11 +3606,101 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWApqRyAErJLDL\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWQiSxzxbWE38S\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWGKdieLmiTYDS\u2026",
+        "uptime_pct": 68.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWKvnPDTbnv4ud\u2026",
+        "uptime_pct": 42.6,
+        "last_seen": 1778673600
+      },
+      {
+        "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
         "uptime_pct": 68.0,
         "last_seen": 1778670000
       },
       {
-        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
+        "peer_id": "12D3KooWBPCt1C78DatL\u2026",
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
+      },
+      {
+        "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
         "uptime_pct": 68.0,
         "last_seen": 1778670000
       },
@@ -3644,139 +3710,49 @@
         "last_seen": 1778670000
       },
       {
-        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWApqRyAErJLDL\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWQiSxzxbWE38S\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWGKdieLmiTYDS\u2026",
-        "uptime_pct": 68.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWKvnPDTbnv4ud\u2026",
-        "uptime_pct": 42.0,
-        "last_seen": 1778670000
-      },
-      {
-        "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
-      },
-      {
-        "peer_id": "12D3KooWBPCt1C78DatL\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
-      },
-      {
-        "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
-      },
-      {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWCydUyhZxP92M\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWKCogiyR9sk17\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
-        "uptime_pct": 66.9,
-        "last_seen": 1778666400
+        "uptime_pct": 67.5,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       },
       {
         "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
-        "uptime_pct": 67.5,
-        "last_seen": 1778666400
+        "uptime_pct": 68.0,
+        "last_seen": 1778670000
       }
     ],
     "stake_estimate_hourly": []
@@ -5479,7 +5455,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776147674,
+  "genesis_ts": 1776151274,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 1.9,
@@ -5487,6 +5463,6 @@
     "used_pct": 0.1
   },
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-13T13:00:14Z",
-  "updated": 1778677214
+  "peer_snapshot": "2026-05-13T14:00:14Z",
+  "updated": 1778680814
 }
