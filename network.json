@@ -16,8 +16,8 @@
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
     "n_peers": 24,
-    "n_connections": 27,
-    "n_pending_connections": 3
+    "n_connections": 24,
+    "n_pending_connections": 0
   },
   "nodes": [
     {
@@ -2310,6 +2310,30 @@
   },
   "github": [
     {
+      "repo": "nix-bundle-dir",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/procself-shim-orphan-nix-strings\"",
+      "url": "https://github.com/logos-co/nix-bundle-dir",
+      "timestamp": "2026-05-14T16:59:02Z"
+    },
+    {
+      "repo": "logos-lips",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[draft / early WiP] Introduce Logos module interface / runtime / transport specs",
+      "url": "https://github.com/logos-co/logos-lips/pull/317#issuecomment-4452821200",
+      "timestamp": "2026-05-14T16:58:37Z"
+    },
+    {
+      "repo": "spel",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(cli): parse and serialize Vec<String> args from CSV input",
+      "url": "https://github.com/logos-co/spel/pull/189#issuecomment-4452115148",
+      "timestamp": "2026-05-14T15:27:55Z"
+    },
+    {
       "repo": "logos-chat-module",
       "type": "Create",
       "cls": "type-create",
@@ -2428,22 +2452,6 @@
       "title": "new branch \"fbarbu15-patch-1\"",
       "url": "https://github.com/logos-co/logos-lips",
       "timestamp": "2026-05-14T08:12:04Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/exclude-raw-from-codeowners\"",
-      "url": "https://github.com/logos-co/logos-lips",
-      "timestamp": "2026-05-14T07:59:43Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Slow clone of the repo",
-      "url": "https://github.com/logos-co/spel/issues/193#issuecomment-4448016488",
-      "timestamp": "2026-05-14T05:50:33Z"
     }
   ],
   "discourse": [
@@ -2663,7 +2671,7 @@
     "total_distributed": 21148000,
     "faucet_remainder": null,
     "unique_leaders": 10820,
-    "total_leader_blocks": 12897,
+    "total_leader_blocks": 12928,
     "top_leaders": [
       {
         "pk": "7bcc36b302970043",
@@ -2951,10 +2959,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1778169600,
-        "count": 0
-      },
       {
         "ts": 1778173200,
         "count": 0
@@ -3617,19 +3621,23 @@
       },
       {
         "ts": 1778767200,
-        "count": 16
+        "count": 62
       },
       {
         "ts": 1778770800,
-        "count": 0
+        "count": 12
       },
       {
         "ts": 1778774400,
         "count": 0
+      },
+      {
+        "ts": 1778778000,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 16,
+      "active_latest": 12,
       "active_peak": 62,
       "tracked_peers": 73,
       "latest_total_stake": null,
@@ -3637,22 +3645,102 @@
     },
     "peer_uptime": [
       {
+        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWJPYv9vEmuyFp\u2026",
+        "uptime_pct": 39.1,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooW9tKQDM3pX4Yf\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWRko4kqycXZbs\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWGKdieLmiTYDS\u2026",
+        "uptime_pct": 84.6,
+        "last_seen": 1778770800
+      },
+      {
+        "peer_id": "12D3KooWKvnPDTbnv4ud\u2026",
+        "uptime_pct": 58.6,
+        "last_seen": 1778770800
+      },
+      {
         "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
         "uptime_pct": 84.0,
         "last_seen": 1778767200
       },
       {
-        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
+        "peer_id": "12D3KooWBPCt1C78DatL\u2026",
         "uptime_pct": 84.0,
         "last_seen": 1778767200
       },
       {
-        "peer_id": "12D3KooWJPYv9vEmuyFp\u2026",
-        "uptime_pct": 38.5,
+        "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
+        "uptime_pct": 84.0,
         "last_seen": 1778767200
       },
       {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWCydUyhZxP92M\u2026",
         "uptime_pct": 84.0,
         "last_seen": 1778767200
       },
@@ -3662,7 +3750,32 @@
         "last_seen": 1778767200
       },
       {
-        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
+        "peer_id": "12D3KooWKCogiyR9sk17\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWApqRyAErJLDL\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
+        "uptime_pct": 84.0,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
+        "uptime_pct": 83.4,
+        "last_seen": 1778767200
+      },
+      {
+        "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
         "uptime_pct": 84.0,
         "last_seen": 1778767200
       },
@@ -3672,119 +3785,14 @@
         "last_seen": 1778767200
       },
       {
-        "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
+        "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
         "uptime_pct": 84.0,
         "last_seen": 1778767200
       },
       {
-        "peer_id": "12D3KooWEwfsLK3WZrKi\u2026",
+        "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
         "uptime_pct": 84.0,
         "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooWKWmLVf4ysViv\u2026",
-        "uptime_pct": 84.0,
-        "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooWMbqdCMVZ6iRP\u2026",
-        "uptime_pct": 84.0,
-        "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooWQiSxzxbWE38S\u2026",
-        "uptime_pct": 84.0,
-        "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooWA9psZT4tR3eB\u2026",
-        "uptime_pct": 84.0,
-        "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooWH3hBfrYVQWrz\u2026",
-        "uptime_pct": 84.0,
-        "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooW9tmCpSLMFa7e\u2026",
-        "uptime_pct": 42.0,
-        "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooWJ3vbbsXjvvGe\u2026",
-        "uptime_pct": 16.0,
-        "last_seen": 1778767200
-      },
-      {
-        "peer_id": "12D3KooWBPCt1C78DatL\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWCydUyhZxP92M\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWKCogiyR9sk17\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWApqRyAErJLDL\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
-        "uptime_pct": 83.4,
-        "last_seen": 1778763600
-      },
-      {
-        "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
-        "uptime_pct": 82.8,
-        "last_seen": 1778763600
       }
     ],
     "stake_estimate_hourly": []
@@ -5487,7 +5495,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776093746,
+  "genesis_ts": 1776097351,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 2.1,
@@ -5495,6 +5503,6 @@
     "used_pct": 0.1
   },
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-14T16:00:15Z",
-  "updated": 1778774415
+  "peer_snapshot": "2026-05-14T17:00:20Z",
+  "updated": 1778778020
 }
