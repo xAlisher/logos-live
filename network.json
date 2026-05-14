@@ -16,8 +16,8 @@
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
     "n_peers": 24,
-    "n_connections": 35,
-    "n_pending_connections": 11
+    "n_connections": 24,
+    "n_pending_connections": 0
   },
   "nodes": [
     {
@@ -2310,6 +2310,14 @@
   },
   "github": [
     {
+      "repo": "logos-docs",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "dogfood: quickstart guide for running a headless Logos Blockchain node using CLI",
+      "url": "https://github.com/logos-co/logos-docs/issues/213#issuecomment-4454235937",
+      "timestamp": "2026-05-14T19:55:38Z"
+    },
+    {
       "repo": "scaffold",
       "type": "Comment",
       "cls": "type-create",
@@ -2382,14 +2390,6 @@
       "timestamp": "2026-05-14T14:16:40Z"
     },
     {
-      "repo": "logos-docs",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "dogfood: quickstart guide for running a headless Logos Blockchain node using CLI",
-      "url": "https://github.com/logos-co/logos-docs/issues/213#issuecomment-4451442504",
-      "timestamp": "2026-05-14T14:12:00Z"
-    },
-    {
       "repo": "scaffold",
       "type": "Comment",
       "cls": "type-create",
@@ -2412,14 +2412,6 @@
       "title": "new branch \"extend-universal-modules-with-module-context\"",
       "url": "https://github.com/logos-co/logos-module-builder",
       "timestamp": "2026-05-14T12:04:34Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/pda-account-seeds\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-05-14T10:34:43Z"
     }
   ],
   "discourse": [
@@ -2639,7 +2631,7 @@
     "total_distributed": 21148000,
     "faucet_remainder": null,
     "unique_leaders": 10820,
-    "total_leader_blocks": 12990,
+    "total_leader_blocks": 13021,
     "top_leaders": [
       {
         "pk": "7bcc36b302970043",
@@ -2927,10 +2919,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1778180400,
-        "count": 0
-      },
       {
         "ts": 1778184000,
         "count": 0
@@ -3593,7 +3581,7 @@
       },
       {
         "ts": 1778778000,
-        "count": 36
+        "count": 62
       },
       {
         "ts": 1778781600,
@@ -3602,16 +3590,30 @@
       {
         "ts": 1778785200,
         "count": 0
+      },
+      {
+        "ts": 1778788800,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 36,
+      "active_latest": 62,
       "active_peak": 62,
       "tracked_peers": 73,
       "latest_total_stake": null,
       "stake_points": 0
     },
     "peer_uptime": [
+      {
+        "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
+      {
+        "peer_id": "12D3KooWBPCt1C78DatL\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
       {
         "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
         "uptime_pct": 85.8,
@@ -3643,6 +3645,21 @@
         "last_seen": 1778778000
       },
       {
+        "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
+      {
+        "peer_id": "12D3KooWCydUyhZxP92M\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
+      {
+        "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
+      {
         "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
         "uptime_pct": 85.8,
         "last_seen": 1778778000
@@ -3663,7 +3680,17 @@
         "last_seen": 1778778000
       },
       {
+        "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
+      {
         "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
+      {
+        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
         "uptime_pct": 85.8,
         "last_seen": 1778778000
       },
@@ -3693,6 +3720,11 @@
         "last_seen": 1778778000
       },
       {
+        "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
+        "uptime_pct": 85.8,
+        "last_seen": 1778778000
+      },
+      {
         "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
         "uptime_pct": 85.8,
         "last_seen": 1778778000
@@ -3703,62 +3735,22 @@
         "last_seen": 1778778000
       },
       {
-        "peer_id": "12D3KooWBnwb4As8ZB8d\u2026",
+        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
         "uptime_pct": 85.8,
         "last_seen": 1778778000
       },
       {
-        "peer_id": "12D3KooWJmtcYHWzL8Gd\u2026",
+        "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
         "uptime_pct": 85.8,
         "last_seen": 1778778000
       },
       {
-        "peer_id": "12D3KooWSDN8iWLxpe1j\u2026",
+        "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
         "uptime_pct": 85.8,
         "last_seen": 1778778000
       },
       {
-        "peer_id": "12D3KooWM1ihhVj7U7Gh\u2026",
-        "uptime_pct": 85.8,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWN4oyWzHqAk9k\u2026",
-        "uptime_pct": 85.8,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWMQE2FuZF7cLR\u2026",
-        "uptime_pct": 85.8,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWSfCmT71XhG6r\u2026",
-        "uptime_pct": 85.8,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWSFkXfqk29agp\u2026",
-        "uptime_pct": 85.8,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWHKaMZ2skZuXp\u2026",
-        "uptime_pct": 85.8,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWDA15vEBnR2LP\u2026",
-        "uptime_pct": 85.8,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWNicuk1GsNUuW\u2026",
-        "uptime_pct": 85.2,
-        "last_seen": 1778778000
-      },
-      {
-        "peer_id": "12D3KooWR6jq7JUZLWc3\u2026",
+        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
         "uptime_pct": 85.8,
         "last_seen": 1778778000
       }
@@ -5463,7 +5455,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776104545,
+  "genesis_ts": 1776108146,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 2.1,
@@ -5471,6 +5463,6 @@
     "used_pct": 0.1
   },
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-14T19:00:14Z",
-  "updated": 1778785214
+  "peer_snapshot": "2026-05-14T20:00:15Z",
+  "updated": 1778788815
 }
