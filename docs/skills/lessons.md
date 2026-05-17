@@ -10,7 +10,7 @@ Numbered lessons. Grep this file when hitting a bug or surprising behavior.
 
 3. **`NODE_URL` unset = feedback mode.** When `NODE_URL` is not set, `server.py` and `publish.py` fall back to mock/feedback data. This is intentional for local dev. Set `NODE_URL=http://127.0.0.1:8085` for live data.
 
-4. **Log compaction runs inside `publish.py`, not only logrotate.** `publish.py` deletes node log files older than 12 hours from `LOG_DIR`. Logrotate handles crawler/scanner logs separately (7-day retention). Two separate retention policies coexist.
+4. **Log compaction runs inside `publish.py`, not only logrotate.** `compact_logs(keep_hours=168)` deletes node log files older than 7 days. The default parameter is 12h but the actual call uses 168h. Telemetry window (`build_telemetry`) also uses 168h. Logrotate handles crawler/scanner logs separately. Do not confuse the default with the actual.
 
 5. **`zone_scan_state.json` tracks scanner chain position — never edit manually.** Manual edits corrupt the scanner's understanding of where it left off. If state is wrong, delete the file entirely to trigger a full rescan (expensive but safe).
 
@@ -22,8 +22,10 @@ Numbered lessons. Grep this file when hitting a bug or surprising behavior.
 
 9. **Peer window label was changed to 12h (commit 8a56278).** The telemetry peer window in the frontend shows "12h" — previous label was different. If telemetry chart labels look wrong, check this commit for context.
 
-10. **Telemetry retention was reduced to 12h (commit 8a56278) to address gossipsub queue overflow.** Long retention caused log queue buildup. If node logs grow very fast again, investigate gossipsub message rate before increasing retention.
+10. **Telemetry retention is 168h (7 days), not 12h.** Was previously reduced to 12h (commit 8a56278) for gossipsub queue overflow reasons, then extended to 168h. If node logs grow fast again, investigate gossipsub message rate before cutting retention. The `compact_logs` default parameter (12h) is misleading — always check the call site.
 
 11. **`publish.py` runs on Sneg, not Wild.** The cron is on `sher@sneg`. Running `publish.py` locally on Wild without `NODE_URL` pointing to a live node will produce feedback-mode output only. Do not push that to pages/.
+
+13. **Read the code before making claims about how the system works.** Fergie drafted an external reply stating "we compact logs to 12h" without reading publish.py first. The actual value was 168h. Rule: any claim about timing, retention, thresholds, or behavior must be verified against the source before being communicated externally.
 
 12. **GitHub token lives in `~/.env.anqa` on Sneg.** The publish cron sources this file before running. If the token expires or is rotated, update `~/.env.anqa` on Sneg and restart the cron. Never commit the token.

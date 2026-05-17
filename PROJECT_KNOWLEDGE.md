@@ -61,6 +61,8 @@ Full ecosystem detail: `docs/skills/ecosystem.md`
 - [ ] Investigate zone-scanner log volume (3 rotated archives — may need more aggressive retention)
 - [ ] Consider adding `telemetry_cache.json` and `zone_scan_state.json` to `.gitignore`
 - [ ] Explore ntfy.sh/Telegram alerting for publish failures (Devon retirement gap)
+- [ ] zone_scan_state.json `scanned_to` stays 0 after backward scan completes — state not written back (discovered 2026-05-17 on Sneg)
+- [ ] 90 stale zone_scan.json messages from pre-fork testnet chain — will never match live data; consider pruning on next zone_scan.json rebuild
 
 ---
 
