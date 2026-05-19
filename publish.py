@@ -467,18 +467,6 @@ def build_telemetry() -> dict:
     active_names = {lf.name for lf in log_files}
     file_cache = {k: v for k, v in file_cache.items() if k in active_names}
 
-    # Prune log_ip_peers: keep only IPs whose peer_ids overlap with peers
-    # seen within the active 7-day window.  This prevents unbounded cache growth.
-    active_peers: set[str] = set()
-    for pids in bucket_peers.values():
-        active_peers.update(pids)
-    if active_peers:
-        log_ip_peers = {
-            ip: pids & active_peers
-            for ip, pids in log_ip_peers.items()
-            if pids & active_peers
-        }
-
     # Persist updated cache
     try:
         TELEMETRY_CACHE.write_text(json.dumps(
@@ -498,6 +486,18 @@ def build_telemetry() -> dict:
     for fc in file_cache.values():
         for bkey, pids in fc.get("peers_by_bucket", {}).items():
             bucket_peers[int(bkey)].update(pids)
+
+    # Prune log_ip_peers: keep only IPs whose peer_ids overlap with the active
+    # 7-day peer window.  Prevents unbounded cache growth.
+    active_peers: set[str] = set()
+    for pids in bucket_peers.values():
+        active_peers.update(pids)
+    if active_peers:
+        log_ip_peers = {
+            ip: pids & active_peers
+            for ip, pids in log_ip_peers.items()
+            if pids & active_peers
+        }
 
     if not bucket_peers:
         return {}
