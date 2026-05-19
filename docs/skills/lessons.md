@@ -29,3 +29,13 @@ Numbered lessons. Grep this file when hitting a bug or surprising behavior.
 13. **Read the code before making claims about how the system works.** Fergie drafted an external reply stating "we compact logs to 12h" without reading publish.py first. The actual value was 168h. Rule: any claim about timing, retention, thresholds, or behavior must be verified against the source before being communicated externally.
 
 12. **GitHub token lives in `~/.env.anqa` on Sneg.** The publish cron sources this file before running. If the token expires or is rotated, update `~/.env.anqa` on Sneg and restart the cron. Never commit the token.
+
+14. **libp2p multiaddr format is `proto/port`, not `port/proto`.** `/ip4/HOST/tcp/4001/p2p/PEERID` — protocol name comes before the port number. Writing `\d+/\S+` when you need `\w+/\d+` in a regex is a common mistake. Always verify against a real log line before writing a parsing pattern.
+
+15. **Qwen3 thinking mode exhausts token budget silently.** When Qwen3-27b has reasoning enabled, it spends all tokens on `<think>` content and returns empty `content`. Bypass: use `/v1/completions` endpoint with `<think>\n</think>` as assistant prefill to skip the reasoning phase entirely.
+
+16. **Cache pruning must run after the variable it depends on is defined.** Inserting a pruning block that references `bucket_peers` before the loop that builds `bucket_peers` causes `UnboundLocalError` at runtime. Always trace data flow through the function before adding cleanup code.
+
+17. **`heard_count` should equal `len(heard_nodes)`, not a count of raw log IPs.** Some log IPs have no geo coords (geo lookup failed or IP is in geo_cache with nulls). Counting raw IPs overcounts visually displayed nodes. Build `heard_nodes` first (log IPs with valid lat/lon + not in crawler DB), then set `heard_count = len(heard_nodes)`.
+
+18. **CSS grid `repeat(N, ...)` must match actual child count.** Adding a metric to a status strip without updating the column count causes the new item to wrap to a second row. Always update the template-columns value when adding or removing grid children.
