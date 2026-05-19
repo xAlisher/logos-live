@@ -11,7 +11,7 @@ use serde::{Deserialize, Serialize};
 use tokio::time::sleep;
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const NODE_URL: &str = "http://127.0.0.1:8080";
+const NODE_URL: &str = "http://127.0.0.1:8085";
 /// "logos:yolo:" as hex prefix (channel IDs are 32-byte zero-padded)
 const YOLO_HEX: &str = "6c6f676f733a796f6c6f3a";
 /// How many slots to request per batch from /cryptarchia/blocks
