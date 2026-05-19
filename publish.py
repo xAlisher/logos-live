@@ -773,6 +773,16 @@ def _channel_hex_to_name(hex_id: str) -> str:
 _YOLO_HEX  = "6c6f676f733a796f6c6f3a"   # "logos:yolo:" as hex
 _GAP_BATCH = 2_000                        # slots per API call
 _GAP_MIN   = 1_000                        # only gap-fill if lag > this many slots
+_CHANNEL_HINTS_FILE = BASE / "channel_hints.json"
+
+
+def _load_channel_hints() -> dict[str, str]:
+    """Load channel_id → display name registry for random-ID zone-board users."""
+    try:
+        data = json.loads(_CHANNEL_HINTS_FILE.read_text())
+        return {k: v for k, v in data.items() if not k.startswith("_")}
+    except Exception:
+        return {}
 
 
 def _decode_yolo_channel(hex_id: str) -> str:
@@ -784,6 +794,23 @@ def _decode_yolo_channel(hex_id: str) -> str:
         return parts[-1] if len(parts) >= 3 else name
     except Exception:
         return hex_id[:12] + "…"
+
+
+def _resolve_channel(ch: str, hints: dict[str, str]) -> str | None:
+    """Return sender name for a channel_id, or None if it should be skipped.
+
+    Old format: channel_id is hex-encoded 'logos:yolo:<name>' → decode directly.
+    New format: channel_id is a random key hash → look up in channel_hints.json,
+                fall back to first 8 hex chars as anonymous identifier.
+    Binary system channels (8101...) have no readable inscriptions and are
+    filtered at the inscription-decode step, not here.
+    """
+    if ch.startswith(_YOLO_HEX):
+        return _decode_yolo_channel(ch)
+    if ch in hints:
+        return hints[ch]
+    # Unknown random-ID channel — use short prefix; inscription filter handles binary
+    return ch[:8]
 
 
 def _scan_local_gap() -> None:
@@ -818,6 +845,7 @@ def _scan_local_gap() -> None:
     batches = (gap + _GAP_BATCH - 1) // _GAP_BATCH
     print(f"  Gap fill: {gap} slots behind tip — scanning {batches} batches ({max_slot}→{tip_slot})")
 
+    hints = _load_channel_hints()
     seen_blocks: set[str] = {m.get("block_id", "") for m in messages if m.get("block_id")}
     new_msgs: list[dict] = []
 
@@ -847,18 +875,16 @@ def _scan_local_gap() -> None:
                         continue
                     payload = op.get("payload") or {}
                     ch = payload.get("channel_id", "")
-                    if not ch.startswith(_YOLO_HEX):
-                        continue
-                    sender = _decode_yolo_channel(ch)
                     inscription = payload.get("inscription")
                     if not isinstance(inscription, list):
                         continue
                     try:
                         text = bytes(int(b) for b in inscription).decode("utf-8").strip()
                     except Exception:
-                        continue
+                        continue  # binary inscription — system op, skip
                     if not text or (text.startswith("{") and '"type"' in text):
                         continue
+                    sender = _resolve_channel(ch, hints)
                     new_msgs.append({
                         "sender":   sender, "text": text, "slot": slot,
                         "block_id": block_id, "tx_id": tx_id,

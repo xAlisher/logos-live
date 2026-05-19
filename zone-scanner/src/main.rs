@@ -4,7 +4,7 @@
 /// opcode=17 inscriptions on `logos:yolo:*` channels, and accumulates
 /// them in zone_scan.json.  Runs continuously: after finishing a full
 /// backward pass it watches the tip for new blocks.
-use std::{collections::HashSet, time::Duration};
+use std::{collections::HashMap, collections::HashSet, time::Duration};
 
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
@@ -21,6 +21,47 @@ const POLL_INTERVAL_SECS: u64 = 30;
 /// Output file (relative to cwd, override via ZONE_SCAN_FILE env var)
 fn out_file() -> String {
     std::env::var("ZONE_SCAN_FILE").unwrap_or_else(|_| "../zone_scan.json".into())
+}
+
+/// Load channel_hints.json: maps random channel_id hex → display name.
+fn load_channel_hints(msgs_path: &str) -> HashMap<String, String> {
+    let hints_path = {
+        let p = std::path::Path::new(msgs_path);
+        p.parent()
+            .unwrap_or(std::path::Path::new("."))
+            .join("channel_hints.json")
+    };
+    let Ok(text) = std::fs::read_to_string(&hints_path) else {
+        return HashMap::new();
+    };
+    let Ok(map) = serde_json::from_str::<serde_json::Value>(&text) else {
+        return HashMap::new();
+    };
+    map.as_object()
+        .map(|obj| {
+            obj.iter()
+                .filter(|(k, _)| !k.starts_with('_'))
+                .filter_map(|(k, v)| v.as_str().map(|s| (k.clone(), s.to_string())))
+                .collect()
+        })
+        .unwrap_or_default()
+}
+
+/// Resolve channel_id to a sender name.
+/// Old format: hex-encoded "logos:yolo:<name>" → decode.
+/// New format: random key hash → look up in hints, fall back to first 8 hex chars.
+fn resolve_channel(ch: &str, hints: &HashMap<String, String>) -> Option<String> {
+    if ch.starts_with(YOLO_HEX) {
+        return Some(decode_yolo_channel(ch));
+    }
+    // Unknown channel: only accept if inscription is valid UTF-8 (handled at call site).
+    // Return hint name or short hex prefix.
+    Some(
+        hints
+            .get(ch)
+            .cloned()
+            .unwrap_or_else(|| ch.chars().take(8).collect()),
+    )
 }
 
 /// Derive the state file path from the messages file path.
@@ -78,6 +119,9 @@ async fn main() -> Result<()> {
     let path = out_file();
     eprintln!("Zone scanner starting. Output: {path}");
 
+    let hints = load_channel_hints(&path);
+    eprintln!("Channel hints loaded: {} entries", hints.len());
+
     let client = reqwest::Client::builder()
         .timeout(Duration::from_secs(10))
         .build()?;
@@ -102,6 +146,7 @@ async fn main() -> Result<()> {
             slot_lo,
             slot_hi,
             &mut db.seen_blocks,
+            &hints,
         )
         .await
         {
@@ -168,6 +213,7 @@ async fn main() -> Result<()> {
                 batch_lo,
                 batch_hi,
                 &mut db.seen_blocks,
+                &hints,
             )
             .await
             {
@@ -220,6 +266,7 @@ async fn get_zone_messages_in_range(
     slot_from: u64,
     slot_to: u64,
     seen_blocks: &mut HashSet<String>,
+    hints: &HashMap<String, String>,
 ) -> Result<Vec<ZoneMessage>> {
     let url = format!("{NODE_URL}/cryptarchia/blocks?slot_from={slot_from}&slot_to={slot_to}");
     let blocks: Vec<serde_json::Value> = client.get(&url).send().await?.json().await?;
@@ -249,17 +296,13 @@ async fn get_zone_messages_in_range(
                     continue;
                 }
                 let ch = op["payload"]["channel_id"].as_str().unwrap_or("");
-                if !ch.starts_with(YOLO_HEX) {
-                    continue;
-                }
-
-                let sender = decode_yolo_channel(ch);
 
                 let raw: Option<Vec<u8>> = op["payload"]["inscription"].as_array().map(|arr| {
                     arr.iter()
                         .filter_map(|v| v.as_u64().map(|b| b as u8))
                         .collect()
                 });
+                // Binary inscriptions are system ops — skip before channel check.
                 let text = match raw.as_ref().and_then(|b| std::str::from_utf8(b).ok()) {
                     Some(s) => s.trim().to_string(),
                     None => continue,
@@ -270,6 +313,11 @@ async fn get_zone_messages_in_range(
                 if text.starts_with('{') && text.contains("\"type\"") {
                     continue;
                 }
+
+                let sender = match resolve_channel(ch, hints) {
+                    Some(s) => s,
+                    None => continue,
+                };
 
                 let live = text.to_lowercase().contains("#live");
                 msgs.push(ZoneMessage {
