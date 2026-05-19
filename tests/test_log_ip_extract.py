@@ -26,18 +26,35 @@ def test_pattern_b_matches_swarm_error_line():
 
 def test_private_ip_filtered():
     private_ips = [
-        "0.0.0.1",
-        "10.0.0.1",
-        "127.0.0.1",
-        "172.16.0.1",
-        "172.20.0.1",
-        "172.31.255.255",
-        "192.168.1.1",
+        "0.0.0.1",           # this-network
+        "10.0.0.1",          # RFC1918
+        "100.64.0.1",        # CGNAT
+        "100.127.255.255",   # CGNAT upper bound
+        "127.0.0.1",         # loopback
+        "169.254.1.1",       # link-local
+        "172.16.0.1",        # RFC1918
+        "172.20.0.1",        # RFC1918
+        "172.31.255.255",    # RFC1918
+        "192.0.2.1",         # TEST-NET-1
+        "192.168.1.1",       # RFC1918
+        "198.18.0.1",        # benchmarking
+        "198.51.100.1",      # TEST-NET-2
+        "203.0.113.1",       # TEST-NET-3
+        "224.0.0.1",         # multicast
+        "255.255.255.255",   # broadcast
     ]
     for ip in private_ips:
         assert _PRIVATE_IP.match(ip), f"{ip} should be private"
 
-    public_ips = ["1.2.3.4", "8.8.8.8", "172.15.0.1", "172.32.0.1", "11.0.0.1"]
+    public_ips = [
+        "1.2.3.4",
+        "8.8.8.8",
+        "11.0.0.1",
+        "100.63.255.255",   # just below CGNAT
+        "100.128.0.1",      # just above CGNAT
+        "172.15.0.1",       # just below RFC1918
+        "172.32.0.1",       # just above RFC1918
+    ]
     for ip in public_ips:
         assert not _PRIVATE_IP.match(ip), f"{ip} should be public"
 

@@ -318,12 +318,26 @@ _ANSI_RE  = re.compile(r"\x1b\[[0-9;]*m")
 _LOG_IP_A = re.compile(
     r"Added address /(?:ip4|dns4)/([^/ ]+)/\S+ to peer PeerId\(\"(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\"\)"
 )
-# Pattern B: swarm error — "/ip4/HOST/tcp/PORT/p2p/12D3KooW..." (standard multiaddr)
+# Pattern B: swarm error — "/ip4/HOST/PROTO/PORT/p2p/12D3KooW..." (standard multiaddr)
+# Uses word/digit segment groups to avoid greedy scanning across unrelated line content.
 _LOG_IP_B = re.compile(
-    r"/(?:ip4|dns4)/([^/\s]+)(?:/[^/\s]+)+/p2p/(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})"
+    r"/(?:ip4|dns4)/([^/\s]+)(?:/\w+/\d+)+/p2p/(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})"
 )
 _PRIVATE_IP = re.compile(
-    r"^(?:0\.|10\.|127\.|172\.(?:1[6-9]|2[0-9]|3[01])\.|192\.168\.)"
+    r"^(?:"
+    r"0\."                          # 0.0.0.0/8    — this-network
+    r"|10\."                        # 10.0.0.0/8   — RFC1918
+    r"|100\.6[4-9]\.|100\.[7-9]\d\.|100\.1[01]\d\.|100\.12[0-7]\."  # 100.64.0.0/10 — CGNAT
+    r"|127\."                       # 127.0.0.0/8  — loopback
+    r"|169\.254\."                  # 169.254.0.0/16 — link-local
+    r"|172\.(?:1[6-9]|2[0-9]|3[01])\."  # 172.16.0.0/12 — RFC1918
+    r"|192\.0\.2\."                 # 192.0.2.0/24 — TEST-NET-1
+    r"|192\.168\."                  # 192.168.0.0/16 — RFC1918
+    r"|198\.18\.|198\.19\."         # 198.18.0.0/15 — benchmarking
+    r"|198\.51\.100\."              # 198.51.100.0/24 — TEST-NET-2
+    r"|203\.0\.113\."               # 203.0.113.0/24 — TEST-NET-3
+    r"|2(?:2[4-9]|[3-4]\d|5[0-5])\."  # 224.0.0.0–255.255.255.255 — multicast+reserved
+    r")"
 )
 
 TELEMETRY_CACHE = BASE / "telemetry_cache.json"
@@ -449,9 +463,21 @@ def build_telemetry() -> dict:
         file_cache[lf.name] = {"size": cur_size, "peers_by_bucket": peers_by_bucket}
         files_read += 1
 
-    # Expire cache entries for files outside the 24h window
+    # Expire cache entries for files outside the retention window
     active_names = {lf.name for lf in log_files}
     file_cache = {k: v for k, v in file_cache.items() if k in active_names}
+
+    # Prune log_ip_peers: keep only IPs whose peer_ids overlap with peers
+    # seen within the active 7-day window.  This prevents unbounded cache growth.
+    active_peers: set[str] = set()
+    for pids in bucket_peers.values():
+        active_peers.update(pids)
+    if active_peers:
+        log_ip_peers = {
+            ip: pids & active_peers
+            for ip, pids in log_ip_peers.items()
+            if pids & active_peers
+        }
 
     # Persist updated cache
     try:
@@ -1134,7 +1160,6 @@ async def build_network_json() -> dict:
         geo_cache.update(fresh)
         save_geo_cache(geo_cache)
     crawler_ips = {extract_ip(n.get("addrs", [])) for n in nodes_raw.values()} - {None}
-    heard_count = sum(1 for ip in log_ips if ip not in crawler_ips)
     # Build heard_nodes: log IPs with geo coords, not already in crawler DB
     heard_nodes = []
     for entry in telemetry.get("log_peers", []):
@@ -1152,6 +1177,8 @@ async def build_network_json() -> dict:
             "city":     g.get("city", ""),
             "peer_ids": entry["peer_ids"],
         })
+    # heard_count = mapped heard nodes only (IPs that geolocated successfully)
+    heard_count = len(heard_nodes)
 
     # Geolocate own IP if not cached
     if own_ip and own_ip not in geo_cache:

@@ -1706,7 +1706,7 @@ function renderHeardMarkers() {
       opacity: 0.5,
       weight: 1,
     });
-    m.bindPopup(`<b>Heard (log)</b><br>${entry.ip}<br>${entry.city ? entry.city + ', ' : ''}${entry.country}<br>${entry.peer_ids.length} peer ID(s)`);
+    m.bindPopup(`<b>Heard (log)</b><br>${esc(entry.ip)}<br>${entry.city ? esc(entry.city) + ', ' : ''}${esc(entry.country)}<br>${entry.peer_ids.length} peer ID(s)`);
     m.addTo(map);
     heardMarkers.push(m);
   }
