@@ -198,7 +198,7 @@ button, input {
 
 .status-strip {
   display: grid;
-  grid-template-columns: repeat(6, minmax(88px, 1fr));
+  grid-template-columns: repeat(7, minmax(88px, 1fr));
   gap: 10px;
 }
 
@@ -1198,6 +1198,7 @@ tr:hover td {
       <div class="metric"><span class="metric-label">LIB Slot</span><span class="metric-value" id="m-lib">-</span></div>
       <div class="metric"><span class="metric-label">Peers</span><span class="metric-value" id="m-peers">-</span></div>
       <div class="metric"><span class="metric-label">Connections</span><span class="metric-value" id="m-connections">-</span></div>
+      <div class="metric"><span class="metric-label">Heard</span><span class="metric-value" id="m-heard">-</span></div>
     </div>
 
     <div class="actions">
@@ -1240,6 +1241,7 @@ tr:hover td {
                 <span class="panel-sub" id="map-sub">-</span>
                 <label class="map-toggle"><input id="toggle-nodes" type="checkbox" checked> Nodes</label>
                 <label class="map-toggle"><input id="toggle-circles" type="checkbox" checked> Circles</label>
+                <label class="map-toggle"><input id="toggle-heard" type="checkbox"> Heard</label>
               </div>
             </div>
             <div class="map-shell" id="map-shell">
@@ -1571,6 +1573,7 @@ let state = null;
 let map = null;
 let markers = [];
 let eventMarkers = [];
+let heardMarkers = [];
 let liveBubbleEls = [];
 
 const $ = id => document.getElementById(id);
@@ -1657,6 +1660,7 @@ function render() {
   $('m-lib').textContent = fmt(chain.lib_slot);
   $('m-peers').textContent = fmt(network.n_peers);
   $('m-connections').textContent = `${fmt(network.n_connections)} / ${fmt(network.n_pending_connections)} pending`;
+  $('m-heard').textContent = fmt(state.heard_count ?? 0);
 
   $('peer-source').textContent = state.peer_data_source === 'published-fallback'
     ? `published fallback (${fmt(state.peer_snapshot?.nodes)} nodes), local API ${state.loaded_from}`
@@ -1675,6 +1679,7 @@ function render() {
   $('top-countries').innerHTML = barRows(summary.geography?.top_countries, 'country');
   renderInfraMix(summary.infrastructure?.mix || {});
   renderMap(nodes);
+  renderHeardMarkers();
   renderMessages();
   renderPeers();
   renderDecentralization();
@@ -1684,6 +1689,27 @@ function render() {
   renderStake();
   renderSetup();
   renderAgent();
+}
+
+function renderHeardMarkers() {
+  if (!map) return;
+  heardMarkers.forEach(m => m.remove());
+  heardMarkers = [];
+  if (!$('toggle-heard')?.checked) return;
+  for (const entry of (state?.heard_nodes || [])) {
+    if (entry.lat == null || entry.lon == null) continue;
+    const m = L.circleMarker([entry.lat, entry.lon], {
+      radius: 5,
+      color: '#6ea4bf',
+      fillColor: '#6ea4bf',
+      fillOpacity: 0.3,
+      opacity: 0.5,
+      weight: 1,
+    });
+    m.bindPopup(`<b>Heard (log)</b><br>${esc(entry.ip)}<br>${entry.city ? esc(entry.city) + ', ' : ''}${esc(entry.country)}<br>${entry.peer_ids.length} peer ID(s)`);
+    m.addTo(map);
+    heardMarkers.push(m);
+  }
 }
 
 function renderInfraMix(mix) {
@@ -1785,6 +1811,8 @@ function renderMap(nodes) {
   markers = [];
   eventMarkers.forEach(marker => marker.remove());
   eventMarkers = [];
+  heardMarkers.forEach(marker => marker.remove());
+  heardMarkers = [];
   liveBubbleEls.forEach(el => el.remove());
   liveBubbleEls = [];
 
@@ -1955,6 +1983,7 @@ function renderTelemetry() {
   $('telemetry-kpis').innerHTML = [
     ['Active Now', fmt(summary.active_latest), `peak ${fmt(summary.active_peak)} peers / hour`],
     ['Total Discovered', fmt(summary.tracked_peers), `${fmt((state.summary?.nodes?.total) || 0)} geo-mapped · ${fmt(telemetry.window_hours || 0)}h window`],
+    ['Heard via Logs', fmt(state.heard_count ?? 0), 'public IPs seen in node logs not in crawler DB'],
     ['Stake Estimate', summary.latest_total_stake == null ? '-' : fmt(summary.latest_total_stake), `${fmt(summary.stake_points || 0)} hourly points`],
     ['Telemetry Source', esc(telemetry.source || 'unknown'), 'logs, telemetry file, or crawler state'],
   ].map(([label, value, note]) => `
@@ -2262,6 +2291,10 @@ $('toggle-nodes').addEventListener('change', () => {
 
 $('toggle-circles').addEventListener('change', () => {
   eventMarkers.forEach(marker => $('toggle-circles').checked ? marker.addTo(map) : marker.remove());
+});
+
+$('toggle-heard').addEventListener('change', () => {
+  renderHeardMarkers();
 });
 
 $('verify-peer-button').addEventListener('click', verifyPeer);
