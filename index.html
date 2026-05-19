@@ -1236,7 +1236,7 @@ tr:hover td {
       <div class="metric"><span class="metric-label">LIB Slot <a class="info-icon" href="https://github.com/xAlisher/logos-live/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Last Irreversible Block — slot permanently finalized by consensus. Cannot be reorganized.">ⓘ</a></span><span class="metric-value" id="m-lib">-</span></div>
       <div class="metric"><span class="metric-label">Peers <a class="info-icon" href="https://github.com/xAlisher/logos-live/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Direct peers connected to this node, reported by /network/info. Not total network size.">ⓘ</a></span><span class="metric-value" id="m-peers">-</span></div>
       <div class="metric"><span class="metric-label">Connections <a class="info-icon" href="https://github.com/xAlisher/logos-live/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Active libp2p connections / pending dials, per /network/info.">ⓘ</a></span><span class="metric-value" id="m-connections">-</span></div>
-      <div class="metric"><span class="metric-label">Heard</span><span class="metric-value" id="m-heard">-</span></div>
+      <div class="metric"><span class="metric-label">Heard <a class="info-icon" href="https://github.com/xAlisher/logos-live/blob/main/publish.py" target="_blank" rel="noopener" data-tip="IPs seen in swarm logs but unreachable by the Kademlia crawler (NAT-hidden). Not counted in Seen (7d) — those track peer IDs from all log lines; these are new IPs only discoverable via connection attempt patterns.">ⓘ</a></span><span class="metric-value" id="m-heard">-</span></div>
     </div>
 
     <div class="actions">
@@ -1279,7 +1279,7 @@ tr:hover td {
                 <span class="panel-sub" id="map-sub">-</span>
                 <label class="map-toggle"><input id="toggle-nodes" type="checkbox" checked> Nodes</label>
                 <label class="map-toggle"><input id="toggle-circles" type="checkbox" checked> Circles</label>
-                <label class="map-toggle"><input id="toggle-heard" type="checkbox"> Heard</label>
+                <label class="map-toggle"><input id="toggle-heard" type="checkbox" checked> Heard</label>
               </div>
             </div>
             <div class="map-shell" id="map-shell">
@@ -1393,7 +1393,7 @@ tr:hover td {
       </section>
 
       <section class="view" id="view-telemetry">
-        <div class="kpi-grid" id="telemetry-kpis"></div>
+        <div class="kpi-grid" id="telemetry-kpis" style="grid-template-columns:repeat(5,minmax(0,1fr))"></div>
         <div id="telemetry-warnings"></div>
         <div class="two-col">
           <section class="panel">
@@ -2021,7 +2021,7 @@ function renderTelemetry() {
   $('telemetry-kpis').innerHTML = [
     ['Active (last hr) <a class="info-icon" href="https://github.com/xAlisher/logos-live/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Unique peer IDs seen in the most recent 1-hour log bucket.">ⓘ</a>', fmt(summary.active_latest), `peak ${fmt(summary.active_peak)} peers / hour`],
     ['Seen (7d) <a class="info-icon" href="https://github.com/xAlisher/logos-live/blob/main/publish.py" target="_blank" rel="noopener" data-tip="Unique peer IDs seen in this node&#39;s log files over the past 7 days.">ⓘ</a>', fmt(summary.tracked_peers), `${fmt((state.summary?.nodes?.total) || 0)} geo-mapped · ${fmt(telemetry.window_hours || 0)}h window`],
-    ['Heard via Logs', fmt(state.heard_count ?? 0), 'public IPs seen in node logs not in crawler DB'],
+    ['Heard via Logs <a class="info-icon" href="https://github.com/xAlisher/logos-live/blob/main/publish.py" target="_blank" rel="noopener" data-tip="IPs seen in swarm logs but unreachable by the Kademlia crawler (NAT-hidden). Not included in Seen (7d) — those count peer IDs; these count new IPs only discoverable via connection attempt patterns.">ⓘ</a>', fmt(state.heard_count ?? 0), 'public IPs seen in node logs not in crawler DB'],
     ['Stake Estimate', summary.latest_total_stake == null ? '-' : fmt(summary.latest_total_stake), `${fmt(summary.stake_points || 0)} hourly points`],
     ['Telemetry Source', esc(telemetry.source || 'unknown'), 'logs, telemetry file, or crawler state'],
   ].map(([label, value, note]) => `
