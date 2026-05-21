@@ -15,8 +15,8 @@
       "/ip4/192.168.1.45/udp/3000/quic-v1"
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
-    "n_peers": 27,
-    "n_connections": 27,
+    "n_peers": 26,
+    "n_connections": 26,
     "n_pending_connections": 0
   },
   "nodes": [
@@ -2310,6 +2310,70 @@
   },
   "github": [
     {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "version 0.1.2",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/161#issuecomment-4512187870",
+      "timestamp": "2026-05-21T19:44:31Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Rename Logos App to Logos Basecamp",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/194#issuecomment-4512912751",
+      "timestamp": "2026-05-21T21:25:14Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "chat_module v1.0.0",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/chat_module-v1.0.0",
+      "timestamp": "2026-05-21T21:25:08Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "logos_execution_zone v1.0.0",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/logos_execution_zone-v1.0.0",
+      "timestamp": "2026-05-21T21:20:07Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "delivery_module v1.1.0",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/delivery_module-v1.1.0",
+      "timestamp": "2026-05-21T21:14:19Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "storage_ui v1.0.0",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/storage_ui-v1.0.0",
+      "timestamp": "2026-05-21T21:13:32Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "chat_ui v1.0.0",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/chat_ui-v1.0.0",
+      "timestamp": "2026-05-21T21:12:14Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "storage_module v1.0.0",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/storage_module-v1.0.0",
+      "timestamp": "2026-05-21T21:09:27Z"
+    },
+    {
       "repo": "logos-modules-release",
       "type": "Release",
       "cls": "type-release",
@@ -2383,14 +2447,6 @@
     },
     {
       "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Rename Logos App to Logos Basecamp",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/193#issuecomment-4512111867",
-      "timestamp": "2026-05-21T19:33:50Z"
-    },
-    {
-      "repo": "logos-basecamp",
       "type": "Create",
       "cls": "type-create",
       "title": "new branch \"task/rename-App-Basecamp\"",
@@ -2428,22 +2484,6 @@
       "title": "Pre-release pre-release-2576ef8-269",
       "url": "https://github.com/logos-co/logos-basecamp/releases/tag/pre-release-2576ef8-269",
       "timestamp": "2026-05-21T19:08:22Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "version 0.1.2",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/161#issuecomment-4511751510",
-      "timestamp": "2026-05-21T18:49:01Z"
-    },
-    {
-      "repo": "logos-rust-sdk",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"add_tests\"",
-      "url": "https://github.com/logos-co/logos-rust-sdk",
-      "timestamp": "2026-05-21T18:10:44Z"
     }
   ],
   "discourse": [
@@ -2663,7 +2703,7 @@
     "total_distributed": 21148000,
     "faucet_remainder": null,
     "unique_leaders": 14431,
-    "total_leader_blocks": 18415,
+    "total_leader_blocks": 18446,
     "top_leaders": [
       {
         "pk": "7bcc36b302970043",
@@ -2952,12 +2992,8 @@
     "window_hours": 169,
     "active_peers_hourly": [
       {
-        "ts": 1778792400,
-        "count": 0
-      },
-      {
         "ts": 1778796000,
-        "count": 61
+        "count": 0
       },
       {
         "ts": 1778799600,
@@ -3617,19 +3653,23 @@
       },
       {
         "ts": 1779390000,
-        "count": 5
+        "count": 65
       },
       {
         "ts": 1779393600,
-        "count": 0
+        "count": 3
       },
       {
         "ts": 1779397200,
         "count": 0
+      },
+      {
+        "ts": 1779400800,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 5,
+      "active_latest": 3,
       "active_peak": 65,
       "tracked_peers": 78,
       "latest_total_stake": null,
@@ -3639,152 +3679,152 @@
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779390000
+        "last_seen": 1779393600
       },
       {
         "peer_id": "12D3KooWJPYv9vEmuyFp\u2026",
-        "uptime_pct": 35.5,
-        "last_seen": 1779390000
-      },
-      {
-        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779390000
+        "uptime_pct": 36.1,
+        "last_seen": 1779393600
       },
       {
         "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779390000
-      },
-      {
-        "peer_id": "12D3KooWJ3vbbsXjvvGe\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779390000
+        "last_seen": 1779393600
       },
       {
         "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWBPCt1C78DatL\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWCydUyhZxP92M\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
+      },
+      {
+        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWKCogiyR9sk17\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWApqRyAErJLDL\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWSmroE8u98uiD\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
       },
       {
         "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779386400
+        "last_seen": 1779390000
+      },
+      {
+        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779390000
       }
     ],
     "stake_estimate_hourly": [],
@@ -3804,10 +3844,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
           "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb"
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
         ]
       },
       {
@@ -5574,7 +5614,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776221515,
+  "genesis_ts": 1776225117,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 302.5,
@@ -5665,6 +5705,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-21T21:00:14Z",
-  "updated": 1779397214
+  "peer_snapshot": "2026-05-21T22:00:16Z",
+  "updated": 1779400816
 }
