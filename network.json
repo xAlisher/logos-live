@@ -599,18 +599,6 @@
   ],
   "events": [
     {
-      "name": "Logos Circle Kigali",
-      "start": "2026-05-21T16:00:00.000Z",
-      "end": "2026-05-21T18:30:00.000Z",
-      "url": "https://lu.ma/gwidhpz7",
-      "lat": -1.958394,
-      "lon": 30.0695959,
-      "city": "Kigali",
-      "country": "Rwanda",
-      "address": "Rooftop at The Office Building, 34 KN 41 St, Kigali",
-      "upcoming": true
-    },
-    {
       "name": "Logos Circle BA #2",
       "start": "2026-05-21T21:00:00.000Z",
       "end": "2026-05-21T23:00:00.000Z",
@@ -693,6 +681,18 @@
       "country": "Nigeria",
       "address": "11 Abakaliki St, Awka",
       "upcoming": true
+    },
+    {
+      "name": "Logos Circle Kigali",
+      "start": "2026-05-21T16:00:00.000Z",
+      "end": "2026-05-21T18:30:00.000Z",
+      "url": "https://lu.ma/gwidhpz7",
+      "lat": -1.958394,
+      "lon": 30.0695959,
+      "city": "Kigali",
+      "country": "Rwanda",
+      "address": "Rooftop at The Office Building, 34 KN 41 St, Kigali",
+      "upcoming": false
     },
     {
       "name": "Logos Circle: Los Angeles",
@@ -2310,6 +2310,30 @@
   },
   "github": [
     {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "version 0.1.2",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/161#issuecomment-4511751510",
+      "timestamp": "2026-05-21T18:49:01Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"add_tests\"",
+      "url": "https://github.com/logos-co/logos-rust-sdk",
+      "timestamp": "2026-05-21T18:10:44Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"remove_qt_qstring\"",
+      "url": "https://github.com/logos-co/logos-logoscore-cli",
+      "timestamp": "2026-05-21T18:05:25Z"
+    },
+    {
       "repo": "logos-chat-module",
       "type": "Comment",
       "cls": "type-create",
@@ -2396,102 +2420,6 @@
       "title": "feat: use Delivery Logos Module instead of nwaku REST API",
       "url": "https://github.com/logos-co/ecosystem/issues/103#issuecomment-4507543927",
       "timestamp": "2026-05-21T11:04:22Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[L-Prize Submission Review] LP-0017 \u2014 Whistleblower \u2014 Thompsonmina",
-      "url": "https://github.com/logos-co/ecosystem/issues/120#issuecomment-4507435714",
-      "timestamp": "2026-05-21T10:54:52Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[Pre-Dogfooding] Delivery Module",
-      "url": "https://github.com/logos-co/ecosystem/issues/115#issuecomment-4507422989",
-      "timestamp": "2026-05-21T10:53:46Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[RFP] Add appendix to dex and update",
-      "url": "https://github.com/logos-co/ecosystem/issues/111#issuecomment-4507404767",
-      "timestamp": "2026-05-21T10:51:57Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[RFP] Atomic swaps, add appendix and ZCash support",
-      "url": "https://github.com/logos-co/ecosystem/issues/110#issuecomment-4507400382",
-      "timestamp": "2026-05-21T10:51:33Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[RFP] Change lending protocol to Morpho-like",
-      "url": "https://github.com/logos-co/ecosystem/issues/102#issuecomment-4507391742",
-      "timestamp": "2026-05-21T10:50:48Z"
-    },
-    {
-      "repo": "scaffold",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "add `run` command to do the build, deploy and interaction with spel",
-      "url": "https://github.com/logos-co/scaffold/issues/105#issuecomment-4507379978",
-      "timestamp": "2026-05-21T10:49:46Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[doc] use the atomic swaps sample app",
-      "url": "https://github.com/logos-co/ecosystem/issues/108#issuecomment-4507376866",
-      "timestamp": "2026-05-21T10:49:23Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[Dogfood] Write, build and load a business logic module for Logos",
-      "url": "https://github.com/logos-co/ecosystem/issues/95#issuecomment-4507348892",
-      "timestamp": "2026-05-21T10:45:41Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Define the scope for the Multisig sample app v0.1",
-      "url": "https://github.com/logos-co/ecosystem/issues/31#issuecomment-4507326012",
-      "timestamp": "2026-05-21T10:42:39Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[L-Prize Submission Review] LP-0003 \u2014 Private Allowlist / Airdrop Distributor \u2014 Timidan",
-      "url": "https://github.com/logos-co/ecosystem/issues/118#issuecomment-4507319434",
-      "timestamp": "2026-05-21T10:41:46Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[L-Prize Submission Review] LP-0016 \u2014 Anonymous Forum with Threshold Moderation and Membership Revocation \u2014  syafiqeil",
-      "url": "https://github.com/logos-co/ecosystem/issues/119#issuecomment-4507317408",
-      "timestamp": "2026-05-21T10:41:29Z"
-    },
-    {
-      "repo": "nimbos",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "refactor: rename eth2 to lb (logos blockchain)",
-      "url": "https://github.com/logos-co/nimbos/pull/26#issuecomment-4507228624",
-      "timestamp": "2026-05-21T10:29:34Z"
     }
   ],
   "discourse": [
@@ -2711,7 +2639,7 @@
     "total_distributed": 21148000,
     "faucet_remainder": null,
     "unique_leaders": 14431,
-    "total_leader_blocks": 18322,
+    "total_leader_blocks": 18353,
     "top_leaders": [
       {
         "pk": "7bcc36b302970043",
@@ -3000,12 +2928,8 @@
     "window_hours": 169,
     "active_peers_hourly": [
       {
-        "ts": 1778781600,
-        "count": 0
-      },
-      {
         "ts": 1778785200,
-        "count": 62
+        "count": 0
       },
       {
         "ts": 1778788800,
@@ -3665,19 +3589,23 @@
       },
       {
         "ts": 1779379200,
-        "count": 10
+        "count": 65
       },
       {
         "ts": 1779382800,
-        "count": 0
+        "count": 13
       },
       {
         "ts": 1779386400,
         "count": 0
+      },
+      {
+        "ts": 1779390000,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 10,
+      "active_latest": 13,
       "active_peak": 65,
       "tracked_peers": 78,
       "latest_total_stake": null,
@@ -3687,152 +3615,152 @@
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
         "peer_id": "12D3KooWJPYv9vEmuyFp\u2026",
         "uptime_pct": 35.5,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
+      },
+      {
+        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1779382800
       },
       {
         "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
         "peer_id": "12D3KooWApqRyAErJLDL\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
-        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
+        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
         "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
-        "peer_id": "12D3KooW9wycYQTk8HPK\u2026",
+        "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
         "peer_id": "12D3KooW9tKQDM3pX4Yf\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
-        "peer_id": "12D3KooWQiSxzxbWE38S\u2026",
+        "peer_id": "12D3KooWRko4kqycXZbs\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
       },
       {
-        "peer_id": "12D3KooWJ3vbbsXjvvGe\u2026",
+        "peer_id": "12D3KooWGKdieLmiTYDS\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779379200
+        "last_seen": 1779382800
+      },
+      {
+        "peer_id": "12D3KooWKvnPDTbnv4ud\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1779382800
+      },
+      {
+        "peer_id": "12D3KooWMwcnQXhd2P2P\u2026",
+        "uptime_pct": 29.6,
+        "last_seen": 1779382800
       },
       {
         "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWBPCt1C78DatL\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
-      },
-      {
-        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWCydUyhZxP92M\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWKCogiyR9sk17\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
+      },
+      {
+        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
-      },
-      {
-        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       },
       {
         "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779375600
-      },
-      {
-        "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1779375600
-      },
-      {
-        "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1779375600
+        "last_seen": 1779379200
       }
     ],
     "stake_estimate_hourly": [],
@@ -3852,10 +3780,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
         ]
       },
       {
@@ -5622,7 +5550,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776210716,
+  "genesis_ts": 1776214316,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 302.4,
@@ -5713,6 +5641,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-21T18:00:15Z",
-  "updated": 1779386415
+  "peer_snapshot": "2026-05-21T19:00:15Z",
+  "updated": 1779390015
 }
