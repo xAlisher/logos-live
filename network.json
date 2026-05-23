@@ -2277,18 +2277,6 @@
       "country": "Czechia",
       "address": "Studentsk\u00fd klub U Kachni\u010dky, M\u00edstnost R212, Bo\u017eet\u011bchova 1/2, 612 00 Brno-Kr\u00e1lovo Pole, Czechia",
       "upcoming": false
-    },
-    {
-      "name": "Logos Assembly: Belgrade",
-      "start": "2024-06-03T16:30:14.640Z",
-      "end": "2024-06-03T19:00:14.640Z",
-      "url": "https://lu.ma/LA2",
-      "lat": 44.815,
-      "lon": 20.45,
-      "city": "Beograd",
-      "country": "Serbia",
-      "address": "",
-      "upcoming": false
     }
   ],
   "youtube": {
@@ -2297,6 +2285,22 @@
     "published": "20260507"
   },
   "github": [
+    {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Expose active subscriptions (or `subscribeIfNot`) on `delivery_module`",
+      "url": "https://github.com/logos-co/logos-delivery-module/issues/34#issuecomment-4525005601",
+      "timestamp": "2026-05-23T09:59:55Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Demo / clarify how a core module can consume delivery_module \u2014 current attempt SIGSEGVs in LogosAPI::getClient",
+      "url": "https://github.com/logos-co/logos-delivery-module/issues/31#issuecomment-4524904558",
+      "timestamp": "2026-05-23T09:05:11Z"
+    },
     {
       "repo": "logos-delivery-module",
       "type": "Comment",
@@ -2667,56 +2671,56 @@
     "total_distributed": 21148000,
     "faucet_remainder": null,
     "unique_leaders": 14431,
-    "total_leader_blocks": 19531,
+    "total_leader_blocks": 19562,
     "top_leaders": [
       {
         "pk": "6fb192f4ce11d8cc",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "55b53dbe08458489",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "29b5db8bbd7d48eb",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "478fc95fbe848524",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "04434690f92e4d24",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "ebf73f20787051df",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "c19b4ec92a3383db",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "4e06f0b9218a8560",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "6d2fc400ff0f0144",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       },
       {
         "pk": "b39f64fe78ee1f35",
-        "blocks": 72,
+        "blocks": 73,
         "pct": 0.4
       }
     ]
@@ -2956,12 +2960,8 @@
     "window_hours": 169,
     "active_peers_hourly": [
       {
-        "ts": 1778922000,
-        "count": 0
-      },
-      {
         "ts": 1778925600,
-        "count": 61
+        "count": 0
       },
       {
         "ts": 1778929200,
@@ -3621,19 +3621,23 @@
       },
       {
         "ts": 1779519600,
-        "count": 19
+        "count": 68
       },
       {
         "ts": 1779523200,
-        "count": 0
+        "count": 6
       },
       {
         "ts": 1779526800,
         "count": 0
+      },
+      {
+        "ts": 1779530400,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 19,
+      "active_latest": 6,
       "active_peak": 68,
       "tracked_peers": 81,
       "latest_total_stake": null,
@@ -3641,154 +3645,154 @@
     },
     "peer_uptime": [
       {
-        "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
+        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779519600
+        "last_seen": 1779523200
       },
       {
         "peer_id": "12D3KooWJPYv9vEmuyFp\u2026",
-        "uptime_pct": 56.8,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
+        "uptime_pct": 57.4,
+        "last_seen": 1779523200
       },
       {
         "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
+        "last_seen": 1779523200
       },
       {
         "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWJmtcYHWzL8Gd\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooW9tKQDM3pX4Yf\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
+        "last_seen": 1779523200
       },
       {
         "peer_id": "12D3KooWRko4kqycXZbs\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooW9tmCpSLMFa7e\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779519600
+        "last_seen": 1779523200
       },
       {
         "peer_id": "12D3KooWJ3vbbsXjvvGe\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWEpofqUmkwGc2\u2026",
-        "uptime_pct": 24.3,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWQREuyuoCFbKA\u2026",
-        "uptime_pct": 17.2,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWKsVoyBR1Yd51\u2026",
-        "uptime_pct": 4.7,
-        "last_seen": 1779519600
-      },
-      {
-        "peer_id": "12D3KooWFBsZTbx1wALd\u2026",
-        "uptime_pct": 1.8,
-        "last_seen": 1779519600
+        "last_seen": 1779523200
       },
       {
         "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWBPCt1C78DatL\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
       },
       {
-        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
+        "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWCydUyhZxP92M\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWKCogiyR9sk17\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWApqRyAErJLDL\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
       },
       {
         "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779516000
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
+      },
+      {
+        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779519600
       }
     ],
     "stake_estimate_hourly": [],
@@ -3808,10 +3812,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
           "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb"
         ]
       },
       {
@@ -5608,11 +5612,11 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776351116,
+  "genesis_ts": 1776354715,
   "disk": {
     "total_gb": 1967.8,
-    "used_gb": 303.9,
-    "free_gb": 1563.9,
+    "used_gb": 304.0,
+    "free_gb": 1563.8,
     "used_pct": 15.4
   },
   "heard_count": 12,
@@ -5739,6 +5743,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-23T09:00:15Z",
-  "updated": 1779526815
+  "peer_snapshot": "2026-05-23T10:00:14Z",
+  "updated": 1779530414
 }
