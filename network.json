@@ -15,9 +15,9 @@
       "/ip4/192.168.1.45/udp/3000/quic-v1"
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
-    "n_peers": 29,
-    "n_connections": 30,
-    "n_pending_connections": 1
+    "n_peers": 31,
+    "n_connections": 31,
+    "n_pending_connections": 0
   },
   "nodes": [
     {
@@ -2659,56 +2659,56 @@
     "total_distributed": 21148000,
     "faucet_remainder": null,
     "unique_leaders": 14431,
-    "total_leader_blocks": 19469,
+    "total_leader_blocks": 19500,
     "top_leaders": [
       {
         "pk": "6fb192f4ce11d8cc",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "55b53dbe08458489",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "29b5db8bbd7d48eb",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "478fc95fbe848524",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "04434690f92e4d24",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "ebf73f20787051df",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "c19b4ec92a3383db",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "4e06f0b9218a8560",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "6d2fc400ff0f0144",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       },
       {
         "pk": "b39f64fe78ee1f35",
-        "blocks": 70,
+        "blocks": 71,
         "pct": 0.4
       }
     ]
@@ -2948,12 +2948,8 @@
     "window_hours": 169,
     "active_peers_hourly": [
       {
-        "ts": 1778914800,
-        "count": 0
-      },
-      {
         "ts": 1778918400,
-        "count": 61
+        "count": 0
       },
       {
         "ts": 1778922000,
@@ -3613,7 +3609,7 @@
       },
       {
         "ts": 1779512400,
-        "count": 22
+        "count": 68
       },
       {
         "ts": 1779516000,
@@ -3622,24 +3618,38 @@
       {
         "ts": 1779519600,
         "count": 0
+      },
+      {
+        "ts": 1779523200,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 22,
-      "active_peak": 67,
-      "tracked_peers": 80,
+      "active_latest": 68,
+      "active_peak": 68,
+      "tracked_peers": 81,
       "latest_total_stake": null,
       "stake_points": 0
     },
     "peer_uptime": [
       {
+        "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWBPCt1C78DatL\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
         "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
-        "uptime_pct": 98.2,
+        "uptime_pct": 97.6,
         "last_seen": 1779512400
       },
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 98.2,
+        "uptime_pct": 97.6,
         "last_seen": 1779512400
       },
       {
@@ -3648,139 +3658,129 @@
         "last_seen": 1779512400
       },
       {
-        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooW9wycYQTk8HPK\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWJmtcYHWzL8Gd\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooW9tKQDM3pX4Yf\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWRko4kqycXZbs\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWGKdieLmiTYDS\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWKvnPDTbnv4ud\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWJ3vbbsXjvvGe\u2026",
-        "uptime_pct": 98.2,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWMwcnQXhd2P2P\u2026",
-        "uptime_pct": 50.9,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWQREuyuoCFbKA\u2026",
-        "uptime_pct": 16.0,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWKsVoyBR1Yd51\u2026",
-        "uptime_pct": 3.6,
-        "last_seen": 1779512400
-      },
-      {
-        "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1779508800
-      },
-      {
-        "peer_id": "12D3KooWBPCt1C78DatL\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1779508800
-      },
-      {
         "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779508800
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
       },
       {
         "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779508800
+        "last_seen": 1779512400
       },
       {
         "peer_id": "12D3KooWEbbpAYaCLdMg\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779508800
+        "last_seen": 1779512400
       },
       {
         "peer_id": "12D3KooWCydUyhZxP92M\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779508800
+        "last_seen": 1779512400
       },
       {
         "peer_id": "12D3KooWAqS5cwHDU3rm\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779508800
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
       },
       {
         "peer_id": "12D3KooWKCogiyR9sk17\u2026",
         "uptime_pct": 97.6,
-        "last_seen": 1779508800
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWApqRyAErJLDL\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWJRBHQZT4sG11\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWCQ4STXWzF5Mo\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
+      },
+      {
+        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
+        "uptime_pct": 97.6,
+        "last_seen": 1779512400
       }
     ],
     "stake_estimate_hourly": [],
@@ -3800,10 +3800,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       },
       {
@@ -3966,6 +3966,18 @@
         "ip": "14.241.251.186",
         "peer_ids": [
           "12D3KooWKsVoyBR1Yd51ekdZUhP3iB4BogLeccQFSBL8tCFK1LoL"
+        ]
+      },
+      {
+        "ip": "65.109.104.118",
+        "peer_ids": [
+          "12D3KooWFBsZTbx1wALdLZR1LfoCPqbRAC7xoSxz6jmjJEFLXr9T"
+        ]
+      },
+      {
+        "ip": "82.208.20.209",
+        "peer_ids": [
+          "12D3KooW9tmCpSLMFa7e6kQtXsBAkU17WXdnRzCgEEbN8upBR2Nn"
         ]
       }
     ]
@@ -5588,14 +5600,14 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1776343915,
+  "genesis_ts": 1776347516,
   "disk": {
     "total_gb": 1967.8,
-    "used_gb": 303.8,
-    "free_gb": 1564.0,
+    "used_gb": 303.9,
+    "free_gb": 1563.9,
     "used_pct": 15.4
   },
-  "heard_count": 10,
+  "heard_count": 12,
   "heard_nodes": [
     {
       "ip": "160.30.20.30",
@@ -5696,9 +5708,29 @@
       "peer_ids": [
         "12D3KooWKsVoyBR1Yd51ekdZUhP3iB4BogLeccQFSBL8tCFK1LoL"
       ]
+    },
+    {
+      "ip": "65.109.104.118",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "country": "Finland",
+      "city": "Helsinki",
+      "peer_ids": [
+        "12D3KooWFBsZTbx1wALdLZR1LfoCPqbRAC7xoSxz6jmjJEFLXr9T"
+      ]
+    },
+    {
+      "ip": "82.208.20.209",
+      "lat": 48.9742,
+      "lon": 8.1851,
+      "country": "France",
+      "city": "Lauterbourg",
+      "peer_ids": [
+        "12D3KooW9tmCpSLMFa7e6kQtXsBAkU17WXdnRzCgEEbN8upBR2Nn"
+      ]
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-05-23T07:00:14Z",
-  "updated": 1779519614
+  "peer_snapshot": "2026-05-23T08:00:15Z",
+  "updated": 1779523215
 }
