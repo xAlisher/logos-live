@@ -21,7 +21,7 @@ DB_FILE   = BASE / "peers.json"
 GEO_CACHE = BASE / "geo_cache.json"
 PAGES_DIR = BASE / "pages"
 OUT_FILE  = PAGES_DIR / "network.json"
-NODE_URL  = os.getenv("NODE_URL", "http://127.0.0.1:8085")
+NODE_URL  = os.getenv("NODE_URL", "http://127.0.0.1:8080")
 
 
 def load_db() -> dict:
