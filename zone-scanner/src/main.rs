@@ -11,7 +11,9 @@ use serde::{Deserialize, Serialize};
 use tokio::time::sleep;
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const NODE_URL: &str = "http://127.0.0.1:8085";
+fn node_url() -> String {
+    std::env::var("NODE_URL").unwrap_or_else(|_| "http://127.0.0.1:8080".into())
+}
 /// "logos:yolo:" as hex prefix (channel IDs are 32-byte zero-padded)
 const YOLO_HEX: &str = "6c6f676f733a796f6c6f3a";
 /// How many slots to request per batch from /cryptarchia/blocks
@@ -251,7 +253,7 @@ async fn get_tip_slot(client: &reqwest::Client) -> Result<u64> {
         slot: u64,
     }
     let info: Info = client
-        .get(format!("{NODE_URL}/cryptarchia/info"))
+        .get(format!("{}/cryptarchia/info", node_url()))
         .send()
         .await?
         .json()
@@ -268,7 +270,7 @@ async fn get_zone_messages_in_range(
     seen_blocks: &mut HashSet<String>,
     hints: &HashMap<String, String>,
 ) -> Result<Vec<ZoneMessage>> {
-    let url = format!("{NODE_URL}/cryptarchia/blocks?slot_from={slot_from}&slot_to={slot_to}");
+    let url = format!("{}/cryptarchia/blocks?slot_from={slot_from}&slot_to={slot_to}", node_url());
     let blocks: Vec<serde_json::Value> = client.get(&url).send().await?.json().await?;
 
     let mut msgs = Vec::new();
