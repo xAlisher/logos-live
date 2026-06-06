@@ -1,152 +1,72 @@
 {
   "chain": {
-    "lib": "c7b851c87d482c2ce549ae1383a927846728734a68551096ca4e4a9e16b90bdf",
-    "lib_slot": 4617069,
-    "tip": "016df5735202f9f03391f46dd229286d0d77c010c1d7f8bfee6718ffdbc6afb1",
-    "slot": 4617630,
-    "height": 235478,
-    "mode": "Online"
+    "lib": "646088a81f76e6a6ae35b3cc87f33c9081c12b02932604eee427593251f72bec",
+    "lib_slot": 0,
+    "tip": "27e55e2f7093109d74bd888544df16b92842a9936aa076bf1743c0d7ef5c090c",
+    "slot": 4621238,
+    "height": 237505,
+    "mode": "Bootstrapping"
   },
   "network": {
     "listen_addresses": [
       "/ip4/127.0.0.1/udp/3000/quic-v1",
-      "/ip4/100.108.127.3/udp/3000/quic-v1",
+      "/ip4/192.168.1.36/udp/3000/quic-v1",
       "/ip4/172.17.0.1/udp/3000/quic-v1",
-      "/ip4/192.168.1.36/udp/3000/quic-v1"
+      "/ip4/100.108.127.3/udp/3000/quic-v1"
     ],
     "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
-    "n_peers": 37,
-    "n_connections": 37,
+    "n_peers": 39,
+    "n_connections": 39,
     "n_pending_connections": 0
   },
   "nodes": [
     {
-      "peer_id": "12D3KooWHTzmDR7JjJ5SVdteYp5VTXHh4PXKcHE4zsVEfcr7y3ma",
-      "ip": "178.23.97.113",
-      "lat": 61.306,
-      "lon": 7.7844,
-      "country": "Norway",
-      "city": "Farnes",
-      "isp": "Ardalsnett",
-      "org": "Ardalsnett",
-      "asn": "AS197212 Ardalsnett AS",
+      "peer_id": "12D3KooWJPYv9vEmuyFpzTf3rMg3Jmw2iBgdxqHVSLDxxQMAUaPV",
+      "ip": "83.49.38.99",
+      "lat": 39.1488,
+      "lon": -0.4294,
+      "country": "Spain",
+      "city": "Alzira",
+      "isp": "Telefonica de Espana SAU",
+      "org": "RIMA (Red IP Multi Acceso)",
+      "asn": "AS3352 TELEFONICA DE ESPANA S.A.U.",
       "environment": "residential",
-      "self": false,
+      "self": true,
       "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
+      "first_seen": 0,
+      "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWEpofqUmkwGc2VwtMTBVnjD7qFbqeZuACw2zcHJ32XmEN",
-      "ip": "65.108.206.118",
-      "lat": 60.1719,
-      "lon": 24.9347,
-      "country": "Finland",
-      "city": "Helsinki",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner Online GmbH",
-      "asn": "AS24940 Hetzner Online GmbH",
+      "peer_id": "12D3KooW9zwrvvkUUVUZrpA58pAM3z5rDFvafXqQnwpB83kLX4Uq",
+      "ip": "188.26.40.85",
+      "lat": 44.447,
+      "lon": 26.0185,
+      "country": "Romania",
+      "city": "Bucharest",
+      "isp": "RCS & RDS",
+      "org": "RCS & RDS Residential",
+      "asn": "AS8708 RCS & RDS",
+      "environment": "residential",
+      "self": false,
+      "online": false,
+      "first_seen": 1780435393,
+      "last_seen": 1780698736
+    },
+    {
+      "peer_id": "12D3KooWKKcJBZ4mARCVENrVmdzNv4aHHrjy2wUudPiqp9HrutH6",
+      "ip": "167.114.173.121",
+      "lat": 45.5063,
+      "lon": -73.5794,
+      "country": "Canada",
+      "city": "Montreal",
+      "isp": "OVH SAS",
+      "org": "OVH Hosting, Inc.",
+      "asn": "AS16276 OVH SAS",
       "environment": "hosting",
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWR8roFU3DPfyx95mVACF8PX7FfHTbZ1dRCB62pzvARodj",
-      "ip": "189.28.190.192",
-      "lat": -28.7203,
-      "lon": -49.3871,
-      "country": "Brazil",
-      "city": "Crici\u00fama",
-      "isp": "Engeplus Informatica Ltda",
-      "org": "Engeplus Informatica Ltda",
-      "asn": "AS28292 ENGEPLUS INFORMATICA LTDA",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWBLuRPawu5a3KHoDA68ii2RgAwNi1wkeCBsMMXFbGBwjz",
-      "ip": "146.19.24.32",
-      "lat": 52.1957,
-      "lon": 20.9921,
-      "country": "Poland",
-      "city": "Warsaw",
-      "isp": "MEVSPACE sp. z o.o.",
-      "org": "MEVSPACE sp. z o.o",
-      "asn": "AS201814 MEVSPACE sp. z o.o.",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWJmtcYHWzL8GdY56gVkftGQTMmW11BEYKZPbqbe7PrBhD",
-      "ip": "185.214.135.199",
-      "lat": 48.9742,
-      "lon": 8.1851,
-      "country": "France",
-      "city": "Lauterbourg",
-      "isp": "Contabo GmbH",
-      "org": "Contabo GmbH",
-      "asn": "AS51167 Contabo GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWKsVoyBR1Yd51ekdZUhP3iB4BogLeccQFSBL8tCFK1LoL",
-      "ip": "14.241.251.186",
-      "lat": 10.822,
-      "lon": 106.6257,
-      "country": "Vietnam",
-      "city": "Ho Chi Minh City",
-      "isp": "VNPT",
-      "org": "Vietnam Posts and Telecommunications Group",
-      "asn": "AS45899 VNPT Corp",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWHKaMZ2skZuXp8LRkw32sUmB5skRSA5rYS7E9Pbivup3L",
-      "ip": "152.53.161.50",
-      "lat": 49.0291,
-      "lon": 8.35696,
-      "country": "Germany",
-      "city": "Karlsruhe",
-      "isp": "netcup GmbH",
-      "org": "netcup GmbH",
-      "asn": "AS197540 netcup GmbH",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "ip": "65.109.51.37",
-      "lat": 60.1719,
-      "lon": 24.9347,
-      "country": "Finland",
-      "city": "Helsinki",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner Online GmbH",
-      "asn": "AS24940 Hetzner Online GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
+      "last_seen": 1780714576
     },
     {
       "peer_id": "12D3KooWF8gfGNSM6acnXFwFxb98hcV7gwgTyp5PjiPVqHY55ZCE",
@@ -165,6 +85,38 @@
       "last_seen": 1780038323
     },
     {
+      "peer_id": "12D3KooWKsVoyBR1Yd51ekdZUhP3iB4BogLeccQFSBL8tCFK1LoL",
+      "ip": "14.241.251.186",
+      "lat": 10.822,
+      "lon": 106.6257,
+      "country": "Vietnam",
+      "city": "Ho Chi Minh City",
+      "isp": "VNPT",
+      "org": "Vietnam Posts and Telecommunications Group",
+      "asn": "AS45899 VNPT Corp",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "ip": "65.109.51.37",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "country": "Finland",
+      "city": "Helsinki",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner Online GmbH",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
       "peer_id": "12D3KooWMwcnQXhd2P2PzcJfzjn4FRZDuGBw3GtpbF8cZ35CKa3F",
       "ip": "148.251.185.41",
       "lat": 50.4777,
@@ -178,87 +130,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWGKdieLmiTYDS9tbpjNVMEuD6BYh9AvwJ3TemYCeTQ4Q8",
-      "ip": "65.21.22.158",
-      "lat": 60.1719,
-      "lon": 24.9347,
-      "country": "Finland",
-      "city": "Helsinki",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner",
-      "asn": "AS24940 Hetzner Online GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooW9wycYQTk8HPKHHyVzF2tUEpVSu4WHu8ySAbTmXGreuV5",
-      "ip": "209.38.241.182",
-      "lat": 50.1169,
-      "lon": 8.6837,
-      "country": "Germany",
-      "city": "Frankfurt am Main",
-      "isp": "DigitalOcean, LLC",
-      "org": "Digital Ocean",
-      "asn": "AS14061 DigitalOcean, LLC",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWFfvuDu6AEVVFaAXBmVoneT11eNWtgZeFEm4FGye6MVt3",
-      "ip": "51.91.70.90",
-      "lat": 50.6924,
-      "lon": 3.20113,
-      "country": "France",
-      "city": "Roubaix",
-      "isp": "OVH SAS",
-      "org": "OVH",
-      "asn": "AS16276 OVH SAS",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWKKcJBZ4mARCVENrVmdzNv4aHHrjy2wUudPiqp9HrutH6",
-      "ip": "167.114.173.121",
-      "lat": 45.5063,
-      "lon": -73.5794,
-      "country": "Canada",
-      "city": "Montreal",
-      "isp": "OVH SAS",
-      "org": "OVH Hosting, Inc.",
-      "asn": "AS16276 OVH SAS",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWGPBuCarPTdHPAi1vcYSKJHMgyGj78TJ6eJ76rfcf2hzL",
-      "ip": "195.201.87.254",
-      "lat": 50.4777,
-      "lon": 12.3649,
-      "country": "Germany",
-      "city": "Falkenstein",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner",
-      "asn": "AS24940 Hetzner Online GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
+      "last_seen": 1780714576
     },
     {
       "peer_id": "12D3KooWHf2uj7MjRbdRmFcnydYnAuPSo5UsFYbKjq5H7i1jmCZu",
@@ -274,231 +146,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWGMoRgXvY9NbURudvRYg5YWfewj4nuqYdfngFZczNFW9N",
-      "ip": "65.109.79.185",
-      "lat": 60.1719,
-      "lon": 24.9347,
-      "country": "Finland",
-      "city": "Helsinki",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner Online GmbH",
-      "asn": "AS24940 Hetzner Online GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWQREuyuoCFbKAZ4aQt31WVU8ZJzhNJhsVEf74QGYx4E6x",
-      "ip": "188.68.34.170",
-      "lat": 49.4423,
-      "lon": 11.0191,
-      "country": "Germany",
-      "city": "Nuremberg",
-      "isp": "netcup GmbH",
-      "org": "NETCUP-GMBH",
-      "asn": "AS197540 netcup GmbH",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWSmroE8u98uiDM9V32jpQiEhxmnw2Fymj4bzLizNpDu3H",
-      "ip": "51.255.216.8",
-      "lat": 50.6916,
-      "lon": 3.20151,
-      "country": "France",
-      "city": "Roubaix",
-      "isp": "OVH SAS",
-      "org": "OVH",
-      "asn": "AS16276 OVH SAS",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWMGLsUjpepVfZw7PzZPZXK5sdfEeM2uy3UAZhTsjovxA3",
-      "ip": "84.22.115.187",
-      "lat": 52.0843,
-      "lon": 4.8805,
-      "country": "Netherlands",
-      "city": "Woerden",
-      "isp": "Tilaa B.V.",
-      "org": "",
-      "asn": "AS196752 Tilaa B.V.",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWJ2UUdyPyQUpdVtMxPJ2QfdKBrLT4eG7htKaUdhAMjgru",
-      "ip": "51.81.202.185",
-      "lat": 45.526,
-      "lon": -122.9874,
-      "country": "United States",
-      "city": "Hillsboro",
-      "isp": "OVH SAS",
-      "org": "OVH US LLC",
-      "asn": "AS16276 OVH SAS",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooW9tKQDM3pX4YfNVnFfgmohZtXJttdGhbPkWZ4N5c2Y2BN",
-      "ip": "15.235.55.176",
-      "lat": 45.5029,
-      "lon": -73.5723,
-      "country": "Canada",
-      "city": "Montreal",
-      "isp": "OVH SAS",
-      "org": "OVH Hosting, Inc",
-      "asn": "AS16276 OVH SAS",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWRko4kqycXZbsbNauEF4ShNqrJLHTQxPEJzocCVqCqRhK",
-      "ip": "160.30.20.30",
-      "lat": 12.2451,
-      "lon": 109.1943,
-      "country": "Vietnam",
-      "city": "Nha Trang",
-      "isp": "DEVTTT",
-      "org": "DEVTTT Website Design Company Limited",
-      "asn": "AS150862 VPSTTT COMPUTER COMPANY LIMITED",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWJAYsyc4Mobk53nd2GrFkK2B4zB4CfvVALG75p7FqVszU",
-      "ip": "37.187.253.61",
-      "lat": 50.6924,
-      "lon": 3.20113,
-      "country": "France",
-      "city": "Roubaix",
-      "isp": "OVH SAS",
-      "org": "OVH SAS",
-      "asn": "AS16276 OVH SAS",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWD6XvDYFbM61JUku3JwAzAUximv2RRnjfQKmvRX1DSUzq",
-      "ip": "148.251.237.182",
-      "lat": 50.4777,
-      "lon": 12.3649,
-      "country": "Germany",
-      "city": "Falkenstein",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner",
-      "asn": "AS24940 Hetzner Online GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWFBsZTbx1wALdLZR1LfoCPqbRAC7xoSxz6jmjJEFLXr9T",
-      "ip": "65.109.104.118",
-      "lat": 60.1719,
-      "lon": 24.9347,
-      "country": "Finland",
-      "city": "Helsinki",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner Online GmbH",
-      "asn": "AS24940 Hetzner Online GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWJ3vbbsXjvvGenQjFZSh21EqSUMjMDDTR1SBRAGoZC8Cn",
-      "ip": "152.53.139.23",
-      "lat": 49.4521,
-      "lon": 11.0767,
-      "country": "Germany",
-      "city": "Nuremberg",
-      "isp": "Location: DE",
-      "org": "",
-      "asn": "AS197540 netcup GmbH",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWKvnPDTbnv4udaGg1YWaDFpwjGoXpbeRLpjwX6JCKmZeN",
-      "ip": "47.84.49.194",
-      "lat": 1.35208,
-      "lon": 103.82,
-      "country": "Singapore",
-      "city": "Singapore",
-      "isp": "Alibaba.com LLC",
-      "org": "Delta Centric LLC, Zenlayer Inc",
-      "asn": "AS45102 Alibaba (US) Technology Co., Ltd.",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWApqRyAErJLDLmLLJwHPomC3K4sMXwR8LnVMQdwYUVwjH",
-      "ip": "152.53.103.89",
-      "lat": 46.6412,
-      "lon": 14.2892,
-      "country": "Austria",
-      "city": "Klagenfurt",
-      "isp": "netcup GmbH",
-      "org": "ANX Holding GmbH",
-      "asn": "AS197540 netcup GmbH",
-      "environment": "residential",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
-    },
-    {
-      "peer_id": "12D3KooWQiSxzxbWE38SiSwgqMYxp2EhRhRhuPcSBWHtketjLdnE",
-      "ip": "78.46.17.106",
-      "lat": 50.4777,
-      "lon": 12.3649,
-      "country": "Germany",
-      "city": "Falkenstein",
-      "isp": "Hetzner Online GmbH",
-      "org": "Hetzner",
-      "asn": "AS24940 Hetzner Online GmbH",
-      "environment": "hosting",
-      "self": false,
-      "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1780710616
+      "last_seen": 1780714576
     },
     {
       "peer_id": "12D3KooWNicuk1GsNUuWBLV8tNDNALjWvFHz99ur1VtkYgpz9MiE",
@@ -514,7 +162,55 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1780710616
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWR8roFU3DPfyx95mVACF8PX7FfHTbZ1dRCB62pzvARodj",
+      "ip": "189.28.190.192",
+      "lat": -28.7203,
+      "lon": -49.3871,
+      "country": "Brazil",
+      "city": "Crici\u00fama",
+      "isp": "Engeplus Informatica Ltda",
+      "org": "Engeplus Informatica Ltda",
+      "asn": "AS28292 ENGEPLUS INFORMATICA LTDA",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWFBsZTbx1wALdLZR1LfoCPqbRAC7xoSxz6jmjJEFLXr9T",
+      "ip": "65.109.104.118",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "country": "Finland",
+      "city": "Helsinki",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner Online GmbH",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWQREuyuoCFbKAZ4aQt31WVU8ZJzhNJhsVEf74QGYx4E6x",
+      "ip": "188.68.34.170",
+      "lat": 49.4423,
+      "lon": 11.0191,
+      "country": "Germany",
+      "city": "Nuremberg",
+      "isp": "netcup GmbH",
+      "org": "NETCUP-GMBH",
+      "asn": "AS197540 netcup GmbH",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
     },
     {
       "peer_id": "12D3KooWCwrKEb6tVoZYgAy7fpwHNp7FuF5aUyfwoohPYHjoTojd",
@@ -530,7 +226,135 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1780710616
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWGMoRgXvY9NbURudvRYg5YWfewj4nuqYdfngFZczNFW9N",
+      "ip": "65.109.79.185",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "country": "Finland",
+      "city": "Helsinki",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner Online GmbH",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWFfvuDu6AEVVFaAXBmVoneT11eNWtgZeFEm4FGye6MVt3",
+      "ip": "51.91.70.90",
+      "lat": 50.6924,
+      "lon": 3.20113,
+      "country": "France",
+      "city": "Roubaix",
+      "isp": "OVH SAS",
+      "org": "OVH",
+      "asn": "AS16276 OVH SAS",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWGKdieLmiTYDS9tbpjNVMEuD6BYh9AvwJ3TemYCeTQ4Q8",
+      "ip": "65.21.22.158",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "country": "Finland",
+      "city": "Helsinki",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWGPBuCarPTdHPAi1vcYSKJHMgyGj78TJ6eJ76rfcf2hzL",
+      "ip": "195.201.87.254",
+      "lat": 50.4777,
+      "lon": 12.3649,
+      "country": "Germany",
+      "city": "Falkenstein",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWJ2UUdyPyQUpdVtMxPJ2QfdKBrLT4eG7htKaUdhAMjgru",
+      "ip": "51.81.202.185",
+      "lat": 45.526,
+      "lon": -122.9874,
+      "country": "United States",
+      "city": "Hillsboro",
+      "isp": "OVH SAS",
+      "org": "OVH US LLC",
+      "asn": "AS16276 OVH SAS",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWQiSxzxbWE38SiSwgqMYxp2EhRhRhuPcSBWHtketjLdnE",
+      "ip": "78.46.17.106",
+      "lat": 50.4777,
+      "lon": 12.3649,
+      "country": "Germany",
+      "city": "Falkenstein",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWApqRyAErJLDLmLLJwHPomC3K4sMXwR8LnVMQdwYUVwjH",
+      "ip": "152.53.103.89",
+      "lat": 46.6412,
+      "lon": 14.2892,
+      "country": "Austria",
+      "city": "Klagenfurt",
+      "isp": "netcup GmbH",
+      "org": "ANX Holding GmbH",
+      "asn": "AS197540 netcup GmbH",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWKvnPDTbnv4udaGg1YWaDFpwjGoXpbeRLpjwX6JCKmZeN",
+      "ip": "47.84.49.194",
+      "lat": 1.35208,
+      "lon": 103.82,
+      "country": "Singapore",
+      "city": "Singapore",
+      "isp": "Alibaba.com LLC",
+      "org": "Delta Centric LLC, Zenlayer Inc",
+      "asn": "AS45102 Alibaba (US) Technology Co., Ltd.",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
     },
     {
       "peer_id": "12D3KooWKKbeQcUme2B2c4A3UN1j53rM6AdiiDdPUsbZroHBTt8U",
@@ -546,156 +370,2388 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1780710616
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWRko4kqycXZbsbNauEF4ShNqrJLHTQxPEJzocCVqCqRhK",
+      "ip": "160.30.20.30",
+      "lat": 12.2451,
+      "lon": 109.1943,
+      "country": "Vietnam",
+      "city": "Nha Trang",
+      "isp": "DEVTTT",
+      "org": "DEVTTT Website Design Company Limited",
+      "asn": "AS150862 VPSTTT COMPUTER COMPANY LIMITED",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWT1Fb4RDyoRSFitFKoCrnXRmXdyYQ6Ztu9PhFiXzvjNkr",
+      "ip": "86.96.27.98",
+      "lat": 25.0734,
+      "lon": 55.2979,
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "isp": "EMIRATES TELECOMMUNICATIONS GROUP COMPANY (ETISALAT GROUP) PJSC",
+      "org": "Emirates Telecommunications Corporation",
+      "asn": "AS5384 Emirates Internet",
+      "environment": "residential",
+      "self": false,
+      "online": false,
+      "first_seen": 1780603035,
+      "last_seen": 1780603035
+    },
+    {
+      "peer_id": "12D3KooWHKaMZ2skZuXp8LRkw32sUmB5skRSA5rYS7E9Pbivup3L",
+      "ip": "152.53.161.50",
+      "lat": 49.0291,
+      "lon": 8.35696,
+      "country": "Germany",
+      "city": "Karlsruhe",
+      "isp": "netcup GmbH",
+      "org": "netcup GmbH",
+      "asn": "AS197540 netcup GmbH",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWEpofqUmkwGc2VwtMTBVnjD7qFbqeZuACw2zcHJ32XmEN",
+      "ip": "65.108.206.118",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "country": "Finland",
+      "city": "Helsinki",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner Online GmbH",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWBLuRPawu5a3KHoDA68ii2RgAwNi1wkeCBsMMXFbGBwjz",
+      "ip": "146.19.24.32",
+      "lat": 52.1957,
+      "lon": 20.9921,
+      "country": "Poland",
+      "city": "Warsaw",
+      "isp": "MEVSPACE sp. z o.o.",
+      "org": "MEVSPACE sp. z o.o",
+      "asn": "AS201814 MEVSPACE sp. z o.o.",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWSmroE8u98uiDM9V32jpQiEhxmnw2Fymj4bzLizNpDu3H",
+      "ip": "51.255.216.8",
+      "lat": 50.6916,
+      "lon": 3.20151,
+      "country": "France",
+      "city": "Roubaix",
+      "isp": "OVH SAS",
+      "org": "OVH",
+      "asn": "AS16276 OVH SAS",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWD6XvDYFbM61JUku3JwAzAUximv2RRnjfQKmvRX1DSUzq",
+      "ip": "148.251.237.182",
+      "lat": 50.4777,
+      "lon": 12.3649,
+      "country": "Germany",
+      "city": "Falkenstein",
+      "isp": "Hetzner Online GmbH",
+      "org": "Hetzner",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooW9tKQDM3pX4YfNVnFfgmohZtXJttdGhbPkWZ4N5c2Y2BN",
+      "ip": "15.235.55.176",
+      "lat": 45.5029,
+      "lon": -73.5723,
+      "country": "Canada",
+      "city": "Montreal",
+      "isp": "OVH SAS",
+      "org": "OVH Hosting, Inc",
+      "asn": "AS16276 OVH SAS",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWJmtcYHWzL8GdY56gVkftGQTMmW11BEYKZPbqbe7PrBhD",
+      "ip": "185.214.135.199",
+      "lat": 48.9742,
+      "lon": 8.1851,
+      "country": "France",
+      "city": "Lauterbourg",
+      "isp": "Contabo GmbH",
+      "org": "Contabo GmbH",
+      "asn": "AS51167 Contabo GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWJAYsyc4Mobk53nd2GrFkK2B4zB4CfvVALG75p7FqVszU",
+      "ip": "37.187.253.61",
+      "lat": 50.6924,
+      "lon": 3.20113,
+      "country": "France",
+      "city": "Roubaix",
+      "isp": "OVH SAS",
+      "org": "OVH SAS",
+      "asn": "AS16276 OVH SAS",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWMGLsUjpepVfZw7PzZPZXK5sdfEeM2uy3UAZhTsjovxA3",
+      "ip": "84.22.115.187",
+      "lat": 52.0843,
+      "lon": 4.8805,
+      "country": "Netherlands",
+      "city": "Woerden",
+      "isp": "Tilaa B.V.",
+      "org": "",
+      "asn": "AS196752 Tilaa B.V.",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWJ3vbbsXjvvGenQjFZSh21EqSUMjMDDTR1SBRAGoZC8Cn",
+      "ip": "152.53.139.23",
+      "lat": 49.4521,
+      "lon": 11.0767,
+      "country": "Germany",
+      "city": "Nuremberg",
+      "isp": "Location: DE",
+      "org": "",
+      "asn": "AS197540 netcup GmbH",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWNykk8FUXnx8HZhdBjETSRkvDEmhZyMbm1XTG6XdaiEyc",
+      "ip": "158.220.92.29",
+      "lat": 50.8514,
+      "lon": -0.9903,
+      "country": "United Kingdom",
+      "city": "Portsmouth",
+      "isp": "Contabo GmbH",
+      "org": "Contabo GmbH",
+      "asn": "AS51167 Contabo GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780513274,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooW9wycYQTk8HPKHHyVzF2tUEpVSu4WHu8ySAbTmXGreuV5",
+      "ip": "209.38.241.182",
+      "lat": 50.1169,
+      "lon": 8.6837,
+      "country": "Germany",
+      "city": "Frankfurt am Main",
+      "isp": "DigitalOcean, LLC",
+      "org": "Digital Ocean",
+      "asn": "AS14061 DigitalOcean, LLC",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWMFmUq3ddqESepDjSF2fjYYGbo7d3KRcgcb7pVQVNtcZL",
+      "ip": "109.197.27.154",
+      "lat": 55.7487,
+      "lon": 37.6187,
+      "country": "Russia",
+      "city": "Moscow",
+      "isp": "Formula Sviazy CJSC",
+      "org": "Formula Svyazi LLC",
+      "asn": "AS50672 Formula Svyazi LLC",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780622175,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWHTzmDR7JjJ5SVdteYp5VTXHh4PXKcHE4zsVEfcr7y3ma",
+      "ip": "178.23.97.113",
+      "lat": 61.306,
+      "lon": 7.7844,
+      "country": "Norway",
+      "city": "Farnes",
+      "isp": "Ardalsnett",
+      "org": "Ardalsnett",
+      "asn": "AS197212 Ardalsnett AS",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780015698,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWNbZD6HXkczmygJXTNV5pvWSSJ4CTEYC4BSpbAxFNErgd",
+      "ip": "148.72.141.214",
+      "lat": 38.6287,
+      "lon": -90.1988,
+      "country": "United States",
+      "city": "St Louis",
+      "isp": "velia.net",
+      "org": "velia.net",
+      "asn": "AS30083 velia.net",
+      "environment": "residential",
+      "self": false,
+      "online": true,
+      "first_seen": 1780365432,
+      "last_seen": 1780714576
+    },
+    {
+      "peer_id": "12D3KooWFX5mzCrYf2KXfh72otghSNzbnfeWNyaGybDGwu4QJZSj",
+      "ip": "80.241.212.89",
+      "lat": 48.9742,
+      "lon": 8.1851,
+      "country": "France",
+      "city": "Lauterbourg",
+      "isp": "Contabo GmbH",
+      "org": "Contabo GmbH",
+      "asn": "AS51167 Contabo GmbH",
+      "environment": "hosting",
+      "self": false,
+      "online": true,
+      "first_seen": 1780620195,
+      "last_seen": 1780714576
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "name": "Logos Circle Awka",
+      "start": "2026-06-06T11:00:00.000Z",
+      "end": "2026-06-06T14:00:00.000Z",
+      "url": "https://lu.ma/qjsesfxg",
+      "lat": 6.2254789,
+      "lon": 7.0656642,
+      "city": "Awka",
+      "country": "Nigeria",
+      "address": "11 Abakaliki St, Awka",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle : Vizag",
+      "start": "2026-06-06T11:30:00.000Z",
+      "end": "2026-06-06T14:00:00.000Z",
+      "url": "https://lu.ma/4110a7t8",
+      "lat": 17.714859999999998,
+      "lon": 83.30102409999999,
+      "city": "Jct",
+      "country": "India",
+      "address": "3rd floor, Krishana Garden, 30-15-35, IDBI Bank, Saraswati Park Road, Daba Gardens, Allipuram, Jct, Visakhapatnam",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle - Abuja",
+      "start": "2026-06-06T13:00:00.000Z",
+      "end": "2026-06-06T15:00:00.000Z",
+      "url": "https://lu.ma/awk2dkip",
+      "lat": 8.9910777,
+      "lon": 7.3941452000000005,
+      "city": "Abuja",
+      "country": "Nigeria",
+      "address": "Musa Yar\u2019Adua expressway, Airport Rd, Abuja",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Kano #1",
+      "start": "2026-06-06T13:00:00.000Z",
+      "end": "2026-06-06T16:00:00.000Z",
+      "url": "https://lu.ma/bcypsiyq",
+      "lat": 12.0188495,
+      "lon": 8.5388483,
+      "city": "Kano",
+      "country": "Nigeria",
+      "address": "58 New Rd, Kano",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle: Porto",
+      "start": "2026-06-09T18:00:00.000Z",
+      "end": "2026-06-09T20:00:00.000Z",
+      "url": "https://lu.ma/ukf8c19f",
+      "lat": 41.1563608,
+      "lon": -8.6299837,
+      "city": "Porto",
+      "country": "Portugal",
+      "address": "Pra\u00e7a do Bom Sucesso 159 Piso 1, Porto",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Lisbon: Node Running Workshop",
+      "start": "2026-06-10T18:00:00.000Z",
+      "end": "2026-06-10T20:00:00.000Z",
+      "url": "https://lu.ma/wqfifgw0",
+      "lat": 38.7215065,
+      "lon": -9.1251438,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "Rua Bartolomeu da Costa 32, Lisboa",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Benin City June 2026!",
+      "start": "2026-06-14T15:30:00.000Z",
+      "end": "2026-06-14T16:30:00.000Z",
+      "url": "https://lu.ma/6oboctxr",
+      "lat": 6.399878999999999,
+      "lon": 5.608990599999999,
+      "city": "Benin City",
+      "country": "Nigeria",
+      "address": "Ugbowo-Lagos Rd, Benin City",
+      "upcoming": true
+    },
+    {
+      "name": "Logos LAN / Berlin. Tools Not Permission BYOC",
+      "start": "2026-06-16T07:00:00.000Z",
+      "end": "2026-06-16T16:00:00.000Z",
+      "url": "https://lu.ma/29nze70f",
+      "lat": 52.5103112,
+      "lon": 13.4286967,
+      "city": "Berlin",
+      "country": "Germany",
+      "address": "Holzmarktstra\u00dfe 33, Berlin-Bezirk Friedrichshain-Kreuzberg",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Berlin / Action Not Permission",
+      "start": "2026-06-18T11:00:00.000Z",
+      "end": "2026-06-18T18:30:00.000Z",
+      "url": "https://lu.ma/logos-c1yv",
+      "lat": 52.4937094,
+      "lon": 13.4296375,
+      "city": "Berlin",
+      "country": "Germany",
+      "address": "DE-BER-OHLR43, Paul-Lincke-Ufer 21, Berlin",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Kampala : Winnable Issue",
+      "start": "2026-06-19T07:00:00.000Z",
+      "end": "2026-06-19T09:00:00.000Z",
+      "url": "https://lu.ma/8vc58iv9",
+      "lat": 0.3326347,
+      "lon": 32.5685861,
+      "city": "Kampala",
+      "country": "Uganda",
+      "address": "7062 University Rd, Kampala",
+      "upcoming": true
+    },
+    {
+      "name": "LOGOS Ebonyi Circle: Digital Inclusion Initiative",
+      "start": "2026-06-20T11:00:00.000Z",
+      "end": "2026-06-20T14:30:00.000Z",
+      "url": "https://lu.ma/9ngfu4xy",
+      "lat": 6.337937999999999,
+      "lon": 8.096192199999999,
+      "city": "Abakaliki",
+      "country": "Nigeria",
+      "address": "83QW+5FG, Abakaliki",
+      "upcoming": true
+    },
+    {
+      "name": "LOGOS ABEOKUTA CIRCLE:Tech Her Forward 2",
+      "start": "2026-06-20T13:00:00.000Z",
+      "end": "2026-06-20T17:00:00.000Z",
+      "url": "https://lu.ma/zggs7e5h",
+      "lat": 7.0943011,
+      "lon": 3.3963628999999997,
+      "city": "Kobape",
+      "country": "Nigeria",
+      "address": "Kobape Rd, PMB Estate, Kobape",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Uyo",
+      "start": "2026-06-25T10:30:00.000Z",
+      "end": "2026-06-25T14:30:00.000Z",
+      "url": "https://lu.ma/bm8z3y7d",
+      "lat": 5.0077222,
+      "lon": 7.9578369,
+      "city": "Uyo",
+      "country": "Nigeria",
+      "address": "33 Samuel Effanga Crescent, Osong Ama Estate Rd, Uyo",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Ibadan: The Beginning",
+      "start": "2026-06-27T09:30:00.000Z",
+      "end": "2026-06-27T13:00:00.000Z",
+      "url": "https://lu.ma/u78zww8f",
+      "lat": 7.4217122,
+      "lon": 3.9102413000000005,
+      "city": "Ibadan",
+      "country": "Nigeria",
+      "address": "New Bodija Estate, Plot 4 UI -Secretariat road, Aare Avenue, Ibadan",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Port Harcourt",
+      "start": "2026-06-27T10:30:00.000Z",
+      "end": "2026-06-27T14:00:00.000Z",
+      "url": "https://lu.ma/2cgbb0f1",
+      "lat": 4.8205773999999995,
+      "lon": 7.0020701999999995,
+      "city": "Port Harcourt",
+      "country": "Nigeria",
+      "address": "49 Tombia St, Port Harcourt",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2026-06-29T17:00:00.000Z",
+      "end": "2026-06-29T20:00:00.000Z",
+      "url": "https://lu.ma/qz43jrz4",
+      "lat": 51.511534,
+      "lon": -0.08853319999999999,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "St Mary Abchurch House, Off Abchurch Yard, Abchurch Ln, London",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2026-06-01T17:00:00.000Z",
+      "end": "2026-06-01T20:00:00.000Z",
+      "url": "https://lu.ma/logos-london",
+      "lat": 51.511534,
+      "lon": -0.08853319999999999,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "St Mary Abchurch House, Off Abchurch Yard, Abchurch Ln, London",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle - Boston",
+      "start": "2026-05-31T18:00:00.000Z",
+      "end": "2026-05-31T20:00:00.000Z",
+      "url": "https://lu.ma/7h4we06s",
+      "lat": 42.3492855,
+      "lon": -71.078283,
+      "city": "Boston",
+      "country": "United States",
+      "address": "700 Boylston St, Boston",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Enugu",
+      "start": "2026-05-31T11:00:00.000Z",
+      "end": "2026-05-31T14:00:00.000Z",
+      "url": "https://lu.ma/w6qdvvmd",
+      "lat": 6.4392245,
+      "lon": 7.515774899999999,
+      "city": "Enugu",
+      "country": "Nigeria",
+      "address": "Presidential Rd, Enugu",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Port Harcourt",
+      "start": "2026-05-30T10:30:00.000Z",
+      "end": "2026-05-30T14:30:00.000Z",
+      "url": "https://lu.ma/c805ajvr",
+      "lat": 4.8205773999999995,
+      "lon": 7.0020701999999995,
+      "city": "Port Harcourt",
+      "country": "Nigeria",
+      "address": "49 Tombia St, Port Harcourt",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Delta - MEETUP 2.0",
+      "start": "2026-05-30T09:30:00.000Z",
+      "end": "2026-05-30T12:30:00.000Z",
+      "url": "https://lu.ma/i82fsfe4",
+      "lat": 5.5711927,
+      "lon": 5.7828785,
+      "city": "Warri",
+      "country": "Nigeria",
+      "address": "HQCM+F5C Inside delta mall, Sapele Rd, Warri",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: UYO",
+      "start": "2026-05-28T10:30:00.000Z",
+      "end": "2026-05-28T14:30:00.000Z",
+      "url": "https://lu.ma/keag0kha",
+      "lat": 5.0077222,
+      "lon": 7.9578369,
+      "city": "Uyo",
+      "country": "Nigeria",
+      "address": "33 Samuel Effanga Crescent, Osong Ama Estate Rd, Uyo",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Benin City May 2026",
+      "start": "2026-05-24T13:30:00.000Z",
+      "end": "2026-05-24T16:00:00.000Z",
+      "url": "https://lu.ma/wpkup0kf",
+      "lat": 6.399878999999999,
+      "lon": 5.608990599999999,
+      "city": "Benin City",
+      "country": "Nigeria",
+      "address": "Ugbowo-Lagos Rd, Benin City",
+      "upcoming": false
+    },
+    {
+      "name": "LOGOS GIZA CIRCLE : GIZA CITY LAUNCH",
+      "start": "2026-05-23T14:00:00.000Z",
+      "end": "2026-05-23T16:00:00.000Z",
+      "url": "https://lu.ma/gd7x6dok",
+      "lat": 29.973153800000002,
+      "lon": 31.0193506,
+      "city": "First 6th of October",
+      "country": "Egypt",
+      "address": "MALL OF EGYPT, El Wahat Rd, First 6th of October",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle BA #2",
+      "start": "2026-05-21T21:00:00.000Z",
+      "end": "2026-05-21T23:00:00.000Z",
+      "url": "https://lu.ma/wpndjxtb",
+      "lat": -34.546455099999996,
+      "lon": -58.4895881,
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "address": "Vedia 3892",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Kigali",
+      "start": "2026-05-21T16:00:00.000Z",
+      "end": "2026-05-21T18:30:00.000Z",
+      "url": "https://lu.ma/gwidhpz7",
+      "lat": -1.958394,
+      "lon": 30.0695959,
+      "city": "Kigali",
+      "country": "Rwanda",
+      "address": "Rooftop at The Office Building, 34 KN 41 St, Kigali",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Berlin",
+      "start": "2026-05-20T16:00:00.000Z",
+      "end": "2026-05-20T18:00:00.000Z",
+      "url": "https://lu.ma/z2mpt10l",
+      "lat": 52.488345599999995,
+      "lon": 13.410484799999999,
+      "city": "Berlin",
+      "country": "Germany",
+      "address": "Hasenheide 69, Berlin-Bezirk Neuk\u00f6lln",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles",
+      "start": "2026-05-20T02:00:00.000Z",
+      "end": "2026-05-20T05:00:00.000Z",
+      "url": "https://lu.ma/fvtjixui",
+      "lat": 34.044711299999996,
+      "lon": -118.2352851,
+      "city": "Los Angeles",
+      "country": "United States",
+      "address": "828 Traction Ave, Los Angeles",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Kampala",
+      "start": "2026-05-15T07:00:00.000Z",
+      "end": "2026-05-15T09:00:00.000Z",
+      "url": "https://lu.ma/fu0m2ar6",
+      "lat": 0.3326347,
+      "lon": 32.5685861,
+      "city": "Kampala",
+      "country": "Uganda",
+      "address": "7062 University Rd, Kampala",
+      "upcoming": false
+    },
+    {
+      "name": "LOGOS EBONYI CIRCLE : SOLUTIONS TO DIGITAL ILLETERACY",
+      "start": "2026-05-14T12:00:00.000Z",
+      "end": "2026-05-14T15:30:00.000Z",
+      "url": "https://lu.ma/nciejezz",
+      "lat": 6.337937999999999,
+      "lon": 8.096192199999999,
+      "city": "Abakaliki",
+      "country": "Nigeria",
+      "address": "83QW+5FG, Abakaliki",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Privacy Builders Bootcamp",
+      "start": "2026-05-14T07:20:00.000Z",
+      "end": "2026-05-14T11:20:00.000Z",
+      "url": "https://lu.ma/rryhld2v",
+      "lat": 46.7686345,
+      "lon": 23.5717021,
+      "city": "Cluj-Napoca",
+      "country": "Romania",
+      "address": "Aleea Stadionului 2, Cluj-Napoca",
+      "upcoming": false
+    },
+    {
+      "name": "ETHCluj Pop-up Logos Circle: Coffee & Purpose",
+      "start": "2026-05-13T09:15:00.000Z",
+      "end": "2026-05-13T11:15:00.000Z",
+      "url": "https://lu.ma/nwgntu3l",
+      "lat": 46.7686345,
+      "lon": 23.5717021,
+      "city": "Cluj-Napoca",
+      "country": "Romania",
+      "address": "Aleea Stadionului 2, Cluj-Napoca",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Delhi-NCR, India",
+      "start": "2026-05-09T10:30:00.000Z",
+      "end": "2026-05-09T13:00:00.000Z",
+      "url": "https://lu.ma/qt0wqz6x",
+      "lat": 28.5825,
+      "lon": 77.3175,
+      "city": "Noida",
+      "country": "India",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Ghana Circle -FREEDOM TO BUILD (Addressing Digital Illiteracy)",
+      "start": "2026-05-09T09:00:00.000Z",
+      "end": "2026-05-09T12:00:00.000Z",
+      "url": "https://lu.ma/6efn6ggc",
+      "lat": 5.5575,
+      "lon": -0.1725,
+      "city": "Accra",
+      "country": "Ghana",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Privacy Builders Bootcamp: Prague",
+      "start": "2026-05-07T08:00:00.000Z",
+      "end": "2026-05-07T14:00:00.000Z",
+      "url": "https://lu.ma/8qsy0d7d",
+      "lat": 50.101939699999996,
+      "lon": 14.449328499999998,
+      "city": "Hlavn\u00ed m\u011bsto Praha",
+      "country": "Czechia",
+      "address": "Tusarova 791/31, Praha 7-Hole\u0161ovice",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Lisbon",
+      "start": "2026-05-06T18:00:00.000Z",
+      "end": "2026-05-06T20:00:00.000Z",
+      "url": "https://lu.ma/q3c2ek98",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "CC de Sant'Ana 92 94, Lisboa",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Porto",
+      "start": "2026-05-05T18:00:00.000Z",
+      "end": "2026-05-05T20:00:00.000Z",
+      "url": "https://lu.ma/23dzukhi",
+      "lat": 41.1563608,
+      "lon": -8.6299837,
+      "city": "Porto",
+      "country": "Portugal",
+      "address": "Pra\u00e7a do Bom Sucesso 159 Piso 1, Porto",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Awka",
+      "start": "2026-05-02T11:30:00.000Z",
+      "end": "2026-05-02T14:00:00.000Z",
+      "url": "https://lu.ma/65a2wdec",
+      "lat": 6.2254789,
+      "lon": 7.0656642,
+      "city": "Awka",
+      "country": "Nigeria",
+      "address": "11 Abakaliki St, Awka",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Delta",
+      "start": "2026-04-30T10:00:00.000Z",
+      "end": "2026-04-30T12:30:00.000Z",
+      "url": "https://lu.ma/xl45wdft",
+      "lat": 5.5711927,
+      "lon": 5.7828785,
+      "city": "Warri",
+      "country": "Nigeria",
+      "address": "HQCM+F5C Inside delta mall, Sapele Rd, Warri",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2026-04-27T17:00:00.000Z",
+      "end": "2026-04-27T20:00:00.000Z",
+      "url": "https://lu.ma/pez2tlzn",
+      "lat": 51.511534,
+      "lon": -0.08853319999999999,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "St Mary Abchurch House, Off Abchurch Yard, Abchurch Ln, London",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona #8 (ft. Club Zcash Barcelona)",
+      "start": "2026-04-27T16:30:00.000Z",
+      "end": "2026-04-27T18:30:00.000Z",
+      "url": "https://lu.ma/wqlrhskv",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "Carrer de la Verneda, 19, Nave 1, Barcelona",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle - Boston",
+      "start": "2026-04-26T18:00:00.000Z",
+      "end": "2026-04-26T20:00:00.000Z",
+      "url": "https://lu.ma/wwskafsy",
+      "lat": 42.3492855,
+      "lon": -71.078283,
+      "city": "Boston",
+      "country": "United States",
+      "address": "700 Boylston St, Boston",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Kampala",
+      "start": "2026-04-24T07:00:00.000Z",
+      "end": "2026-04-24T09:00:00.000Z",
+      "url": "https://lu.ma/fog812l6",
+      "lat": 0.3326347,
+      "lon": 32.5685861,
+      "city": "Kampala",
+      "country": "Uganda",
+      "address": "7062 University Rd, Kampala",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Cape Town",
+      "start": "2026-04-22T17:00:00.000Z",
+      "end": "2026-04-22T19:00:00.000Z",
+      "url": "https://lu.ma/1wv9isy5",
+      "lat": -33.9275,
+      "lon": 18.425,
+      "city": "Cape Town",
+      "country": "South Africa",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "LOGOS EBONYI CIRCLE: Advancing Digital Awareness",
+      "start": "2026-04-18T14:00:00.000Z",
+      "end": "2026-04-18T17:00:00.000Z",
+      "url": "https://lu.ma/pntriw2e",
+      "lat": 6.337937999999999,
+      "lon": 8.096192199999999,
+      "city": "Abakaliki",
+      "country": "Nigeria",
+      "address": "83QW+5FG, Abakaliki",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Kigali",
+      "start": "2026-04-17T14:00:00.000Z",
+      "end": "2026-04-17T16:30:00.000Z",
+      "url": "https://lu.ma/q0687dep",
+      "lat": -1.958394,
+      "lon": 30.0695959,
+      "city": "Kigali",
+      "country": "Rwanda",
+      "address": "Rooftop at The Office Building, 34 KN 41 St, Kigali",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Nairobi",
+      "start": "2026-04-16T13:00:00.000Z",
+      "end": "2026-04-16T15:00:00.000Z",
+      "url": "https://lu.ma/l9jv04rc",
+      "lat": -1.2994603999999998,
+      "lon": 36.781061099999995,
+      "city": "Nairobi",
+      "country": "Kenya",
+      "address": "AppleWood Adams, Ngong Rd, Nairobi",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles",
+      "start": "2026-04-14T01:00:00.000Z",
+      "end": "2026-04-14T03:00:00.000Z",
+      "url": "https://lu.ma/9is05e3d",
+      "lat": 34.0575715,
+      "lon": -118.4060394,
+      "city": "Beverly Hills",
+      "country": "United States",
+      "address": "471 S Roxbury Dr, Beverly Hills",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Liberland: Community Cleanup",
+      "start": "2026-04-13T08:00:00.000Z",
+      "end": "2026-04-13T11:00:00.000Z",
+      "url": "https://lu.ma/7jrjjqal",
+      "lat": 45.6778614,
+      "lon": 18.974756199999998,
+      "city": "\u0410\u043f\u0430\u0442\u0438\u043d",
+      "country": "Serbia",
+      "address": "\u0420\u0438\u0431\u0430\u0440\u0441\u043a\u0430 55, Apatin",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Benin City April 2026",
+      "start": "2026-04-12T13:30:00.000Z",
+      "end": "2026-04-12T16:30:00.000Z",
+      "url": "https://lu.ma/h65nhsnf",
+      "lat": 6.399878999999999,
+      "lon": 5.608990599999999,
+      "city": "Benin City",
+      "country": "Nigeria",
+      "address": "Ugbowo-Lagos Rd, Benin City",
+      "upcoming": false
+    },
+    {
+      "name": "LOGOS ABEOKUTA CIRCLE: WINNABLE ISSUE",
+      "start": "2026-04-11T12:00:00.000Z",
+      "end": "2026-04-11T15:00:00.000Z",
+      "url": "https://lu.ma/v1zikazd",
+      "lat": 7.0943011,
+      "lon": 3.3963628999999997,
+      "city": "Kobape",
+      "country": "Nigeria",
+      "address": "Kobape Rd, PMB Estate, Kobape",
+      "upcoming": false
+    },
+    {
+      "name": "LOGOS Ghana Circle -Freedom To Build",
+      "start": "2026-04-11T09:00:00.000Z",
+      "end": "2026-04-11T11:00:00.000Z",
+      "url": "https://lu.ma/iyjxdd6v",
+      "lat": 5.5575,
+      "lon": -0.1725,
+      "city": "Accra",
+      "country": "Ghana",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "C\u00edrculo Logos CdMx",
+      "start": "2026-04-08T23:30:00.000Z",
+      "end": "2026-04-09T02:00:00.000Z",
+      "url": "https://lu.ma/sz3tao1f",
+      "lat": 19.354500599999998,
+      "lon": -99.18553569999999,
+      "city": "\u00c1lvaro Obreg\u00f3n",
+      "country": "Mexico",
+      "address": "Av. Insurgentes Sur 1877, Guadalupe Inn, \u00c1lvaro Obreg\u00f3n",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lisbon",
+      "start": "2026-04-08T18:00:00.000Z",
+      "end": "2026-04-08T20:00:00.000Z",
+      "url": "https://lu.ma/2caowbc0",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "CC de Sant'Ana 92 94, Lisboa",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Porto",
+      "start": "2026-04-07T18:00:00.000Z",
+      "end": "2026-04-07T20:00:00.000Z",
+      "url": "https://lu.ma/kbn0kqac",
+      "lat": 41.1563608,
+      "lon": -8.6299837,
+      "city": "Porto",
+      "country": "Portugal",
+      "address": "Pra\u00e7a do Bom Sucesso 159 Piso 1, Porto",
+      "upcoming": false
+    },
+    {
+      "name": "Privacy Tech: The NYC Circle (by Logos)",
+      "start": "2026-04-01T23:00:00.000Z",
+      "end": "2026-04-02T01:00:00.000Z",
+      "url": "https://lu.ma/g2jcz31h",
+      "lat": 40.705,
+      "lon": -73.9375,
+      "city": "Kings County",
+      "country": "United States",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2026-03-30T17:00:00.000Z",
+      "end": "2026-03-30T20:00:00.000Z",
+      "url": "https://lu.ma/u347kgln",
+      "lat": 51.511534,
+      "lon": -0.08853319999999999,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "St Mary Abchurch House, Off Abchurch Yard, Abchurch Ln, London",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona #7",
+      "start": "2026-03-30T16:30:00.000Z",
+      "end": "2026-03-30T18:30:00.000Z",
+      "url": "https://lu.ma/tzsjplot",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "Carrer de la Verneda, 19, Nave 1, Barcelona",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Berlin",
+      "start": "2026-03-27T15:00:00.000Z",
+      "end": "2026-03-27T16:30:00.000Z",
+      "url": "https://lu.ma/z22qr93x",
+      "lat": 52.49565,
+      "lon": 13.42672,
+      "city": "Berlin",
+      "country": "Germany",
+      "address": "Lausitzer Str. 22a, Berlin",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle BA #1",
+      "start": "2026-03-25T21:00:00.000Z",
+      "end": "2026-03-25T23:00:00.000Z",
+      "url": "https://lu.ma/jp315h01",
+      "lat": -34.546455099999996,
+      "lon": -58.4895881,
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "address": "Vedia 3892",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Cape Town",
+      "start": "2026-03-25T17:00:00.000Z",
+      "end": "2026-03-25T19:00:00.000Z",
+      "url": "https://lu.ma/aikh4eo5",
+      "lat": -34.1075,
+      "lon": 18.47,
+      "city": "Cape Town",
+      "country": "South Africa",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle - Boston",
+      "start": "2026-03-22T18:00:00.000Z",
+      "end": "2026-03-22T20:00:00.000Z",
+      "url": "https://lu.ma/uxzznyu6",
+      "lat": 42.3492855,
+      "lon": -71.078283,
+      "city": "Boston",
+      "country": "United States",
+      "address": "700 Boylston St, Boston",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Ruse #2",
+      "start": "2026-03-21T09:00:00.000Z",
+      "end": "2026-03-21T11:00:00.000Z",
+      "url": "https://lu.ma/x208rk8x",
+      "lat": 43.849131500000006,
+      "lon": 25.954425,
+      "city": "Ruse",
+      "country": "Bulgaria",
+      "address": "pl. \"SVOBODA\", Ruse",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Ghana Circle - Freedom to Build",
+      "start": "2026-03-20T09:00:00.000Z",
+      "end": "2026-03-20T11:00:00.000Z",
+      "url": "https://lu.ma/tg9k21jd",
+      "lat": 5.5580489,
+      "lon": -0.1722225,
+      "city": "Accra",
+      "country": "Ghana",
+      "address": "HR5H+646 All Risks Consultancy, Otswe St, Accra",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Abeokuta Circle - Women In Tech",
+      "start": "2026-03-14T13:00:00.000Z",
+      "end": "2026-03-14T16:30:00.000Z",
+      "url": "https://lu.ma/1cmad6qo",
+      "lat": 7.0943011,
+      "lon": 3.3963628999999997,
+      "city": "Kobape",
+      "country": "Nigeria",
+      "address": "Kobape Rd, PMB Estate, Kobape",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Ebonyi Circle",
+      "start": "2026-03-14T12:00:00.000Z",
+      "end": "2026-03-14T15:00:00.000Z",
+      "url": "https://lu.ma/dfb2g4jk",
+      "lat": 6.337937999999999,
+      "lon": 8.096192199999999,
+      "city": "Abakaliki",
+      "country": "Nigeria",
+      "address": "83QW+5FG, Abakaliki",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Benin",
+      "start": "2026-03-08T13:30:00.000Z",
+      "end": "2026-03-08T15:30:00.000Z",
+      "url": "https://lu.ma/319ho6h9",
+      "lat": 6.399878999999999,
+      "lon": 5.608990599999999,
+      "city": "Benin City",
+      "country": "Nigeria",
+      "address": "Ugbowo-Lagos Rd, Benin City",
+      "upcoming": false
+    },
+    {
+      "name": "Parallel Society 2026",
+      "start": "2026-03-06T09:00:00.000Z",
+      "end": "2026-03-07T23:30:00.000Z",
+      "url": "https://lu.ma/psf",
+      "lat": 38.7225,
+      "lon": -9.14,
+      "city": "Lisbon",
+      "country": "Portugal",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lisbon: Parallel Society Warm Up",
+      "start": "2026-03-04T19:00:00.000Z",
+      "end": "2026-03-04T21:00:00.000Z",
+      "url": "https://lu.ma/egwkj5rx",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "CC de Sant'Ana 92 94, Lisboa",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona #6",
+      "start": "2026-03-02T17:30:00.000Z",
+      "end": "2026-03-02T19:30:00.000Z",
+      "url": "https://lu.ma/6gokyr43",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "Carrer de la Verneda, 19, Nave 1, Barcelona",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle - Boston",
+      "start": "2026-03-01T19:00:00.000Z",
+      "end": "2026-03-01T21:00:00.000Z",
+      "url": "https://lu.ma/461lwnfn",
+      "lat": 42.3492855,
+      "lon": -71.078283,
+      "city": "Boston",
+      "country": "United States",
+      "address": "700 Boylston St, Boston",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Enugu",
+      "start": "2026-02-28T15:00:00.000Z",
+      "end": "2026-02-28T17:00:00.000Z",
+      "url": "https://lu.ma/y7njxkhn",
+      "lat": 6.4392245,
+      "lon": 7.515774899999999,
+      "city": "Enugu",
+      "country": "Nigeria",
+      "address": "Presidential Rd, Enugu",
+      "upcoming": false
+    },
+    {
+      "name": "C\u00edrculo Logos CdMx",
+      "start": "2026-02-27T00:30:00.000Z",
+      "end": "2026-02-27T02:00:00.000Z",
+      "url": "https://lu.ma/8r8p8c2k",
+      "lat": 19.371344999999998,
+      "lon": -99.1822052,
+      "city": "Ciudad de M\u00e9xico",
+      "country": "Mexico",
+      "address": "M\u00e1laga 88, Insurgentes Mixcoac, Ciudad de M\u00e9xico",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Florian\u00f3polis #3",
+      "start": "2026-02-26T22:00:00.000Z",
+      "end": "2026-02-27T00:00:00.000Z",
+      "url": "https://lu.ma/ptpymrws",
+      "lat": -27.6,
+      "lon": -48.55,
+      "city": "Florian\u00f3polis",
+      "country": "Brazil",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2026-02-23T18:00:00.000Z",
+      "end": "2026-02-23T21:00:00.000Z",
+      "url": "https://lu.ma/wbj2qeyn",
+      "lat": 51.511534,
+      "lon": -0.08853319999999999,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "St Mary Abchurch House, Off Abchurch Yard, Abchurch Ln, London",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Porto",
+      "start": "2026-02-19T19:00:00.000Z",
+      "end": "2026-02-19T21:00:00.000Z",
+      "url": "https://lu.ma/cz4spzih",
+      "lat": 41.1563608,
+      "lon": -8.6299837,
+      "city": "Porto",
+      "country": "Portugal",
+      "address": "Pra\u00e7a do Bom Sucesso 159 Piso 1, Porto",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle @NYC",
+      "start": "2026-02-19T00:30:00.000Z",
+      "end": "2026-02-19T02:30:00.000Z",
+      "url": "https://lu.ma/wu0ptbgg",
+      "lat": 40.705,
+      "lon": -73.9375,
+      "city": "Kings County",
+      "country": "United States",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Prague #4",
+      "start": "2026-02-18T17:00:00.000Z",
+      "end": "2026-02-18T19:00:00.000Z",
+      "url": "https://lu.ma/ogpuxp1q",
+      "lat": 50.103352699999995,
+      "lon": 14.450541099999997,
+      "city": "Hlavn\u00ed m\u011bsto Praha",
+      "country": "Czechia",
+      "address": "D\u011blnick\u00e1 475/43, Praha 7-Hole\u0161ovice",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles",
+      "start": "2026-02-18T03:00:00.000Z",
+      "end": "2026-02-18T06:00:00.000Z",
+      "url": "https://lu.ma/5jn6qwq2",
+      "lat": 34.044711299999996,
+      "lon": -118.2352851,
+      "city": "Los Angeles",
+      "country": "United States",
+      "address": "828 Traction Ave, Los Angeles",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Workshop at Monerotopia",
+      "start": "2026-02-15T20:00:00.000Z",
+      "end": "2026-02-15T21:00:00.000Z",
+      "url": "https://lu.ma/rskeef0d",
+      "lat": 19.4112175,
+      "lon": -99.1593255,
+      "city": "Ciudad de M\u00e9xico",
+      "country": "Mexico",
+      "address": "Jalapa 234, Centro Urbano Pdte. Ju\u00e1rez, Roma Sur, Ciudad de M\u00e9xico",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lagos",
+      "start": "2026-02-15T12:00:00.000Z",
+      "end": "2026-02-15T14:30:00.000Z",
+      "url": "https://lu.ma/ukr8vrht",
+      "lat": 6.4301765,
+      "lon": 3.4196096,
+      "city": "Lagos",
+      "country": "Nigeria",
+      "address": "300 Adeola Odeku St, Lagos",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Bangkok",
+      "start": "2026-02-13T11:00:00.000Z",
+      "end": "2026-02-13T14:00:00.000Z",
+      "url": "https://lu.ma/diywwak6",
+      "lat": 13.728342999999999,
+      "lon": 100.5810975,
+      "city": null,
+      "country": "Thailand",
+      "address": "Unit 702-703, 7th Floor, T Place Building, 150 Soi Thong Lo, Khwaeng Khlong Tan Nuea, Watthana",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Benin",
+      "start": "2026-02-07T13:00:00.000Z",
+      "end": "2026-02-07T17:00:00.000Z",
+      "url": "https://lu.ma/l11f66ig",
+      "lat": 6.399878999999999,
+      "lon": 5.608990599999999,
+      "city": "Benin City",
+      "country": "Nigeria",
+      "address": "Ugbowo-Lagos Rd, Benin City",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Ebonyi Circle - A deep Dive to Logos Network",
+      "start": "2026-02-07T12:00:00.000Z",
+      "end": "2026-02-07T15:00:00.000Z",
+      "url": "https://lu.ma/e282do8i",
+      "lat": 6.337937999999999,
+      "lon": 8.096192199999999,
+      "city": "Abakaliki",
+      "country": "Nigeria",
+      "address": "83QW+5FG, Abakaliki",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Ghana Circle - Freedom to Build: Logos Community Launch",
+      "start": "2026-02-06T12:00:00.000Z",
+      "end": "2026-02-06T14:00:00.000Z",
+      "url": "https://lu.ma/wqeu87zf",
+      "lat": 5.5580489,
+      "lon": -0.1722225,
+      "city": "Accra",
+      "country": "Ghana",
+      "address": "HR5H+646 All Risks Consultancy, Otswe St, Accra",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Nairobi",
+      "start": "2026-02-05T13:00:00.000Z",
+      "end": "2026-02-05T15:00:00.000Z",
+      "url": "https://lu.ma/nt9c8d98",
+      "lat": -1.2994603999999998,
+      "lon": 36.781061099999995,
+      "city": "Nairobi",
+      "country": "Kenya",
+      "address": "AppleWood Adams, Ngong Rd, Nairobi",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lisbon",
+      "start": "2026-02-04T19:00:00.000Z",
+      "end": "2026-02-04T21:00:00.000Z",
+      "url": "https://lu.ma/cdrdms5w",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "CC de Sant'Ana 92 94, Lisboa",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Brussels",
+      "start": "2026-02-03T18:30:00.000Z",
+      "end": "2026-02-03T20:30:00.000Z",
+      "url": "https://lu.ma/wqfitr95",
+      "lat": 50.8449612,
+      "lon": 4.355044299999999,
+      "city": "Bruxelles",
+      "country": "Belgium",
+      "address": "Rue de la Madeleine 51, Bruxelles",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Morelia",
+      "start": "2026-01-29T23:30:00.000Z",
+      "end": "2026-01-30T01:30:00.000Z",
+      "url": "https://lu.ma/0vuo2m0n",
+      "lat": 19.683609000000004,
+      "lon": -101.18349599999999,
+      "city": "Morelia",
+      "country": "Mexico",
+      "address": "Ave. Ventura Puente, Perif. Paseo de la Rep\u00fablica Esq, F\u00e9lix Ireta, Morelia",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona #5",
+      "start": "2026-01-29T17:30:00.000Z",
+      "end": "2026-01-29T19:30:00.000Z",
+      "url": "https://lu.ma/ualsao7v",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "Carrer de la Verneda, 19, Nave 1, Barcelona",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2026-01-26T18:00:00.000Z",
+      "end": "2026-01-26T21:00:00.000Z",
+      "url": "https://lu.ma/3vkwv6x3",
+      "lat": 51.511534,
+      "lon": -0.08853319999999999,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "St Mary Abchurch House, Off Abchurch Yard, Abchurch Ln, London",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Enugu",
+      "start": "2026-01-24T15:00:00.000Z",
+      "end": "2026-01-24T17:00:00.000Z",
+      "url": "https://lu.ma/6p3rdhk9",
+      "lat": 6.4392245,
+      "lon": 7.515774899999999,
+      "city": "Enugu",
+      "country": "Nigeria",
+      "address": "Presidential Rd, Enugu",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Ruse",
+      "start": "2026-01-24T09:00:00.000Z",
+      "end": "2026-01-24T11:00:00.000Z",
+      "url": "https://lu.ma/vxq4s3cs",
+      "lat": 43.849131500000006,
+      "lon": 25.954425,
+      "city": "Ruse",
+      "country": "Bulgaria",
+      "address": "pl. \"SVOBODA\", Ruse",
+      "upcoming": false
+    },
+    {
+      "name": "C\u00edrculo Logos CdMx",
+      "start": "2026-01-24T00:30:00.000Z",
+      "end": "2026-01-24T02:00:00.000Z",
+      "url": "https://lu.ma/i020ssyc",
+      "lat": 19.371344999999998,
+      "lon": -99.1822052,
+      "city": "Ciudad de M\u00e9xico",
+      "country": "Mexico",
+      "address": "M\u00e1laga 88, Insurgentes Mixcoac, Ciudad de M\u00e9xico",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Florian\u00f3polis #2",
+      "start": "2026-01-22T22:00:00.000Z",
+      "end": "2026-01-23T00:00:00.000Z",
+      "url": "https://lu.ma/c37eotup",
+      "lat": -27.5675,
+      "lon": -48.5075,
+      "city": "Florian\u00f3polis",
+      "country": "Brazil",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Porto",
+      "start": "2026-01-22T19:00:00.000Z",
+      "end": "2026-01-22T21:00:00.000Z",
+      "url": "https://lu.ma/st1vmc26",
+      "lat": 41.1563608,
+      "lon": -8.6299837,
+      "city": "Porto",
+      "country": "Portugal",
+      "address": "Pra\u00e7a do Bom Sucesso 159 Piso 1, Porto",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle - Boston",
+      "start": "2026-01-21T23:00:00.000Z",
+      "end": "2026-01-22T01:00:00.000Z",
+      "url": "https://lu.ma/shr8nw8s",
+      "lat": 42.3492855,
+      "lon": -71.078283,
+      "city": "Boston",
+      "country": "United States",
+      "address": "700 Boylston St, Boston",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Prague #3",
+      "start": "2026-01-21T17:00:00.000Z",
+      "end": "2026-01-21T19:00:00.000Z",
+      "url": "https://lu.ma/em5brzs2",
+      "lat": 50.103352699999995,
+      "lon": 14.450541099999997,
+      "city": "Hlavn\u00ed m\u011bsto Praha",
+      "country": "Czechia",
+      "address": "D\u011blnick\u00e1 475/43, Praha 7-Hole\u0161ovice",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles [Work Group]",
+      "start": "2026-01-13T02:00:00.000Z",
+      "end": "2026-01-13T06:00:00.000Z",
+      "url": "https://lu.ma/akbbxce2",
+      "lat": 33.9932584,
+      "lon": -118.480598,
+      "city": "Los Angeles",
+      "country": "United States",
+      "address": "Los Angeles",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lisbon",
+      "start": "2026-01-07T19:00:00.000Z",
+      "end": "2026-01-07T21:00:00.000Z",
+      "url": "https://lu.ma/5c76446l",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "CC de Sant'Ana 92 94, Lisboa",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Abuja",
+      "start": "2026-01-04T11:00:00.000Z",
+      "end": "2026-01-04T13:00:00.000Z",
+      "url": "https://lu.ma/gzo5eqd0",
+      "lat": 9.0426215,
+      "lon": 7.5034898,
+      "city": "Abuja",
+      "country": "Nigeria",
+      "address": "C1, Melita Plaza, Abuja",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lagos",
+      "start": "2025-12-21T11:00:00.000Z",
+      "end": "2025-12-21T13:00:00.000Z",
+      "url": "https://lu.ma/h8ppab31",
+      "lat": 6.4335308,
+      "lon": 3.4258897999999998,
+      "city": "Lagos",
+      "country": "Nigeria",
+      "address": "5 Idowu Taylor St, Lagos",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Florian\u00f3polis",
+      "start": "2025-12-18T22:00:00.000Z",
+      "end": "2025-12-19T00:00:00.000Z",
+      "url": "https://lu.ma/dkqp8ura",
+      "lat": -27.545,
+      "lon": -48.5025,
+      "city": "Florian\u00f3polis",
+      "country": "Brazil",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2025-12-17T18:00:00.000Z",
+      "end": "2025-12-17T20:00:00.000Z",
+      "url": "https://lu.ma/f3hi5rbp",
+      "lat": 51.51049,
+      "lon": -0.0898315,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "Pavilion Club | City, Cannon Green, 27 Bush Lane, London EC4R 0AA, UK",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Prague #2",
+      "start": "2025-12-17T17:00:00.000Z",
+      "end": "2025-12-17T19:00:00.000Z",
+      "url": "https://lu.ma/ag4nnwzs",
+      "lat": 50.103352699999995,
+      "lon": 14.450541099999997,
+      "city": "Hlavn\u00ed m\u011bsto Praha",
+      "country": "Czechia",
+      "address": "D\u011blnick\u00e1 475/43, Praha 7-Hole\u0161ovice",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Bengaluru Circle",
+      "start": "2025-12-14T11:30:00.000Z",
+      "end": "2025-12-14T13:30:00.000Z",
+      "url": "https://lu.ma/yhxit6lr",
+      "lat": 12.98,
+      "lon": 77.6425,
+      "city": "Bengaluru",
+      "country": "India",
+      "address": "",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Abeokuta Circle",
+      "start": "2025-12-13T14:00:00.000Z",
+      "end": "2025-12-13T17:30:00.000Z",
+      "url": "https://lu.ma/kmqw62yh",
+      "lat": 7.0943011,
+      "lon": 3.3963628999999997,
+      "city": "Kobape",
+      "country": "Nigeria",
+      "address": "Kobape Rd, PMB Estate, Kobape",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona #4",
+      "start": "2025-12-11T17:30:00.000Z",
+      "end": "2025-12-11T19:30:00.000Z",
+      "url": "https://lu.ma/jmetml32",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "AKASHA Hub Barcelona, Carrer de la Verneda, 19, Nave 1, Sant Mart\u00ed, 08018 Barcelona, Spain",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lisbon",
+      "start": "2025-12-10T19:00:00.000Z",
+      "end": "2025-12-10T21:00:00.000Z",
+      "url": "https://lu.ma/sefvbprj",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "Well Read, CC de Sant'Ana 92 94, 1150-305 Lisboa, Portugal",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Nairobi",
+      "start": "2025-12-10T12:00:00.000Z",
+      "end": "2025-12-10T14:00:00.000Z",
+      "url": "https://lu.ma/zqtfq8x8",
+      "lat": -1.2994603999999998,
+      "lon": 36.781061099999995,
+      "city": "Nairobi",
+      "country": "Kenya",
+      "address": "AppleWood Adams, Ngong Rd, Nairobi",
+      "upcoming": false
+    },
+    {
+      "name": "C\u00edrculo LOGOS CdMx",
+      "start": "2025-12-05T00:00:00.000Z",
+      "end": "2025-12-05T02:00:00.000Z",
+      "url": "https://lu.ma/d8bzugu8",
+      "lat": 19.437459399999998,
+      "lon": -99.1643347,
+      "city": "Ciudad de M\u00e9xico",
+      "country": "Mexico",
+      "address": "C. Guillermo Prieto 76, San Rafael, Cuauht\u00e9moc, 06470 Ciudad de M\u00e9xico, CDMX, Mexico",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Brno",
+      "start": "2025-12-04T16:30:00.000Z",
+      "end": "2025-12-04T20:00:00.000Z",
+      "url": "https://lu.ma/olw5rn0s",
+      "lat": 49.1871036,
+      "lon": 16.615579399999998,
+      "city": "Brno-m\u011bsto",
+      "country": "Czechia",
+      "address": "Caf\u00e9 Pr\u00e1h - Kav\u00e1rna a obch\u016fdek, Ve Va\u0148kovce 1, 602 00 Brno-st\u0159ed-Trnit\u00e1, Czechia",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles",
+      "start": "2025-12-03T02:00:00.000Z",
+      "end": "2025-12-03T05:00:00.000Z",
+      "url": "https://lu.ma/29wpdv9a",
+      "lat": 34.044711299999996,
+      "lon": -118.2352851,
+      "city": "Los Angeles",
+      "country": "United States",
+      "address": "Arts District Brewing Company, 828 Traction Ave, Los Angeles, CA 90013, USA",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Berlin: Meet \u2022 Align \u2022 Build - Launch night at Holzmarktperle",
+      "start": "2025-11-28T17:30:00.000Z",
+      "end": "2025-11-28T19:30:00.000Z",
+      "url": "https://lu.ma/42b0kx2c",
+      "lat": 52.511429299999996,
+      "lon": 13.426815699999999,
+      "city": "Berlin",
+      "country": "Germany",
+      "address": "Cafe Holzmarktperle, Holzmarktstra\u00dfe 25, 10243 Berlin, Germany",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Prague",
+      "start": "2025-11-26T17:00:00.000Z",
+      "end": "2025-11-26T20:00:00.000Z",
+      "url": "https://lu.ma/d4pgw3dq",
+      "lat": 50.103352699999995,
+      "lon": 14.450541099999997,
+      "city": "Hlavn\u00ed m\u011bsto Praha",
+      "country": "Czechia",
+      "address": "Second Culture, D\u011blnick\u00e1 475/43, 170 00 Praha 7-Hole\u0161ovice, Czechia",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Claremont",
+      "start": "2025-11-25T23:00:00.000Z",
+      "end": "2025-11-26T01:00:00.000Z",
+      "url": "https://lu.ma/5pe9bhss",
+      "lat": 34.109472499999995,
+      "lon": -117.7021065,
+      "city": "Claremont",
+      "country": "United States",
+      "address": "Claremont Craft Ales, 1420 N Claremont Blvd #204c, Claremont, CA 91711, USA",
+      "upcoming": false
+    },
+    {
+      "name": "P2P Privacy Hacker Lounge",
+      "start": "2025-11-22T13:00:00.000Z",
+      "end": "2025-11-23T00:00:00.000Z",
+      "url": "https://lu.ma/mcodb4f7",
+      "lat": -34.5829206,
+      "lon": -58.432718699999995,
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "address": "HUERTA Coworking, Humboldt 1967, C1414 Cdad. Aut\u00f3noma de Buenos Aires, Argentina",
+      "upcoming": false
+    },
+    {
+      "name": "Kick off - Logos Circle edici\u00f3n BA",
+      "start": "2025-11-20T21:00:00.000Z",
+      "end": "2025-11-20T23:00:00.000Z",
+      "url": "https://lu.ma/circleBA",
+      "lat": -34.5961172,
+      "lon": -58.3732859,
+      "city": "AAC",
+      "country": "Argentina",
+      "address": "Espacio Cultural Bitcoin, Marcelo Torcuato de Alvear 405, C1058 AAC, Cdad. Aut\u00f3noma de Buenos Aires, Argentina",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Buenos Aires",
+      "start": "2025-11-19T13:00:00.000Z",
+      "end": "2025-11-19T15:00:00.000Z",
+      "url": "https://lu.ma/n3qlcuap",
+      "lat": -34.5958581,
+      "lon": -58.38786940000001,
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "address": "Fundaci\u00f3n Beethoven, Av. Sta. Fe 1452, C1060ABN Cdad. Aut\u00f3noma de Buenos Aires, Argentina",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2025-11-17T18:00:00.000Z",
+      "end": "2025-11-17T21:00:00.000Z",
+      "url": "https://lu.ma/g18ci6ji",
+      "lat": 51.511534,
+      "lon": -0.08853319999999999,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "The Vintry, EC4, Off Abchurch Yard, Abchurch Ln, London EC4N 5AX, UK",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Benin",
+      "start": "2025-11-08T13:00:00.000Z",
+      "end": "2025-11-08T15:00:00.000Z",
+      "url": "https://lu.ma/05or77xs",
+      "lat": 6.399878999999999,
+      "lon": 5.608990599999999,
+      "city": "Benin City",
+      "country": "Nigeria",
+      "address": "University Of Benin (Main Campus), Ugbowo-Lagos Rd, Uselu, Benin City 300103, Edo, Nigeria",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circles San Jos\u00e9 (Costa Rica) - Chapter 2",
+      "start": "2025-11-07T00:00:00.000Z",
+      "end": "2025-11-07T02:00:00.000Z",
+      "url": "https://lu.ma/qmp9dkef",
+      "lat": 9.939377499999999,
+      "lon": -84.11404259999999,
+      "city": "San Jos\u00e9",
+      "country": "Costa Rica",
+      "address": "Cosmopolitan Tower, WVQP+Q94, C. 78, San Jos\u00e9, Rohrmoser, 10101, Costa Rica",
+      "upcoming": false
+    },
+    {
+      "name": "Reuni\u00f3n de Arranque del C\u00edrculo Logos en CdMx",
+      "start": "2025-11-06T23:00:00.000Z",
+      "end": "2025-11-07T02:00:00.000Z",
+      "url": "https://lu.ma/91w012ij",
+      "lat": 19.371344999999998,
+      "lon": -99.1822052,
+      "city": "Ciudad de M\u00e9xico",
+      "country": "Mexico",
+      "address": "M\u00e1laga 88, Insurgentes Mixcoac, Benito Ju\u00e1rez, 03920 Ciudad de M\u00e9xico, CDMX, Mexico",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona #3",
+      "start": "2025-11-06T17:30:00.000Z",
+      "end": "2025-11-06T19:30:00.000Z",
+      "url": "https://lu.ma/qf2d3ao0",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "AKASHA Hub Barcelona, Carrer de la Verneda, 19, Nave 1, Sant Mart\u00ed, 08018 Barcelona, Spain",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Lisbon",
+      "start": "2025-11-05T19:00:00.000Z",
+      "end": "2025-11-05T21:00:00.000Z",
+      "url": "https://lu.ma/axwejqse",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "Well Read, CC de Sant'Ana 92 94, 1150-305 Lisboa, Portugal",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles",
+      "start": "2025-10-31T02:00:00.000Z",
+      "end": "2025-10-31T05:00:00.000Z",
+      "url": "https://lu.ma/m9ulp616",
+      "lat": 34.044711299999996,
+      "lon": -118.2352851,
+      "city": "Los Angeles",
+      "country": "United States",
+      "address": "Arts District Brewing Company, 828 Traction Ave, Los Angeles, CA 90013, USA",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Edge City Patagonia",
+      "start": "2025-10-29T14:00:00.000Z",
+      "end": "2025-10-29T16:00:00.000Z",
+      "url": "https://lu.ma/08s8smf6",
+      "lat": -40.155409,
+      "lon": -71.35149419999999,
+      "city": "San Mart\u00edn de los Andes",
+      "country": "Argentina",
+      "address": "Gral. Roca 816, Q8370 San Mart\u00edn de los Andes, Neuqu\u00e9n, Argentina",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Bishkek",
+      "start": "2025-10-26T03:00:00.000Z",
+      "end": "2025-10-26T11:00:00.000Z",
+      "url": "https://lu.ma/7fttc48d",
+      "lat": 42.8568066,
+      "lon": 74.6347645,
+      "city": "Bishkek",
+      "country": "Kyrgyzstan",
+      "address": "Technopark, 1/2 Gorky St, Bishkek, Kyrgyzstan",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Nairobi",
+      "start": "2025-10-21T12:00:00.000Z",
+      "end": "2025-10-21T14:00:00.000Z",
+      "url": "https://lu.ma/eqtp8c2s",
+      "lat": -1.2994603999999998,
+      "lon": 36.781061099999995,
+      "city": "Nairobi",
+      "country": "Kenya",
+      "address": "Applewood Adams, Ngong Rd, Nairobi, Kenya",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Berlin: Meet \u2022 Align \u2022 Build - Launch night at Holzmarktperle",
+      "start": "2025-10-17T16:00:00.000Z",
+      "end": "2025-10-17T18:00:00.000Z",
+      "url": "https://lu.ma/uqaz6gb4",
+      "lat": 52.511429299999996,
+      "lon": 13.426815699999999,
+      "city": "Berlin",
+      "country": "Germany",
+      "address": "Cafe Holzmarktperle, Holzmarktstra\u00dfe 25, 10243 Berlin, Germany",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circles Doha",
+      "start": "2025-10-16T09:00:00.000Z",
+      "end": "2025-10-16T12:00:00.000Z",
+      "url": "https://lu.ma/krtp52t8",
+      "lat": 25.3253148,
+      "lon": 51.4374435,
+      "city": "Ar Rayyan",
+      "country": "Qatar",
+      "address": "Qatar Science and Technology Park, Al Luqta St, Ar Rayyan, Qatar",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle and Workshop in Rome - Urbe Village",
+      "start": "2025-10-16T07:30:00.000Z",
+      "end": "2025-10-16T11:30:00.000Z",
+      "url": "https://lu.ma/2qp19dva",
+      "lat": 41.8743589,
+      "lon": 12.472209099999999,
+      "city": "Roma",
+      "country": "Italy",
+      "address": "Urbe Hub, Largo Dino Frisullo, 00153 Roma RM, Italy",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circles San Jos\u00e9 (Costa Rica) - Chapter 1",
+      "start": "2025-10-08T23:00:00.000Z",
+      "end": "2025-10-09T02:00:00.000Z",
+      "url": "https://lu.ma/hrvkzw6a",
+      "lat": 9.939377499999999,
+      "lon": -84.11404259999999,
+      "city": "San Jos\u00e9",
+      "country": "Costa Rica",
+      "address": "Cosmopolitan Tower, WVQP+Q94, C. 78, San Jos\u00e9, Rohrmoser, 10101, Costa Rica",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Lisbon",
+      "start": "2025-10-08T18:00:00.000Z",
+      "end": "2025-10-08T20:00:00.000Z",
+      "url": "https://lu.ma/LCLisbon5",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "Well Read, CC de Sant'Ana 92 94, 1150-305 Lisboa, Portugal",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle London",
+      "start": "2025-10-08T16:30:00.000Z",
+      "end": "2025-10-08T19:30:00.000Z",
+      "url": "https://lu.ma/0eoq2jfu",
+      "lat": 51.517035799999995,
+      "lon": -0.0984034,
+      "city": "London",
+      "country": "United Kingdom",
+      "address": "Lamb and Trotter, 6 Little Britain, London EC1A 7BX, UK",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona #2",
+      "start": "2025-10-08T16:30:00.000Z",
+      "end": "2025-10-08T18:30:00.000Z",
+      "url": "https://lu.ma/p3h6my7f",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "AKASHA Hub Barcelona, Carrer de la Verneda, 19, Nave 1, Sant Mart\u00ed, 08018 Barcelona, Spain",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Brno",
+      "start": "2025-10-08T15:30:00.000Z",
+      "end": "2025-10-08T19:00:00.000Z",
+      "url": "https://lu.ma/r27unul9",
+      "lat": 49.1991063,
+      "lon": 16.612291199999998,
+      "city": "Brno-m\u011bsto",
+      "country": "Czechia",
+      "address": "\u017divo U Pale\u010dka, 23, Koli\u0161t\u011b 643, 602 00 Brno-st\u0159ed, Czechia",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Prague",
+      "start": "2025-10-03T15:00:00.000Z",
+      "end": "2025-10-03T16:00:00.000Z",
+      "url": "https://lu.ma/deeg8ue8",
+      "lat": 50.103352699999995,
+      "lon": 14.450541099999997,
+      "city": "Hlavn\u00ed m\u011bsto Praha",
+      "country": "Czechia",
+      "address": "Second Culture, D\u011blnick\u00e1 475/43, 170 00 Praha 7-Hole\u0161ovice, Czechia",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles | Work Group Session",
+      "start": "2025-09-24T01:00:00.000Z",
+      "end": "2025-09-24T04:00:00.000Z",
+      "url": "https://lu.ma/9btmv8ls",
+      "lat": 34.011882799999995,
+      "lon": -118.4915504,
+      "city": "Santa Monica",
+      "country": "United States",
+      "address": "Santa Monica, CA, USA",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Benin",
+      "start": "2025-09-12T16:00:00.000Z",
+      "end": "2025-09-12T18:00:00.000Z",
+      "url": "https://lu.ma/LCBenin1",
+      "lat": 6.341210299999999,
+      "lon": 5.619377999999999,
+      "city": "Benin City",
+      "country": "Nigeria",
+      "address": "Magnitron Blockchain Solution & Academy, 15b Wire Rd, Benin City 300102, Edo, Nigeria",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Brno",
+      "start": "2025-09-11T16:00:00.000Z",
+      "end": "2025-09-11T18:00:00.000Z",
+      "url": "https://lu.ma/5scnq4ek",
+      "lat": 49.2047119,
+      "lon": 16.6117152,
+      "city": "Brno-m\u011bsto",
+      "country": "Czechia",
+      "address": "Pivnice U Tygra, Vrchlick\u00e9ho sad, 602 00 Brno-st\u0159ed, Czechia",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle Barcelona",
+      "start": "2025-09-09T16:30:00.000Z",
+      "end": "2025-09-09T18:30:00.000Z",
+      "url": "https://lu.ma/gb2tgwiq",
+      "lat": 41.4109567,
+      "lon": 2.1912024999999997,
+      "city": "Barcelona",
+      "country": "Spain",
+      "address": "AKASHA Hub Barcelona, Carrer de la Verneda, 19, Nave 1, Sant Mart\u00ed, 08018 Barcelona, Spain",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Lisbon",
+      "start": "2025-09-03T18:00:00.000Z",
+      "end": "2025-09-03T20:00:00.000Z",
+      "url": "https://lu.ma/LCLisbon4",
+      "lat": 38.71642430000001,
+      "lon": -9.1384666,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "Well Read, CC de Sant'Ana 92 94, 1150-305 Lisboa, Portugal",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Los Angeles",
+      "start": "2025-08-21T01:00:00.000Z",
+      "end": "2025-08-21T05:00:00.000Z",
+      "url": "https://lu.ma/vo03t8xj",
+      "lat": 34.044711299999996,
+      "lon": -118.2352851,
+      "city": "Los Angeles",
+      "country": "United States",
+      "address": "Arts District Brewing Company, 828 Traction Ave, Los Angeles, CA 90013, USA",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Lisbon",
+      "start": "2025-08-06T17:00:00.000Z",
+      "end": "2025-08-06T19:00:00.000Z",
+      "url": "https://lu.ma/LCLisbon3",
+      "lat": 38.714765,
+      "lon": -9.159257499999999,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "Jardim da Estrela, Pra\u00e7a da Estrela, 1200-667 Lisboa, Portugal",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Brno",
+      "start": "2025-08-05T16:00:00.000Z",
+      "end": "2025-08-05T18:00:00.000Z",
+      "url": "https://lu.ma/lcbrno2",
+      "lat": 49.2082531,
+      "lon": 16.6338839,
+      "city": "Brno-m\u011bsto",
+      "country": "Czechia",
+      "address": "Industra Coffee, Lazaretn\u00ed 925/9, 615 00 Brno-\u017didenice, Czechia",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Zanzibar",
+      "start": "2025-07-28T08:00:00.000Z",
+      "end": "2025-07-28T10:00:00.000Z",
+      "url": "https://lu.ma/LCZanzibar3",
+      "lat": -6.280284699999999,
+      "lon": 39.2512913,
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "address": "Kwetukwenu Chill, Fumba Town, Nyamanzi, Zanzibar, Tanzania",
+      "upcoming": false
+    },
+    {
+      "name": "Logos Circle: Zanzibar",
+      "start": "2025-07-21T08:00:00.000Z",
+      "end": "2025-07-21T10:00:00.000Z",
+      "url": "https://lu.ma/LCZanzibar1",
+      "lat": -6.280284699999999,
+      "lon": 39.2512913,
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "address": "Kwetukwenu Chill, Fumba Town, Nyamanzi, Zanzibar, Tanzania",
+      "upcoming": false
+    },
+    {
+      "name": "Road to PSF: Zanzibar",
+      "start": "2025-07-19T07:00:00.000Z",
+      "end": "2025-07-19T19:00:00.000Z",
+      "url": "https://lu.ma/roadtopsfzanzibar",
+      "lat": -6.2743202,
+      "lon": 39.2524425,
+      "city": "Mchamba Wima",
+      "country": "Tanzania",
+      "address": "Fumba Town, Main Entrance Zanzibar, Unnamed Road, Mchamba Wima 3564, Tanzania",
+      "upcoming": false
+    }
+  ],
   "youtube": {},
   "github": [
     {
-      "repo": "rfp",
+      "repo": "logos-module-builder",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/bump-plugin-core-interfacedeps\"",
+      "url": "https://github.com/logos-co/logos-module-builder",
+      "timestamp": "2026-06-06T00:28:26Z"
+    },
+    {
+      "repo": "logos-dev-boost",
       "type": "Comment",
       "cls": "type-create",
-      "title": "[PROPOSAL] RFP-XXX \u2014 PrivateShield",
-      "url": "https://github.com/logos-co/rfp/issues/52#issuecomment-4592223916",
-      "timestamp": "2026-06-01T11:40:27Z"
+      "title": "add doc tests",
+      "url": "https://github.com/logos-co/logos-dev-boost/pull/9#issuecomment-4635710899",
+      "timestamp": "2026-06-05T21:36:14Z"
     },
     {
-      "repo": "spel",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"release/v0.5.0\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-06-01T10:05:38Z"
-    },
-    {
-      "repo": "mix-rln-spam-protection-plugin",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/stateless-rln\"",
-      "url": "https://github.com/logos-co/mix-rln-spam-protection-plugin",
-      "timestamp": "2026-06-01T10:04:31Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"ci/fix-circuits-script-all-workflows\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-06-01T09:59:44Z"
-    },
-    {
-      "repo": "journeys.logos.co",
+      "repo": "logos-logoscore-cli",
       "type": "Comment",
       "cls": "type-create",
-      "title": "Use file-sharing over the mix network",
-      "url": "https://github.com/logos-co/journeys.logos.co/issues/18#issuecomment-4591500029",
-      "timestamp": "2026-06-01T09:57:22Z"
+      "title": "fix: add core_service token",
+      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/39#issuecomment-4635638975",
+      "timestamp": "2026-06-05T21:24:54Z"
     },
     {
-      "repo": "logos-docs",
+      "repo": "logos-logoscore-cli",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"gitbook-files-update-2\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-06-01T09:52:33Z"
+      "title": "new branch \"fix_token\"",
+      "url": "https://github.com/logos-co/logos-logoscore-cli",
+      "timestamp": "2026-06-05T21:16:50Z"
     },
     {
-      "repo": "logos-docs",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"gitbook-files-update\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-06-01T08:55:28Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/lez-v0.1.2\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-06-01T08:50:15Z"
-    },
-    {
-      "repo": "spel",
+      "repo": "logos-rust-sdk",
       "type": "Comment",
       "cls": "type-create",
-      "title": "Expose execution context to SPEL instruction handlers",
-      "url": "https://github.com/logos-co/spel/issues/172#issuecomment-4590889716",
-      "timestamp": "2026-06-01T08:34:49Z"
+      "title": "add doctests",
+      "url": "https://github.com/logos-co/logos-rust-sdk/pull/8#issuecomment-4635327979",
+      "timestamp": "2026-06-05T20:34:58Z"
     },
     {
-      "repo": "spel",
+      "repo": "logos-rust-sdk",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"feat/clock-context\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-06-01T08:07:26Z"
+      "title": "new branch \"gh-pages\"",
+      "url": "https://github.com/logos-co/logos-rust-sdk",
+      "timestamp": "2026-06-05T20:34:57Z"
     },
     {
-      "repo": "spel",
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "lez_wallet_ui v1.0.0",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/lez_wallet_ui-v1.0.0",
+      "timestamp": "2026-06-05T19:55:56Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Feat/app manager",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/211#issuecomment-4634787223",
+      "timestamp": "2026-06-05T19:27:36Z"
+    },
+    {
+      "repo": "logos-basecamp",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"lez-bump/d3390efc\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-06-01T07:39:50Z"
+      "title": "new branch \"feat/appManager\"",
+      "url": "https://github.com/logos-co/logos-basecamp",
+      "timestamp": "2026-06-05T19:18:38Z"
     },
     {
-      "repo": "logos-docs",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"297-add-files-for-git-sync\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-06-01T07:22:01Z"
-    },
-    {
-      "repo": "scaffold",
+      "repo": "logos-cpp-sdk",
       "type": "Comment",
       "cls": "type-create",
-      "title": "feat(localnet): configure sequencer binary and config path",
-      "url": "https://github.com/logos-co/scaffold/pull/37#issuecomment-4590304649",
-      "timestamp": "2026-06-01T07:07:00Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[Dogfood] Build and run Logos App (alpha) to access Testnet v0.1 UIs",
-      "url": "https://github.com/logos-co/ecosystem/issues/127#issuecomment-4590125139",
-      "timestamp": "2026-06-01T06:35:30Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Discover and define scope for Forum Sample App",
-      "url": "https://github.com/logos-co/ecosystem/issues/113#issuecomment-4589966698",
-      "timestamp": "2026-06-01T06:03:21Z"
-    },
-    {
-      "repo": "roadmap",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs(messaging)/weekly-2026-06-01\"",
-      "url": "https://github.com/logos-co/roadmap",
-      "timestamp": "2026-06-01T06:00:14Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[Dogfood] Write, build and load a business logic module for Logos",
-      "url": "https://github.com/logos-co/ecosystem/issues/95#issuecomment-4589627045",
-      "timestamp": "2026-06-01T04:46:19Z"
+      "title": "re-add token auth",
+      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/73#issuecomment-4634561720",
+      "timestamp": "2026-06-05T18:56:27Z"
     }
   ],
-  "discourse": [],
+  "discourse": [
+    {
+      "title": "Nabz \u2014 Censorship-Resistant Alive Check-in Protocol (\u03bbPrize Proposal)",
+      "category": "Forum",
+      "url": "https://forum.logos.co/t/nabz-censorship-resistant-alive-check-in-protocol-prize-proposal/1648",
+      "timestamp": "2026-05-22T09:56:26.873Z",
+      "replies": 1
+    },
+    {
+      "title": "Logos Circle Port Harcourt first",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-port-harcourt-first/1671",
+      "timestamp": "2026-06-02T18:57:24.521Z",
+      "replies": 2
+    },
+    {
+      "title": "Uyo Logos Circle first",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/uyo-logos-circle-first/1670",
+      "timestamp": "2026-06-02T12:31:58.664Z",
+      "replies": 2
+    },
+    {
+      "title": "Logos Circle Warri May",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-warri-may/1668",
+      "timestamp": "2026-06-02T10:20:46.492Z",
+      "replies": 2
+    },
+    {
+      "title": "InsightNest \u2014 slow knowledge, building toward Waku + Codex",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/insightnest-slow-knowledge-building-toward-waku-codex/1667",
+      "timestamp": "2026-06-01T20:47:24.775Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Awka Winnable Issue 1",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-awka-winnable-issue-1/1664",
+      "timestamp": "2026-06-01T09:07:55.077Z",
+      "replies": 0
+    },
+    {
+      "title": "Launched a Testnet explorer for Logos (indexer in progress)",
+      "category": "Forum",
+      "url": "https://forum.logos.co/t/launched-a-testnet-explorer-for-logos-indexer-in-progress/1621",
+      "timestamp": "2026-05-03T14:00:17.174Z",
+      "replies": 3
+    },
+    {
+      "title": "Logos Circle Benin City, May 2026",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-benin-city-may-2026/1658",
+      "timestamp": "2026-05-27T12:15:17.222Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Nairobi #5",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-nairobi-5/1657",
+      "timestamp": "2026-05-27T08:43:59.690Z",
+      "replies": 0
+    },
+    {
+      "title": "Kigali May Circle Report",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/kigali-may-circle-report/1655",
+      "timestamp": "2026-05-26T19:11:11.175Z",
+      "replies": 1
+    },
+    {
+      "title": "Logos Ghana Circle Event",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-ghana-circle-event/1656",
+      "timestamp": "2026-05-26T21:20:49.868Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Berlin #4",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-berlin-4/1650",
+      "timestamp": "2026-05-24T19:47:31.345Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Ruse #4",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-ruse-4/1649",
+      "timestamp": "2026-05-24T11:17:56.270Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Los Angeles",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-los-angeles/485",
+      "timestamp": "2025-07-13T23:48:50.800Z",
+      "replies": 32
+    },
+    {
+      "title": "Cicada 3301 Story: Mystery, Collaboration, Cryptography, and Community",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/cicada-3301-story-mystery-collaboration-cryptography-and-community/401",
+      "timestamp": "2025-05-20T14:53:51.127Z",
+      "replies": 3
+    },
+    {
+      "title": "Logos Circles Kampala \u2014May Meetup Report",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circles-kampala-may-meetup-report/1640",
+      "timestamp": "2026-05-15T15:06:21.734Z",
+      "replies": 1
+    },
+    {
+      "title": "Logos Dev Update: April 2026",
+      "category": "Announcements",
+      "url": "https://forum.logos.co/t/logos-dev-update-april-2026/1641",
+      "timestamp": "2026-05-16T22:24:41.194Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Delhi-NCR #1, MAY 2026",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-delhi-ncr-1-may-2026/1638",
+      "timestamp": "2026-05-12T17:33:44.637Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Cape Town #2",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-cape-town-2/1637",
+      "timestamp": "2026-05-12T10:02:08.059Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Ilorin : May (Special edition)",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-ilorin-may-special-edition/1634",
+      "timestamp": "2026-05-11T12:34:12.273Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Ilorin x GDG On Campus Ilorin \u2013 Build with AI Series : MARCH (SPECIAL EDITION)",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-ilorin-x-gdg-on-campus-ilorin-build-with-ai-series-march-special-edition/1635",
+      "timestamp": "2026-05-11T12:42:06.514Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Lisbon: May",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-lisbon-may/1633",
+      "timestamp": "2026-05-07T13:19:29.741Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle London Chapter 8",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-london-chapter-8/1632",
+      "timestamp": "2026-05-07T11:24:31.420Z",
+      "replies": 0
+    },
+    {
+      "title": "LOGOS Ghana Circle - April Event",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-ghana-circle-april-event/1631",
+      "timestamp": "2026-05-06T00:11:28.724Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Rome #3",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-rome-3/1629",
+      "timestamp": "2026-05-05T17:44:40.283Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle Enugu #3",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-enugu-3/1627",
+      "timestamp": "2026-05-05T10:19:50.038Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos Circle - Awka, May",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-awka-may/1625",
+      "timestamp": "2026-05-04T10:18:26.514Z",
+      "replies": 2
+    },
+    {
+      "title": "Logos Circle - Warri, April",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-warri-april/1624",
+      "timestamp": "2026-05-04T09:20:45.478Z",
+      "replies": 1
+    },
+    {
+      "title": "Logos circle kigali- report",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-kigali-report/1614",
+      "timestamp": "2026-04-26T21:56:13.378Z",
+      "replies": 2
+    },
+    {
+      "title": "Logos Circle Lisbon x Plural Event: Micro-Rewilding Across Lisbon",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-lisbon-x-plural-event-micro-rewilding-across-lisbon/1617",
+      "timestamp": "2026-04-28T16:59:07.488Z",
+      "replies": 0
+    }
+  ],
   "stake": {
-    "recipients": 5,
-    "total_distributed": 5000,
+    "recipients": 7,
+    "total_distributed": 7000,
     "faucet_remainder": null,
-    "unique_leaders": 4639,
-    "total_leader_blocks": 5084,
+    "unique_leaders": 5151,
+    "total_leader_blocks": 5596,
     "top_leaders": [
       {
         "pk": "61b3c7d0fd08943a",
@@ -751,231 +2807,231 @@
   },
   "recent_blocks": {
     "window": {
-      "blocks": 31,
-      "slot_min": 4617069,
-      "slot_max": 4617630,
-      "slot_span": 562,
-      "transactions": 0,
-      "operations": 0,
-      "empty_blocks": 31,
-      "missed_or_unseen_slots": 531
+      "blocks": 512,
+      "slot_min": 4611090,
+      "slot_max": 4621238,
+      "slot_span": 10149,
+      "transactions": 291,
+      "operations": 291,
+      "empty_blocks": 290,
+      "missed_or_unseen_slots": 9637
     },
     "leader_diversity": {
-      "unique_leaders": 31,
-      "top_leader_share_pct": 3.2
+      "unique_leaders": 512,
+      "top_leader_share_pct": 0.2
     },
     "top_leaders": [
       {
-        "leader_key": "bf18785a8683470b",
+        "leader_key": "02859971568041f2",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "6af5f84cffd8e564",
+        "leader_key": "d71131b239ee8a1b",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "ecac9cc4061a4b33",
+        "leader_key": "0bf438af369d4dd9",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "14bd23253027a4c6",
+        "leader_key": "0aa11b59a61f7bf7",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "2d688c09bf14e7b5",
+        "leader_key": "73e256f365b8693a",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "af71ad1ece22d620",
+        "leader_key": "03d6b5e05771392b",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "1bc179627cbc5435",
+        "leader_key": "683225f9507d65fb",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "2601f41ffb196ad0",
+        "leader_key": "f83f56e4cb53dbb9",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "24c9da5f173571e6",
+        "leader_key": "277a16b4cc779607",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       },
       {
-        "leader_key": "46d880e8f7ad4c49",
+        "leader_key": "771936409d07f4ba",
         "blocks": 1,
-        "pct": 3.2
+        "pct": 0.2
       }
     ],
     "recent": [
       {
-        "slot": 4617289,
-        "leader_key": "4623491cdb34e8c3",
+        "slot": 4620826,
+        "leader_key": "0ad95adc3d3bf57d",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "a883789c6515cd33"
+        "hash": "bc56ecb11831a308"
       },
       {
-        "slot": 4617310,
-        "leader_key": "0c81d2e8cf2d5de5",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "6ec44ed9e4a008bc"
+        "slot": 4620843,
+        "leader_key": "e640ddbbf8221320",
+        "transactions": 1,
+        "operations": 1,
+        "root": "db77925d91275a2c",
+        "hash": "b97614a090330152"
       },
       {
-        "slot": 4617317,
-        "leader_key": "3ff9e5a16d72e8e8",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "dac9970a893f0173"
+        "slot": 4620860,
+        "leader_key": "1835b0c3aaf8a72b",
+        "transactions": 1,
+        "operations": 1,
+        "root": "eb4aa0db6449bc8e",
+        "hash": "5b2e00c771d2def6"
       },
       {
-        "slot": 4617327,
-        "leader_key": "ee8ecb98043264b8",
+        "slot": 4620887,
+        "leader_key": "5efdf268db402e24",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "5879e33c12c6f5e0"
+        "hash": "69c347d875038c65"
       },
       {
-        "slot": 4617342,
-        "leader_key": "7c3163dab8d583ab",
+        "slot": 4620890,
+        "leader_key": "1ca4a1b63208716d",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "814bd1af44be46b3"
+        "hash": "a2472696bc6422db"
       },
       {
-        "slot": 4617353,
-        "leader_key": "052774ac06bfdd7c",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "79e9a474d6df6622"
+        "slot": 4620952,
+        "leader_key": "c8e586d90e4f2c35",
+        "transactions": 1,
+        "operations": 1,
+        "root": "11ce3db8a971256a",
+        "hash": "2ffab40a73dcf0a2"
       },
       {
-        "slot": 4617382,
-        "leader_key": "2a40909406fd0d96",
+        "slot": 4620953,
+        "leader_key": "c83fdc0d1db99bdb",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "1bea9e9c3aac8b16"
+        "hash": "3ac2a216551c1919"
       },
       {
-        "slot": 4617387,
-        "leader_key": "2a6e1ae9e780b34d",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "e09729b942d79bbd"
+        "slot": 4620971,
+        "leader_key": "b1cfbdf2b3fa63df",
+        "transactions": 1,
+        "operations": 1,
+        "root": "66c8d57489ad3acf",
+        "hash": "77b39af869826e3a"
       },
       {
-        "slot": 4617390,
-        "leader_key": "0daf16b5ec9e4283",
+        "slot": 4620989,
+        "leader_key": "ad3f3b5e7470b089",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "10563dcf7b33f264"
+        "hash": "a23a10d23c02c078"
       },
       {
-        "slot": 4617391,
-        "leader_key": "69a1ec2c49b4d44d",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "f712607c54d69204"
+        "slot": 4621041,
+        "leader_key": "b4a4073c881ccbb8",
+        "transactions": 2,
+        "operations": 2,
+        "root": "4c9a49aa84911039",
+        "hash": "66db73a93e687a08"
       },
       {
-        "slot": 4617392,
-        "leader_key": "46d880e8f7ad4c49",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "1b1ece135ffd4df8"
+        "slot": 4621053,
+        "leader_key": "771936409d07f4ba",
+        "transactions": 1,
+        "operations": 1,
+        "root": "ca0dad91afda52a5",
+        "hash": "58098e3d667920c8"
       },
       {
-        "slot": 4617487,
-        "leader_key": "24c9da5f173571e6",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "16b4d1c772cef767"
+        "slot": 4621092,
+        "leader_key": "277a16b4cc779607",
+        "transactions": 1,
+        "operations": 1,
+        "root": "2f20f39465f345b5",
+        "hash": "db4b0677744a295f"
       },
       {
-        "slot": 4617509,
-        "leader_key": "2601f41ffb196ad0",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "dc516d579636ef76"
+        "slot": 4621094,
+        "leader_key": "f83f56e4cb53dbb9",
+        "transactions": 1,
+        "operations": 1,
+        "root": "96a6188b6f7c9790",
+        "hash": "29d727fc6aa1ecc3"
       },
       {
-        "slot": 4617510,
-        "leader_key": "1bc179627cbc5435",
+        "slot": 4621117,
+        "leader_key": "683225f9507d65fb",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "406739a1a0ac3ff3"
+        "hash": "bda9b15029e087de"
       },
       {
-        "slot": 4617568,
-        "leader_key": "af71ad1ece22d620",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "687994018702ff74"
+        "slot": 4621147,
+        "leader_key": "03d6b5e05771392b",
+        "transactions": 1,
+        "operations": 1,
+        "root": "f82af277aabbce06",
+        "hash": "b38b173d2f87f5d6"
       },
       {
-        "slot": 4617570,
-        "leader_key": "2d688c09bf14e7b5",
+        "slot": 4621151,
+        "leader_key": "73e256f365b8693a",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "8cf63442baea68b6"
+        "hash": "442c70d3cf80930b"
       },
       {
-        "slot": 4617572,
-        "leader_key": "14bd23253027a4c6",
+        "slot": 4621174,
+        "leader_key": "0aa11b59a61f7bf7",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "40f419881de29645"
+        "hash": "cd82855c96fcb3c7"
       },
       {
-        "slot": 4617602,
-        "leader_key": "ecac9cc4061a4b33",
-        "transactions": 0,
-        "operations": 0,
-        "root": "89eb0d6a8a691dae",
-        "hash": "e17e949e1190fd7c"
+        "slot": 4621219,
+        "leader_key": "0bf438af369d4dd9",
+        "transactions": 1,
+        "operations": 1,
+        "root": "ba8e887578e8ee5f",
+        "hash": "4df3e6accb21a747"
       },
       {
-        "slot": 4617609,
-        "leader_key": "6af5f84cffd8e564",
+        "slot": 4621232,
+        "leader_key": "d71131b239ee8a1b",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "7d9fffb690dc2154"
+        "hash": "645ee3300b3830fa"
       },
       {
-        "slot": 4617630,
-        "leader_key": "bf18785a8683470b",
+        "slot": 4621238,
+        "leader_key": "02859971568041f2",
         "transactions": 0,
         "operations": 0,
         "root": "89eb0d6a8a691dae",
-        "hash": "016df5735202f9f0"
+        "hash": "27e55e2f7093109d"
       }
     ]
   },
@@ -984,12 +3040,8 @@
     "window_hours": 169,
     "active_peers_hourly": [
       {
-        "ts": 1780106400,
-        "count": 0
-      },
-      {
         "ts": 1780110000,
-        "count": 75
+        "count": 0
       },
       {
         "ts": 1780113600,
@@ -1649,19 +3701,23 @@
       },
       {
         "ts": 1780704000,
-        "count": 4
+        "count": 80
       },
       {
         "ts": 1780707600,
-        "count": 0
+        "count": 33
       },
       {
         "ts": 1780711200,
         "count": 0
+      },
+      {
+        "ts": 1780714800,
+        "count": 0
       }
     ],
     "summary": {
-      "active_latest": 4,
+      "active_latest": 33,
       "active_peak": 80,
       "tracked_peers": 80,
       "latest_total_stake": null,
@@ -1669,154 +3725,154 @@
     },
     "peer_uptime": [
       {
-        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
+        "peer_id": "12D3KooWK3pkTcGKzyTa\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1780704000
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWNicuk1GsNUuW\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWHFgWCyntSg4c\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWKkapMBteGkFW\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWQiSxzxbWE38S\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
         "peer_id": "12D3KooWGMoRgXvY9NbU\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1780704000
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWMbqdCMVZ6iRP\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooW9tmCpSLMFa7e\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWN3dvpZhog8Ap\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWKWmLVf4ysViv\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWEwfsLK3WZrKi\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWCLyYi7rtAaDn\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
+      },
+      {
+        "peer_id": "12D3KooWSmroE8u98uiD\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
         "peer_id": "12D3KooWGPBuCarPTdHP\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1780704000
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWFBsZTbx1wALd\u2026",
+        "peer_id": "12D3KooWFfvuDu6AEVVF\u2026",
         "uptime_pct": 98.2,
-        "last_seen": 1780704000
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWHKaMZ2skZuXp\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWMwcnQXhd2P2P\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWJmtcYHWzL8Gd\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWHTzmDR7JjJ5S\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWLJTucziBg5Xg\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWKvnPDTbnv4ud\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWKCogiyR9sk17\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWRko4kqycXZbs\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWKsVoyBR1Yd51\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWK3pkTcGKzyTa\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWGhx8u6V31rZZ\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWNicuk1GsNUuW\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWFX5mzCrYf2KX\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWHFgWCyntSg4c\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWDFVGhWXJeH8q\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       },
       {
-        "peer_id": "12D3KooWKkapMBteGkFW\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWJAYsyc4Mobk5\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWJ3vbbsXjvvGe\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWApqRyAErJLDL\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWQiSxzxbWE38S\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWBLuRPawu5a3K\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWD6XvDYFbM61J\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWEpofqUmkwGc2\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWGKdieLmiTYDS\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWJKM6M6y5pjB6\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWCwrKEb6tVoZY\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWKKcJBZ4mARCV\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWMbqdCMVZ6iRP\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWJ2UUdyPyQUpd\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWR8roFU3DPfyx\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooWDgJwCsDMYwWB\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
-      },
-      {
-        "peer_id": "12D3KooW9tmCpSLMFa7e\u2026",
-        "uptime_pct": 97.6,
-        "last_seen": 1780700400
+        "peer_id": "12D3KooWN3njqoAZwZAR\u2026",
+        "uptime_pct": 98.2,
+        "last_seen": 1780707600
       }
     ],
     "stake_estimate_hourly": [],
@@ -1824,10 +3880,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
           "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb"
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       },
       {
@@ -2067,86 +4123,6 @@
     ]
   },
   "zone_messages": [
-    {
-      "sender": "49bed6c9",
-      "text": "Hello from Logos Mount",
-      "slot": 4303144,
-      "slot_unknown": false,
-      "block_id": "7d8eb7116a20f4b404c4c3e1807390c85dc8ef172d16557560b82d780d58b655",
-      "tx_id": "2e1d2bb99fbf1bed36b41a7ae6470286434e5b75336fb0239242c60f6e529004",
-      "status": "finalized",
-      "observed_at": "",
-      "signer": "",
-      "live": false,
-      "lat": null,
-      "lon": null,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "49bed6c9",
-      "text": "Hello from Logos testnet node1!",
-      "slot": 4302778,
-      "slot_unknown": false,
-      "block_id": "6020a4cce0c209adab73614d6cd1753ec0cf56dd7742f3f09c1b98f7db3ddf52",
-      "tx_id": "ce7ceaab91f2d27f4c2d7fed87ca4793ef82871296251fdc43ac07515b851b0f",
-      "status": "finalized",
-      "observed_at": "",
-      "signer": "",
-      "live": false,
-      "lat": null,
-      "lon": null,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "5790e4c7",
-      "text": "gm gm",
-      "slot": 4248850,
-      "slot_unknown": false,
-      "block_id": "47785ccfb1c94c20e5c7c09b58613ec217507e2d59c327b6ecb6ea0e17448344",
-      "tx_id": "32a7e7f2ca633b10f827b81f4ff4e9021368c42413fc8f0c6551d5464c432509",
-      "status": "finalized",
-      "observed_at": "",
-      "signer": "",
-      "live": false,
-      "lat": 28.7041,
-      "lon": 77.1025,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "5790e4c7",
-      "text": "Channel: logos:yolo:devisha Message: \"alive and running #live\"",
-      "slot": 4248811,
-      "slot_unknown": false,
-      "block_id": "19af62fd160abd8ac66d64fbfab7469d64fec34812ff3860025e12356db86751",
-      "tx_id": "3082c4e3e3de92e82424c59bf251e927b7a158e4b62e89f1c5b51b2c369fdd0c",
-      "status": "finalized",
-      "observed_at": "",
-      "signer": "",
-      "live": true,
-      "lat": 28.7041,
-      "lon": 77.1025,
-      "city": "",
-      "country": ""
-    },
-    {
-      "sender": "5790e4c7",
-      "text": "Channel: logos:yolo:devisha Message: #geo 28.7041, 77.1025",
-      "slot": 4248701,
-      "slot_unknown": false,
-      "block_id": "65a9a2d73f8b34b7feecae6188426e21d76afcd35140708877d620822b0be37d",
-      "tx_id": "d94d09167a3e445cc42c077c02816ac265091e40998a53b24309e61111e5d229",
-      "status": "finalized",
-      "observed_at": "",
-      "signer": "",
-      "live": false,
-      "lat": 28.7041,
-      "lon": 77.1025,
-      "city": "",
-      "country": ""
-    },
     {
       "sender": "efb15ee2",
       "text": "exclaim!",
@@ -3666,9 +5642,89 @@
       "lon": 2.174553,
       "city": "",
       "country": ""
+    },
+    {
+      "sender": "0dc942b6",
+      "text": "#geo 41.403634, 2.174553",
+      "slot": 2498533,
+      "slot_unknown": false,
+      "block_id": "b255a1802220ed6a8c89ab85155f47eef90d0b1efed0d374c4ab76fd633bbd1f",
+      "tx_id": "fc3a757cfbdde8c27f2427916e8a46feee7f750d161e375d04194952980d0030",
+      "status": "finalized",
+      "observed_at": "",
+      "signer": "",
+      "live": false,
+      "lat": 41.403634,
+      "lon": 2.174553,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "0dc942b6",
+      "text": "#geo 41.403634, 2.174553",
+      "slot": 2498436,
+      "slot_unknown": false,
+      "block_id": "71b895641bd2f6acf5105c6d5bc38ceb8c2503db349af31ee12ed232e3ef1977",
+      "tx_id": "a073cb4b2948a58c16b4096602876657f489bdacc272bad2601d7e59cbdfaf01",
+      "status": "finalized",
+      "observed_at": "",
+      "signer": "",
+      "live": false,
+      "lat": 41.403634,
+      "lon": 2.174553,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "4adabfd2",
+      "text": "INSERT OR ABORT INTO \"Item\"( \"uid\", \"label\", \"account\", \"last_modified_at\", \"encrypted_secret\", \"kdf_salt\", \"auth_nonce\" ) VALUES( NULL, 'testing', 'idk', '2026-05-12 01:23:27.330683121+00:00', x'11fe61020fca8e29a66e2dd6bc4c7868c8ec8e8a3b2f1f0966975b29c477adddeba0262b8e087960a8d0e9261c7eb081ce1c2337c6f047b928719c16ada913acf26f457894fd22ccb2deb1ad29a5c5ebce5e5d2a31fa8af3e8dd39aa1aa1838cd453a7cd8bc35d0400bda58fec8cce9717744019712cccbab30a4e99d982099e1898dddd29c8c153253c36694d3e0f60b2b002051b391bdd1e8b86fade53b4d6f2d5d727f214c5ce7d5fcb35dbae943cfa1e5779ade9e6febc57f377bd8b4a3b1345504cf688a08da47a906398956283308801d0c975853f757aec6d6c04401a2b3d1f126f98c05425abb578ae35d17f5a17f88371d08ed4bc4f8f498db6a121bdd803451d461618795a73c27a28a497', x'11b4947514a956e42f3e0ad7f48cf765', x'3fbf872865485232ffa9695ddbbe096489c7292edc8401da' ) RETURNING \"uid\" AS 'uid', \"label\" AS 'label', \"account\" AS 'account', \"last_modified_at\" AS 'last_modified_at', \"encrypted_secret\" AS 'encrypted_secret', \"kdf_salt\" AS 'kdf_salt', \"auth_nonce\" AS 'auth_nonce';",
+      "slot": 2455452,
+      "slot_unknown": false,
+      "block_id": "a66005bf8613533f8a2d8adb88f20148bf4809d9a8d62cd55b530d077fc963ee",
+      "tx_id": "bef4dc294e54aa27601a72821378ce883b46b4f98ef86ef92ba69f4457316724",
+      "status": "finalized",
+      "observed_at": "",
+      "signer": "",
+      "live": false,
+      "lat": null,
+      "lon": null,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "vpavlin",
+      "text": "{\"rt\":\"78cd9412fcad23397a83cb317b6cfb8897e746aa289f430200fbd71bda5e9d50\",\"text\":\"Yoo!\",\"v\":1}",
+      "slot": 2432950,
+      "slot_unknown": false,
+      "block_id": "d3b444dffdf4de3c9072eae2c801cde9a7fc399edf11fbd217645ae2a3738daa",
+      "tx_id": "9f9909fcd18e914286e91054792dd0b4244d18171057b4e497d7e88f8df2da0f",
+      "status": "finalized",
+      "observed_at": "",
+      "signer": "",
+      "live": false,
+      "lat": null,
+      "lon": null,
+      "city": "",
+      "country": ""
+    },
+    {
+      "sender": "vpavlin",
+      "text": "Hello from Cluj #live",
+      "slot": 2428098,
+      "slot_unknown": false,
+      "block_id": "11c7a7c3e0d21f8c6a6238473dc61f3d93b94d037dbd8dde8d711dfd06f029bc",
+      "tx_id": "1c553c7f6d5d6e294c14b03f62e63cb2fc612bc6d876db91d0b1f0f2b304640e",
+      "status": "finalized",
+      "observed_at": "",
+      "signer": "",
+      "live": true,
+      "lat": null,
+      "lon": null,
+      "city": "",
+      "country": ""
     }
   ],
-  "genesis_ts": 1776093583,
+  "genesis_ts": 1776093602,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 307.3,
@@ -3689,6 +5745,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-06-06T02:00:13Z",
-  "updated": 1780711213
+  "peer_snapshot": "2026-06-06T03:00:40Z",
+  "updated": 1780714840
 }
