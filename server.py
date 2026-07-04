@@ -52,30 +52,36 @@ RELEASE_ASSETS = {
     },
 }
 
+# Source of truth: crawler/src/main.rs `BOOTSTRAP`. Keep these peer IDs in sync
+# with it. These four were verified live against the v0.2 node's
+# /network/info `connected_peers` on 2026-07-04 (the prior IDs here were stale
+# and appeared in no live peer set). ip/port unchanged across the v0.1.2→v0.2
+# fork; the DHT also kept the `/logos-blockchain-testnet-v0.1.2/kad/1.0.0`
+# protocol id (crawler finds peers with no KAD_PROTOCOL override).
 BOOTSTRAP_PEERS = [
     {
         "name": "bootstrap-3000",
         "ip": "65.109.51.37",
         "udp_port": 3000,
-        "peer_id": "12D3KooWL7a8LBbLRYnabptHPFBCmAs49Y7cVMqvzuSdd43tAJk8",
+        "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
     },
     {
         "name": "bootstrap-3001",
         "ip": "65.109.51.37",
         "udp_port": 3001,
-        "peer_id": "12D3KooWPLeAcachoUm68NXGD7tmNziZkVeMmeBS5NofyukuMRJh",
+        "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
     },
     {
         "name": "bootstrap-3002",
         "ip": "65.109.51.37",
         "udp_port": 3002,
-        "peer_id": "12D3KooWKFNe4gS5DcCcRUVGdMjZp3fUWu6q6gG5R846Ui1pccHD",
+        "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
     },
     {
         "name": "bootstrap-3003",
         "ip": "65.109.51.37",
         "udp_port": 3003,
-        "peer_id": "12D3KooWAnriLgXyQnGTYz1zPWPkQL3rthTKYLzuAP7MMnbgsxzR",
+        "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
     },
 ]
 for peer in BOOTSTRAP_PEERS:

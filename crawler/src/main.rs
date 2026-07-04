@@ -19,7 +19,11 @@ use libp2p::{
 use rand::Rng;
 use serde::{Deserialize, Serialize};
 
-// ── Bootstrap peers (Logos 0.1.2 release) ────────────────────────────────────
+// ── Bootstrap peers ──────────────────────────────────────────────────────────
+// Source of truth for the bootstrap set (server.py mirrors these — keep in sync).
+// Verified live against the v0.2 node's /network/info `connected_peers` on
+// 2026-07-04: all four IDs are in the live peer set and the crawler dials them
+// successfully. Addresses unchanged across the v0.1.2→v0.2 fork.
 const BOOTSTRAP: &[(&str, &str)] = &[
     (
         "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
@@ -39,8 +43,12 @@ const BOOTSTRAP: &[(&str, &str)] = &[
     ),
 ];
 
-// Kademlia protocol name. The Logos node config has no custom protocol set,
-// so it uses the rust-libp2p default. Override via env: KAD_PROTOCOL=/my/kad/1.0.0
+// Kademlia protocol name. VERIFIED unchanged across the v0.1.2→v0.2 fork
+// (2026-07-04): the running crawler uses this compiled default with no
+// KAD_PROTOCOL override and still discovers live v0.2 peers, so the v0.2 DHT
+// kept the `/logos-blockchain-testnet-v0.1.2/kad/1.0.0` id. Do not "modernize"
+// this string to v0.2 — that would break discovery. Override via env if the
+// network ever changes it: KAD_PROTOCOL=/my/kad/1.0.0
 fn kad_protocol() -> StreamProtocol {
     let s = std::env::var("KAD_PROTOCOL")
         .unwrap_or_else(|_| "/logos-blockchain-testnet-v0.1.2/kad/1.0.0".to_string());
