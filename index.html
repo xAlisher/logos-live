@@ -2193,7 +2193,7 @@ function renderSetup() {
   $('setup-agent-contract').textContent = JSON.stringify(contract, null, 2);
   $('setup-checklist').innerHTML = [
     ['Read the manifest', 'Fetch /api/agent/manifest for release assets, bootstrap peers, capabilities, and endpoint templates.'],
-    ['Download verified assets', 'Use the 0.1.2 node archive and 0.4.2 circuits archive matching the target architecture.'],
+    ['Download verified assets', 'Use the 0.2.0 node archive and 0.4.2 circuits archive matching the target architecture.'],
     ['Initialize with bootstrap peers', 'Run init with the four current multiaddrs from /api/agent/bootstrap-peers.'],
     ['Run and verify locally', 'Check /cryptarchia/info for mode, slot, and height, then /network/info for peer id and connections.'],
     ['Verify visibility here', 'Paste the peer id below and use /api/agent/verify-node/{peer_id} to see crawler, map, and telemetry status.'],
