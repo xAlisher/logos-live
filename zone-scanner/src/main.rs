@@ -1,12 +1,21 @@
 /// Zone-board block scanner
 ///
-/// Walks the Logos blockchain backward from the current tip, extracts
-/// opcode=17 inscriptions on `logos:yolo:*` channels, and accumulates
-/// them in zone_scan.json.  Runs continuously: after finishing a full
-/// backward pass it watches the tip for new blocks.
+/// Walks the Logos v0.2 chain backward from the current tip by following each
+/// block's `header.parent_block` pointer, extracts opcode=17 (ChannelInscribe)
+/// inscriptions on `logos:yolo:*` channels, and accumulates them in
+/// zone_scan.json. Runs continuously: every poll it walks from the current tip
+/// back to the last block it has already seen — so the first pass reaches
+/// genesis and later passes only cover blocks added since.
+///
+/// v0.2 API notes (see docs/plans/v0.2-api-diff.md):
+///   - /cryptarchia/info nests fields under `cryptarchia_info` (tip, slot).
+///   - block-by-hash is GET /cryptarchia/blocks/{hash} (the old
+///     ?slot_from=&slot_to= form returns [] and POST /storage/block 404s).
+///   - inscription payloads are a hex string on current nodes (int array on
+///     older ones); channel_id keeps the `logos:yolo:` prefix scheme.
 use std::{collections::HashMap, collections::HashSet, time::Duration};
 
-use anyhow::Result;
+use anyhow::{anyhow, Result};
 use serde::{Deserialize, Serialize};
 use tokio::time::sleep;
 
@@ -16,13 +25,18 @@ fn node_url() -> String {
 }
 /// "logos:yolo:" as hex prefix (channel IDs are 32-byte zero-padded)
 const YOLO_HEX: &str = "6c6f676f733a796f6c6f3a";
-/// How many slots to request per batch from /cryptarchia/blocks
-const BATCH_SLOTS: u64 = 2_000;
-/// Slots to poll when watching the tip for new blocks
+/// Seconds to wait between tip polls once caught up.
 const POLL_INTERVAL_SECS: u64 = 30;
+/// Persist progress every N blocks during a long backward walk.
+const SAVE_EVERY_BLOCKS: usize = 500;
 /// Output file (relative to cwd, override via ZONE_SCAN_FILE env var)
 fn out_file() -> String {
     std::env::var("ZONE_SCAN_FILE").unwrap_or_else(|_| "../zone_scan.json".into())
+}
+
+/// A hash that terminates the parent walk (genesis / missing parent).
+fn is_terminal_hash(hash: &str) -> bool {
+    hash.is_empty() || hash.chars().all(|c| c == '0')
 }
 
 /// Load channel_hints.json: maps random channel_id hex → display name.
@@ -50,14 +64,12 @@ fn load_channel_hints(msgs_path: &str) -> HashMap<String, String> {
 }
 
 /// Resolve channel_id to a sender name.
-/// Old format: hex-encoded "logos:yolo:<name>" → decode.
-/// New format: random key hash → look up in hints, fall back to first 8 hex chars.
+/// Old/current format: hex-encoded "logos:yolo:<name>" → decode.
+/// Otherwise: random key hash → look up in hints, fall back to first 8 hex chars.
 fn resolve_channel(ch: &str, hints: &HashMap<String, String>) -> Option<String> {
     if ch.starts_with(YOLO_HEX) {
         return Some(decode_yolo_channel(ch));
     }
-    // Unknown channel: only accept if inscription is valid UTF-8 (handled at call site).
-    // Return hint name or short hex prefix.
     Some(
         hints
             .get(ch)
@@ -91,11 +103,11 @@ struct ZoneMessage {
 struct ScanDb {
     /// Messages found, sorted by slot ascending
     messages: Vec<ZoneMessage>,
-    /// Block hashes we have already processed (to avoid re-fetching)
+    /// Block hashes we have already processed (walk stops when it reaches one)
     seen_blocks: HashSet<String>,
-    /// Lowest slot we have scanned down to (for backward walk)
+    /// Lowest slot we have scanned down to (informational)
     scanned_to: u64,
-    /// Highest slot we have seen (for forward watch)
+    /// Highest tip slot we have seen (informational)
     scanned_tip: u64,
 }
 
@@ -120,6 +132,7 @@ struct ScanState {
 async fn main() -> Result<()> {
     let path = out_file();
     eprintln!("Zone scanner starting. Output: {path}");
+    eprintln!("Node: {}", node_url());
 
     let hints = load_channel_hints(&path);
     eprintln!("Channel hints loaded: {} entries", hints.len());
@@ -129,211 +142,198 @@ async fn main() -> Result<()> {
         .build()?;
 
     let mut db = load_db(&path);
+    eprintln!(
+        "Loaded {} messages, {} seen blocks.",
+        db.messages.len(),
+        db.seen_blocks.len()
+    );
 
-    // ── Phase 1: backward scan from tip to genesis ────────────────────────────
-    let tip_slot = get_tip_slot(&client).await?;
-    eprintln!("Current tip slot: {tip_slot}");
-
-    // Start from where we left off (or tip if first run)
-    let scan_start = resume_scan_start(&db, tip_slot);
-    db.scanned_tip = tip_slot;
-
-    let mut slot_hi = scan_start;
+    // Unified walk: every poll, follow parent pointers from the current tip back
+    // to the first block we have already seen (or genesis). The seen-block set is
+    // the resume mechanism — first pass reaches genesis, later passes cover only
+    // the blocks added since the previous tip.
     loop {
-        let slot_lo = slot_hi.saturating_sub(BATCH_SLOTS);
-        eprintln!("  Scanning slots {slot_lo}–{slot_hi} …");
-
-        let new_msgs = match get_zone_messages_in_range(
-            &client,
-            slot_lo,
-            slot_hi,
-            &mut db.seen_blocks,
-            &hints,
-        )
-        .await
-        {
-            Ok(messages) => messages,
-            Err(error) => {
-                eprintln!("    Blocks error: {error}; retrying this slot range later");
-                sleep(Duration::from_secs(5)).await;
-                continue;
+        match walk_from_tip(&client, &mut db, &hints, &path).await {
+            Ok(added) if added > 0 => {
+                eprintln!("Walk complete — +{added} new zone messages ({} total).", db.messages.len());
             }
-        };
-
-        if !new_msgs.is_empty() {
-            eprintln!("    +{} zone messages found", new_msgs.len());
-            for m in &new_msgs {
-                eprintln!(
-                    "      [{slot}] {sender}: {text}",
-                    slot = m.slot,
-                    sender = m.sender,
-                    text = preview_text(&m.text, 60)
-                );
-            }
-            db.messages.extend(new_msgs);
-            dedup_messages(&mut db.messages);
+            Ok(_) => {}
+            Err(e) => eprintln!("Walk error: {e}"),
         }
-
-        db.scanned_to = slot_lo;
-        save_db(&path, &db);
-
-        if slot_lo == 0 {
-            eprintln!(
-                "Backward scan complete. {} total messages.",
-                db.messages.len()
-            );
-            break;
-        }
-        slot_hi = slot_lo;
-    }
-
-    // ── Phase 2: watch tip for new blocks ─────────────────────────────────────
-    // Scan forward in BATCH_SLOTS chunks so a large gap (e.g. after a restart)
-    // never results in a single oversized request that times out and gets skipped.
-    eprintln!("Watching tip for new messages…");
-    loop {
         sleep(Duration::from_secs(POLL_INTERVAL_SECS)).await;
-
-        let new_tip = match get_tip_slot(&client).await {
-            Ok(s) => s,
-            Err(e) => {
-                eprintln!("Tip error: {e}");
-                continue;
-            }
-        };
-
-        if new_tip <= db.scanned_tip {
-            continue;
-        }
-
-        // Walk forward in batches so each API call stays small.
-        let mut batch_lo = db.scanned_tip;
-        while batch_lo < new_tip {
-            let batch_hi = (batch_lo + BATCH_SLOTS).min(new_tip);
-            let new_msgs = match get_zone_messages_in_range(
-                &client,
-                batch_lo,
-                batch_hi,
-                &mut db.seen_blocks,
-                &hints,
-            )
-            .await
-            {
-                Ok(m) => m,
-                Err(e) => {
-                    eprintln!("Blocks error ({batch_lo}–{batch_hi}): {e}");
-                    break; // retry this batch next poll cycle
-                }
-            };
-            if !new_msgs.is_empty() {
-                eprintln!("+{} new zone messages at tip", new_msgs.len());
-                for m in &new_msgs {
-                    eprintln!(
-                        "  [{slot}] {sender}: {text}",
-                        slot = m.slot,
-                        sender = m.sender,
-                        text = preview_text(&m.text, 80)
-                    );
-                }
-                db.messages.extend(new_msgs);
-                dedup_messages(&mut db.messages);
-            }
-            // Advance scanned_tip only after each successful batch.
-            db.scanned_tip = batch_hi;
-            save_db(&path, &db);
-            batch_lo = batch_hi;
-        }
     }
 }
 
-// ── Node API helpers ──────────────────────────────────────────────────────────
-async fn get_tip_slot(client: &reqwest::Client) -> Result<u64> {
-    #[derive(Deserialize)]
-    struct Info {
-        slot: u64,
+/// Walk from the current tip backward via `parent_block`, collecting zone
+/// messages from every not-yet-seen block. Returns the number of new messages.
+async fn walk_from_tip(
+    client: &reqwest::Client,
+    db: &mut ScanDb,
+    hints: &HashMap<String, String>,
+    path: &str,
+) -> Result<usize> {
+    let (tip_slot, tip_hash) = get_tip(client).await?;
+    db.scanned_tip = db.scanned_tip.max(tip_slot);
+
+    if is_terminal_hash(&tip_hash) {
+        return Err(anyhow!("node reported empty tip hash"));
     }
-    let info: Info = client
+    if db.seen_blocks.contains(&tip_hash) {
+        return Ok(0); // already at the current tip
+    }
+
+    let mut cursor = tip_hash;
+    let mut added = 0usize;
+    let mut since_save = 0usize;
+    let mut lowest_slot = u64::MAX;
+
+    while !is_terminal_hash(&cursor) && !db.seen_blocks.contains(&cursor) {
+        let block = match fetch_block(client, &cursor).await {
+            Ok(Some(b)) => b,
+            Ok(None) => break, // 404 — parent not in store; stop this walk
+            Err(e) => {
+                eprintln!("  block {cursor:.12} fetch error: {e}; will retry next poll");
+                break;
+            }
+        };
+        db.seen_blocks.insert(cursor.clone());
+
+        let slot = block["header"]["slot"].as_u64().unwrap_or(0);
+        lowest_slot = lowest_slot.min(slot);
+
+        let msgs = extract_block_messages(&block, hints);
+        if !msgs.is_empty() {
+            for m in &msgs {
+                eprintln!(
+                    "  [{slot}] {sender}: {text}",
+                    slot = m.slot,
+                    sender = m.sender,
+                    text = preview_text(&m.text, 80)
+                );
+            }
+            added += msgs.len();
+            db.messages.extend(msgs);
+            dedup_messages(&mut db.messages);
+        }
+
+        let parent = block["header"]["parent_block"]
+            .as_str()
+            .unwrap_or("")
+            .to_string();
+
+        since_save += 1;
+        if since_save >= SAVE_EVERY_BLOCKS {
+            save_db(path, db);
+            since_save = 0;
+            eprintln!("  … {} blocks seen, {} messages so far", db.seen_blocks.len(), db.messages.len());
+        }
+        cursor = parent;
+    }
+
+    if lowest_slot != u64::MAX {
+        db.scanned_to = lowest_slot;
+    }
+    save_db(path, db);
+    Ok(added)
+}
+
+// ── Node API helpers ──────────────────────────────────────────────────────────
+/// GET /cryptarchia/info → (tip_slot, tip_hash). Handles the v0.2 nested
+/// `cryptarchia_info` wrapper and the older flat shape.
+async fn get_tip(client: &reqwest::Client) -> Result<(u64, String)> {
+    let v: serde_json::Value = client
         .get(format!("{}/cryptarchia/info", node_url()))
         .send()
         .await?
         .json()
         .await?;
-    Ok(info.slot)
+    let info = v.get("cryptarchia_info").unwrap_or(&v);
+    let slot = info["slot"]
+        .as_u64()
+        .ok_or_else(|| anyhow!("cryptarchia/info missing slot"))?;
+    let tip = info["tip"].as_str().unwrap_or("").to_string();
+    Ok((slot, tip))
 }
 
-/// Fetch a slot range and return all zone messages found inline.
-/// /cryptarchia/blocks returns full block objects — no secondary fetch needed.
-async fn get_zone_messages_in_range(
-    client: &reqwest::Client,
-    slot_from: u64,
-    slot_to: u64,
-    seen_blocks: &mut HashSet<String>,
+/// GET /cryptarchia/blocks/{hash} → full block object, or None on 404.
+async fn fetch_block(client: &reqwest::Client, hash: &str) -> Result<Option<serde_json::Value>> {
+    let resp = client
+        .get(format!("{}/cryptarchia/blocks/{hash}", node_url()))
+        .send()
+        .await?;
+    if resp.status() == reqwest::StatusCode::NOT_FOUND {
+        return Ok(None);
+    }
+    let resp = resp.error_for_status()?;
+    Ok(Some(resp.json().await?))
+}
+
+/// Extract all zone messages (opcode 17 inscriptions) from one block.
+fn extract_block_messages(
+    block: &serde_json::Value,
     hints: &HashMap<String, String>,
-) -> Result<Vec<ZoneMessage>> {
-    let url = format!("{}/cryptarchia/blocks?slot_from={slot_from}&slot_to={slot_to}", node_url());
-    let blocks: Vec<serde_json::Value> = client.get(&url).send().await?.json().await?;
+) -> Vec<ZoneMessage> {
+    let block_id = block["header"]["id"].as_str().unwrap_or("").to_string();
+    let slot = block["header"]["slot"].as_u64().unwrap_or(0);
 
     let mut msgs = Vec::new();
-    for block in &blocks {
-        let block_id = block["header"]["id"].as_str().unwrap_or("").to_string();
-        if seen_blocks.contains(&block_id) {
+    let Some(txs) = block["transactions"].as_array() else {
+        return msgs;
+    };
+    for tx in txs {
+        let tx_id = tx["mantle_tx"]["hash"].as_str().unwrap_or("").to_string();
+        let Some(ops) = tx["mantle_tx"]["ops"].as_array() else {
             continue;
-        }
-        seen_blocks.insert(block_id.clone());
-
-        let slot = block["header"]["slot"].as_u64().unwrap_or(0);
-
-        let txs = match block["transactions"].as_array() {
-            Some(t) => t,
-            None => continue,
         };
-        for tx in txs {
-            let tx_id = tx["mantle_tx"]["hash"].as_str().unwrap_or("").to_string();
-            let ops = match tx["mantle_tx"]["ops"].as_array() {
-                Some(o) => o,
+        for op in ops {
+            if op["opcode"].as_u64() != Some(17) {
+                continue;
+            }
+            let ch = op["payload"]["channel_id"].as_str().unwrap_or("");
+
+            // Inscription bytes: hex string (current nodes) or int array (older).
+            let insc = &op["payload"]["inscription"];
+            let raw: Option<Vec<u8>> = if let Some(arr) = insc.as_array() {
+                Some(arr.iter().filter_map(|v| v.as_u64().map(|b| b as u8)).collect())
+            } else if let Some(s) = insc.as_str() {
+                hex::decode(s).ok()
+            } else {
+                None
+            };
+            // Binary / non-UTF8 inscriptions are system ops — skip.
+            let text = match raw.as_ref().and_then(|b| std::str::from_utf8(b).ok()) {
+                Some(s) => s.trim().to_string(),
                 None => continue,
             };
-            for op in ops {
-                if op["opcode"].as_u64() != Some(17) {
-                    continue;
-                }
-                let ch = op["payload"]["channel_id"].as_str().unwrap_or("");
-
-                let raw: Option<Vec<u8>> = op["payload"]["inscription"].as_array().map(|arr| {
-                    arr.iter()
-                        .filter_map(|v| v.as_u64().map(|b| b as u8))
-                        .collect()
-                });
-                // Binary inscriptions are system ops — skip before channel check.
-                let text = match raw.as_ref().and_then(|b| std::str::from_utf8(b).ok()) {
-                    Some(s) => s.trim().to_string(),
-                    None => continue,
-                };
-                if text.is_empty() {
-                    continue;
-                }
-                if text.starts_with('{') && text.contains("\"type\"") {
-                    continue;
-                }
-
-                let sender = match resolve_channel(ch, hints) {
-                    Some(s) => s,
-                    None => continue,
-                };
-
-                let live = text.to_lowercase().contains("#live");
-                msgs.push(ZoneMessage {
-                    sender,
-                    text,
-                    slot,
-                    block_id: block_id.clone(),
-                    tx_id: tx_id.clone(),
-                    live,
-                });
+            if text.is_empty() {
+                continue;
             }
+            // Skip system/program inscriptions (LEZ clock/program accounts, typed
+            // JSON control messages) — these ride opcode 17 too but aren't zone-board.
+            if text.contains("/LEZ/") {
+                continue;
+            }
+            if text.starts_with('{') && text.contains("\"type\"") {
+                continue;
+            }
+
+            let sender = match resolve_channel(ch, hints) {
+                Some(s) => s,
+                None => continue,
+            };
+
+            let live = text.to_lowercase().contains("#live");
+            msgs.push(ZoneMessage {
+                sender,
+                text,
+                slot,
+                block_id: block_id.clone(),
+                tx_id: tx_id.clone(),
+                live,
+            });
         }
     }
-    Ok(msgs)
+    msgs
 }
 
 fn decode_yolo_channel(hex: &str) -> String {
@@ -350,16 +350,6 @@ fn decode_yolo_channel(hex: &str) -> String {
     let s = String::from_utf8_lossy(&trimmed).to_string();
     // "logos:yolo:alice" → "alice"
     s.split(':').last().unwrap_or(&s).to_string()
-}
-
-fn resume_scan_start(db: &ScanDb, tip_slot: u64) -> u64 {
-    if db.scanned_to > 0 {
-        db.scanned_to
-    } else if db.scanned_tip > 0 {
-        db.scanned_tip
-    } else {
-        tip_slot
-    }
 }
 
 fn message_key(message: &ZoneMessage) -> (String, String, String, String) {
@@ -389,17 +379,10 @@ fn load_db(path: &str) -> ScanDb {
         .unwrap_or_default();
 
     // State file — internal scanner bookkeeping.
-    // On first migration the state file doesn't exist yet; fall back to reading
-    // scanned_to/scanned_tip/seen_blocks from the old combined zone_scan.json.
     let state: ScanState = std::fs::read_to_string(&state_file(path))
         .ok()
         .and_then(|s| serde_json::from_str(&s).ok())
-        .unwrap_or_else(|| {
-            std::fs::read_to_string(path)
-                .ok()
-                .and_then(|s| serde_json::from_str(&s).ok())
-                .unwrap_or_default()
-        });
+        .unwrap_or_default();
 
     ScanDb {
         messages:    msgs.messages,
@@ -458,14 +441,44 @@ mod tests {
     }
 
     #[test]
-    fn resume_scan_start_prefers_scanned_to_for_interrupted_backward_scan() {
-        let db = ScanDb {
-            scanned_to: 5_000,
-            scanned_tip: 10_000,
-            ..ScanDb::default()
-        };
+    fn is_terminal_hash_detects_genesis_and_empty() {
+        assert!(is_terminal_hash(""));
+        assert!(is_terminal_hash(&"0".repeat(64)));
+        assert!(!is_terminal_hash("4024eca38c5e"));
+    }
 
-        assert_eq!(resume_scan_start(&db, 12_000), 5_000);
+    #[test]
+    fn extract_reads_hex_string_inscription_opcode_17() {
+        // "logos:yolo:alice" as channel, "hi #live" as a hex-string inscription.
+        let channel_hex = hex::encode(b"logos:yolo:alice");
+        let insc_hex = hex::encode("hi #live");
+        let block = serde_json::json!({
+            "header": {"id": "blk1", "slot": 5, "parent_block": "blk0"},
+            "transactions": [{
+                "mantle_tx": {"hash": "tx1", "ops": [
+                    {"opcode": 17, "payload": {"channel_id": channel_hex, "inscription": insc_hex}}
+                ]}
+            }]
+        });
+        let msgs = extract_block_messages(&block, &HashMap::new());
+        assert_eq!(msgs.len(), 1);
+        assert_eq!(msgs[0].sender, "alice");
+        assert_eq!(msgs[0].text, "hi #live");
+        assert!(msgs[0].live);
+    }
+
+    #[test]
+    fn extract_skips_lez_system_inscriptions() {
+        let insc_hex = hex::encode("/LEZ/ClockProgramAccount/0000001");
+        let block = serde_json::json!({
+            "header": {"id": "blk1", "slot": 5, "parent_block": "blk0"},
+            "transactions": [{
+                "mantle_tx": {"hash": "tx1", "ops": [
+                    {"opcode": 17, "payload": {"channel_id": "0101010101010101010101010101010101010101010101010101010101010101", "inscription": insc_hex}}
+                ]}
+            }]
+        });
+        assert!(extract_block_messages(&block, &HashMap::new()).is_empty());
     }
 
     #[test]

@@ -80,10 +80,29 @@ async def get_own_ip(client: httpx.AsyncClient) -> str | None:
     return None
 
 
+def flatten_chain_info(raw: dict) -> dict:
+    """Normalize /cryptarchia/info across node versions.
+
+    v0.2 nests the fields under `cryptarchia_info` and reports `mode` as a
+    (possibly nested) object like {"Started": "Online"}. Older flat payloads
+    with a plain string mode pass through unchanged. Returns a flat dict with
+    at least `slot`, `tip`, `mode`, plus v0.2's `lib`/`lib_slot` finalization
+    anchor when present. See docs/plans/v0.2-api-diff.md.
+    """
+    if not isinstance(raw, dict):
+        return {}
+    info = dict(raw.get("cryptarchia_info") or raw)
+    mode = raw.get("mode", info.get("mode"))
+    while isinstance(mode, dict):
+        mode = next(iter(mode.values()), "Unknown") if mode else "Unknown"
+    info["mode"] = mode if isinstance(mode, str) else ("Unknown" if mode is None else str(mode))
+    return info
+
+
 async def get_chain_info(client: httpx.AsyncClient) -> tuple[dict, dict]:
     chain, net = {}, {}
     try:
-        chain = (await client.get(f"{NODE_URL}/cryptarchia/info", timeout=3)).json()
+        chain = flatten_chain_info((await client.get(f"{NODE_URL}/cryptarchia/info", timeout=3)).json())
     except Exception:
         pass
     try:
@@ -309,7 +328,7 @@ def save_stake_cache(cache: dict):
 
 LOG_DIR = Path(os.getenv(
     "LOG_DIR",
-    os.path.expanduser("~/logos-blockchain-runbook/state/live-v0.1.2/logs"),
+    os.path.expanduser("~/logos-v2/standalone"),
 ))
 _PEER_RE  = re.compile(r"\b(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\b")
 _TS_RE    = re.compile(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})")
@@ -594,12 +613,7 @@ async def fetch_recent_blocks(client: httpx.AsyncClient) -> dict:
 
     for h in hashes:
         try:
-            r = await client.post(
-                f"{NODE_URL}/storage/block",
-                content=json.dumps(h),
-                headers={"Content-Type": "application/json"},
-                timeout=3,
-            )
+            r = await client.get(f"{NODE_URL}/cryptarchia/blocks/{h}", timeout=3)
             if r.status_code != 200:
                 continue
             block = r.json()
@@ -683,12 +697,7 @@ async def fetch_stake(client: httpx.AsyncClient) -> dict:
 
     for h in hashes:
         try:
-            r = await client.post(
-                f"{NODE_URL}/storage/block",
-                content=json.dumps(h),
-                headers={"Content-Type": "application/json"},
-                timeout=3,
-            )
+            r = await client.get(f"{NODE_URL}/cryptarchia/blocks/{h}", timeout=3)
             if r.status_code != 200:
                 continue
             block = r.json()
@@ -771,9 +780,26 @@ def _channel_hex_to_name(hex_id: str) -> str:
 
 
 _YOLO_HEX  = "6c6f676f733a796f6c6f3a"   # "logos:yolo:" as hex
-_GAP_BATCH = 2_000                        # slots per API call
 _GAP_MIN   = 1_000                        # only gap-fill if lag > this many slots
+_GAP_MAX_WALK = 20_000                     # hard cap on blocks walked per gap fill
 _CHANNEL_HINTS_FILE = BASE / "channel_hints.json"
+
+
+def _decode_inscription(inscription) -> str | None:
+    """Decode an opcode-17 inscription payload to text, or None if binary.
+
+    v0.2 nodes emit a hex string; older nodes emit a JSON array of byte ints.
+    """
+    try:
+        if isinstance(inscription, str):
+            raw = bytes.fromhex(inscription)
+        elif isinstance(inscription, list):
+            raw = bytes(int(b) for b in inscription)
+        else:
+            return None
+        return raw.decode("utf-8")
+    except Exception:
+        return None  # binary / non-UTF8 — system op, skip
 
 
 def _load_channel_hints() -> dict[str, str]:
@@ -831,66 +857,70 @@ def _scan_local_gap() -> None:
     max_slot = max((m.get("slot", 0) for m in messages), default=0)
 
     import urllib.request as _ur
+
+    def _get_json(url: str, timeout: int = 5):
+        with _ur.urlopen(url, timeout=timeout) as r:
+            return json.loads(r.read())
+
     try:
-        with _ur.urlopen(f"{NODE_URL}/cryptarchia/info", timeout=5) as r:
-            tip_slot: int = json.loads(r.read()).get("slot", 0)
+        info = flatten_chain_info(_get_json(f"{NODE_URL}/cryptarchia/info", 5))
     except Exception as e:
         print(f"  Gap fill: node unreachable ({e})")
         return
+    tip_slot = info.get("slot", 0)
+    tip_hash = info.get("tip", "")
 
     gap = tip_slot - max_slot
-    if gap <= _GAP_MIN:
+    if gap <= _GAP_MIN or not tip_hash:
         return
 
-    batches = (gap + _GAP_BATCH - 1) // _GAP_BATCH
-    print(f"  Gap fill: {gap} slots behind tip — scanning {batches} batches ({max_slot}→{tip_slot})")
+    print(f"  Gap fill: {gap} slots behind tip — walking from tip {tip_hash[:12]} ({max_slot}→{tip_slot})")
 
     hints = _load_channel_hints()
     seen_blocks: set[str] = {m.get("block_id", "") for m in messages if m.get("block_id")}
     new_msgs: list[dict] = []
 
-    slot_lo = max_slot
-    while slot_lo < tip_slot:
-        slot_hi = min(slot_lo + _GAP_BATCH, tip_slot)
-        url = f"{NODE_URL}/cryptarchia/blocks?slot_from={slot_lo}&slot_to={slot_hi}"
+    # v0.2: walk backward from the tip via header.parent_block, fetching each
+    # block by hash (GET /cryptarchia/blocks/{hash}); the old ?slot_from=&slot_to=
+    # range endpoint returns [] on v0.2. Stop once we drop below the highest slot
+    # we already have, reach a known block, or hit genesis. Cap guards runaway.
+    cursor = tip_hash
+    for _ in range(_GAP_MAX_WALK):
+        if not cursor or set(cursor) == {"0"}:
+            break
         try:
-            with _ur.urlopen(url, timeout=15) as r:
-                blocks = json.loads(r.read())
+            block = _get_json(f"{NODE_URL}/cryptarchia/blocks/{cursor}", 5)
         except Exception as e:
-            print(f"    Gap fill: error at {slot_lo}–{slot_hi}: {e}")
-            slot_lo = slot_hi
-            continue
-
-        for block in blocks:
-            block_id = (block.get("header") or {}).get("id", "")
-            if block_id in seen_blocks:
-                continue
-            seen_blocks.add(block_id)
-            slot = (block.get("header") or {}).get("slot", 0)
-            for tx in block.get("transactions", []):
-                mantle = tx.get("mantle_tx") or {}
-                tx_id = mantle.get("hash", "")
-                for op in mantle.get("ops", []):
-                    if op.get("opcode") != 17:
-                        continue
-                    payload = op.get("payload") or {}
-                    ch = payload.get("channel_id", "")
-                    inscription = payload.get("inscription")
-                    if not isinstance(inscription, list):
-                        continue
-                    try:
-                        text = bytes(int(b) for b in inscription).decode("utf-8").strip()
-                    except Exception:
-                        continue  # binary inscription — system op, skip
-                    if not text or (text.startswith("{") and '"type"' in text):
-                        continue
-                    sender = _resolve_channel(ch, hints)
-                    new_msgs.append({
-                        "sender":   sender, "text": text, "slot": slot,
-                        "block_id": block_id, "tx_id": tx_id,
-                        "live":     "#live" in text.lower(),
-                    })
-        slot_lo = slot_hi
+            print(f"    Gap fill: fetch error at {cursor[:12]}: {e}")
+            break
+        header = block.get("header") or {}
+        block_id = header.get("id", "")
+        slot = header.get("slot", 0)
+        if block_id and block_id in seen_blocks:
+            break
+        for tx in block.get("transactions", []):
+            mantle = tx.get("mantle_tx") or {}
+            tx_id = mantle.get("hash", "")
+            for op in mantle.get("ops", []):
+                if op.get("opcode") != 17:
+                    continue
+                payload = op.get("payload") or {}
+                ch = payload.get("channel_id", "")
+                text = _decode_inscription(payload.get("inscription"))
+                if text is None:
+                    continue
+                text = text.strip()
+                if not text or "/LEZ/" in text or (text.startswith("{") and '"type"' in text):
+                    continue
+                sender = _resolve_channel(ch, hints)
+                new_msgs.append({
+                    "sender":   sender, "text": text, "slot": slot,
+                    "block_id": block_id, "tx_id": tx_id,
+                    "live":     "#live" in text.lower(),
+                })
+        if slot <= max_slot:
+            break
+        cursor = header.get("parent_block", "")
 
     if not new_msgs:
         print("  Gap fill: no new messages found")

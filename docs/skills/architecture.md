@@ -17,7 +17,7 @@
 ## Data Flow
 
 ```
-Logos node (:8085)     ip-api.com          GitHub API    Discourse    Luma    YouTube
+Logos node (:8080)     ip-api.com          GitHub API    Discourse    Luma    YouTube
       ↓                    ↓                    ↓            ↓          ↓        ↓
       └──────────────────────────────────────────────────────────────────────────┘
                                       publish.py (hourly cron)

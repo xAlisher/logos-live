@@ -311,7 +311,7 @@ def test_agent_manifest_exposes_setup_verification_and_release_contracts():
     manifest = build_agent_manifest("https://logos-live.example")
 
     assert manifest["skill_version"] == "1.0.0"
-    assert manifest["release"]["node_version"] == "0.1.2"
+    assert manifest["release"]["node_version"] == "0.2.0"
     assert manifest["release"]["circuits_version"] == "0.4.2"
     assert manifest["capabilities"] == [
         "network_inspection",
@@ -330,9 +330,9 @@ def test_agent_manifest_exposes_setup_verification_and_release_contracts():
 def test_node_setup_skill_contains_verified_assets_bootstrap_peers_and_verification_loop():
     skill = logos_node_setup_skill("https://logos-live.example")
 
-    assert "logos-blockchain-node-linux-x86_64-0.1.2.tar.gz" in skill
+    assert "logos-blockchain-node-linux-x86_64-0.2.0.tar.gz" in skill
     assert "logos-blockchain-circuits-v0.4.2-linux-x86_64.tar.gz" in skill
-    assert "logos-blockchain-node-macos-aarch64-0.1.2.tar.gz" in skill
+    assert "logos-blockchain-node-macos-aarch64-0.2.0.tar.gz" in skill
     assert "uname -s" in skill
     assert "case \"$(uname -s)-$(uname -m)\"" in skill
     assert "chmod +x ./logos-blockchain-node" in skill

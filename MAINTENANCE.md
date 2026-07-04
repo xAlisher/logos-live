@@ -3,17 +3,17 @@
 ## Cron Jobs
 
 **publish.py runs on Sneg** (not Wild) — logos-node migrated to Sneg (May 2026).
-`NODE_URL` must be `http://127.0.0.1:8085`. Cron uses `/bin/bash -c` because `source` fails in `/bin/sh`.
+`NODE_URL` must be `http://127.0.0.1:8080`. Cron uses `/bin/bash -c` because `source` fails in `/bin/sh`.
 
 | Machine | Schedule | Command | Purpose |
 |---------|----------|---------|---------|
-| Sneg (`sher`) | Every hour (`0 * * * *`) | `NODE_URL=http://127.0.0.1:8085 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py` | Build network.json and push to GitHub Pages |
+| Sneg (`sher`) | Every hour (`0 * * * *`) | `NODE_URL=http://127.0.0.1:8080 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py` | Build network.json and push to GitHub Pages |
 | Wild (`alisher`) | Daily 06:00 (`0 6 * * *`) | `discord-refresh.sh && morning-update.sh` | Basecamp morning update |
 | Sneg (`sher`) | Daily 02:00 (`0 2 * * *`) | `logrotate` (see below) | Rotate and compress log files |
 
 Full cron line on Sneg:
 ```
-0 * * * * /bin/bash -c ". /home/sher/.env.anqa && cd /home/sher/logos-node-visualizer && NODE_URL=http://127.0.0.1:8085 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py >> /mnt/tc-hdd/logos-node-logs/publish.log 2>&1"
+0 * * * * /bin/bash -c ". /home/sher/.env.anqa && cd /home/sher/logos-node-visualizer && NODE_URL=http://127.0.0.1:8080 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py >> /mnt/tc-hdd/logos-node-logs/publish.log 2>&1"
 ```
 
 ## Log Rotation (logrotate)
@@ -34,7 +34,7 @@ Uses `copytruncate` — no process restart needed on rotation.
 ## Node Log Compaction
 
 `publish.py` compacts node logs automatically on every run:
-- Keeps last **12 hours** of logs from `state/live-v0.1.2/logs/`
+- Keeps last **12 hours** of logs from `logos-v2/standalone/logs/`
 - Older files are deleted automatically
 
 ## Systemd Services (auto-start on boot)

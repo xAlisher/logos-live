@@ -24,7 +24,7 @@ from fastapi.staticfiles import StaticFiles
 NODE_URL = os.getenv("NODE_URL", "http://127.0.0.1:8080")
 LOG_DIR  = os.getenv(
     "LOG_DIR",
-    os.path.expanduser("~/logos-blockchain-runbook/state/live-v0.1.2/logs"),
+    os.path.expanduser("~/logos-v2/standalone"),
 )
 CACHE_TTL = int(os.getenv("CACHE_TTL", "30"))  # seconds
 PUBLISHED_NETWORK_URL = os.getenv(
@@ -34,10 +34,10 @@ PUBLISHED_NETWORK_URL = os.getenv(
 TELEMETRY_FILE = os.getenv("TELEMETRY_FILE", os.path.join(os.path.dirname(__file__), "telemetry.json"))
 
 PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
-LOGOS_NODE_VERSION = "0.1.2"
+LOGOS_NODE_VERSION = "0.2.0"
 LOGOS_CIRCUITS_VERSION = "0.4.2"
-LOGOS_RELEASE_URL = "https://github.com/logos-blockchain/logos-blockchain/releases/tag/0.1.2"
-LOGOS_RELEASE_DOWNLOAD_BASE = "https://github.com/logos-blockchain/logos-blockchain/releases/download/0.1.2"
+LOGOS_RELEASE_URL = "https://github.com/logos-blockchain/logos-blockchain/releases/tag/0.2.0"
+LOGOS_RELEASE_DOWNLOAD_BASE = "https://github.com/logos-blockchain/logos-blockchain/releases/download/0.2.0"
 
 RELEASE_ASSETS = {
     "node": {
@@ -52,30 +52,36 @@ RELEASE_ASSETS = {
     },
 }
 
+# Source of truth: crawler/src/main.rs `BOOTSTRAP`. Keep these peer IDs in sync
+# with it. These four were verified live against the v0.2 node's
+# /network/info `connected_peers` on 2026-07-04 (the prior IDs here were stale
+# and appeared in no live peer set). ip/port unchanged across the v0.1.2→v0.2
+# fork; the DHT also kept the `/logos-blockchain-testnet-v0.1.2/kad/1.0.0`
+# protocol id (crawler finds peers with no KAD_PROTOCOL override).
 BOOTSTRAP_PEERS = [
     {
         "name": "bootstrap-3000",
         "ip": "65.109.51.37",
         "udp_port": 3000,
-        "peer_id": "12D3KooWL7a8LBbLRYnabptHPFBCmAs49Y7cVMqvzuSdd43tAJk8",
+        "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
     },
     {
         "name": "bootstrap-3001",
         "ip": "65.109.51.37",
         "udp_port": 3001,
-        "peer_id": "12D3KooWPLeAcachoUm68NXGD7tmNziZkVeMmeBS5NofyukuMRJh",
+        "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
     },
     {
         "name": "bootstrap-3002",
         "ip": "65.109.51.37",
         "udp_port": 3002,
-        "peer_id": "12D3KooWKFNe4gS5DcCcRUVGdMjZp3fUWu6q6gG5R846Ui1pccHD",
+        "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
     },
     {
         "name": "bootstrap-3003",
         "ip": "65.109.51.37",
         "udp_port": 3003,
-        "peer_id": "12D3KooWAnriLgXyQnGTYz1zPWPkQL3rthTKYLzuAP7MMnbgsxzR",
+        "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
     },
 ]
 for peer in BOOTSTRAP_PEERS:
@@ -1124,6 +1130,24 @@ async def _load_published_snapshot(client: httpx.AsyncClient) -> dict[str, Any] 
     return None
 
 
+def flatten_chain_info(raw: dict) -> dict:
+    """Normalize /cryptarchia/info across node versions.
+
+    v0.2 nests the fields under `cryptarchia_info` and reports `mode` as a
+    (possibly nested) object like {"Started": "Online"}; older flat payloads
+    with a plain string mode pass through unchanged. See
+    docs/plans/v0.2-api-diff.md. Mirrors publish.py.flatten_chain_info.
+    """
+    if not isinstance(raw, dict):
+        return {}
+    info = dict(raw.get("cryptarchia_info") or raw)
+    mode = raw.get("mode", info.get("mode"))
+    while isinstance(mode, dict):
+        mode = next(iter(mode.values()), "Unknown") if mode else "Unknown"
+    info["mode"] = mode if isinstance(mode, str) else ("Unknown" if mode is None else str(mode))
+    return info
+
+
 async def _fetch_recent_blocks(client: httpx.AsyncClient, limit: int = 30) -> dict[str, Any]:
     blocks: list[dict[str, Any]] = []
     try:
@@ -1136,10 +1160,10 @@ async def _fetch_recent_blocks(client: httpx.AsyncClient, limit: int = 30) -> di
 
     for block_hash in hashes[:limit]:
         try:
-            block_resp = await client.post(
-                f"{NODE_URL}/storage/block",
-                content=json.dumps(block_hash),
-                headers={"Content-Type": "application/json"},
+            # v0.2: block-by-hash is GET /cryptarchia/blocks/{hash} (POST
+            # /storage/block 404s on current nodes). See docs/plans/v0.2-api-diff.md.
+            block_resp = await client.get(
+                f"{NODE_URL}/cryptarchia/blocks/{block_hash}",
                 timeout=4,
             )
             if block_resp.status_code == 200:
@@ -1153,7 +1177,7 @@ async def _fetch_recent_blocks(client: httpx.AsyncClient, limit: int = 30) -> di
 async def _build_data() -> dict:
     async with httpx.AsyncClient(timeout=5) as client:
         try:
-            chain = (await client.get(f"{NODE_URL}/cryptarchia/info")).json()
+            chain = flatten_chain_info((await client.get(f"{NODE_URL}/cryptarchia/info")).json())
         except Exception:
             chain = {}
         try:
