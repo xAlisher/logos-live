@@ -145,7 +145,7 @@ The dashboard reads `telemetry.json` when present. Generate it from Logos node l
 
 ```bash
 python telemetry_collector.py \
-  --log-dir ~/logos-blockchain-runbook/state/live-v0.1.2/logs \
+  --log-dir ~/logos-v2/standalone \
   --output telemetry.json
 ```
 
@@ -178,7 +178,7 @@ Use the local agent setup skill:
 http://127.0.0.1:8000/agents/logos-node-setup-skill.md
 ```
 
-It contains verified 0.1.2 release assets, current bootstrap peers, and verification steps. The 0.1.2 circuits archive is `v0.4.2`; older `v0.4.1` links are stale.
+It contains verified 0.2.0 release assets, current bootstrap peers, and verification steps. The 0.2.0 circuits archive is `v0.4.2`; older `v0.4.1` links are stale.
 
 **2. Announce your location**
 Post a message containing `#geo lat,lon` once in your channel. The scanner picks it up and anchors all your future messages to that location.

@@ -24,7 +24,7 @@ from fastapi.staticfiles import StaticFiles
 NODE_URL = os.getenv("NODE_URL", "http://127.0.0.1:8080")
 LOG_DIR  = os.getenv(
     "LOG_DIR",
-    os.path.expanduser("~/logos-blockchain-runbook/state/live-v0.1.2/logs"),
+    os.path.expanduser("~/logos-v2/standalone"),
 )
 CACHE_TTL = int(os.getenv("CACHE_TTL", "30"))  # seconds
 PUBLISHED_NETWORK_URL = os.getenv(

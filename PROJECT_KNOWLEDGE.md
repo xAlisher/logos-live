@@ -43,12 +43,12 @@ Full data flow and endpoint inventory: `docs/skills/architecture.md`
 
 | Machine | User | Role |
 |---|---|---|
-| **Sneg** | `sher` | Runs Logos node (:8085), crawler, zone-scanner, dashboard (:8090), hourly publish cron |
+| **Sneg** | `sher` | Runs Logos node (:8080), crawler, zone-scanner, dashboard (:8090), hourly publish cron |
 | **Wild** | `alisher` | Dev workstation, local testing |
 
 Cron line on Sneg (runs hourly):
 ```
-0 * * * * /bin/bash -c ". ~/.env.anqa && cd ~/logos-node-visualizer && NODE_URL=http://127.0.0.1:8085 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py >> /mnt/tc-hdd/logos-node-logs/publish.log 2>&1"
+0 * * * * /bin/bash -c ". ~/.env.anqa && cd ~/logos-node-visualizer && NODE_URL=http://127.0.0.1:8080 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py >> /mnt/tc-hdd/logos-node-logs/publish.log 2>&1"
 ```
 
 Services on Sneg: `logos-node`, `zone-board`, `dashboard`, `zone-scanner` (all systemd).

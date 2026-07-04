@@ -8,7 +8,7 @@ Numbered lessons. Grep this file when hitting a bug or surprising behavior.
 
 2. **`pages/` is a git worktree — never push from repo root.** The `gh-pages` branch is managed exclusively by `publish.py`. Running `git push` from the repo root will not update GitHub Pages and may corrupt the worktree state.
 
-3. **`NODE_URL` unset = feedback mode.** When `NODE_URL` is not set, `server.py` and `publish.py` fall back to mock/feedback data. This is intentional for local dev. Set `NODE_URL=http://127.0.0.1:8085` for live data.
+3. **`NODE_URL` unset = feedback mode.** When `NODE_URL` is not set, `server.py` and `publish.py` fall back to mock/feedback data. This is intentional for local dev. Set `NODE_URL=http://127.0.0.1:8080` for live data.
 
 4. **Log compaction runs inside `publish.py`, not only logrotate.** `compact_logs(keep_hours=168)` deletes node log files older than 7 days. The default parameter is 12h but the actual call uses 168h. Telemetry window (`build_telemetry`) also uses 168h. Logrotate handles crawler/scanner logs separately. Do not confuse the default with the actual.
 

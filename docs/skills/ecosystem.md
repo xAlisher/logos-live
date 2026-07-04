@@ -44,7 +44,7 @@ To restart: `sudo systemctl restart <service-name>` (requires Alisher approval f
 ### Sneg (sher) — Hourly Publish
 
 ```
-0 * * * * /bin/bash -c ". /home/sher/.env.anqa && cd /home/sher/logos-node-visualizer && NODE_URL=http://127.0.0.1:8085 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py >> /mnt/tc-hdd/logos-node-logs/publish.log 2>&1"
+0 * * * * /bin/bash -c ". /home/sher/.env.anqa && cd /home/sher/logos-node-visualizer && NODE_URL=http://127.0.0.1:8080 LOG_DIR=/mnt/tc-hdd/logos-node-logs python3 publish.py >> /mnt/tc-hdd/logos-node-logs/publish.log 2>&1"
 ```
 
 - Sources secrets from `~/.env.anqa` before running

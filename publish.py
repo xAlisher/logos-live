@@ -328,7 +328,7 @@ def save_stake_cache(cache: dict):
 
 LOG_DIR = Path(os.getenv(
     "LOG_DIR",
-    os.path.expanduser("~/logos-blockchain-runbook/state/live-v0.1.2/logs"),
+    os.path.expanduser("~/logos-v2/standalone"),
 ))
 _PEER_RE  = re.compile(r"\b(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\b")
 _TS_RE    = re.compile(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})")

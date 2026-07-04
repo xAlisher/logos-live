@@ -53,7 +53,7 @@ cd zone-scanner && cargo build --release
 uvicorn server:app --reload
 
 # Run with live node
-NODE_URL=http://127.0.0.1:8085 uvicorn server:app --reload
+NODE_URL=http://127.0.0.1:8080 uvicorn server:app --reload
 ```
 
 ## File Organization
