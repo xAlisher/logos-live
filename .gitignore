@@ -2,11 +2,20 @@
 peers.json
 geo_cache.json
 zone_scan.json
+zone_scan_state.json
 feed_cache.json
 stake_cache.json
+telemetry_cache.json
 crawler.log
 publish.log
 zone-scanner.log
+# Rotated/compressed logs
+*.log.gz
+*.log.*.gz
+
+# Local ops scripts (machine-specific, not part of the app)
+disk-indicator.py
+disk-watch.sh
 
 # Python
 .venv/
