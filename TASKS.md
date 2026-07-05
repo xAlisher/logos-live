@@ -23,9 +23,4 @@ _(none — v0.2 migration complete + deployed)_
 - [x] **v0.2 chain migration** (epic #16, issues #17–#24) — crawler bootstrap, zone-scanner rewrite (parent-hash walk), publish.py + server.py chain reads, frontend, docs. Deployed to Sneg + published to logos.live. 2026-07-04.
 - [x] #25 — v0.2 log-based telemetry: read from journald (`NODE_LOG_UNIT`), bucket by line ts; 'seen (7d)' + 'Heard' live again. 2026-07-05.
 - [x] Add runtime state to `.gitignore` (`zone_scan_state.json`, `telemetry_cache.json`, rotated logs)
-
----
-
-## Done
-
 - [x] Fieldcraft retrofit — CLAUDE.md, CODEX.md, PROJECT_KNOWLEDGE.md, docs/skills/, retro infra
