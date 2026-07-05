@@ -16,11 +16,16 @@ Live: https://xalisher.github.io/logos-live/
 
 ## Current Phase
 
-**Active testnet monitoring — v0.1.x era.**
-- Network is live; dashboard is in production use on Sneg
-- Log-based peer discovery shipped (2026-05-19): `heard_count` and `heard_nodes` live in network.json
-- 5 NAT-hidden peers surfaced on first production run (not reachable by Kademlia crawler)
-- Next likely work: zone-scanner log volume investigation, alerting for publish failures
+**Active testnet monitoring — v0.2 chain (node 0.2.0).**
+- Migrated the whole pipeline to the Logos v0.2 chain and deployed to Sneg (2026-07-04→06,
+  epic #16, issues #17–#25). Node is on `127.0.0.1:8080`; dashboard live at logos.live.
+- Key v0.2 shifts: `/cryptarchia/info` nests fields + `mode` object (flatten it); block-by-hash
+  is `GET /cryptarchia/blocks/{hash}`; new `lib_slot` finalization anchor; peer telemetry from
+  journald (`NODE_LOG_UNIT`); zone-scanner is a parent-hash walk; reqwest→rustls. Full API diff:
+  `docs/plans/v0.2-api-diff.md`; decision: `docs/decisions/ADR-0001`.
+- DHT kad protocol id and bootstrap peers are UNCHANGED across the fork (verified).
+- Log-based peer discovery still shipped: `heard_count`/`heard_nodes` in network.json (journald-sourced on v0.2).
+- Next likely work: #25 done; open items below.
 
 ---
 
@@ -59,12 +64,12 @@ Full ecosystem detail: `docs/skills/ecosystem.md`
 
 ## Open Items / Parked
 
-- [ ] Investigate zone-scanner log volume (3 rotated archives — may need more aggressive retention)
-- [ ] Consider adding `telemetry_cache.json` and `zone_scan_state.json` to `.gitignore`
-- [ ] `log_ip_peers` in `telemetry_cache.json` is pruned to active 7-day peer window; monitor cache size as network grows
+- [ ] Investigate zone-scanner log volume (rotated archives — may need more aggressive retention)
 - [ ] Explore ntfy.sh/Telegram alerting for publish failures (Devon retirement gap)
-- [ ] zone_scan_state.json `scanned_to` stays 0 after backward scan completes — state not written back (discovered 2026-05-17 on Sneg)
-- [ ] 90 stale zone_scan.json messages from pre-fork testnet chain — will never match live data; consider pruning on next zone_scan.json rebuild
+- [ ] Periodic `git fsck` on Sneg — the repo had corrupt/empty objects (disk-full artifact) that blocked deploys; may recur
+- [x] ~~Add `telemetry_cache.json`/`zone_scan_state.json` to `.gitignore`~~ — done (2026-07-04)
+- [x] ~~zone_scan_state.json `scanned_to` stays 0~~ — root-caused (pre-fork dead-lock) + fixed by the v0.2 parent-walk scanner + state reset (lesson 24)
+- [x] ~~90 stale pre-fork zone_scan.json messages~~ — cleared in the v0.2 cutover (state reset, re-walk from live tip)
 
 ---
 

@@ -79,6 +79,59 @@ Post-merge retrospectives per `~/fieldcraft/protocols/wins-and-fails.md`.
 - Sneg UI polish workflow: consider always doing UI work on a branch (even tiny changes) to avoid main diverging from remote unexpectedly
 
 
+## Epic #16 — v0.2 Chain Migration (2026-07-04 → 07-06)
+
+Migrated the whole logos.live pipeline (crawler, zone-scanner, publish.py, server.py,
+frontend) to the Logos v0.2 chain, deployed to Sneg, published to logos.live, then closed
+the telemetry gap (#25). Issues #17–#25, all closed.
+
+### Process wins
+- [process] **investigate-then-file, executed properly.** Ran a probe *spike* (#17) that
+  produced an empirical `docs/plans/v0.2-api-diff.md` from the live node BEFORE writing any
+  migration code. Every downstream issue cited a real captured shape, not an inferred one.
+- [process] **AskUserQuestion up front prevented a duplicate epic.** Three scope questions
+  (separate epic vs fold into #11 · probe vs changelog · depth) resolved the boundary against
+  the existing #11 before filing — no rework.
+- [process] **Verify-at-every-layer caught what code checks miss.** unit tests → live node via
+  SSH tunnel → deployed services → published JSON → served API → *rendered dashboard*. The
+  render check is what proved "0 seen (7d)" and the openssl build-fail; tests alone were green.
+- [process] **Autonomy grant ("don't ask until all works") drove through 3 incidents** (repo
+  corruption, openssl, git add -A) without stalling, while still stopping at the pages guardrail
+  to reason about non-destructive repair.
+
+### Process fails
+- [process] **`git add -A` pushed runtime state + stray scripts to origin/main.** Moment:
+  committing the #22/#23 docs sweep. Wrong action: `git add -A` for convenience. Root cause:
+  used a blanket add in a repo whose working dir held untracked runtime state (`zone_scan_state.json`,
+  `telemetry_cache.json`, `*.log.gz`) that `.gitignore` didn't yet cover. Had to untrack + extend
+  `.gitignore` and re-push. → new Builder Rule in builder-auditor.md.
+- [process] **`reset --hard origin/main` after a silently-failed fetch reset to the STALE tip.**
+  Moment: first Sneg deploy. The `git fetch` aborted on a corrupt gh-pages object; I ran
+  `reset --hard origin/main` anyway and it went to the old commit. Root cause: didn't confirm the
+  fetch landed (origin/main moved) before the destructive reset. → new Builder Rule.
+- [process] **`pkill -f '<pattern>'` killed its own parent shell** because the pattern
+  (`18080:127.0.0.1:8080`) was literally in the running command line — three tool cycles lost to
+  silent exit-144s. Root cause: pkill matched the tunnel-teardown command itself. Fix: SSH control
+  socket (`ssh -M -S sock … / -O exit`), never pkill on a string present in your own command.
+- [process] **Repeated bash syntax errors from parens in `echo` labels** inside
+  `ssh "bash -lc '…'"` — `echo == restart (new) ==` starts a subshell. Cost 2 cycles. Fix: no
+  parens in remote echo labels.
+
+### Project lessons (added to docs/skills/lessons.md → 19–24)
+- 19: node `/cryptarchia/info` reshape (nested `cryptarchia_info` + `mode` object) → `flatten_chain_info`
+- 20: block-by-hash moved to `GET /cryptarchia/blocks/{hash}`; walk via `header.parent_block`
+- 21: DHT kad protocol id UNCHANGED across the fork — verify, don't infer from the version bump
+- 22: zone-scanner uses rustls (not openssl) — Sneg has no system OpenSSL headers
+- 23: v0.2 peer telemetry is in journald (`logos-node-v2`), not files — set `NODE_LOG_UNIT`
+- 24: scanner dead-locks on stale pre-fork state (old-chain `scanned_tip` > new tip) — reset on fork
+
+### Feedback for Alisher
+- Sneg's git repo had **corrupt/empty objects** (disk-full artifact, incl. the gh-pages commit).
+  Healed read-only (`rm` empty objects + `git fetch`). Worth a periodic `git fsck` on Sneg — and
+  the stray `disk-watch.sh`/`disk-indicator.py` suggest a past disk-full event; may recur.
+
+---
+
 <!-- Template:
 ## Epic #NN — Title (YYYY-MM-DD)
 
