@@ -419,8 +419,129 @@ def compact_logs(keep_hours: int = 12) -> None:
         print(f"  Log compaction: removed {deleted} files older than {keep_hours}h")
 
 
+def _iso_to_epoch(s: str) -> int | None:
+    """Parse '2026-07-05T20:57:54' (UTC) to epoch seconds."""
+    import calendar
+    try:
+        return calendar.timegm(time.strptime(s, "%Y-%m-%dT%H:%M:%S"))
+    except Exception:
+        return None
+
+
+def _finalize_telemetry(bucket_peers, peer_first, peer_last, log_ip_peers, now, cutoff) -> dict:
+    """Shared aggregation: bucket→peer sets → hourly counts + uptime rows + heard-peer
+    ip list. Used by both the journald (v0.2) and file-based telemetry paths."""
+    from collections import defaultdict
+    end_bucket   = _hour_bucket(now)
+    start_bucket = _hour_bucket(cutoff)
+    hourly = []
+    b = start_bucket
+    while b <= end_bucket:
+        hourly.append({"ts": b, "count": len(bucket_peers.get(b, set()))})
+        b += 3600
+
+    _latest_nonempty = max((b for b in bucket_peers if bucket_peers[b]), default=None)
+    active_latest = len(bucket_peers[_latest_nonempty]) if _latest_nonempty is not None else 0
+    active_peak   = max((len(v) for v in bucket_peers.values()), default=0)
+
+    window_hours = (end_bucket - start_bucket) // 3600 + 1
+    peer_bucket_count: dict[str, int] = defaultdict(int)
+    for peers in bucket_peers.values():
+        for pid in peers:
+            peer_bucket_count[pid] += 1
+
+    uptime_rows = []
+    for pid in sorted(peer_last, key=lambda p: -peer_last[p])[:30]:
+        buckets_seen = peer_bucket_count.get(pid, 0)
+        uptime_pct   = round(buckets_seen / window_hours * 100, 1) if window_hours else 0
+        uptime_rows.append({
+            "peer_id":    pid[:20] + "…",
+            "uptime_pct": uptime_pct,
+            "last_seen":  peer_last[pid],
+        })
+
+    log_peers_out = [
+        {"ip": ip, "peer_ids": list(pids)}
+        for ip, pids in log_ip_peers.items()
+    ]
+    return {
+        "source": "node-logs",
+        "window_hours": window_hours,
+        "active_peers_hourly": hourly,
+        "summary": {
+            "active_latest":      active_latest,
+            "active_peak":        active_peak,
+            "tracked_peers":      len(peer_first),
+            "latest_total_stake": None,
+            "stake_points":       0,
+        },
+        "peer_uptime":            uptime_rows,
+        "stake_estimate_hourly": [],
+        "log_peers":              log_peers_out,
+    }
+
+
+def _build_telemetry_journald(unit: str) -> dict:
+    """v0.2: the node streams networking logs to systemd journald, not to rotating
+    logos-blockchain.* files (MyLogFile.log holds only circuit traces). Re-read the
+    7-day window from journald each run and bucket peer observations by line timestamp.
+    Peer lines look like: `...Z ERROR ...libp2p: Failed to connect to peer:
+    Some(PeerId("12D3KooW...")) ... /ip4/1.2.3.4/udp/3000/quic-v1/p2p/12D3KooW...`.
+    """
+    from collections import defaultdict
+    import subprocess
+    now = int(time.time())
+    cutoff = now - 168 * 3600
+    cmd = ["journalctl", "--user", "-u", unit, "--since", "7 days ago",
+           "-o", "cat", "--no-pager", "-q", "--grep", "12D3KooW"]
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+        raw_lines = proc.stdout.splitlines()
+    except Exception as e:
+        print(f"  Telemetry: journald read failed for unit {unit} ({e})")
+        return {}
+
+    bucket_peers: dict[int, set] = defaultdict(set)
+    peer_first: dict[str, int] = {}
+    peer_last:  dict[str, int] = {}
+    log_ip_peers: dict[str, set] = {}
+    for raw in raw_lines:
+        line = _ANSI_RE.sub("", raw)
+        m = _TS_RE.search(line)
+        if not m:
+            continue
+        ts = _iso_to_epoch(m.group(1))
+        if ts is None or ts < cutoff:
+            continue
+        bucket = _hour_bucket(ts)
+        for pid in _PEER_RE.findall(line):
+            bucket_peers[bucket].add(pid)
+            if pid not in peer_first or ts < peer_first[pid]:
+                peer_first[pid] = ts
+            if pid not in peer_last or ts > peer_last[pid]:
+                peer_last[pid] = ts
+        for ip, pid in _LOG_IP_A.findall(line):
+            if not _PRIVATE_IP.match(ip):
+                log_ip_peers.setdefault(ip, set()).add(pid)
+        for ip, pid in _LOG_IP_B.findall(line):
+            if not _PRIVATE_IP.match(ip):
+                log_ip_peers.setdefault(ip, set()).add(pid)
+
+    if not bucket_peers:
+        print(f"  Telemetry: journald unit {unit} yielded no peer observations")
+        return {}
+    result = _finalize_telemetry(bucket_peers, peer_first, peer_last, log_ip_peers, now, cutoff)
+    print(f"  Telemetry: {len(result['active_peers_hourly'])} hourly buckets, "
+          f"{result['summary']['tracked_peers']} peers, peak {result['summary']['active_peak']}/h "
+          f"(journald {unit}, {len(raw_lines)} lines) log_peers={len(result['log_peers'])}")
+    return result
+
+
 def build_telemetry() -> dict:
     """Parse node logs incrementally — only reads new/grown bytes since last run.
+
+    v0.2 deployments set NODE_LOG_UNIT (systemd unit, e.g. logos-node-v2) and the
+    telemetry is read from journald instead; see _build_telemetry_journald.
 
     Cache layout (telemetry_cache.json):
       {
@@ -429,6 +550,10 @@ def build_telemetry() -> dict:
         "peer_last":  {"pid": ts},
       }
     """
+    unit = os.getenv("NODE_LOG_UNIT", "").strip()
+    if unit:
+        return _build_telemetry_journald(unit)
+
     if not LOG_DIR.exists():
         return {}
 
@@ -541,60 +666,12 @@ def build_telemetry() -> dict:
     if not bucket_peers:
         return {}
 
-    end_bucket   = _hour_bucket(now)
-    start_bucket = _hour_bucket(cutoff)
-    hourly = []
-    b = start_bucket
-    while b <= end_bucket:
-        hourly.append({"ts": b, "count": len(bucket_peers.get(b, set()))})
-        b += 3600
-
-    _latest_nonempty = max((b for b in bucket_peers if bucket_peers[b]), default=None)
-    active_latest = len(bucket_peers[_latest_nonempty]) if _latest_nonempty is not None else 0
-    active_peak   = max((len(v) for v in bucket_peers.values()), default=0)
-
-    # Peer uptime: count how many buckets each peer appeared in
-    window_hours = (end_bucket - start_bucket) // 3600 + 1
-    peer_bucket_count: dict[str, int] = defaultdict(int)
-    for peers in bucket_peers.values():
-        for pid in peers:
-            peer_bucket_count[pid] += 1
-
-    uptime_rows = []
-    for pid in sorted(peer_last, key=lambda p: -peer_last[p])[:30]:
-        buckets_seen = peer_bucket_count.get(pid, 0)
-        uptime_pct   = round(buckets_seen / window_hours * 100, 1) if window_hours else 0
-        uptime_rows.append({
-            "peer_id":    pid[:20] + "…",
-            "uptime_pct": uptime_pct,
-            "last_seen":  peer_last[pid],
-        })
-
-    log_peers_out = [
-        {"ip": ip, "peer_ids": list(pids)}
-        for ip, pids in log_ip_peers.items()
-    ]
-
+    result = _finalize_telemetry(bucket_peers, peer_first, peer_last, log_ip_peers, now, cutoff)
     MB = bytes_read / 1_048_576
-    print(f"  Telemetry: {len(hourly)} hourly buckets, "
-          f"{len(peer_first)} unique peers, peak {active_peak}/h "
-          f"({files_read} files / {MB:.1f} MB read) "
-          f"log_peers={len(log_peers_out)}")
-    return {
-        "source": "node-logs",
-        "window_hours": window_hours,
-        "active_peers_hourly": hourly,
-        "summary": {
-            "active_latest":      active_latest,
-            "active_peak":        active_peak,
-            "tracked_peers":      len(peer_first),
-            "latest_total_stake": None,
-            "stake_points":       0,
-        },
-        "peer_uptime":            uptime_rows,
-        "stake_estimate_hourly": [],
-        "log_peers":              log_peers_out,
-    }
+    print(f"  Telemetry: {len(result['active_peers_hourly'])} hourly buckets, "
+          f"{result['summary']['tracked_peers']} unique peers, peak {result['summary']['active_peak']}/h "
+          f"({files_read} files / {MB:.1f} MB read) log_peers={len(result['log_peers'])}")
+    return result
 
 
 async def fetch_recent_blocks(client: httpx.AsyncClient) -> dict:
