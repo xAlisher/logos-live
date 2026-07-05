@@ -26,6 +26,10 @@ LOG_DIR  = os.getenv(
     "LOG_DIR",
     os.path.expanduser("~/logos-v2/standalone"),
 )
+# v0.2 nodes stream networking logs to systemd journald, not to rotating
+# logos-blockchain.* files. When set, telemetry + peer parsing read the journal
+# for this unit (e.g. logos-node-v2) instead of LOG_DIR. See publish.py.
+NODE_LOG_UNIT = os.getenv("NODE_LOG_UNIT", "").strip()
 CACHE_TTL = int(os.getenv("CACHE_TTL", "30"))  # seconds
 PUBLISHED_NETWORK_URL = os.getenv(
     "PUBLISHED_NETWORK_URL",
@@ -91,6 +95,10 @@ for peer in BOOTSTRAP_PEERS:
 _ANSI      = re.compile(r"\x1b\[[0-9;]*m")
 _PEER_ADDR = re.compile(
     r"Added address /ip4/(\d+\.\d+\.\d+\.\d+)/\S+ to peer PeerId\(\"([^\"]+)\"\)"
+)
+# v0.2 multiaddr form in journald lines: /ip4/HOST/udp/3000/quic-v1/p2p/12D3KooW...
+_PEER_MULTIADDR = re.compile(
+    r"/ip4/(\d+\.\d+\.\d+\.\d+)(?:/[^/\s]+)*/p2p/(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})"
 )
 _PEER_ID = re.compile(r"\b(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\b")
 PEER_ID_RE = re.compile(r"^12D3KooW[1-9A-HJ-NP-Za-km-z]{20,}$")
@@ -572,7 +580,32 @@ def parse_stake_log_points(text: str) -> list[dict[str, Any]]:
     return points
 
 
+def _journald_text(unit: str, since: str = "7 days ago") -> str:
+    """Return recent journal text for a systemd --user unit (v0.2 node logs).
+    Empty string on any failure."""
+    try:
+        proc = subprocess.run(
+            ["journalctl", "--user", "-u", unit, "--since", since,
+             "-o", "cat", "--no-pager", "-q"],
+            capture_output=True, text=True, timeout=90,
+        )
+        return proc.stdout
+    except Exception:
+        return ""
+
+
 def _read_log_telemetry(log_dir: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[str]]:
+    # v0.2: read peer/stake observations from journald when NODE_LOG_UNIT is set.
+    if NODE_LOG_UNIT:
+        text = _journald_text(NODE_LOG_UNIT)
+        if not text:
+            return [], [], []
+        return (
+            parse_peer_log_observations(text),
+            parse_stake_log_points(text),
+            [f"journald:{NODE_LOG_UNIT}"],
+        )
+
     log_path = Path(log_dir).expanduser()
     if not log_path.exists():
         return [], [], []
@@ -1026,12 +1059,21 @@ def _load_crawler_peers() -> tuple[dict[str, str], dict[str, dict]] | tuple[None
 
 
 def _parse_peers(log_dir: str) -> dict[str, str]:
-    """Return {peer_id: ip} from the two most-recent log files."""
+    """Return {peer_id: ip} from node logs (crawler-IP fallback)."""
+    peers: dict[str, str] = {}
+    # v0.2: parse ip<-peerid from journald multiaddrs when NODE_LOG_UNIT is set.
+    if NODE_LOG_UNIT:
+        text = _ANSI.sub("", _journald_text(NODE_LOG_UNIT, since="1 day ago"))
+        for m in _PEER_MULTIADDR.finditer(text):
+            ip, peer_id = m.group(1), m.group(2)
+            if _is_public(ip):
+                peers[peer_id] = ip   # last-seen address wins
+        return peers
+
     log_path = Path(log_dir).expanduser()
     if not log_path.exists():
         return {}
     files = sorted(log_path.glob("logos-blockchain.*"))
-    peers: dict[str, str] = {}
     for f in files[-2:]:
         try:
             text = _ANSI.sub("", f.read_text(errors="ignore"))
