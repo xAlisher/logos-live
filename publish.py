@@ -337,10 +337,11 @@ _ANSI_RE  = re.compile(r"\x1b\[[0-9;]*m")
 _LOG_IP_A = re.compile(
     r"Added address /(?:ip4|dns4)/([^/ ]+)/\S+ to peer PeerId\(\"(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})\"\)"
 )
-# Pattern B: swarm error — "/ip4/HOST/PROTO/PORT/p2p/12D3KooW..." (standard multiaddr)
-# Uses word/digit segment groups to avoid greedy scanning across unrelated line content.
+# Pattern B: standard multiaddr — "/ip4/HOST/udp/3000/quic-v1/p2p/12D3KooW...".
+# Accept any intermediate multiaddr segments (udp/tcp port, quic-v1, ws, …) up to
+# /p2p/; bounded by /p2p/ and the non-slash/space class so it can't run across the line.
 _LOG_IP_B = re.compile(
-    r"/(?:ip4|dns4)/([^/\s]+)(?:/\w+/\d+)+/p2p/(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})"
+    r"/(?:ip4|dns4)/([^/\s]+)(?:/[^/\s]+)*/p2p/(12D3KooW[1-9A-HJ-NP-Za-km-z]{20,})"
 )
 _PRIVATE_IP = re.compile(
     r"^(?:"
