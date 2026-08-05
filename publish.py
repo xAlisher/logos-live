@@ -93,6 +93,11 @@ def flatten_chain_info(raw: dict) -> dict:
         return {}
     info = dict(raw.get("cryptarchia_info") or raw)
     mode = raw.get("mode", info.get("mode"))
+    # 0.2.1: the liveness field was renamed to `cryptarchia_info.state` (a plain
+    # string like "Online"/"Bootstrapping") and the top-level `mode` object was
+    # dropped. Fall back to it so `mode` stays populated instead of "Unknown".
+    if mode is None:
+        mode = info.get("state")
     while isinstance(mode, dict):
         mode = next(iter(mode.values()), "Unknown") if mode else "Unknown"
     info["mode"] = mode if isinstance(mode, str) else ("Unknown" if mode is None else str(mode))
