@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1786247946
+      "last_seen": 1786251246
     }
   ],
   "events": [
@@ -1588,6 +1588,22 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-workspace",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Nightly bump / doc-tests failing",
+      "url": "https://github.com/logos-co/logos-workspace/issues/74#issuecomment-5229854594",
+      "timestamp": "2026-08-09T04:59:20Z"
+    },
+    {
+      "repo": "spel",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(cli): witness exchange for multi-signature transactions",
+      "url": "https://github.com/logos-co/spel/pull/246#issuecomment-5229800508",
+      "timestamp": "2026-08-09T04:41:20Z"
+    },
+    {
       "repo": "logos-cpp-sdk",
       "type": "Comment",
       "cls": "type-create",
@@ -1682,17 +1698,16 @@
       "title": "new branch \"docs/delivery-module-v0.2.0\"",
       "url": "https://github.com/logos-co/logos-docs",
       "timestamp": "2026-08-08T21:24:02Z"
-    },
-    {
-      "repo": "logos-doctest",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(run): inject nix flags to the LEFT of a `--`, not into the app's argv",
-      "url": "https://github.com/logos-co/logos-doctest/pull/13#issuecomment-5227658844",
-      "timestamp": "2026-08-08T19:07:16Z"
     }
   ],
   "discourse": [
+    {
+      "title": "Logos Circle Kano 3.0",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-kano-3-0/1863",
+      "timestamp": "2026-08-09T04:57:42.188Z",
+      "replies": 0
+    },
     {
       "title": "Logos Circle Katsina # 2 meetup",
       "category": "Circles",
@@ -1888,13 +1903,6 @@
       "url": "https://forum.logos.co/t/logos-circle-benin-city-july-2026/1817",
       "timestamp": "2026-07-22T13:19:50.757Z",
       "replies": 0
-    },
-    {
-      "title": "Logos Circle Berlin #3",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-berlin-3/1584",
-      "timestamp": "2026-04-01T10:29:03.902Z",
-      "replies": 1
     }
   ],
   "stake": {
@@ -1961,10 +1969,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1785643200,
-        "count": 0
-      },
       {
         "ts": 1785646800,
         "count": 0
@@ -2355,11 +2359,11 @@
       },
       {
         "ts": 1785996000,
-        "count": 1
+        "count": 0
       },
       {
         "ts": 1785999600,
-        "count": 3
+        "count": 1
       },
       {
         "ts": 1786003200,
@@ -2636,6 +2640,10 @@
       {
         "ts": 1786248000,
         "count": 0
+      },
+      {
+        "ts": 1786251600,
+        "count": 0
       }
     ],
     "summary": {
@@ -2732,13 +2740,13 @@
         "last_seen": 1786231772
       },
       {
-        "peer_id": "12D3KooWFot4ebiRgCUN\u2026",
-        "uptime_pct": 21.3,
+        "peer_id": "12D3KooWCT7uQoHSD9t4\u2026",
+        "uptime_pct": 33.1,
         "last_seen": 1786231186
       },
       {
-        "peer_id": "12D3KooWCT7uQoHSD9t4\u2026",
-        "uptime_pct": 33.1,
+        "peer_id": "12D3KooWFot4ebiRgCUN\u2026",
+        "uptime_pct": 20.7,
         "last_seen": 1786231186
       },
       {
@@ -2800,12 +2808,6 @@
     "stake_estimate_hourly": [],
     "log_peers": [
       {
-        "ip": "148.251.237.182",
-        "peer_ids": [
-          "12D3KooWFot4ebiRgCUNf3xNcNJe8PkCQFhwH1z1qFUMh4YQ8z4E"
-        ]
-      },
-      {
         "ip": "62.108.17.138",
         "peer_ids": [
           "12D3KooWFfd815yFmTpNTD2keJTYDn99sSzqpFsjgEHVAuASEbnd",
@@ -2821,9 +2823,9 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
           "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb"
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
         ]
       },
       {
@@ -2853,8 +2855,8 @@
       {
         "ip": "185.181.228.126",
         "peer_ids": [
-          "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW",
-          "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS"
+          "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS",
+          "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW"
         ]
       },
       {
@@ -3708,8 +3710,8 @@
       "country": "Moldova",
       "city": "Chisinau",
       "peer_ids": [
-        "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW",
-        "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS"
+        "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS",
+        "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW"
       ]
     },
     {
@@ -3824,6 +3826,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-08-09T04:00:13Z",
-  "updated": 1786248013
+  "peer_snapshot": "2026-08-09T05:00:13Z",
+  "updated": 1786251613
 }
