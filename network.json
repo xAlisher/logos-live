@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1786233426
+      "last_seen": 1786236726
     }
   ],
   "events": [
@@ -1588,20 +1588,44 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-view-module-runtime",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(qml-bridge): defer onModuleEvent instead of refusing it once",
+      "url": "https://github.com/logos-co/logos-view-module-runtime/pull/20#issuecomment-5228932529",
+      "timestamp": "2026-08-09T00:14:55Z"
+    },
+    {
+      "repo": "logos-protocol",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix: make event subscriptions survive a module that is not reachable yet",
+      "url": "https://github.com/logos-co/logos-protocol/pull/47#issuecomment-5228931512",
+      "timestamp": "2026-08-09T00:14:38Z"
+    },
+    {
+      "repo": "logos-view-module-runtime",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/deferred-call-dispatch\"",
+      "url": "https://github.com/logos-co/logos-view-module-runtime",
+      "timestamp": "2026-08-09T00:13:33Z"
+    },
+    {
+      "repo": "logos-protocol",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/deferred-call-dispatch\"",
+      "url": "https://github.com/logos-co/logos-protocol",
+      "timestamp": "2026-08-09T00:13:28Z"
+    },
+    {
       "repo": "logos-protocol",
       "type": "Create",
       "cls": "type-create",
       "title": "new branch \"fix/plain-event-sub-per-handle\"",
       "url": "https://github.com/logos-co/logos-protocol",
       "timestamp": "2026-08-08T22:12:14Z"
-    },
-    {
-      "repo": "logos-view-module-runtime",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(qml-bridge): defer onModuleEvent instead of refusing it once",
-      "url": "https://github.com/logos-co/logos-view-module-runtime/pull/20#issuecomment-5228423920",
-      "timestamp": "2026-08-08T22:07:57Z"
     },
     {
       "repo": "logos-protocol",
@@ -1642,14 +1666,6 @@
       "title": "new branch \"docs/delivery-module-v0.2.0\"",
       "url": "https://github.com/logos-co/logos-docs",
       "timestamp": "2026-08-08T21:24:02Z"
-    },
-    {
-      "repo": "logos-protocol",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix: make event subscriptions survive a module that is not reachable yet",
-      "url": "https://github.com/logos-co/logos-protocol/pull/47#issuecomment-5228074996",
-      "timestamp": "2026-08-08T20:48:50Z"
     },
     {
       "repo": "logos-doctest",
@@ -1945,10 +1961,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1785628800,
-        "count": 0
-      },
       {
         "ts": 1785632400,
         "count": 0
@@ -2620,6 +2632,10 @@
       {
         "ts": 1786233600,
         "count": 0
+      },
+      {
+        "ts": 1786237200,
+        "count": 0
       }
     ],
     "summary": {
@@ -2812,8 +2828,8 @@
         "ip": "65.109.51.37",
         "peer_ids": [
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
         ]
       },
       {
@@ -2843,8 +2859,8 @@
       {
         "ip": "185.181.228.126",
         "peer_ids": [
-          "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS",
-          "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW"
+          "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW",
+          "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS"
         ]
       },
       {
@@ -3702,8 +3718,8 @@
       "country": "Moldova",
       "city": "Chisinau",
       "peer_ids": [
-        "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS",
-        "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW"
+        "12D3KooWSFYr16eEv94SrKo1gZh7jkQ1Nkh8Y7EwUDuomg9PxLQW",
+        "12D3KooWCTmr4bp28yfLv7sDkfz7poTG8VxqSKdFjrHSdAYEYMwS"
       ]
     },
     {
@@ -3808,6 +3824,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-08-09T00:00:17Z",
-  "updated": 1786233617
+  "peer_snapshot": "2026-08-09T01:00:13Z",
+  "updated": 1786237213
 }
