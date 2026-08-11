@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "596b3808d61fd9b1e2e88be9ae7504bab143bd68755870e655f2264ae4e3e414",
-    "lib_slot": 508944,
-    "tip": "66f18e770b2f0b6e11ec97263f1ef0b29869f2ffc120167c3eb326020468978f",
-    "slot": 511196,
-    "height": 16284,
+    "lib": "d56e9a997767e0019d2af3584f3b9e3bc50367b6dc072df408d27901b23906fc",
+    "lib_slot": 512184,
+    "tip": "1aed7f25d23b953f1110012f012375b82fa9911b4331f34ba14c0d1716f9309f",
+    "slot": 514803,
+    "height": 16456,
     "state": "Online",
     "mode": "Online"
   },
@@ -40,6 +40,7 @@
       "12D3KooWCKuLhGrNEowi4j5XBZhkaL1ZnmWd6wv2LcDE5W3EArWX",
       "12D3KooWDJs3brSnhSfWhji3tqe83Xd9fKgbUsXfpa5iXzPJeGLm",
       "12D3KooWEPbypwVZaZcGJS2gK89UGAmgrMje7We97E3ckGsm8QnR",
+      "12D3KooWBsV6JaLLbDAak8wzUPPo9sDrkmEcpqfEvYKPV5SG3Fgk",
       "12D3KooWJJMrELn3HKm8uBjs9webwqQd7GT3LfN8SUs77XsdEuof",
       "12D3KooWLLackG2Kv81j7xnA73S1TDPGNap7t9gT9uyFgNUTrQ7U",
       "12D3KooWD5eLEcbtiVUcdkW62frWgpWkwfwCvnVaP1mviz5ddvkf",
@@ -84,8 +85,8 @@
       "12D3KooWCiUNs1xmGyoPFJ6k5SVdrAtLtxePphfGys8eqRYwbnu2",
       "12D3KooWMMjqk6BhtGgCSqjXckvHtduqSp1X5zcyAAHHXYVDaFfh"
     ],
-    "n_peers": 65,
-    "n_connections": 67,
+    "n_peers": 66,
+    "n_connections": 68,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWFCkjEmAuEYLb1uGronjnrx471En3cUdWZvNPCFUJe3Y4",
@@ -154,7 +155,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -167,7 +168,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1786431616
+      "last_seen": 1786435215
     },
     {
       "peer_id": "12D3KooWKKbeQcUme2B2c4A3UN1j53rM6AdiiDdPUsbZroHBTt8U",
@@ -183,7 +184,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1786431616
+      "last_seen": 1786435215
     }
   ],
   "events": [
@@ -1826,6 +1827,30 @@
       "repo": "ecosystem",
       "type": "Comment",
       "cls": "type-create",
+      "title": "[doc] Use scaffold to iterate development and bundle modules",
+      "url": "https://github.com/logos-co/ecosystem/issues/140#issuecomment-5250414135",
+      "timestamp": "2026-08-11T07:44:11Z"
+    },
+    {
+      "repo": "ecosystem",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[RFP] Private Voting",
+      "url": "https://github.com/logos-co/ecosystem/issues/152#issuecomment-5250394937",
+      "timestamp": "2026-08-11T07:41:55Z"
+    },
+    {
+      "repo": "logos-lips",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"tl/minor_fix\"",
+      "url": "https://github.com/logos-co/logos-lips",
+      "timestamp": "2026-08-11T07:30:23Z"
+    },
+    {
+      "repo": "ecosystem",
+      "type": "Comment",
+      "cls": "type-create",
       "title": "0.2.1 testnet hardfork \u2014 node dogfooding findings (EcoDev node track)",
       "url": "https://github.com/logos-co/ecosystem/issues/178#issuecomment-5250034945",
       "timestamp": "2026-08-11T06:59:57Z"
@@ -1877,33 +1902,16 @@
       "title": "new branch \"chore/e2e-cutover\"",
       "url": "https://github.com/logos-co/logos-rln-modules",
       "timestamp": "2026-08-11T02:29:43Z"
-    },
-    {
-      "repo": "logos-rln-e2e",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/e2e-repo\"",
-      "url": "https://github.com/logos-co/logos-rln-e2e",
-      "timestamp": "2026-08-11T02:29:39Z"
-    },
-    {
-      "repo": "logos-rln-e2e",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/keycard\"",
-      "url": "https://github.com/logos-co/logos-rln-e2e",
-      "timestamp": "2026-08-11T02:29:39Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Solution: LP-0003 - Private Allowlist / Airdrop Distributor",
-      "url": "https://github.com/logos-co/lambda-prize/pull/98#issuecomment-5248011619",
-      "timestamp": "2026-08-11T01:31:33Z"
     }
   ],
   "discourse": [
+    {
+      "title": "Logos Circle Port Harcourt \u2013 Meetup 3.0 Report",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-port-harcourt-meetup-3-0-report/1868",
+      "timestamp": "2026-08-11T07:46:16.310Z",
+      "replies": 0
+    },
     {
       "title": "Logos Circle Kano 3.0",
       "category": "Circles",
@@ -2099,21 +2107,14 @@
       "url": "https://forum.logos.co/t/logos-circle-mumbai-01/1819",
       "timestamp": "2026-07-25T13:35:02.441Z",
       "replies": 0
-    },
-    {
-      "title": "Nabz \u2014 Censorship-Resistant Alive Check-in Protocol (\u03bbPrize Proposal)",
-      "category": "Forum",
-      "url": "https://forum.logos.co/t/nabz-censorship-resistant-alive-check-in-protocol-prize-proposal/1648",
-      "timestamp": "2026-05-22T09:56:26.873Z",
-      "replies": 2
     }
   ],
   "stake": {
     "recipients": 102,
     "total_distributed": 7094997,
     "faucet_remainder": null,
-    "unique_leaders": 124496,
-    "total_leader_blocks": 132530,
+    "unique_leaders": 124617,
+    "total_leader_blocks": 132651,
     "top_leaders": [
       {
         "pk": "043a923e7f4e499c",
@@ -2170,13 +2171,13 @@
   "recent_blocks": {
     "window": {
       "blocks": 121,
-      "slot_min": 508944,
-      "slot_max": 511196,
-      "slot_span": 2253,
-      "transactions": 39,
-      "operations": 78,
-      "empty_blocks": 82,
-      "missed_or_unseen_slots": 2132
+      "slot_min": 512184,
+      "slot_max": 514803,
+      "slot_span": 2620,
+      "transactions": 45,
+      "operations": 89,
+      "empty_blocks": 81,
+      "missed_or_unseen_slots": 2499
     },
     "leader_diversity": {
       "unique_leaders": 121,
@@ -2184,216 +2185,216 @@
     },
     "top_leaders": [
       {
-        "leader_key": "00fe7d30bc36b52c",
+        "leader_key": "c7db2c0fe7510910",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "2d3ea4b1c517ea80",
+        "leader_key": "c3162c6eb292f2b2",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "dd9a4c766c227118",
+        "leader_key": "a9274967017c0908",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "23399c3461fbb858",
+        "leader_key": "5336c9dea1cc4de2",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "120c2e3fe73ca239",
+        "leader_key": "2a91d0869f0151bb",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "93bf36beb605ab12",
+        "leader_key": "bd21e7c39a07f139",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "d168d7344bfabae3",
+        "leader_key": "a39db1338c043f73",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "b4e39a247f0c085f",
+        "leader_key": "b15c089a7e0b2663",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "74e8ecec9418b789",
+        "leader_key": "b63d68eea41308bb",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "beb11aef5628bbd0",
+        "leader_key": "8132cd9edb84d350",
         "blocks": 1,
         "pct": 0.8
       }
     ],
     "recent": [
       {
-        "slot": 510842,
-        "leader_key": "ba39728f5808535d",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "62e0d4745851c9f4"
-      },
-      {
-        "slot": 510854,
-        "leader_key": "598c65c7d1e1f739",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "214bbb5d2f3b4ee7"
-      },
-      {
-        "slot": 510864,
-        "leader_key": "babb6b78e6f8fb89",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "e1724b33b3eea331"
-      },
-      {
-        "slot": 510893,
-        "leader_key": "e466d10a0a8d53ee",
+        "slot": 514264,
+        "leader_key": "fd895e449ce66c53",
         "transactions": 1,
         "operations": 2,
-        "root": "5f9062276429a7cb",
-        "hash": "254f9b164d268e55"
+        "root": "ec72d4f421665537",
+        "hash": "76300ff8a60e6325"
       },
       {
-        "slot": 510986,
-        "leader_key": "3d2f20f11c17de55",
+        "slot": 514279,
+        "leader_key": "727bb76537f2165f",
+        "transactions": 0,
+        "operations": 0,
+        "root": "0000000000000000",
+        "hash": "cca37bdccc886933"
+      },
+      {
+        "slot": 514382,
+        "leader_key": "136fa11a9fb149f3",
+        "transactions": 2,
+        "operations": 4,
+        "root": "d57b951e8aed11e0",
+        "hash": "f408e4a7742be2c7"
+      },
+      {
+        "slot": 514387,
+        "leader_key": "c2037e4238ab2365",
+        "transactions": 0,
+        "operations": 0,
+        "root": "0000000000000000",
+        "hash": "1b7c880a2dcb1072"
+      },
+      {
+        "slot": 514467,
+        "leader_key": "4136ffecf73e0af2",
         "transactions": 1,
         "operations": 2,
-        "root": "93b28cf2eab8933d",
-        "hash": "588572fbf8d47d44"
+        "root": "2df978b73f7604af",
+        "hash": "ab48a82473779f2f"
       },
       {
-        "slot": 510987,
-        "leader_key": "9177c1bd9d17ac22",
+        "slot": 514479,
+        "leader_key": "af7e3eaad30dd812",
         "transactions": 0,
         "operations": 0,
         "root": "0000000000000000",
-        "hash": "795fae2f219135ac"
+        "hash": "ea0ae8536a9c0cfe"
       },
       {
-        "slot": 511008,
-        "leader_key": "f7f5c23b195277c5",
+        "slot": 514497,
+        "leader_key": "988ca75fcc93ab89",
         "transactions": 0,
         "operations": 0,
         "root": "0000000000000000",
-        "hash": "e8470082276515bf"
+        "hash": "68dcb0a029b1ac31"
       },
       {
-        "slot": 511022,
-        "leader_key": "3518fbb6cea19037",
+        "slot": 514510,
+        "leader_key": "4d1e76e3ab792c8e",
         "transactions": 1,
         "operations": 2,
-        "root": "cc527ce58dd1142a",
-        "hash": "800cc6f2ed2ba179"
+        "root": "5fa10334b4d24c55",
+        "hash": "39ec13811108bb93"
       },
       {
-        "slot": 511038,
-        "leader_key": "e9cf49816bda8ec8",
+        "slot": 514535,
+        "leader_key": "e7f7dde1584dd8be",
         "transactions": 0,
         "operations": 0,
         "root": "0000000000000000",
-        "hash": "d99e54085ea1f66a"
+        "hash": "1376618c81a0e160"
       },
       {
-        "slot": 511058,
-        "leader_key": "b564af0fa16741d8",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "9547e0eaf98954c6"
-      },
-      {
-        "slot": 511064,
-        "leader_key": "beb11aef5628bbd0",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "b416a948eb8b0b3a"
-      },
-      {
-        "slot": 511074,
-        "leader_key": "74e8ecec9418b789",
+        "slot": 514603,
+        "leader_key": "54b5785fd42000de",
         "transactions": 1,
         "operations": 2,
-        "root": "ad9b54306a194953",
-        "hash": "d5a942292fed145b"
+        "root": "7dd7c2fc69cdfd35",
+        "hash": "e8ddea7a666c7f14"
       },
       {
-        "slot": 511103,
-        "leader_key": "b4e39a247f0c085f",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "71c9a6c41716a17d"
-      },
-      {
-        "slot": 511109,
-        "leader_key": "d168d7344bfabae3",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "44ae5641ad7238ef"
-      },
-      {
-        "slot": 511125,
-        "leader_key": "93bf36beb605ab12",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "5b475d9cffa07f98"
-      },
-      {
-        "slot": 511127,
-        "leader_key": "120c2e3fe73ca239",
-        "transactions": 0,
-        "operations": 0,
-        "root": "0000000000000000",
-        "hash": "0b04b530f792ab8b"
-      },
-      {
-        "slot": 511169,
-        "leader_key": "23399c3461fbb858",
+        "slot": 514648,
+        "leader_key": "8132cd9edb84d350",
         "transactions": 1,
         "operations": 2,
-        "root": "fbb92215194d3974",
-        "hash": "00dfee04846e96aa"
+        "root": "44fb53bc26c6f9d0",
+        "hash": "bce4914f295b66bf"
       },
       {
-        "slot": 511176,
-        "leader_key": "dd9a4c766c227118",
+        "slot": 514649,
+        "leader_key": "b63d68eea41308bb",
         "transactions": 0,
         "operations": 0,
         "root": "0000000000000000",
-        "hash": "f883e7cf68d5a416"
+        "hash": "962f3ac3b84ed4f8"
       },
       {
-        "slot": 511189,
-        "leader_key": "2d3ea4b1c517ea80",
+        "slot": 514666,
+        "leader_key": "b15c089a7e0b2663",
         "transactions": 0,
         "operations": 0,
         "root": "0000000000000000",
-        "hash": "ad894b03c0b469bb"
+        "hash": "77b155143ac93d32"
       },
       {
-        "slot": 511196,
-        "leader_key": "00fe7d30bc36b52c",
+        "slot": 514693,
+        "leader_key": "a39db1338c043f73",
         "transactions": 1,
         "operations": 2,
-        "root": "ebe9a177f68753f9",
-        "hash": "66f18e770b2f0b6e"
+        "root": "72373dd93a7ac45a",
+        "hash": "c29812788963ef82"
+      },
+      {
+        "slot": 514698,
+        "leader_key": "bd21e7c39a07f139",
+        "transactions": 0,
+        "operations": 0,
+        "root": "0000000000000000",
+        "hash": "4cd205bd25d3a314"
+      },
+      {
+        "slot": 514703,
+        "leader_key": "2a91d0869f0151bb",
+        "transactions": 0,
+        "operations": 0,
+        "root": "0000000000000000",
+        "hash": "490d6b91291b050c"
+      },
+      {
+        "slot": 514716,
+        "leader_key": "5336c9dea1cc4de2",
+        "transactions": 0,
+        "operations": 0,
+        "root": "0000000000000000",
+        "hash": "b26146f9c2766bb8"
+      },
+      {
+        "slot": 514776,
+        "leader_key": "a9274967017c0908",
+        "transactions": 1,
+        "operations": 2,
+        "root": "dc9b86adff80d06b",
+        "hash": "dd9a4d78111e2090"
+      },
+      {
+        "slot": 514790,
+        "leader_key": "c3162c6eb292f2b2",
+        "transactions": 0,
+        "operations": 0,
+        "root": "0000000000000000",
+        "hash": "be1f5912b99ba5ad"
+      },
+      {
+        "slot": 514803,
+        "leader_key": "c7db2c0fe7510910",
+        "transactions": 0,
+        "operations": 0,
+        "root": "0000000000000000",
+        "hash": "1aed7f25d23b953f"
       }
     ]
   },
@@ -2401,10 +2402,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1785826800,
-        "count": 0
-      },
       {
         "ts": 1785830400,
         "count": 0
@@ -3075,51 +3072,70 @@
       },
       {
         "ts": 1786431600,
+        "count": 10
+      },
+      {
+        "ts": 1786435200,
         "count": 0
       }
     ],
     "summary": {
-      "active_latest": 8,
+      "active_latest": 10,
       "active_peak": 51,
-      "tracked_peers": 83,
+      "tracked_peers": 85,
       "latest_total_stake": null,
       "stake_points": 0
     },
     "peer_uptime": [
       {
+        "peer_id": "12D3KooWBsV6JaLLbDAa\u2026",
+        "uptime_pct": 0.6,
+        "last_seen": 1786435074
+      },
+      {
         "peer_id": "12D3KooWHoUUE7wyPwWy\u2026",
-        "uptime_pct": 38.5,
-        "last_seen": 1786431423
+        "uptime_pct": 39.1,
+        "last_seen": 1786435022
       },
       {
         "peer_id": "12D3KooWAj3LswTTt2JS\u2026",
-        "uptime_pct": 18.3,
-        "last_seen": 1786431423
+        "uptime_pct": 18.9,
+        "last_seen": 1786435022
       },
       {
         "peer_id": "12D3KooWLGRJZ3QBYrQa\u2026",
-        "uptime_pct": 17.2,
-        "last_seen": 1786431417
+        "uptime_pct": 17.8,
+        "last_seen": 1786435017
       },
       {
         "peer_id": "12D3KooWKBcJZKb2ZtdZ\u2026",
-        "uptime_pct": 37.3,
-        "last_seen": 1786431417
+        "uptime_pct": 37.9,
+        "last_seen": 1786435017
       },
       {
         "peer_id": "12D3KooWPU9d71wVonVV\u2026",
-        "uptime_pct": 14.8,
-        "last_seen": 1786431417
+        "uptime_pct": 15.4,
+        "last_seen": 1786435017
       },
       {
         "peer_id": "12D3KooWKdEACHYppXkc\u2026",
-        "uptime_pct": 17.2,
-        "last_seen": 1786431411
+        "uptime_pct": 17.8,
+        "last_seen": 1786435011
       },
       {
         "peer_id": "12D3KooWD5eLEcbtiVUc\u2026",
-        "uptime_pct": 13.6,
-        "last_seen": 1786431402
+        "uptime_pct": 14.2,
+        "last_seen": 1786435002
+      },
+      {
+        "peer_id": "12D3KooWPHXJzRsvSErV\u2026",
+        "uptime_pct": 1.2,
+        "last_seen": 1786432673
+      },
+      {
+        "peer_id": "12D3KooWLKydeZEjVQbg\u2026",
+        "uptime_pct": 0.6,
+        "last_seen": 1786432484
       },
       {
         "peer_id": "12D3KooWCiUNs1xmGyoP\u2026",
@@ -3220,21 +3236,6 @@
         "peer_id": "12D3KooWJw3fCfaLW7uc\u2026",
         "uptime_pct": 4.7,
         "last_seen": 1786416617
-      },
-      {
-        "peer_id": "12D3KooWBq4FpVS8e5Wu\u2026",
-        "uptime_pct": 13.6,
-        "last_seen": 1786416333
-      },
-      {
-        "peer_id": "12D3KooWGd9dUSZQPfKW\u2026",
-        "uptime_pct": 9.5,
-        "last_seen": 1786414993
-      },
-      {
-        "peer_id": "12D3KooWCTutixnfNXWg\u2026",
-        "uptime_pct": 5.9,
-        "last_seen": 1786414993
       }
     ],
     "stake_estimate_hourly": [],
@@ -3242,8 +3243,8 @@
       {
         "ip": "207.231.111.43",
         "peer_ids": [
-          "12D3KooWQ9J29F8MBtcNoLrYBBdJghXUhc8BuTn4UCjzay591mDZ",
-          "12D3KooWNdmrWfL8kfXdMgfwEC6oUUZiq5BsWnsJtHnPUWEwNwoZ"
+          "12D3KooWNdmrWfL8kfXdMgfwEC6oUUZiq5BsWnsJtHnPUWEwNwoZ",
+          "12D3KooWQ9J29F8MBtcNoLrYBBdJghXUhc8BuTn4UCjzay591mDZ"
         ]
       },
       {
@@ -3279,10 +3280,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       },
       {
@@ -3385,6 +3386,12 @@
         "ip": "168.181.51.83",
         "peer_ids": [
           "12D3KooWNKUKesoGUzn6ryhB2Diw5bjRJ1FfzyMdMzbFzt2DBNKg"
+        ]
+      },
+      {
+        "ip": "102.33.32.89",
+        "peer_ids": [
+          "12D3KooWLKydeZEjVQbgyLjmYHpHKz241PrbXcAjbFHDJ9wAYfpT"
         ]
       }
     ]
@@ -4095,14 +4102,14 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1785920420,
+  "genesis_ts": 1785920412,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 307.3,
     "free_gb": 1560.5,
     "used_pct": 15.6
   },
-  "heard_count": 23,
+  "heard_count": 24,
   "heard_nodes": [
     {
       "ip": "207.231.111.43",
@@ -4111,8 +4118,8 @@
       "country": "United States",
       "city": "Dallas",
       "peer_ids": [
-        "12D3KooWQ9J29F8MBtcNoLrYBBdJghXUhc8BuTn4UCjzay591mDZ",
-        "12D3KooWNdmrWfL8kfXdMgfwEC6oUUZiq5BsWnsJtHnPUWEwNwoZ"
+        "12D3KooWNdmrWfL8kfXdMgfwEC6oUUZiq5BsWnsJtHnPUWEwNwoZ",
+        "12D3KooWQ9J29F8MBtcNoLrYBBdJghXUhc8BuTn4UCjzay591mDZ"
       ]
     },
     {
@@ -4334,9 +4341,19 @@
       "peer_ids": [
         "12D3KooWNKUKesoGUzn6ryhB2Diw5bjRJ1FfzyMdMzbFzt2DBNKg"
       ]
+    },
+    {
+      "ip": "102.33.32.89",
+      "lat": -26.2309,
+      "lon": 28.0583,
+      "country": "South Africa",
+      "city": "Johannesburg",
+      "peer_ids": [
+        "12D3KooWLKydeZEjVQbgyLjmYHpHKz241PrbXcAjbFHDJ9wAYfpT"
+      ]
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-08-11T07:00:16Z",
-  "updated": 1786431616
+  "peer_snapshot": "2026-08-11T08:00:15Z",
+  "updated": 1786435215
 }
