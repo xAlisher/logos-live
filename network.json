@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788191351
+      "last_seen": 1788195311
     }
   ],
   "events": [
@@ -1540,6 +1540,14 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-web",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/web/one-pager-upload\"",
+      "url": "https://github.com/logos-co/logos-web",
+      "timestamp": "2026-08-31T16:11:03Z"
+    },
+    {
       "repo": "logos-basecamp",
       "type": "Comment",
       "cls": "type-create",
@@ -1618,30 +1626,6 @@
       "title": "feat(discovery): wire logos-delivery's discovery plugin to libp2p_module (runtime client)",
       "url": "https://github.com/logos-co/logos-delivery-module/pull/96#issuecomment-5477962164",
       "timestamp": "2026-08-31T11:56:26Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Split prize index into adoption-first vs legacy schemes",
-      "url": "https://github.com/logos-co/lambda-prize/pull/134#issuecomment-5477846959",
-      "timestamp": "2026-08-31T11:47:14Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs/split-prize-index\"",
-      "url": "https://github.com/logos-co/lambda-prize",
-      "timestamp": "2026-08-31T11:46:34Z"
-    },
-    {
-      "repo": "nimbos",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix:sdp validations",
-      "url": "https://github.com/logos-co/nimbos/pull/171#issuecomment-5477618815",
-      "timestamp": "2026-08-31T11:25:29Z"
     }
   ],
   "discourse": [
@@ -1920,10 +1904,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1787587200,
-        "count": 0
-      },
       {
         "ts": 1787590800,
         "count": 0
@@ -2326,15 +2306,15 @@
       },
       {
         "ts": 1787950800,
-        "count": 14
+        "count": 0
       },
       {
         "ts": 1787954400,
-        "count": 116
+        "count": 0
       },
       {
         "ts": 1787958000,
-        "count": 117
+        "count": 95
       },
       {
         "ts": 1787961600,
@@ -2595,6 +2575,10 @@
       {
         "ts": 1788192000,
         "count": 0
+      },
+      {
+        "ts": 1788195600,
+        "count": 0
       }
     ],
     "summary": {
@@ -2607,17 +2591,17 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWR6iSZuLkZYv4\u2026",
-        "uptime_pct": 36.7,
+        "uptime_pct": 36.1,
         "last_seen": 1788176318
       },
       {
         "peer_id": "12D3KooWA1S2F699jaV3\u2026",
-        "uptime_pct": 36.7,
+        "uptime_pct": 36.1,
         "last_seen": 1788176317
       },
       {
         "peer_id": "12D3KooWEM7r3VMEP8eJ\u2026",
-        "uptime_pct": 31.4,
+        "uptime_pct": 30.8,
         "last_seen": 1788176316
       },
       {
@@ -2627,12 +2611,12 @@
       },
       {
         "peer_id": "12D3KooWNaa5zzk83tNs\u2026",
-        "uptime_pct": 29.0,
+        "uptime_pct": 28.4,
         "last_seen": 1788176315
       },
       {
         "peer_id": "12D3KooWEGiXhqpTGT14\u2026",
-        "uptime_pct": 33.7,
+        "uptime_pct": 33.1,
         "last_seen": 1788176315
       },
       {
@@ -2642,17 +2626,7 @@
       },
       {
         "peer_id": "12D3KooWPHXJzRsvSErV\u2026",
-        "uptime_pct": 36.7,
-        "last_seen": 1788176311
-      },
-      {
-        "peer_id": "12D3KooWKdEACHYppXkc\u2026",
-        "uptime_pct": 29.6,
-        "last_seen": 1788176311
-      },
-      {
-        "peer_id": "12D3KooWNHaRBWEach6J\u2026",
-        "uptime_pct": 17.8,
+        "uptime_pct": 36.1,
         "last_seen": 1788176311
       },
       {
@@ -2661,43 +2635,53 @@
         "last_seen": 1788176311
       },
       {
+        "peer_id": "12D3KooWNHaRBWEach6J\u2026",
+        "uptime_pct": 16.6,
+        "last_seen": 1788176311
+      },
+      {
+        "peer_id": "12D3KooWKdEACHYppXkc\u2026",
+        "uptime_pct": 28.4,
+        "last_seen": 1788176311
+      },
+      {
         "peer_id": "12D3KooWKBcJZKb2ZtdZ\u2026",
-        "uptime_pct": 26.6,
+        "uptime_pct": 26.0,
         "last_seen": 1788176310
       },
       {
         "peer_id": "12D3KooWE3oVX7jhYFzg\u2026",
-        "uptime_pct": 32.5,
+        "uptime_pct": 32.0,
         "last_seen": 1788176309
       },
       {
         "peer_id": "12D3KooWEHbTMqouVcdq\u2026",
-        "uptime_pct": 32.5,
+        "uptime_pct": 31.4,
         "last_seen": 1788176308
       },
       {
         "peer_id": "12D3KooWFot4ebiRgCUN\u2026",
-        "uptime_pct": 32.5,
+        "uptime_pct": 32.0,
         "last_seen": 1788176298
       },
       {
         "peer_id": "12D3KooWNEhohtmHa1ka\u2026",
-        "uptime_pct": 26.6,
+        "uptime_pct": 26.0,
         "last_seen": 1788176296
       },
       {
         "peer_id": "12D3KooWKeYoFzqViWhw\u2026",
-        "uptime_pct": 26.6,
+        "uptime_pct": 25.4,
         "last_seen": 1788176296
       },
       {
         "peer_id": "12D3KooWAY8kfacK9mVt\u2026",
-        "uptime_pct": 30.8,
+        "uptime_pct": 30.2,
         "last_seen": 1788176294
       },
       {
         "peer_id": "12D3KooWDahynK1Y9ZNU\u2026",
-        "uptime_pct": 18.9,
+        "uptime_pct": 18.3,
         "last_seen": 1788176291
       },
       {
@@ -2707,52 +2691,52 @@
       },
       {
         "peer_id": "12D3KooWMKDWCjbeMJAA\u2026",
-        "uptime_pct": 36.1,
+        "uptime_pct": 34.9,
         "last_seen": 1788176290
       },
       {
         "peer_id": "12D3KooWMKAxA9FYkLuU\u2026",
-        "uptime_pct": 36.7,
+        "uptime_pct": 36.1,
         "last_seen": 1788176285
       },
       {
-        "peer_id": "12D3KooWAfohCvshwP3i\u2026",
-        "uptime_pct": 30.2,
-        "last_seen": 1788176280
-      },
-      {
-        "peer_id": "12D3KooWGd9dUSZQPfKW\u2026",
-        "uptime_pct": 24.9,
-        "last_seen": 1788176280
-      },
-      {
         "peer_id": "12D3KooWAy5vicgUEAQR\u2026",
+        "uptime_pct": 29.0,
+        "last_seen": 1788176280
+      },
+      {
+        "peer_id": "12D3KooWAfohCvshwP3i\u2026",
         "uptime_pct": 29.6,
         "last_seen": 1788176280
       },
       {
+        "peer_id": "12D3KooWGd9dUSZQPfKW\u2026",
+        "uptime_pct": 23.7,
+        "last_seen": 1788176280
+      },
+      {
         "peer_id": "12D3KooWBsV6JaLLbDAa\u2026",
-        "uptime_pct": 18.9,
+        "uptime_pct": 18.3,
         "last_seen": 1788176277
       },
       {
         "peer_id": "12D3KooWFG5PYb8yxoPf\u2026",
-        "uptime_pct": 36.7,
+        "uptime_pct": 36.1,
         "last_seen": 1788176269
       },
       {
         "peer_id": "12D3KooWCTutixnfNXWg\u2026",
-        "uptime_pct": 27.8,
+        "uptime_pct": 27.2,
         "last_seen": 1788176266
       },
       {
         "peer_id": "12D3KooWRTCJmV5okwuJ\u2026",
-        "uptime_pct": 14.2,
+        "uptime_pct": 13.6,
         "last_seen": 1788176263
       },
       {
         "peer_id": "12D3KooWHHUG6zAdvcKV\u2026",
-        "uptime_pct": 19.5,
+        "uptime_pct": 18.3,
         "last_seen": 1788176250
       }
     ],
@@ -2761,36 +2745,32 @@
       {
         "ip": "212.80.57.55",
         "peer_ids": [
-          "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
-          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
-          "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
-          "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
-          "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-          "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
-          "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
-          "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
-          "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
           "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
-          "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3"
+          "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
+          "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
+          "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
+          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
+          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
+          "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
+          "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
+          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+          "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
+          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+          "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
+          "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
+          "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
+          "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
         ]
       },
       {
-        "ip": "105.112.216.242",
+        "ip": "207.231.111.102",
         "peer_ids": [
-          "12D3KooWDRQ17KrYEqQK4X3eNKqLiRSH2g56Kc5ZQjrNfVJK69CJ"
-        ]
-      },
-      {
-        "ip": "20.150.213.84",
-        "peer_ids": [
-          "12D3KooWSbGxboyeAaa3QGomp5SRqUhsSedqKmdid8Nfu3ov5ybF"
+          "12D3KooWKMsyANzJYEc2QeRHpFbmFxRJxRm5WVRHYHPzW4UdD33U",
+          "12D3KooW9rmYQGwTr54LttXbj7xWqntBhiNRpB1uHVUVeYSK7Mak",
+          "12D3KooWLZPGYn9fatwbTzL9x1GbtVgJFw3Rs7u2rRYuXTSH2mzP"
         ]
       },
       {
@@ -2802,8 +2782,20 @@
       {
         "ip": "185.217.125.206",
         "peer_ids": [
-          "12D3KooWCT7uQoHSD9t4GFM2prDfGn7etn2AU1ihrAGbCeSU9JeE",
-          "12D3KooWKAQ3RxQrBaM1DkfKSuzoKx8AVTsTeovoJ9xaLmJBNFWa"
+          "12D3KooWKAQ3RxQrBaM1DkfKSuzoKx8AVTsTeovoJ9xaLmJBNFWa",
+          "12D3KooWCT7uQoHSD9t4GFM2prDfGn7etn2AU1ihrAGbCeSU9JeE"
+        ]
+      },
+      {
+        "ip": "20.150.213.84",
+        "peer_ids": [
+          "12D3KooWSbGxboyeAaa3QGomp5SRqUhsSedqKmdid8Nfu3ov5ybF"
+        ]
+      },
+      {
+        "ip": "105.112.216.242",
+        "peer_ids": [
+          "12D3KooWDRQ17KrYEqQK4X3eNKqLiRSH2g56Kc5ZQjrNfVJK69CJ"
         ]
       },
       {
@@ -2819,43 +2811,15 @@
         ]
       },
       {
-        "ip": "20.57.128.18",
-        "peer_ids": [
-          "12D3KooWKNiU7JMSpEGj5rBNGMSNoE7AXC5sLsU692vV8x6jM7Xw"
-        ]
-      },
-      {
-        "ip": "207.231.111.43",
-        "peer_ids": [
-          "12D3KooWNHaRBWEach6JG1mkxbnuCTd396WXax8dnyFtoGkA75cg",
-          "12D3KooWAxtF15dXHDrMyievoqocEXhDfHREnPzMfMPa5FLGHHx9"
-        ]
-      },
-      {
-        "ip": "102.33.32.105",
-        "peer_ids": [
-          "12D3KooWAGX1xF4N4b3YWnJstZgksAhuQT2po5q5SSAyM757JVpC"
-        ]
-      },
-      {
-        "ip": "207.231.105.131",
-        "peer_ids": [
-          "12D3KooWSpmsi5r4DkaEFk82ujPBkYmfFbmdvdAgf3WUhAddFrTy",
-          "12D3KooWF4EgZhXqbPf6Vzr4VHGijCVZXn5v7wyX6oZ2ETEmkRpc"
-        ]
-      },
-      {
-        "ip": "207.231.111.102",
-        "peer_ids": [
-          "12D3KooW9rmYQGwTr54LttXbj7xWqntBhiNRpB1uHVUVeYSK7Mak",
-          "12D3KooWKMsyANzJYEc2QeRHpFbmFxRJxRm5WVRHYHPzW4UdD33U",
-          "12D3KooWLZPGYn9fatwbTzL9x1GbtVgJFw3Rs7u2rRYuXTSH2mzP"
-        ]
-      },
-      {
         "ip": "176.124.32.58",
         "peer_ids": [
           "12D3KooWKYn76Gf1r5um9B6BsSv7PCx1o792SuCmmjEUqeSxQ3Nr"
+        ]
+      },
+      {
+        "ip": "20.57.128.18",
+        "peer_ids": [
+          "12D3KooWKNiU7JMSpEGj5rBNGMSNoE7AXC5sLsU692vV8x6jM7Xw"
         ]
       },
       {
@@ -2872,10 +2836,17 @@
         ]
       },
       {
+        "ip": "207.231.111.43",
+        "peer_ids": [
+          "12D3KooWAxtF15dXHDrMyievoqocEXhDfHREnPzMfMPa5FLGHHx9",
+          "12D3KooWNHaRBWEach6JG1mkxbnuCTd396WXax8dnyFtoGkA75cg"
+        ]
+      },
+      {
         "ip": "68.168.20.60",
         "peer_ids": [
-          "12D3KooWE3oVX7jhYFzgbGAbkFfRyHADySdU9xf7mbLpHwPVKwGr",
-          "12D3KooWCHroxEqNQsvXYmPwsEnqpFrgvYpJfNCmtrp4Sxh8kcao"
+          "12D3KooWCHroxEqNQsvXYmPwsEnqpFrgvYpJfNCmtrp4Sxh8kcao",
+          "12D3KooWE3oVX7jhYFzgbGAbkFfRyHADySdU9xf7mbLpHwPVKwGr"
         ]
       },
       {
@@ -2894,8 +2865,8 @@
       {
         "ip": "65.75.201.197",
         "peer_ids": [
-          "12D3KooWQhdni5eKUtkEsALBneYLyKpVxerKLeXovt9tXraTfAvW",
-          "12D3KooWJm9DTpxnA1AeWeMT5nNe5VuRuGrH6bQQ3YytB9eLMhUW"
+          "12D3KooWJm9DTpxnA1AeWeMT5nNe5VuRuGrH6bQQ3YytB9eLMhUW",
+          "12D3KooWQhdni5eKUtkEsALBneYLyKpVxerKLeXovt9tXraTfAvW"
         ]
       },
       {
@@ -2923,24 +2894,31 @@
         ]
       },
       {
+        "ip": "207.231.105.131",
+        "peer_ids": [
+          "12D3KooWSpmsi5r4DkaEFk82ujPBkYmfFbmdvdAgf3WUhAddFrTy",
+          "12D3KooWF4EgZhXqbPf6Vzr4VHGijCVZXn5v7wyX6oZ2ETEmkRpc"
+        ]
+      },
+      {
         "ip": "172.82.74.249",
         "peer_ids": [
-          "12D3KooWQ11MmELB4H1h7vSLscUD1unWFdXLKdzRveNK7EzsYcSL",
-          "12D3KooWGPDn8YisciTKCEkVknHMXxTdw1BjeKiXdZwg6oMEMiz3"
+          "12D3KooWGPDn8YisciTKCEkVknHMXxTdw1BjeKiXdZwg6oMEMiz3",
+          "12D3KooWQ11MmELB4H1h7vSLscUD1unWFdXLKdzRveNK7EzsYcSL"
         ]
       },
       {
         "ip": "65.75.200.6",
         "peer_ids": [
-          "12D3KooWQd9QhF5Q9diKJYxhrsoDer9FdS7g5AaSZYiqqg3AKp17",
-          "12D3KooWM1CttJiU5xrUFh7oDWXLazkKi1FiU5BS8caVtYBn9Btk"
+          "12D3KooWM1CttJiU5xrUFh7oDWXLazkKi1FiU5BS8caVtYBn9Btk",
+          "12D3KooWQd9QhF5Q9diKJYxhrsoDer9FdS7g5AaSZYiqqg3AKp17"
         ]
       },
       {
         "ip": "108.181.218.210",
         "peer_ids": [
-          "12D3KooWHikHUwNRRZVpt37Fq3dtonn6XmcWTiEroJp1yo33UqvA",
-          "12D3KooWGLQkPinrarZWAyBGTutDeJ1roBFgyL6wkwvYTzEyW94p"
+          "12D3KooWGLQkPinrarZWAyBGTutDeJ1roBFgyL6wkwvYTzEyW94p",
+          "12D3KooWHikHUwNRRZVpt37Fq3dtonn6XmcWTiEroJp1yo33UqvA"
         ]
       },
       {
@@ -3015,15 +2993,15 @@
         "ip": "65.109.51.37",
         "peer_ids": [
           "12D3KooWCwV7mGF3ciGW8LtpYTdSwyBJqineP4dA6cMdmMe1K9bx",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
         ]
       },
       {
         "ip": "65.75.200.16",
         "peer_ids": [
-          "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai",
-          "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA"
+          "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA",
+          "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai"
         ]
       },
       {
@@ -3099,23 +3077,23 @@
         "ip": "59.14.57.111",
         "peer_ids": [
           "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
         ]
       },
       {
         "ip": "220.76.22.14",
         "peer_ids": [
           "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
         ]
       },
       {
         "ip": "125.142.28.241",
         "peer_ids": [
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
         ]
       },
       {
@@ -4138,7 +4116,7 @@
     "free_gb": 1194.4,
     "used_pct": 34.2
   },
-  "heard_count": 58,
+  "heard_count": 57,
   "heard_nodes": [
     {
       "ip": "212.80.57.55",
@@ -4147,44 +4125,36 @@
       "country": "Ukraine",
       "city": "Kyiv",
       "peer_ids": [
-        "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
-        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
-        "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
-        "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
-        "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-        "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
-        "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
-        "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
-        "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
         "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
-        "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3"
+        "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
+        "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
+        "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
+        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
+        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
+        "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
+        "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
+        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+        "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
+        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+        "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
+        "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
+        "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
+        "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
       ]
     },
     {
-      "ip": "105.112.216.242",
-      "lat": 6.44132,
-      "lon": 7.49883,
-      "country": "Nigeria",
-      "city": "Enugu",
-      "peer_ids": [
-        "12D3KooWDRQ17KrYEqQK4X3eNKqLiRSH2g56Kc5ZQjrNfVJK69CJ"
-      ]
-    },
-    {
-      "ip": "20.150.213.84",
-      "lat": 33.448376,
-      "lon": -112.074036,
+      "ip": "207.231.111.102",
+      "lat": 32.7767,
+      "lon": -96.797,
       "country": "United States",
-      "city": "Phoenix",
+      "city": "Dallas",
       "peer_ids": [
-        "12D3KooWSbGxboyeAaa3QGomp5SRqUhsSedqKmdid8Nfu3ov5ybF"
+        "12D3KooWKMsyANzJYEc2QeRHpFbmFxRJxRm5WVRHYHPzW4UdD33U",
+        "12D3KooW9rmYQGwTr54LttXbj7xWqntBhiNRpB1uHVUVeYSK7Mak",
+        "12D3KooWLZPGYn9fatwbTzL9x1GbtVgJFw3Rs7u2rRYuXTSH2mzP"
       ]
     },
     {
@@ -4204,8 +4174,28 @@
       "country": "France",
       "city": "Lauterbourg",
       "peer_ids": [
-        "12D3KooWCT7uQoHSD9t4GFM2prDfGn7etn2AU1ihrAGbCeSU9JeE",
-        "12D3KooWKAQ3RxQrBaM1DkfKSuzoKx8AVTsTeovoJ9xaLmJBNFWa"
+        "12D3KooWKAQ3RxQrBaM1DkfKSuzoKx8AVTsTeovoJ9xaLmJBNFWa",
+        "12D3KooWCT7uQoHSD9t4GFM2prDfGn7etn2AU1ihrAGbCeSU9JeE"
+      ]
+    },
+    {
+      "ip": "20.150.213.84",
+      "lat": 33.448376,
+      "lon": -112.074036,
+      "country": "United States",
+      "city": "Phoenix",
+      "peer_ids": [
+        "12D3KooWSbGxboyeAaa3QGomp5SRqUhsSedqKmdid8Nfu3ov5ybF"
+      ]
+    },
+    {
+      "ip": "105.112.216.242",
+      "lat": 6.44132,
+      "lon": 7.49883,
+      "country": "Nigeria",
+      "city": "Enugu",
+      "peer_ids": [
+        "12D3KooWDRQ17KrYEqQK4X3eNKqLiRSH2g56Kc5ZQjrNfVJK69CJ"
       ]
     },
     {
@@ -4229,60 +4219,6 @@
       ]
     },
     {
-      "ip": "20.57.128.18",
-      "lat": 47.233,
-      "lon": -119.852,
-      "country": "United States",
-      "city": "Quincy",
-      "peer_ids": [
-        "12D3KooWKNiU7JMSpEGj5rBNGMSNoE7AXC5sLsU692vV8x6jM7Xw"
-      ]
-    },
-    {
-      "ip": "207.231.111.43",
-      "lat": 32.7767,
-      "lon": -96.797,
-      "country": "United States",
-      "city": "Dallas",
-      "peer_ids": [
-        "12D3KooWNHaRBWEach6JG1mkxbnuCTd396WXax8dnyFtoGkA75cg",
-        "12D3KooWAxtF15dXHDrMyievoqocEXhDfHREnPzMfMPa5FLGHHx9"
-      ]
-    },
-    {
-      "ip": "102.33.32.105",
-      "lat": -26.2309,
-      "lon": 28.0583,
-      "country": "South Africa",
-      "city": "Johannesburg",
-      "peer_ids": [
-        "12D3KooWAGX1xF4N4b3YWnJstZgksAhuQT2po5q5SSAyM757JVpC"
-      ]
-    },
-    {
-      "ip": "207.231.105.131",
-      "lat": 32.7767,
-      "lon": -96.797,
-      "country": "United States",
-      "city": "Dallas",
-      "peer_ids": [
-        "12D3KooWSpmsi5r4DkaEFk82ujPBkYmfFbmdvdAgf3WUhAddFrTy",
-        "12D3KooWF4EgZhXqbPf6Vzr4VHGijCVZXn5v7wyX6oZ2ETEmkRpc"
-      ]
-    },
-    {
-      "ip": "207.231.111.102",
-      "lat": 32.7767,
-      "lon": -96.797,
-      "country": "United States",
-      "city": "Dallas",
-      "peer_ids": [
-        "12D3KooW9rmYQGwTr54LttXbj7xWqntBhiNRpB1uHVUVeYSK7Mak",
-        "12D3KooWKMsyANzJYEc2QeRHpFbmFxRJxRm5WVRHYHPzW4UdD33U",
-        "12D3KooWLZPGYn9fatwbTzL9x1GbtVgJFw3Rs7u2rRYuXTSH2mzP"
-      ]
-    },
-    {
       "ip": "176.124.32.58",
       "lat": 59.4369,
       "lon": 24.7535,
@@ -4290,6 +4226,16 @@
       "city": "Tallinn",
       "peer_ids": [
         "12D3KooWKYn76Gf1r5um9B6BsSv7PCx1o792SuCmmjEUqeSxQ3Nr"
+      ]
+    },
+    {
+      "ip": "20.57.128.18",
+      "lat": 47.233,
+      "lon": -119.852,
+      "country": "United States",
+      "city": "Quincy",
+      "peer_ids": [
+        "12D3KooWKNiU7JMSpEGj5rBNGMSNoE7AXC5sLsU692vV8x6jM7Xw"
       ]
     },
     {
@@ -4314,14 +4260,25 @@
       ]
     },
     {
+      "ip": "207.231.111.43",
+      "lat": 32.7767,
+      "lon": -96.797,
+      "country": "United States",
+      "city": "Dallas",
+      "peer_ids": [
+        "12D3KooWAxtF15dXHDrMyievoqocEXhDfHREnPzMfMPa5FLGHHx9",
+        "12D3KooWNHaRBWEach6JG1mkxbnuCTd396WXax8dnyFtoGkA75cg"
+      ]
+    },
+    {
       "ip": "68.168.20.60",
       "lat": 42.0909,
       "lon": -79.2541,
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWE3oVX7jhYFzgbGAbkFfRyHADySdU9xf7mbLpHwPVKwGr",
-        "12D3KooWCHroxEqNQsvXYmPwsEnqpFrgvYpJfNCmtrp4Sxh8kcao"
+        "12D3KooWCHroxEqNQsvXYmPwsEnqpFrgvYpJfNCmtrp4Sxh8kcao",
+        "12D3KooWE3oVX7jhYFzgbGAbkFfRyHADySdU9xf7mbLpHwPVKwGr"
       ]
     },
     {
@@ -4352,8 +4309,8 @@
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWQhdni5eKUtkEsALBneYLyKpVxerKLeXovt9tXraTfAvW",
-        "12D3KooWJm9DTpxnA1AeWeMT5nNe5VuRuGrH6bQQ3YytB9eLMhUW"
+        "12D3KooWJm9DTpxnA1AeWeMT5nNe5VuRuGrH6bQQ3YytB9eLMhUW",
+        "12D3KooWQhdni5eKUtkEsALBneYLyKpVxerKLeXovt9tXraTfAvW"
       ]
     },
     {
@@ -4397,14 +4354,25 @@
       ]
     },
     {
+      "ip": "207.231.105.131",
+      "lat": 32.7767,
+      "lon": -96.797,
+      "country": "United States",
+      "city": "Dallas",
+      "peer_ids": [
+        "12D3KooWSpmsi5r4DkaEFk82ujPBkYmfFbmdvdAgf3WUhAddFrTy",
+        "12D3KooWF4EgZhXqbPf6Vzr4VHGijCVZXn5v7wyX6oZ2ETEmkRpc"
+      ]
+    },
+    {
       "ip": "172.82.74.249",
       "lat": 42.0909,
       "lon": -79.2541,
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWQ11MmELB4H1h7vSLscUD1unWFdXLKdzRveNK7EzsYcSL",
-        "12D3KooWGPDn8YisciTKCEkVknHMXxTdw1BjeKiXdZwg6oMEMiz3"
+        "12D3KooWGPDn8YisciTKCEkVknHMXxTdw1BjeKiXdZwg6oMEMiz3",
+        "12D3KooWQ11MmELB4H1h7vSLscUD1unWFdXLKdzRveNK7EzsYcSL"
       ]
     },
     {
@@ -4414,8 +4382,8 @@
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWQd9QhF5Q9diKJYxhrsoDer9FdS7g5AaSZYiqqg3AKp17",
-        "12D3KooWM1CttJiU5xrUFh7oDWXLazkKi1FiU5BS8caVtYBn9Btk"
+        "12D3KooWM1CttJiU5xrUFh7oDWXLazkKi1FiU5BS8caVtYBn9Btk",
+        "12D3KooWQd9QhF5Q9diKJYxhrsoDer9FdS7g5AaSZYiqqg3AKp17"
       ]
     },
     {
@@ -4425,8 +4393,8 @@
       "country": "United States",
       "city": "Dallas",
       "peer_ids": [
-        "12D3KooWHikHUwNRRZVpt37Fq3dtonn6XmcWTiEroJp1yo33UqvA",
-        "12D3KooWGLQkPinrarZWAyBGTutDeJ1roBFgyL6wkwvYTzEyW94p"
+        "12D3KooWGLQkPinrarZWAyBGTutDeJ1roBFgyL6wkwvYTzEyW94p",
+        "12D3KooWHikHUwNRRZVpt37Fq3dtonn6XmcWTiEroJp1yo33UqvA"
       ]
     },
     {
@@ -4548,8 +4516,8 @@
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai",
-        "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA"
+        "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA",
+        "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai"
       ]
     },
     {
@@ -4663,8 +4631,8 @@
       "city": "Anyang-si",
       "peer_ids": [
         "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
       ]
     },
     {
@@ -4675,8 +4643,8 @@
       "city": "Gangdong-gu",
       "peer_ids": [
         "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
       ]
     },
     {
@@ -4686,8 +4654,8 @@
       "country": "South Korea",
       "city": "Goyang-si",
       "peer_ids": [
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
       ]
     },
     {
@@ -4763,6 +4731,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-08-31T16:00:42Z",
-  "updated": 1788192042
+  "peer_snapshot": "2026-08-31T17:00:42Z",
+  "updated": 1788195642
 }
