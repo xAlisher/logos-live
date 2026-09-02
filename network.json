@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788353713
+      "last_seen": 1788357013
     }
   ],
   "events": [
@@ -1552,10 +1552,66 @@
   "youtube": {},
   "github": [
     {
+      "repo": "lambda-prize",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"weboko/adoption\"",
+      "url": "https://github.com/logos-co/lambda-prize",
+      "timestamp": "2026-09-02T05:19:11Z"
+    },
+    {
+      "repo": "logos-json-rpc-bridge",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(subscriptions): watch provider loss per MODULE, not per (module, event)",
+      "url": "https://github.com/logos-co/logos-json-rpc-bridge/pull/3#issuecomment-5510675609",
+      "timestamp": "2026-09-02T13:55:29Z"
+    },
+    {
+      "repo": "logos-qt-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(qt): key subscription state by TARGET MODULE, not by subscription",
+      "url": "https://github.com/logos-co/logos-qt-sdk/pull/49#issuecomment-5510669135",
+      "timestamp": "2026-09-02T13:55:01Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(sdk): key subscription state by TARGET MODULE, not by subscription",
+      "url": "https://github.com/logos-co/logos-rust-sdk/pull/52#issuecomment-5510668793",
+      "timestamp": "2026-09-02T13:55:00Z"
+    },
+    {
+      "repo": "logos-cpp-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(lp): key subscription state by TARGET MODULE, not by subscription",
+      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/154#issuecomment-5510668428",
+      "timestamp": "2026-09-02T13:54:58Z"
+    },
+    {
+      "repo": "logos-json-rpc-bridge",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat: json_rpc_bridge \u2014 expose module methods and events over HTTP/WebSocket",
+      "url": "https://github.com/logos-co/logos-json-rpc-bridge/pull/1#issuecomment-5510550202",
+      "timestamp": "2026-09-02T13:46:41Z"
+    },
+    {
       "repo": "logos-web",
       "type": "Comment",
       "cls": "type-create",
-      "title": "Web/seo updates",
+      "title": "fix(web): i18n the builders-hub detail copy and guard against sitemap-only URLs",
+      "url": "https://github.com/logos-co/logos-web/pull/155#issuecomment-5510379024",
+      "timestamp": "2026-09-02T13:34:16Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(web): keep blog fetch retries safe for the static export",
       "url": "https://github.com/logos-co/logos-web/pull/154#issuecomment-5509766270",
       "timestamp": "2026-09-02T12:47:56Z"
     },
@@ -1563,7 +1619,7 @@
       "repo": "logos-web",
       "type": "Comment",
       "cls": "type-create",
-      "title": "fix(web): repair redirect indexing signals and complete the SEO metadata envelope",
+      "title": "fix(web): repair redirect indexing and fill SEO metadata gaps",
       "url": "https://github.com/logos-co/logos-web/pull/153#issuecomment-5509760930",
       "timestamp": "2026-09-02T12:47:30Z"
     },
@@ -1630,54 +1686,6 @@
       "title": "chore: unify on a single nixpkgs pin (b5aa0fbd)",
       "url": "https://github.com/logos-co/logos-nix/pull/5#issuecomment-5507397703",
       "timestamp": "2026-09-02T09:25:34Z"
-    },
-    {
-      "repo": "logos-module-builder",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/relock-cpp-sdk-0.9\"",
-      "url": "https://github.com/logos-co/logos-module-builder",
-      "timestamp": "2026-09-01T14:07:10Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[Internal RFP] JSON-RPC Proxy Module & TypeScript SDK for Blockchain API",
-      "url": "https://github.com/logos-co/ecosystem/issues/220#issuecomment-5505993357",
-      "timestamp": "2026-09-02T07:22:40Z"
-    },
-    {
-      "repo": "nimbos",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: PoQ zk verifier",
-      "url": "https://github.com/logos-co/nimbos/pull/193#issuecomment-5505932393",
-      "timestamp": "2026-09-02T07:16:48Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "LP-0025: Private DAO \u2014 proposal lifecycle, deliberation, and voting-weight delegation",
-      "url": "https://github.com/logos-co/lambda-prize/pull/138#issuecomment-5505350372",
-      "timestamp": "2026-09-02T06:17:12Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Solution: LP-0002: Private M-of-N Multisig: LEZ-Quorum",
-      "url": "https://github.com/logos-co/lambda-prize/pull/123#issuecomment-5505325319",
-      "timestamp": "2026-09-02T06:14:23Z"
-    },
-    {
-      "repo": "lambda-prize",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Define Adoption criteria",
-      "url": "https://github.com/logos-co/lambda-prize/pull/137#issuecomment-5504803284",
-      "timestamp": "2026-09-02T05:20:26Z"
     }
   ],
   "discourse": [
@@ -1956,10 +1964,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1787749200,
-        "count": 0
-      },
       {
         "ts": 1787752800,
         "count": 0
@@ -2631,6 +2635,10 @@
       {
         "ts": 1788354000,
         "count": 0
+      },
+      {
+        "ts": 1788357600,
+        "count": 0
       }
     ],
     "summary": {
@@ -2797,24 +2805,24 @@
       {
         "ip": "212.80.57.55",
         "peer_ids": [
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
           "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
-          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
           "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
           "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
-          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
-          "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-          "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
-          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
-          "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
           "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-          "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
           "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
+          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
+          "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
+          "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
           "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-          "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf"
+          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+          "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
+          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
+          "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj"
         ]
       },
       {
@@ -2874,8 +2882,8 @@
       {
         "ip": "65.75.201.77",
         "peer_ids": [
-          "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N",
-          "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA"
+          "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA",
+          "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N"
         ]
       },
       {
@@ -2900,8 +2908,8 @@
       {
         "ip": "65.75.200.16",
         "peer_ids": [
-          "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA",
-          "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai"
+          "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai",
+          "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA"
         ]
       },
       {
@@ -2974,24 +2982,24 @@
       {
         "ip": "70.79.234.46",
         "peer_ids": [
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
         "ip": "59.14.57.111",
         "peer_ids": [
           "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
         "ip": "220.76.22.14",
         "peer_ids": [
           "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
@@ -3040,8 +3048,8 @@
       {
         "ip": "1.244.185.2",
         "peer_ids": [
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
@@ -4042,24 +4050,24 @@
       "country": "Ukraine",
       "city": "Kyiv",
       "peer_ids": [
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
         "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
-        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
         "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
         "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
-        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
-        "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-        "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
-        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
-        "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
         "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-        "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
         "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
+        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
+        "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
+        "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
         "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-        "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf"
+        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+        "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
+        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
+        "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj"
       ]
     },
     {
@@ -4159,8 +4167,8 @@
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N",
-        "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA"
+        "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA",
+        "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N"
       ]
     },
     {
@@ -4201,8 +4209,8 @@
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA",
-        "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai"
+        "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai",
+        "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA"
       ]
     },
     {
@@ -4303,8 +4311,8 @@
       "country": "Canada",
       "city": "Richmond",
       "peer_ids": [
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4315,8 +4323,8 @@
       "city": "Anyang-si",
       "peer_ids": [
         "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4327,8 +4335,8 @@
       "city": "Gangdong-gu",
       "peer_ids": [
         "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4409,8 +4417,8 @@
       "country": "South Korea",
       "city": "Gangneung",
       "peer_ids": [
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc"
+        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4435,6 +4443,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-02T13:00:29Z",
-  "updated": 1788354029
+  "peer_snapshot": "2026-09-02T14:00:33Z",
+  "updated": 1788357633
 }
