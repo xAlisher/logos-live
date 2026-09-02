@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,10 +32,58 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788386053
+      "last_seen": 1788389353
     }
   ],
   "events": [
+    {
+      "name": "Logos Circle Uyo 4.0 ( Clean Up )",
+      "start": "2026-09-05T07:00:00.000Z",
+      "end": "2026-09-05T11:00:00.000Z",
+      "url": "https://lu.ma/rfvrn9mb",
+      "lat": 5.006340759029134,
+      "lon": 7.96013050635721,
+      "city": "Uyo",
+      "country": "Nigeria",
+      "address": "",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Awka September Meetup",
+      "start": "2026-09-05T12:00:00.000Z",
+      "end": "2026-09-05T14:30:00.000Z",
+      "url": "https://lu.ma/w2mapsru",
+      "lat": 6.2254789,
+      "lon": 7.0656642,
+      "city": "Awka",
+      "country": "Nigeria",
+      "address": "11 Abakaliki St, Awka",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle Kano 4.0",
+      "start": "2026-09-05T13:00:00.000Z",
+      "end": "2026-09-05T16:00:00.000Z",
+      "url": "https://lu.ma/gxj81ecj",
+      "lat": 12.0188495,
+      "lon": 8.5388483,
+      "city": "Kano",
+      "country": "Nigeria",
+      "address": "58 New Rd, Kano",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Circle: Lisbon",
+      "start": "2026-09-06T13:00:00.000Z",
+      "end": "2026-09-06T15:00:00.000Z",
+      "url": "https://lu.ma/p3to0d6w",
+      "lat": 38.7215065,
+      "lon": -9.1251438,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "Rua Bartolomeu da Costa 32, Lisboa",
+      "upcoming": true
+    },
     {
       "name": "Logos Circles Minna Niger State #1",
       "start": "2026-08-30T15:00:00.000Z",
@@ -1504,20 +1552,36 @@
   "youtube": {},
   "github": [
     {
-      "repo": "logos-module-builder",
+      "repo": "logos-rust-sdk",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/subscribe-opts\"",
+      "url": "https://github.com/logos-co/logos-rust-sdk",
+      "timestamp": "2026-09-02T02:09:04Z"
+    },
+    {
+      "repo": "rfp",
       "type": "Comment",
       "cls": "type-create",
-      "title": "chore(deps): relock logos-rust-sdk \u2014 the per-target subscription surface",
-      "url": "https://github.com/logos-co/logos-module-builder/pull/227#issuecomment-5517015946",
-      "timestamp": "2026-09-02T21:59:01Z"
+      "title": "[PROPOSAL] RFP-017 \u2014 `lightlock`",
+      "url": "https://github.com/logos-co/rfp/issues/198#issuecomment-5517250770",
+      "timestamp": "2026-09-02T22:22:01Z"
     },
     {
       "repo": "logos-basecamp",
       "type": "Comment",
       "cls": "type-create",
       "title": "ci(windows): let build-windows target the self-hosted runners",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/383#issuecomment-5516662912",
-      "timestamp": "2026-09-02T21:27:23Z"
+      "url": "https://github.com/logos-co/logos-basecamp/pull/383#issuecomment-5517037449",
+      "timestamp": "2026-09-02T22:00:54Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(deps): relock logos-rust-sdk \u2014 the per-target subscription surface",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/227#issuecomment-5517015946",
+      "timestamp": "2026-09-02T21:59:01Z"
     },
     {
       "repo": "logos-liblogos",
@@ -1590,22 +1654,6 @@
       "title": "Show download progress (bar + MB / %) on module Install pills \u2014 Package Manager + Applications page",
       "url": "https://github.com/logos-co/logos-package-manager-ui/issues/61#issuecomment-5514468092",
       "timestamp": "2026-09-02T18:33:41Z"
-    },
-    {
-      "repo": "logos-web",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore(ci): call the shared AI reviewer from acid-info/ai-review",
-      "url": "https://github.com/logos-co/logos-web/pull/156#issuecomment-5514128659",
-      "timestamp": "2026-09-02T18:06:24Z"
-    },
-    {
-      "repo": "logos-module-builder",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore(deps): relock onto the 0.9 revision \u2014 protocol and cpp-sdk together",
-      "url": "https://github.com/logos-co/logos-module-builder/pull/225#issuecomment-5513723334",
-      "timestamp": "2026-09-02T17:34:58Z"
     }
   ],
   "discourse": [
@@ -1884,10 +1932,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1787781600,
-        "count": 0
-      },
       {
         "ts": 1787785200,
         "count": 0
@@ -2559,6 +2603,10 @@
       {
         "ts": 1788386400,
         "count": 0
+      },
+      {
+        "ts": 1788390000,
+        "count": 0
       }
     ],
     "summary": {
@@ -2725,24 +2773,24 @@
       {
         "ip": "212.80.57.55",
         "peer_ids": [
+          "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
+          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
+          "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
+          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+          "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
+          "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
+          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
+          "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
+          "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
           "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
           "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
-          "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
-          "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
           "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-          "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-          "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
           "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
-          "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
-          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
           "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
-          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
-          "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
-          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-          "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha"
+          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
@@ -2834,8 +2882,8 @@
       {
         "ip": "61.3.200.7",
         "peer_ids": [
-          "12D3KooWJ1rJ7s1dbPcsK9yAbq62D7LE7iTdqGzgnEFhKXMLpafa",
-          "12D3KooWMnJkPCUofQhr6dJFWrG1CAuQczZ9jn9RunnUJFSFbxDA"
+          "12D3KooWMnJkPCUofQhr6dJFWrG1CAuQczZ9jn9RunnUJFSFbxDA",
+          "12D3KooWJ1rJ7s1dbPcsK9yAbq62D7LE7iTdqGzgnEFhKXMLpafa"
         ]
       },
       {
@@ -2903,23 +2951,23 @@
         "ip": "59.14.57.111",
         "peer_ids": [
           "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
         "ip": "220.76.22.14",
         "peer_ids": [
           "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
         "ip": "125.142.28.241",
         "peer_ids": [
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
+          "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
         ]
       },
       {
@@ -3963,24 +4011,24 @@
       "country": "Ukraine",
       "city": "Kyiv",
       "peer_ids": [
+        "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
+        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
+        "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
+        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+        "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
+        "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
+        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
+        "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
+        "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
         "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
         "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
-        "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
-        "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
         "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-        "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-        "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
         "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
-        "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
-        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
         "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
-        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
-        "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
-        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-        "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha"
+        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4132,8 +4180,8 @@
       "country": "India",
       "city": "\u0100l\u0101ndurai",
       "peer_ids": [
-        "12D3KooWJ1rJ7s1dbPcsK9yAbq62D7LE7iTdqGzgnEFhKXMLpafa",
-        "12D3KooWMnJkPCUofQhr6dJFWrG1CAuQczZ9jn9RunnUJFSFbxDA"
+        "12D3KooWMnJkPCUofQhr6dJFWrG1CAuQczZ9jn9RunnUJFSFbxDA",
+        "12D3KooWJ1rJ7s1dbPcsK9yAbq62D7LE7iTdqGzgnEFhKXMLpafa"
       ]
     },
     {
@@ -4225,8 +4273,8 @@
       "city": "Anyang-si",
       "peer_ids": [
         "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4237,8 +4285,8 @@
       "city": "Gangdong-gu",
       "peer_ids": [
         "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4248,8 +4296,8 @@
       "country": "South Korea",
       "city": "Goyang-si",
       "peer_ids": [
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ"
+        "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6"
       ]
     },
     {
@@ -4345,6 +4393,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-02T22:00:35Z",
-  "updated": 1788386435
+  "peer_snapshot": "2026-09-02T23:00:25Z",
+  "updated": 1788390025
 }
