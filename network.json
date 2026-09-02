@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788339193
+      "last_seen": 1788343153
     }
   ],
   "events": [
@@ -1552,6 +1552,14 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-nix",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore: unify on a single nixpkgs pin (b5aa0fbd)",
+      "url": "https://github.com/logos-co/logos-nix/pull/5#issuecomment-5507397703",
+      "timestamp": "2026-09-02T09:25:34Z"
+    },
+    {
       "repo": "logos-module-builder",
       "type": "Create",
       "cls": "type-create",
@@ -1654,14 +1662,6 @@
       "title": "Test/MCP UI workspace closing the last dock brings the welcome page back",
       "url": "https://github.com/logos-co/logos-basecamp/pull/345#issuecomment-5503688663",
       "timestamp": "2026-09-02T03:03:20Z"
-    },
-    {
-      "repo": "logos-cpp-sdk",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(lp): subscription status and restart policy, through the codegen",
-      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/154#issuecomment-5503514031",
-      "timestamp": "2026-09-02T02:39:59Z"
     }
   ],
   "discourse": [
@@ -1940,10 +1940,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1787734800,
-        "count": 0
-      },
       {
         "ts": 1787738400,
         "count": 0
@@ -2615,6 +2611,10 @@
       {
         "ts": 1788339600,
         "count": 0
+      },
+      {
+        "ts": 1788343200,
+        "count": 0
       }
     ],
     "summary": {
@@ -2781,24 +2781,24 @@
       {
         "ip": "212.80.57.55",
         "peer_ids": [
+          "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
+          "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
+          "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
+          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
+          "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
+          "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
+          "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
+          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+          "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
           "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
           "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-          "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
-          "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
-          "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
           "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-          "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
-          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-          "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
-          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
-          "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
-          "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-          "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-          "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
           "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
-          "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
-          "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-          "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc"
+          "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+          "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
+          "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
+          "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz"
         ]
       },
       {
@@ -2834,8 +2834,8 @@
       {
         "ip": "65.75.201.77",
         "peer_ids": [
-          "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N",
-          "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA"
+          "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA",
+          "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N"
         ]
       },
       {
@@ -2897,8 +2897,8 @@
       {
         "ip": "65.75.200.16",
         "peer_ids": [
-          "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai",
-          "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA"
+          "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA",
+          "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai"
         ]
       },
       {
@@ -4033,24 +4033,24 @@
       "country": "Ukraine",
       "city": "Kyiv",
       "peer_ids": [
+        "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
+        "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
+        "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
+        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc",
+        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
+        "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
+        "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
+        "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
+        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
+        "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
         "12D3KooWERcxwJHj1CMqneJd6FZ2z14RGFRw8ncSoyuQT1gceqcc",
         "12D3KooWASKQF9qTGKMuCXpwGn52Rv5RtPSFP2fWC4gNP8NJGdYQ",
-        "12D3KooWLKE7hMdK4QqBaE9be6iqZ2QMN7egAyABCGepbvWTN6k3",
-        "12D3KooWNQPVNHd8UUw4kD2cbXjzuzfWxMBdfskeujWgjTuoeSJj",
-        "12D3KooWATTSqiR77qcgn2z3REP4kQTnmXM1g6WcAh1Y978RdoAd",
         "12D3KooW9ygb5BbMZ4oWuVxHtZmEDERvuQ5NPDYRkcei6QsThCPt",
-        "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
-        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
-        "12D3KooWPYB3RoKzFkNPvwr16DrczDesTGHX7xSLDwDdBRDUyfPW",
-        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz",
-        "12D3KooWL5TtEhNDnZhNqEuptZg7yxRxTbwTPVr7MHh7Sg6hCHPA",
-        "12D3KooWHeLCnPpUzo4uDavfeYHjtG79HgGuEL9bqquuJLszx5JK",
-        "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
-        "12D3KooWSDzj6nVHxEG89cVSc7gNKV6MD5VgdNzfyoXphEFBLfha",
         "12D3KooWRmKW6vqWmBtRoGsfvvn3mrjBJCMBQzfusAwXq4tA4UZ3",
-        "12D3KooWCfDiJxfw1fzgTLUL1wRZectS2dXgMwSR7M5Jq9b5tGvf",
-        "12D3KooWPXo9tVFGeeBeNMmKiHuMUMnBQFPREDRQEQ2VXQhRSB6Z",
-        "12D3KooWNKHtvKGQSiEQUfH878J5EmKZNc9aFHN6nKRnxLA9ybGc"
+        "12D3KooWH6ZYEDMvaMypD376bm8TREmpvJ6WJTffYqvrEjSDW1Y6",
+        "12D3KooWRaxkN7fhKUxM4uEvomZVk1mafTJijFwSwRTGJNt6xDy4",
+        "12D3KooWJL4F2r1zD5NDnp7GEdyWd7ux8PxMiwgpP2FM9UGcj4JA",
+        "12D3KooWNzJvUopwQKLHFE1q1DKmE94A3xZrmM9zL8xgnP7aHaEz"
       ]
     },
     {
@@ -4110,8 +4110,8 @@
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N",
-        "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA"
+        "12D3KooWBRS5TEZ1JEQxGE4mkDMj3kAKKWzhSe1qcCTKdGTCrZYA",
+        "12D3KooWHWEUJNX29UuVK67ZsWJBJcqz4MckXenjCDD6jn4gyy4N"
       ]
     },
     {
@@ -4202,8 +4202,8 @@
       "country": "United States",
       "city": "Jamestown",
       "peer_ids": [
-        "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai",
-        "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA"
+        "12D3KooWMr4BPMKJPAaSgAbcSugpveBLe7n5wtfb6UbDyhw37VXA",
+        "12D3KooWAYH8ZEv2iGG8aCc949EsU4Ls8C85gsCG9oThyMWojPai"
       ]
     },
     {
@@ -4436,6 +4436,6 @@
     }
   ],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-02T09:00:33Z",
-  "updated": 1788339633
+  "peer_snapshot": "2026-09-02T10:00:33Z",
+  "updated": 1788343233
 }
