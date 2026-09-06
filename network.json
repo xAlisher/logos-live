@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788731897
+      "last_seen": 1788735197
     }
   ],
   "events": [
@@ -1492,6 +1492,102 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-tutorial",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "docs(guide): the three dependency kinds, and when to reach for optional",
+      "url": "https://github.com/logos-co/logos-tutorial/pull/87#issuecomment-5562670247",
+      "timestamp": "2026-09-06T22:37:02Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(metadata): optional_dependencies, a third dependency kind",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/228#issuecomment-5562641587",
+      "timestamp": "2026-09-06T22:31:32Z"
+    },
+    {
+      "repo": "logos-evm-keystore-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(keystore): split the ack timer into requester cleanup and abandoned-offer GC",
+      "url": "https://github.com/logos-co/logos-evm-keystore-module/pull/9#issuecomment-5562566885",
+      "timestamp": "2026-09-06T22:17:00Z"
+    },
+    {
+      "repo": "logos-package-manager",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(resolve): mark optional edges so an absent one is not a broken install",
+      "url": "https://github.com/logos-co/logos-package-manager/pull/42#issuecomment-5562546684",
+      "timestamp": "2026-09-06T22:13:15Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/optional-dependencies\"",
+      "url": "https://github.com/logos-co/logos-liblogos",
+      "timestamp": "2026-09-06T22:11:14Z"
+    },
+    {
+      "repo": "logos-test-modules",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/optional-dependencies\"",
+      "url": "https://github.com/logos-co/logos-test-modules",
+      "timestamp": "2026-09-06T22:10:02Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(deps): take the host that resolves a relative --path",
+      "url": "https://github.com/logos-co/logos-liblogos/pull/204#issuecomment-5562529088",
+      "timestamp": "2026-09-06T22:09:55Z"
+    },
+    {
+      "repo": "logos-package-manager",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/optional-dependencies\"",
+      "url": "https://github.com/logos-co/logos-package-manager",
+      "timestamp": "2026-09-06T22:08:04Z"
+    },
+    {
+      "repo": "logos-tutorial",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/optional-dependencies\"",
+      "url": "https://github.com/logos-co/logos-tutorial",
+      "timestamp": "2026-09-06T22:07:36Z"
+    },
+    {
+      "repo": "logos-package",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(manifest): optional and interface dependencies, at 0.6.0",
+      "url": "https://github.com/logos-co/logos-package/pull/39#issuecomment-5562507210",
+      "timestamp": "2026-09-06T22:06:01Z"
+    },
+    {
+      "repo": "logos-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(metadata): decode optional_dependencies as a second edge set",
+      "url": "https://github.com/logos-co/logos-module/pull/26#issuecomment-5562495445",
+      "timestamp": "2026-09-06T22:04:02Z"
+    },
+    {
+      "repo": "nix-bundle-lgx",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/optional-dependencies\"",
+      "url": "https://github.com/logos-co/nix-bundle-lgx",
+      "timestamp": "2026-09-06T22:02:33Z"
+    },
+    {
       "repo": "logos-rln-modules",
       "type": "Comment",
       "cls": "type-create",
@@ -1618,38 +1714,6 @@
       "title": "new branch \"feat/version-template\"",
       "url": "https://github.com/logos-co/logos-modules-release-action",
       "timestamp": "2026-09-06T18:41:32Z"
-    },
-    {
-      "repo": "logos-modules-release-action",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/module-ref\"",
-      "url": "https://github.com/logos-co/logos-modules-release-action",
-      "timestamp": "2026-09-06T18:26:24Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs/blend-protocol-orphan-cleanup\"",
-      "url": "https://github.com/logos-co/logos-lips",
-      "timestamp": "2026-09-04T09:53:54Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Stake-Weighted Mix RLN DoS Protection spec",
-      "url": "https://github.com/logos-co/logos-lips/pull/327#issuecomment-5559756812",
-      "timestamp": "2026-09-06T14:07:09Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"review/ext-mechanism\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-09-04T10:46:12Z"
     }
   ],
   "discourse": [
@@ -2897,6 +2961,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-06T22:00:13Z",
-  "updated": 1788732013
+  "peer_snapshot": "2026-09-06T23:00:14Z",
+  "updated": 1788735614
 }
