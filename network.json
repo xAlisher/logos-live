@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788883039
+      "last_seen": 1788886339
     }
   ],
   "events": [
@@ -1516,6 +1516,70 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix: apply logos-nix's fetchCargoVendor User-Agent overlay in mkPkgsWith",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/220#issuecomment-5588780663",
+      "timestamp": "2026-09-08T16:54:44Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Add References to each demo, and say what each one does in plain words",
+      "url": "https://github.com/logos-co/logos-web/pull/163#issuecomment-5588611584",
+      "timestamp": "2026-09-08T16:40:46Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(nix): apply logos-nix's native overlays in mkPkgsWith",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/233#issuecomment-5588579580",
+      "timestamp": "2026-09-08T16:38:09Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/wire-logos-nix-native-overlays\"",
+      "url": "https://github.com/logos-co/logos-module-builder",
+      "timestamp": "2026-09-08T16:06:34Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(deps): take logos-cpp-sdk from 2026-08-24 up to master",
+      "url": "https://github.com/logos-co/logos-liblogos/pull/208#issuecomment-5588420446",
+      "timestamp": "2026-09-08T16:25:24Z"
+    },
+    {
+      "repo": "logos-lips",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[RFC] Blend: Bound connection traffic at the receiver",
+      "url": "https://github.com/logos-co/logos-lips/pull/421#issuecomment-5588283962",
+      "timestamp": "2026-09-08T16:14:36Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "Pre-release 0.2.3",
+      "url": "https://github.com/logos-co/logos-logoscore-cli/releases/tag/0.2.3",
+      "timestamp": "2026-09-08T16:12:50Z"
+    },
+    {
+      "repo": "logos-cpp-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(host): take LogosLoadDeps, and complete the optional-dependency surface",
+      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/158#issuecomment-5588157243",
+      "timestamp": "2026-09-08T16:05:18Z"
+    },
+    {
       "repo": "logos-web",
       "type": "Create",
       "cls": "type-create",
@@ -1527,7 +1591,7 @@
       "repo": "logos-web",
       "type": "Comment",
       "cls": "type-create",
-      "title": "Fix sharing on deployed builds, add site metadata and end to end tests",
+      "title": "Remove the file store, prove blocks instead, and add site metadata",
       "url": "https://github.com/logos-co/logos-web/pull/162#issuecomment-5587291793",
       "timestamp": "2026-09-08T15:05:40Z"
     },
@@ -1538,94 +1602,6 @@
       "title": "feat: Shell preview on a physical iOS device",
       "url": "https://github.com/logos-co/logos-basecamp/pull/398#issuecomment-5587291802",
       "timestamp": "2026-09-08T15:05:40Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"adjust-segmentation-spec\"",
-      "url": "https://github.com/logos-co/logos-lips",
-      "timestamp": "2026-09-07T08:17:12Z"
-    },
-    {
-      "repo": "logos-module-builder",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore: relock logos-protocol onto the readiness-gated token exchange",
-      "url": "https://github.com/logos-co/logos-module-builder/pull/232#issuecomment-5587187770",
-      "timestamp": "2026-09-08T14:58:24Z"
-    },
-    {
-      "repo": "logos-liblogos",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/load-concurrency-flake\"",
-      "url": "https://github.com/logos-co/logos-liblogos",
-      "timestamp": "2026-09-07T01:21:55Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/mobile-shell-preview-ios-device\"",
-      "url": "https://github.com/logos-co/logos-basecamp",
-      "timestamp": "2026-09-08T14:36:42Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"ci/windows-writable-workspace\"",
-      "url": "https://github.com/logos-co/logos-basecamp",
-      "timestamp": "2026-09-08T14:20:34Z"
-    },
-    {
-      "repo": "logos-nix",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/import-cargo-lock-thread-cargo\"",
-      "url": "https://github.com/logos-co/logos-nix",
-      "timestamp": "2026-09-08T14:19:27Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: Shell preview as an Android APK",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/395#issuecomment-5586925311",
-      "timestamp": "2026-09-08T14:41:06Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "ci(windows): stop staging a pkg/ tree the next checkout cannot delete",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/396#issuecomment-5586801112",
-      "timestamp": "2026-09-08T14:32:59Z"
-    },
-    {
-      "repo": "logos-standalone-app",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/logos-load-deps-enum\"",
-      "url": "https://github.com/logos-co/logos-standalone-app",
-      "timestamp": "2026-09-08T14:04:08Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "Pre-release 0.2.3-rc.2",
-      "url": "https://github.com/logos-co/logos-logoscore-cli/releases/tag/0.2.3-rc.2",
-      "timestamp": "2026-09-08T14:28:58Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore(core): take LogosLoadDeps in place of the with_dependencies bool",
-      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/120#issuecomment-5586581860",
-      "timestamp": "2026-09-08T14:17:22Z"
     }
   ],
   "discourse": [
@@ -2873,6 +2849,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-08T16:00:14Z",
-  "updated": 1788883214
+  "peer_snapshot": "2026-09-08T17:00:15Z",
+  "updated": 1788886815
 }
