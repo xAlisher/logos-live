@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788893599
+      "last_seen": 1788897559
     }
   ],
   "events": [
@@ -1516,6 +1516,70 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-qt-sdk",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/repin-protocol-4638634\"",
+      "url": "https://github.com/logos-co/logos-qt-sdk",
+      "timestamp": "2026-09-08T18:13:09Z"
+    },
+    {
+      "repo": "logos-release-set",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/ctl-install-path\"",
+      "url": "https://github.com/logos-co/logos-release-set",
+      "timestamp": "2026-09-08T18:07:23Z"
+    },
+    {
+      "repo": "logos-storage-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat: refresh config",
+      "url": "https://github.com/logos-co/logos-storage-module/pull/86#issuecomment-5590685632",
+      "timestamp": "2026-09-08T19:31:24Z"
+    },
+    {
+      "repo": "logos-protocol",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/abi-closure-check\"",
+      "url": "https://github.com/logos-co/logos-protocol",
+      "timestamp": "2026-09-08T18:04:30Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/repin-protocol-4638634\"",
+      "url": "https://github.com/logos-co/logos-liblogos",
+      "timestamp": "2026-09-08T18:40:09Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/relock-crates-io-fixes\"",
+      "url": "https://github.com/logos-co/logos-module-builder",
+      "timestamp": "2026-09-08T18:35:27Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(nix): finish the crates.io wiring \u2014 relock, and follow our logos-nix",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/234#issuecomment-5590315987",
+      "timestamp": "2026-09-08T19:01:18Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore: relock onto protocol 0.9 via the repinned upstreams",
+      "url": "https://github.com/logos-co/logos-liblogos/pull/210#issuecomment-5590306678",
+      "timestamp": "2026-09-08T19:00:33Z"
+    },
+    {
       "repo": "logos-storage-module",
       "type": "Create",
       "cls": "type-create",
@@ -1562,70 +1626,6 @@
       "title": "Logos Release Set 0.2.1-r.2+84ff81e",
       "url": "https://github.com/logos-co/logos-release-set/releases/tag/v0.2.1-r.2%2B84ff81e",
       "timestamp": "2026-09-08T18:40:54Z"
-    },
-    {
-      "repo": "logos-liblogos",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore: relock logos-protocol onto the readiness-gated token exchange",
-      "url": "https://github.com/logos-co/logos-liblogos/pull/209#issuecomment-5590062777",
-      "timestamp": "2026-09-08T18:40:22Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: load optional dependencies by default, and report the skips",
-      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/121#issuecomment-5590029052",
-      "timestamp": "2026-09-08T18:37:33Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: load optional dependencies by default",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/399#issuecomment-5590011128",
-      "timestamp": "2026-09-08T18:36:02Z"
-    },
-    {
-      "repo": "logos-storage-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/prepare-release-2.1.4\"",
-      "url": "https://github.com/logos-co/logos-storage-module",
-      "timestamp": "2026-09-07T06:17:02Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/default-load-optionals\"",
-      "url": "https://github.com/logos-co/logos-basecamp",
-      "timestamp": "2026-09-08T17:56:23Z"
-    },
-    {
-      "repo": "logos-qt-sdk",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(host): default loadModule to required + optional dependencies",
-      "url": "https://github.com/logos-co/logos-qt-sdk/pull/52#issuecomment-5589879283",
-      "timestamp": "2026-09-08T18:25:16Z"
-    },
-    {
-      "repo": "logos-cpp-sdk",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(host): default loadModule to required + optional dependencies",
-      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/160#issuecomment-5589878639",
-      "timestamp": "2026-09-08T18:25:13Z"
-    },
-    {
-      "repo": "logos-qt-sdk",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/default-load-optionals\"",
-      "url": "https://github.com/logos-co/logos-qt-sdk",
-      "timestamp": "2026-09-08T17:51:46Z"
     }
   ],
   "discourse": [
@@ -2873,6 +2873,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-08T19:00:13Z",
-  "updated": 1788894013
+  "peer_snapshot": "2026-09-08T20:00:13Z",
+  "updated": 1788897613
 }
