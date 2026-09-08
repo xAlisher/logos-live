@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788821658
+      "last_seen": 1788824958
     }
   ],
   "events": [
@@ -1516,6 +1516,38 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-protocol",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix: the token exchange waits on the caller's budget, not its own",
+      "url": "https://github.com/logos-co/logos-protocol/pull/85#issuecomment-5576839080",
+      "timestamp": "2026-09-07T23:42:49Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(tests): one logos-protocol in the ipc-test closure, not two",
+      "url": "https://github.com/logos-co/logos-rust-sdk/pull/55#issuecomment-5576828421",
+      "timestamp": "2026-09-07T23:41:42Z"
+    },
+    {
+      "repo": "logos-chat-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "docs: publish the module API reference to GitHub Pages",
+      "url": "https://github.com/logos-co/logos-chat-module/pull/68#issuecomment-5576740578",
+      "timestamp": "2026-09-07T23:32:45Z"
+    },
+    {
+      "repo": "logos-chat-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"docs/module-api-pages\"",
+      "url": "https://github.com/logos-co/logos-chat-module",
+      "timestamp": "2026-09-07T23:29:58Z"
+    },
+    {
       "repo": "logos-cpp-sdk",
       "type": "Comment",
       "cls": "type-create",
@@ -1642,41 +1674,16 @@
       "title": "new branch \"chore/relock-optional-dep-projection\"",
       "url": "https://github.com/logos-co/logos-logoscore-cli",
       "timestamp": "2026-09-07T18:47:34Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(deps): an optional dependency must not block a load",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/389#issuecomment-5574542912",
-      "timestamp": "2026-09-07T18:42:51Z"
-    },
-    {
-      "repo": "logos-module-builder",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore(deps): take nix-bundle-lgx with the new manifest keys",
-      "url": "https://github.com/logos-co/logos-module-builder/pull/229#issuecomment-5574185324",
-      "timestamp": "2026-09-07T17:57:43Z"
-    },
-    {
-      "repo": "logos-evm-eth-rpc-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/caller-deadline-on-call\"",
-      "url": "https://github.com/logos-co/logos-evm-eth-rpc-module",
-      "timestamp": "2026-09-07T17:36:50Z"
-    },
-    {
-      "repo": "logos-package-manager-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/optional-dependency-projection\"",
-      "url": "https://github.com/logos-co/logos-package-manager-module",
-      "timestamp": "2026-09-07T17:35:49Z"
     }
   ],
   "discourse": [
+    {
+      "title": "Logos Circle Katsina # 3 meetup",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-katsina-3-meetup/1926",
+      "timestamp": "2026-09-07T23:10:37.683Z",
+      "replies": 0
+    },
     {
       "title": "Logos circle yola meet up #2.0",
       "category": "Circles",
@@ -1879,13 +1886,6 @@
       "url": "https://forum.logos.co/t/logos-khartoum-circle-july-2026-meetup-report/1870",
       "timestamp": "2026-08-13T05:32:50.743Z",
       "replies": 1
-    },
-    {
-      "title": "Building Ghana\u2019s Tech Future ( Kumasi)",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/building-ghana-s-tech-future-kumasi/1825",
-      "timestamp": "2026-07-27T11:16:30.186Z",
-      "replies": 2
     }
   ],
   "stake": {
@@ -2921,6 +2921,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-07T23:00:14Z",
-  "updated": 1788822014
+  "peer_snapshot": "2026-09-08T00:00:14Z",
+  "updated": 1788825614
 }
