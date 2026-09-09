@@ -24,7 +24,7 @@
       "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
     ],
     "n_peers": 4,
-    "n_connections": 5,
+    "n_connections": 4,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
@@ -65,7 +65,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788958815
+      "last_seen": 1788962414
     }
   ],
   "events": [
@@ -1561,6 +1561,38 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-web",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"web/logos-demo-1\"",
+      "url": "https://github.com/logos-co/logos-web",
+      "timestamp": "2026-09-09T13:13:18Z"
+    },
+    {
+      "repo": "logos-evm-signer-ui",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat!: rename the module to evm_signer_ui",
+      "url": "https://github.com/logos-co/logos-evm-signer-ui/pull/9#issuecomment-5602907269",
+      "timestamp": "2026-09-09T13:45:36Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"manage-rln-module\"",
+      "url": "https://github.com/logos-co/logos-delivery-module",
+      "timestamp": "2026-09-09T13:00:12Z"
+    },
+    {
+      "repo": "logos-evm-keystore-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat!: default roles are evm_signer_ui / evm_keystore_ui",
+      "url": "https://github.com/logos-co/logos-evm-keystore-module/pull/13#issuecomment-5602713396",
+      "timestamp": "2026-09-09T13:32:25Z"
+    },
+    {
       "repo": "logos-tutorial",
       "type": "Comment",
       "cls": "type-create",
@@ -1575,46 +1607,6 @@
       "title": "new branch \"rln-plugin-agnostic\"",
       "url": "https://github.com/logos-co/logos-delivery-module",
       "timestamp": "2026-09-09T11:48:01Z"
-    },
-    {
-      "repo": "nimbos",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "update to Nim 2.2.12",
-      "url": "https://github.com/logos-co/nimbos/pull/195#issuecomment-5600978391",
-      "timestamp": "2026-09-09T11:19:13Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"ci/test-pr-against-merge-ref\"",
-      "url": "https://github.com/logos-co/spel",
-      "timestamp": "2026-09-09T10:46:28Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[EcoDev] Node dogfooding \u2014 post-storm 0.2.4 green-path + Blend-reachability hardening of the 1click on-ramp",
-      "url": "https://github.com/logos-co/ecosystem/issues/234#issuecomment-5600739829",
-      "timestamp": "2026-09-09T10:59:22Z"
-    },
-    {
-      "repo": "scaffold",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(basecamp): opt into the inspector build via `setup --inspector`",
-      "url": "https://github.com/logos-co/scaffold/pull/266#issuecomment-5600573750",
-      "timestamp": "2026-09-09T10:45:10Z"
-    },
-    {
-      "repo": "scaffold",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "basecamp: allow selecting bin-bundle-dir-inspector via [repos.basecamp].attr",
-      "url": "https://github.com/logos-co/scaffold/issues/265#issuecomment-5600572513",
-      "timestamp": "2026-09-09T10:45:04Z"
     }
   ],
   "discourse": [
@@ -1893,10 +1885,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788354000,
-        "count": 0
-      },
       {
         "ts": 1788357600,
         "count": 0
@@ -2568,6 +2556,10 @@
       {
         "ts": 1788958800,
         "count": 5
+      },
+      {
+        "ts": 1788962400,
+        "count": 5
       }
     ],
     "summary": {
@@ -2580,28 +2572,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 1.2,
-        "last_seen": 1788958812
+        "uptime_pct": 1.8,
+        "last_seen": 1788962412
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 1.2,
-        "last_seen": 1788958812
+        "uptime_pct": 1.8,
+        "last_seen": 1788962412
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 1.2,
-        "last_seen": 1788958812
+        "uptime_pct": 1.8,
+        "last_seen": 1788962412
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 1.2,
-        "last_seen": 1788958812
+        "uptime_pct": 1.8,
+        "last_seen": 1788962412
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 1.2,
-        "last_seen": 1788958810
+        "uptime_pct": 1.8,
+        "last_seen": 1788962410
       }
     ],
     "stake_estimate_hourly": [],
@@ -2609,10 +2601,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb"
         ]
       }
     ]
@@ -3579,7 +3571,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786704073,
+  "genesis_ts": 1786707672,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3589,6 +3581,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-09T13:00:15Z",
-  "updated": 1788958815
+  "peer_snapshot": "2026-09-09T14:00:14Z",
+  "updated": 1788962414
 }
