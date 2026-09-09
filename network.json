@@ -1,9 +1,42 @@
 {
-  "chain": {},
-  "network": {},
+  "chain": {
+    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
+    "lib_slot": 2251518,
+    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
+    "slot": 2254742,
+    "height": 78366,
+    "state": "Bootstrapping",
+    "mode": "Bootstrapping"
+  },
+  "network": {
+    "listen_addresses": [
+      "/ip4/127.0.0.1/udp/3000/quic-v1",
+      "/ip4/192.168.1.36/udp/3000/quic-v1",
+      "/ip4/100.108.127.3/udp/3000/quic-v1",
+      "/ip4/172.18.0.1/udp/3000/quic-v1",
+      "/ip4/172.17.0.1/udp/3000/quic-v1"
+    ],
+    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+    "connected_peers": [
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+    ],
+    "n_peers": 4,
+    "n_connections": 5,
+    "n_pending_connections": 1,
+    "discovered_peers": [
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+    ],
+    "n_discovered_peers": 4
+  },
   "nodes": [
     {
-      "peer_id": "",
+      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
       "ip": "88.19.213.99",
       "lat": 39.0665,
       "lon": -0.5617,
@@ -19,7 +52,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +65,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788972752
+      "last_seen": 1788976816
     }
   ],
   "events": [
@@ -1540,6 +1573,46 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(rln): own the LEZ knowledge the delivery plugin no longer carries",
+      "url": "https://github.com/logos-co/logos-delivery-module/pull/100#issuecomment-5606405680",
+      "timestamp": "2026-09-09T17:58:38Z"
+    },
+    {
+      "repo": "logos-docs",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"config-port-root-updates\"",
+      "url": "https://github.com/logos-co/logos-docs",
+      "timestamp": "2026-09-09T15:59:25Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(package): give the daemon's package-module calls a transfer deadline, and say why a call failed",
+      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/124#issuecomment-5606137130",
+      "timestamp": "2026-09-09T17:37:11Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "lez_core v0.4.1",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/lez_core-v0.4.1",
+      "timestamp": "2026-09-09T17:35:55Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Manage rln module from within delivery module",
+      "url": "https://github.com/logos-co/logos-delivery-module/pull/101#issuecomment-5606016731",
+      "timestamp": "2026-09-09T17:27:33Z"
+    },
+    {
       "repo": "logos-basecamp",
       "type": "Create",
       "cls": "type-create",
@@ -1634,33 +1707,16 @@
       "title": "new branch \"web/logos-demo-1\"",
       "url": "https://github.com/logos-co/logos-web",
       "timestamp": "2026-09-09T13:13:18Z"
-    },
-    {
-      "repo": "logos-evm-signer-ui",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat!: rename the module to evm_signer_ui",
-      "url": "https://github.com/logos-co/logos-evm-signer-ui/pull/9#issuecomment-5602907269",
-      "timestamp": "2026-09-09T13:45:36Z"
-    },
-    {
-      "repo": "logos-delivery-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"manage-rln-module\"",
-      "url": "https://github.com/logos-co/logos-delivery-module",
-      "timestamp": "2026-09-09T13:00:12Z"
-    },
-    {
-      "repo": "logos-evm-keystore-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat!: default roles are evm_signer_ui / evm_keystore_ui",
-      "url": "https://github.com/logos-co/logos-evm-keystore-module/pull/13#issuecomment-5602713396",
-      "timestamp": "2026-09-09T13:32:25Z"
     }
   ],
   "discourse": [
+    {
+      "title": "Logos Circle Kampala Report \u2013 August",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-kampala-report-august/1928",
+      "timestamp": "2026-09-09T17:29:46.496Z",
+      "replies": 0
+    },
     {
       "title": "Logos Circle Awka, September 2026",
       "category": "Circles",
@@ -1863,13 +1919,6 @@
       "url": "https://forum.logos.co/t/logos-circle-ede/1874",
       "timestamp": "2026-08-14T11:51:38.472Z",
       "replies": 1
-    },
-    {
-      "title": "Logos Circle Aba #2 \u2014 July 2026 Meetup Report",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-aba-2-july-2026-meetup-report/1873",
-      "timestamp": "2026-08-14T03:12:51.016Z",
-      "replies": 1
     }
   ],
   "stake": {
@@ -1936,10 +1985,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788368400,
-        "count": 0
-      },
       {
         "ts": 1788372000,
         "count": 0
@@ -2611,6 +2656,10 @@
       {
         "ts": 1788973200,
         "count": 5
+      },
+      {
+        "ts": 1788976800,
+        "count": 5
       }
     ],
     "summary": {
@@ -2623,28 +2672,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 3.6,
-        "last_seen": 1788973216
+        "uptime_pct": 4.1,
+        "last_seen": 1788976812
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 3.6,
-        "last_seen": 1788973216
+        "uptime_pct": 4.1,
+        "last_seen": 1788976812
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 3.6,
-        "last_seen": 1788973216
+        "uptime_pct": 4.1,
+        "last_seen": 1788976812
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 3.6,
-        "last_seen": 1788973216
+        "uptime_pct": 4.1,
+        "last_seen": 1788976812
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 3.6,
-        "last_seen": 1788973203
+        "uptime_pct": 4.1,
+        "last_seen": 1788976809
       }
     ],
     "stake_estimate_hourly": [],
@@ -2652,10 +2701,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
           "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
         ]
       }
     ]
@@ -3622,7 +3671,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": null,
+  "genesis_ts": 1786722074,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3632,6 +3681,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-09T17:00:19Z",
-  "updated": 1788973219
+  "peer_snapshot": "2026-09-09T18:00:16Z",
+  "updated": 1788976816
 }
