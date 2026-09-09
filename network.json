@@ -1,42 +1,9 @@
 {
-  "chain": {
-    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
-    "lib_slot": 2251518,
-    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
-    "slot": 2254742,
-    "height": 78366,
-    "state": "Bootstrapping",
-    "mode": "Bootstrapping"
-  },
-  "network": {
-    "listen_addresses": [
-      "/ip4/127.0.0.1/udp/3000/quic-v1",
-      "/ip4/192.168.1.36/udp/3000/quic-v1",
-      "/ip4/100.108.127.3/udp/3000/quic-v1",
-      "/ip4/172.18.0.1/udp/3000/quic-v1",
-      "/ip4/172.17.0.1/udp/3000/quic-v1"
-    ],
-    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
-    "connected_peers": [
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
-    ],
-    "n_peers": 4,
-    "n_connections": 4,
-    "n_pending_connections": 0,
-    "discovered_peers": [
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
-    ],
-    "n_discovered_peers": 4
-  },
+  "chain": {},
+  "network": {},
   "nodes": [
     {
-      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+      "peer_id": "",
       "ip": "88.19.213.99",
       "lat": 39.0665,
       "lon": -0.5617,
@@ -65,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788969618
+      "last_seen": 1788972752
     }
   ],
   "events": [
@@ -1970,10 +1937,6 @@
     "window_hours": 169,
     "active_peers_hourly": [
       {
-        "ts": 1788364800,
-        "count": 0
-      },
-      {
         "ts": 1788368400,
         "count": 0
       },
@@ -2644,6 +2607,10 @@
       {
         "ts": 1788969600,
         "count": 5
+      },
+      {
+        "ts": 1788973200,
+        "count": 5
       }
     ],
     "summary": {
@@ -2656,28 +2623,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 3.0,
-        "last_seen": 1788969617
+        "uptime_pct": 3.6,
+        "last_seen": 1788973216
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 3.0,
-        "last_seen": 1788969617
+        "uptime_pct": 3.6,
+        "last_seen": 1788973216
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 3.0,
-        "last_seen": 1788969617
+        "uptime_pct": 3.6,
+        "last_seen": 1788973216
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 3.0,
-        "last_seen": 1788969617
+        "uptime_pct": 3.6,
+        "last_seen": 1788973216
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 3.0,
-        "last_seen": 1788969614
+        "uptime_pct": 3.6,
+        "last_seen": 1788973203
       }
     ],
     "stake_estimate_hourly": [],
@@ -2685,10 +2652,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       }
     ]
@@ -3655,7 +3622,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786714876,
+  "genesis_ts": null,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3665,6 +3632,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-09T16:00:18Z",
-  "updated": 1788969618
+  "peer_snapshot": "2026-09-09T17:00:19Z",
+  "updated": 1788973219
 }
