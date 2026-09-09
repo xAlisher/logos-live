@@ -1,14 +1,47 @@
 {
-  "chain": {},
-  "network": {},
+  "chain": {
+    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
+    "lib_slot": 2251518,
+    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
+    "slot": 2254742,
+    "height": 78366,
+    "state": "Bootstrapping",
+    "mode": "Bootstrapping"
+  },
+  "network": {
+    "listen_addresses": [
+      "/ip4/127.0.0.1/udp/3000/quic-v1",
+      "/ip4/192.168.1.36/udp/3000/quic-v1",
+      "/ip4/100.108.127.3/udp/3000/quic-v1",
+      "/ip4/172.18.0.1/udp/3000/quic-v1",
+      "/ip4/172.17.0.1/udp/3000/quic-v1"
+    ],
+    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+    "connected_peers": [
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+    ],
+    "n_peers": 4,
+    "n_connections": 5,
+    "n_pending_connections": 0,
+    "discovered_peers": [
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+    ],
+    "n_discovered_peers": 4
+  },
   "nodes": [
     {
-      "peer_id": "",
-      "ip": "88.19.213.242",
-      "lat": 39.0864,
-      "lon": -0.4698,
+      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+      "ip": "88.19.213.99",
+      "lat": 39.0665,
+      "lon": -0.5617,
       "country": "Spain",
-      "city": "La Pobla Llarga",
+      "city": "C\u00e0rcer",
       "isp": "Telefonica de Espana SAU",
       "org": "RIMA (Red IP Multi Acceso)",
       "asn": "AS3352 TELEFONICA DE ESPANA S.A.U.",
@@ -19,7 +52,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +65,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1788954980
+      "last_seen": 1788958815
     }
   ],
   "events": [
@@ -1528,6 +1561,22 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-tutorial",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Tutorials for everything since tutorial-v4",
+      "url": "https://github.com/logos-co/logos-tutorial/pull/89#issuecomment-5601775153",
+      "timestamp": "2026-09-09T12:24:13Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"rln-plugin-agnostic\"",
+      "url": "https://github.com/logos-co/logos-delivery-module",
+      "timestamp": "2026-09-09T11:48:01Z"
+    },
+    {
       "repo": "nimbos",
       "type": "Comment",
       "cls": "type-create",
@@ -1566,22 +1615,6 @@
       "title": "basecamp: allow selecting bin-bundle-dir-inspector via [repos.basecamp].attr",
       "url": "https://github.com/logos-co/scaffold/issues/265#issuecomment-5600572513",
       "timestamp": "2026-09-09T10:45:04Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(cli): parse Vec<u64>, Vec<u128> and Vec<bool> arguments from comma-separated lists",
-      "url": "https://github.com/logos-co/spel/pull/266#issuecomment-5600451763",
-      "timestamp": "2026-09-09T10:34:29Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[RFC] Eras: Introduce era-based protocol versioning",
-      "url": "https://github.com/logos-co/logos-lips/pull/439#issuecomment-5600371962",
-      "timestamp": "2026-09-09T10:27:50Z"
     }
   ],
   "discourse": [
@@ -1856,7 +1889,734 @@
     ]
   },
   "recent_blocks": {},
-  "telemetry": {},
+  "telemetry": {
+    "source": "node-logs",
+    "window_hours": 169,
+    "active_peers_hourly": [
+      {
+        "ts": 1788354000,
+        "count": 0
+      },
+      {
+        "ts": 1788357600,
+        "count": 0
+      },
+      {
+        "ts": 1788361200,
+        "count": 0
+      },
+      {
+        "ts": 1788364800,
+        "count": 0
+      },
+      {
+        "ts": 1788368400,
+        "count": 0
+      },
+      {
+        "ts": 1788372000,
+        "count": 0
+      },
+      {
+        "ts": 1788375600,
+        "count": 0
+      },
+      {
+        "ts": 1788379200,
+        "count": 0
+      },
+      {
+        "ts": 1788382800,
+        "count": 0
+      },
+      {
+        "ts": 1788386400,
+        "count": 0
+      },
+      {
+        "ts": 1788390000,
+        "count": 0
+      },
+      {
+        "ts": 1788393600,
+        "count": 0
+      },
+      {
+        "ts": 1788397200,
+        "count": 0
+      },
+      {
+        "ts": 1788400800,
+        "count": 0
+      },
+      {
+        "ts": 1788404400,
+        "count": 0
+      },
+      {
+        "ts": 1788408000,
+        "count": 0
+      },
+      {
+        "ts": 1788411600,
+        "count": 0
+      },
+      {
+        "ts": 1788415200,
+        "count": 0
+      },
+      {
+        "ts": 1788418800,
+        "count": 0
+      },
+      {
+        "ts": 1788422400,
+        "count": 0
+      },
+      {
+        "ts": 1788426000,
+        "count": 0
+      },
+      {
+        "ts": 1788429600,
+        "count": 0
+      },
+      {
+        "ts": 1788433200,
+        "count": 0
+      },
+      {
+        "ts": 1788436800,
+        "count": 0
+      },
+      {
+        "ts": 1788440400,
+        "count": 0
+      },
+      {
+        "ts": 1788444000,
+        "count": 0
+      },
+      {
+        "ts": 1788447600,
+        "count": 0
+      },
+      {
+        "ts": 1788451200,
+        "count": 0
+      },
+      {
+        "ts": 1788454800,
+        "count": 0
+      },
+      {
+        "ts": 1788458400,
+        "count": 0
+      },
+      {
+        "ts": 1788462000,
+        "count": 0
+      },
+      {
+        "ts": 1788465600,
+        "count": 0
+      },
+      {
+        "ts": 1788469200,
+        "count": 0
+      },
+      {
+        "ts": 1788472800,
+        "count": 0
+      },
+      {
+        "ts": 1788476400,
+        "count": 0
+      },
+      {
+        "ts": 1788480000,
+        "count": 0
+      },
+      {
+        "ts": 1788483600,
+        "count": 0
+      },
+      {
+        "ts": 1788487200,
+        "count": 0
+      },
+      {
+        "ts": 1788490800,
+        "count": 0
+      },
+      {
+        "ts": 1788494400,
+        "count": 0
+      },
+      {
+        "ts": 1788498000,
+        "count": 0
+      },
+      {
+        "ts": 1788501600,
+        "count": 0
+      },
+      {
+        "ts": 1788505200,
+        "count": 0
+      },
+      {
+        "ts": 1788508800,
+        "count": 0
+      },
+      {
+        "ts": 1788512400,
+        "count": 0
+      },
+      {
+        "ts": 1788516000,
+        "count": 0
+      },
+      {
+        "ts": 1788519600,
+        "count": 0
+      },
+      {
+        "ts": 1788523200,
+        "count": 0
+      },
+      {
+        "ts": 1788526800,
+        "count": 0
+      },
+      {
+        "ts": 1788530400,
+        "count": 0
+      },
+      {
+        "ts": 1788534000,
+        "count": 0
+      },
+      {
+        "ts": 1788537600,
+        "count": 0
+      },
+      {
+        "ts": 1788541200,
+        "count": 0
+      },
+      {
+        "ts": 1788544800,
+        "count": 0
+      },
+      {
+        "ts": 1788548400,
+        "count": 0
+      },
+      {
+        "ts": 1788552000,
+        "count": 0
+      },
+      {
+        "ts": 1788555600,
+        "count": 0
+      },
+      {
+        "ts": 1788559200,
+        "count": 0
+      },
+      {
+        "ts": 1788562800,
+        "count": 0
+      },
+      {
+        "ts": 1788566400,
+        "count": 0
+      },
+      {
+        "ts": 1788570000,
+        "count": 0
+      },
+      {
+        "ts": 1788573600,
+        "count": 0
+      },
+      {
+        "ts": 1788577200,
+        "count": 0
+      },
+      {
+        "ts": 1788580800,
+        "count": 0
+      },
+      {
+        "ts": 1788584400,
+        "count": 0
+      },
+      {
+        "ts": 1788588000,
+        "count": 0
+      },
+      {
+        "ts": 1788591600,
+        "count": 0
+      },
+      {
+        "ts": 1788595200,
+        "count": 0
+      },
+      {
+        "ts": 1788598800,
+        "count": 0
+      },
+      {
+        "ts": 1788602400,
+        "count": 0
+      },
+      {
+        "ts": 1788606000,
+        "count": 0
+      },
+      {
+        "ts": 1788609600,
+        "count": 0
+      },
+      {
+        "ts": 1788613200,
+        "count": 0
+      },
+      {
+        "ts": 1788616800,
+        "count": 0
+      },
+      {
+        "ts": 1788620400,
+        "count": 0
+      },
+      {
+        "ts": 1788624000,
+        "count": 0
+      },
+      {
+        "ts": 1788627600,
+        "count": 0
+      },
+      {
+        "ts": 1788631200,
+        "count": 0
+      },
+      {
+        "ts": 1788634800,
+        "count": 0
+      },
+      {
+        "ts": 1788638400,
+        "count": 0
+      },
+      {
+        "ts": 1788642000,
+        "count": 0
+      },
+      {
+        "ts": 1788645600,
+        "count": 0
+      },
+      {
+        "ts": 1788649200,
+        "count": 0
+      },
+      {
+        "ts": 1788652800,
+        "count": 0
+      },
+      {
+        "ts": 1788656400,
+        "count": 0
+      },
+      {
+        "ts": 1788660000,
+        "count": 0
+      },
+      {
+        "ts": 1788663600,
+        "count": 0
+      },
+      {
+        "ts": 1788667200,
+        "count": 0
+      },
+      {
+        "ts": 1788670800,
+        "count": 0
+      },
+      {
+        "ts": 1788674400,
+        "count": 0
+      },
+      {
+        "ts": 1788678000,
+        "count": 0
+      },
+      {
+        "ts": 1788681600,
+        "count": 0
+      },
+      {
+        "ts": 1788685200,
+        "count": 0
+      },
+      {
+        "ts": 1788688800,
+        "count": 0
+      },
+      {
+        "ts": 1788692400,
+        "count": 0
+      },
+      {
+        "ts": 1788696000,
+        "count": 0
+      },
+      {
+        "ts": 1788699600,
+        "count": 0
+      },
+      {
+        "ts": 1788703200,
+        "count": 0
+      },
+      {
+        "ts": 1788706800,
+        "count": 0
+      },
+      {
+        "ts": 1788710400,
+        "count": 0
+      },
+      {
+        "ts": 1788714000,
+        "count": 0
+      },
+      {
+        "ts": 1788717600,
+        "count": 0
+      },
+      {
+        "ts": 1788721200,
+        "count": 0
+      },
+      {
+        "ts": 1788724800,
+        "count": 0
+      },
+      {
+        "ts": 1788728400,
+        "count": 0
+      },
+      {
+        "ts": 1788732000,
+        "count": 0
+      },
+      {
+        "ts": 1788735600,
+        "count": 0
+      },
+      {
+        "ts": 1788739200,
+        "count": 0
+      },
+      {
+        "ts": 1788742800,
+        "count": 0
+      },
+      {
+        "ts": 1788746400,
+        "count": 0
+      },
+      {
+        "ts": 1788750000,
+        "count": 0
+      },
+      {
+        "ts": 1788753600,
+        "count": 0
+      },
+      {
+        "ts": 1788757200,
+        "count": 0
+      },
+      {
+        "ts": 1788760800,
+        "count": 0
+      },
+      {
+        "ts": 1788764400,
+        "count": 0
+      },
+      {
+        "ts": 1788768000,
+        "count": 0
+      },
+      {
+        "ts": 1788771600,
+        "count": 0
+      },
+      {
+        "ts": 1788775200,
+        "count": 0
+      },
+      {
+        "ts": 1788778800,
+        "count": 0
+      },
+      {
+        "ts": 1788782400,
+        "count": 0
+      },
+      {
+        "ts": 1788786000,
+        "count": 0
+      },
+      {
+        "ts": 1788789600,
+        "count": 0
+      },
+      {
+        "ts": 1788793200,
+        "count": 0
+      },
+      {
+        "ts": 1788796800,
+        "count": 0
+      },
+      {
+        "ts": 1788800400,
+        "count": 0
+      },
+      {
+        "ts": 1788804000,
+        "count": 0
+      },
+      {
+        "ts": 1788807600,
+        "count": 0
+      },
+      {
+        "ts": 1788811200,
+        "count": 0
+      },
+      {
+        "ts": 1788814800,
+        "count": 0
+      },
+      {
+        "ts": 1788818400,
+        "count": 0
+      },
+      {
+        "ts": 1788822000,
+        "count": 0
+      },
+      {
+        "ts": 1788825600,
+        "count": 0
+      },
+      {
+        "ts": 1788829200,
+        "count": 0
+      },
+      {
+        "ts": 1788832800,
+        "count": 0
+      },
+      {
+        "ts": 1788836400,
+        "count": 0
+      },
+      {
+        "ts": 1788840000,
+        "count": 0
+      },
+      {
+        "ts": 1788843600,
+        "count": 0
+      },
+      {
+        "ts": 1788847200,
+        "count": 0
+      },
+      {
+        "ts": 1788850800,
+        "count": 0
+      },
+      {
+        "ts": 1788854400,
+        "count": 0
+      },
+      {
+        "ts": 1788858000,
+        "count": 0
+      },
+      {
+        "ts": 1788861600,
+        "count": 0
+      },
+      {
+        "ts": 1788865200,
+        "count": 0
+      },
+      {
+        "ts": 1788868800,
+        "count": 0
+      },
+      {
+        "ts": 1788872400,
+        "count": 0
+      },
+      {
+        "ts": 1788876000,
+        "count": 0
+      },
+      {
+        "ts": 1788879600,
+        "count": 0
+      },
+      {
+        "ts": 1788883200,
+        "count": 0
+      },
+      {
+        "ts": 1788886800,
+        "count": 0
+      },
+      {
+        "ts": 1788890400,
+        "count": 0
+      },
+      {
+        "ts": 1788894000,
+        "count": 0
+      },
+      {
+        "ts": 1788897600,
+        "count": 0
+      },
+      {
+        "ts": 1788901200,
+        "count": 0
+      },
+      {
+        "ts": 1788904800,
+        "count": 0
+      },
+      {
+        "ts": 1788908400,
+        "count": 0
+      },
+      {
+        "ts": 1788912000,
+        "count": 0
+      },
+      {
+        "ts": 1788915600,
+        "count": 0
+      },
+      {
+        "ts": 1788919200,
+        "count": 0
+      },
+      {
+        "ts": 1788922800,
+        "count": 0
+      },
+      {
+        "ts": 1788926400,
+        "count": 0
+      },
+      {
+        "ts": 1788930000,
+        "count": 0
+      },
+      {
+        "ts": 1788933600,
+        "count": 0
+      },
+      {
+        "ts": 1788937200,
+        "count": 0
+      },
+      {
+        "ts": 1788940800,
+        "count": 0
+      },
+      {
+        "ts": 1788944400,
+        "count": 0
+      },
+      {
+        "ts": 1788948000,
+        "count": 0
+      },
+      {
+        "ts": 1788951600,
+        "count": 0
+      },
+      {
+        "ts": 1788955200,
+        "count": 5
+      },
+      {
+        "ts": 1788958800,
+        "count": 5
+      }
+    ],
+    "summary": {
+      "active_latest": 5,
+      "active_peak": 5,
+      "tracked_peers": 5,
+      "latest_total_stake": null,
+      "stake_points": 0
+    },
+    "peer_uptime": [
+      {
+        "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
+        "uptime_pct": 1.2,
+        "last_seen": 1788958812
+      },
+      {
+        "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
+        "uptime_pct": 1.2,
+        "last_seen": 1788958812
+      },
+      {
+        "peer_id": "12D3KooWQXJavMDTRscj\u2026",
+        "uptime_pct": 1.2,
+        "last_seen": 1788958812
+      },
+      {
+        "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
+        "uptime_pct": 1.2,
+        "last_seen": 1788958812
+      },
+      {
+        "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
+        "uptime_pct": 1.2,
+        "last_seen": 1788958810
+      }
+    ],
+    "stake_estimate_hourly": [],
+    "log_peers": [
+      {
+        "ip": "65.109.51.37",
+        "peer_ids": [
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+        ]
+      }
+    ]
+  },
   "zone_messages": [
     {
       "sender": "4a79c2b0",
@@ -2819,7 +3579,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": null,
+  "genesis_ts": 1786704073,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -2829,6 +3589,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-09T12:00:15Z",
-  "updated": 1788955215
+  "peer_snapshot": "2026-09-09T13:00:15Z",
+  "updated": 1788958815
 }
