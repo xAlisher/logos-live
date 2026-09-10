@@ -1,42 +1,9 @@
 {
-  "chain": {
-    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
-    "lib_slot": 2251518,
-    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
-    "slot": 2254742,
-    "height": 78366,
-    "state": "Bootstrapping",
-    "mode": "Bootstrapping"
-  },
-  "network": {
-    "listen_addresses": [
-      "/ip4/127.0.0.1/udp/3000/quic-v1",
-      "/ip4/192.168.1.36/udp/3000/quic-v1",
-      "/ip4/100.108.127.3/udp/3000/quic-v1",
-      "/ip4/172.18.0.1/udp/3000/quic-v1",
-      "/ip4/172.17.0.1/udp/3000/quic-v1"
-    ],
-    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
-    "connected_peers": [
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
-    ],
-    "n_peers": 4,
-    "n_connections": 5,
-    "n_pending_connections": 0,
-    "discovered_peers": [
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
-    ],
-    "n_discovered_peers": 4
-  },
+  "chain": {},
+  "network": {},
   "nodes": [
     {
-      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+      "peer_id": "",
       "ip": "88.19.213.99",
       "lat": 39.0665,
       "lon": -0.5617,
@@ -52,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -65,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789005619
+      "last_seen": 1789009053
     }
   ],
   "events": [
@@ -1573,6 +1540,62 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(deps): relock logos-nix (mingw libmicrohttpd, Nim 2.2.10)",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/239#issuecomment-5611933692",
+      "timestamp": "2026-09-10T02:53:14Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/wire-logos-nix-native-overlays\"",
+      "url": "https://github.com/logos-co/logos-rust-sdk",
+      "timestamp": "2026-09-08T17:00:02Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "Pre-release pre-release-dbacb8e-982",
+      "url": "https://github.com/logos-co/logos-basecamp/releases/tag/pre-release-dbacb8e-982",
+      "timestamp": "2026-09-10T02:47:48Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "Pre-release 0.3.0-rc.1",
+      "url": "https://github.com/logos-co/logos-logoscore-cli/releases/tag/0.3.0-rc.1",
+      "timestamp": "2026-09-10T02:41:33Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "0.3.0",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/405#issuecomment-5611839509",
+      "timestamp": "2026-09-10T02:40:41Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/call-hex-literal-is-string\"",
+      "url": "https://github.com/logos-co/logos-logoscore-cli",
+      "timestamp": "2026-09-09T20:48:12Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/relock-cpp-sdk\"",
+      "url": "https://github.com/logos-co/logos-liblogos",
+      "timestamp": "2026-09-08T16:10:37Z"
+    },
+    {
       "repo": "logos-nix",
       "type": "Create",
       "cls": "type-create",
@@ -1643,70 +1666,6 @@
       "title": "new branch \"fix/matrix-include-phantom-jobs\"",
       "url": "https://github.com/logos-co/logos-modules-release-action",
       "timestamp": "2026-09-09T19:32:02Z"
-    },
-    {
-      "repo": "logos-nix",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/windows-nim-2-2-10\"",
-      "url": "https://github.com/logos-co/logos-nix",
-      "timestamp": "2026-09-09T21:49:42Z"
-    },
-    {
-      "repo": "logos-qt-sdk",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/host-core-load-deps\"",
-      "url": "https://github.com/logos-co/logos-qt-sdk",
-      "timestamp": "2026-09-08T15:36:06Z"
-    },
-    {
-      "repo": "logos-eth-wallet-backend",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"doctest/headless-send\"",
-      "url": "https://github.com/logos-co/logos-eth-wallet-backend",
-      "timestamp": "2026-09-09T20:57:22Z"
-    },
-    {
-      "repo": "logos-eth-wallet-backend",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs/headless-operation\"",
-      "url": "https://github.com/logos-co/logos-eth-wallet-backend",
-      "timestamp": "2026-09-09T20:43:18Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/align-release-pins\"",
-      "url": "https://github.com/logos-co/logos-basecamp",
-      "timestamp": "2026-09-09T20:32:04Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(app-manager): size the version column to the versions it shows",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/404#issuecomment-5610419033",
-      "timestamp": "2026-09-09T23:53:11Z"
-    },
-    {
-      "repo": "logos-evm-keystore-cli",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs/link-wallet-headless\"",
-      "url": "https://github.com/logos-co/logos-evm-keystore-cli",
-      "timestamp": "2026-09-09T20:43:35Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/align-release-pins\"",
-      "url": "https://github.com/logos-co/logos-logoscore-cli",
-      "timestamp": "2026-09-09T20:32:01Z"
     }
   ],
   "discourse": [
@@ -1985,10 +1944,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788400800,
-        "count": 0
-      },
       {
         "ts": 1788404400,
         "count": 0
@@ -2660,6 +2615,10 @@
       {
         "ts": 1789005600,
         "count": 5
+      },
+      {
+        "ts": 1789009200,
+        "count": 5
       }
     ],
     "summary": {
@@ -2672,28 +2631,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 8.9,
-        "last_seen": 1789005612
+        "uptime_pct": 9.5,
+        "last_seen": 1789009218
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 8.9,
-        "last_seen": 1789005612
+        "uptime_pct": 9.5,
+        "last_seen": 1789009218
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 8.9,
-        "last_seen": 1789005612
+        "uptime_pct": 9.5,
+        "last_seen": 1789009218
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 8.9,
-        "last_seen": 1789005612
+        "uptime_pct": 9.5,
+        "last_seen": 1789009218
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 8.9,
-        "last_seen": 1789005609
+        "uptime_pct": 9.5,
+        "last_seen": 1789009201
       }
     ],
     "stake_estimate_hourly": [],
@@ -2702,9 +2661,9 @@
         "ip": "65.109.51.37",
         "peer_ids": [
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
         ]
       }
     ]
@@ -3671,7 +3630,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786750877,
+  "genesis_ts": null,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3681,6 +3640,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-10T02:00:19Z",
-  "updated": 1789005619
+  "peer_snapshot": "2026-09-10T03:00:19Z",
+  "updated": 1789009219
 }
