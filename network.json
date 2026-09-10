@@ -24,7 +24,7 @@
       "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
     ],
     "n_peers": 4,
-    "n_connections": 5,
+    "n_connections": 4,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
@@ -52,7 +52,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -65,7 +65,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789063227
+      "last_seen": 1789066826
     }
   ],
   "events": [
@@ -1585,6 +1585,78 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-eth-wallet-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/detail-under-tabs\"",
+      "url": "https://github.com/logos-co/logos-eth-wallet-ui",
+      "timestamp": "2026-09-10T13:09:40Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Make RLN API module pluggable with logos-delivery",
+      "url": "https://github.com/logos-co/logos-delivery-module/pull/94#issuecomment-5623800306",
+      "timestamp": "2026-09-10T18:49:59Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(plugins): load a ui plugin's own optional dependencies",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/409#issuecomment-5623769832",
+      "timestamp": "2026-09-10T18:47:28Z"
+    },
+    {
+      "repo": "logos-package-manager-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/project-optional-dependencies\"",
+      "url": "https://github.com/logos-co/logos-package-manager-module",
+      "timestamp": "2026-09-10T18:31:32Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(deps): one nix-bundle-lgx for both bundler paths",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/242#issuecomment-5623488936",
+      "timestamp": "2026-09-10T18:27:46Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/one-lgx-for-both-bundlers\"",
+      "url": "https://github.com/logos-co/logos-module-builder",
+      "timestamp": "2026-09-10T18:21:30Z"
+    },
+    {
+      "repo": "logos-monero-wallet-cli",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"gh-pages\"",
+      "url": "https://github.com/logos-co/logos-monero-wallet-cli",
+      "timestamp": "2026-09-10T13:47:49Z"
+    },
+    {
+      "repo": "logos-standalone-app",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/qt-host-protocol-pairing\"",
+      "url": "https://github.com/logos-co/logos-standalone-app",
+      "timestamp": "2026-09-09T03:04:04Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/qt-host-protocol-pairing\"",
+      "url": "https://github.com/logos-co/logos-basecamp",
+      "timestamp": "2026-09-09T03:04:02Z"
+    },
+    {
       "repo": "logos-token-list-ui",
       "type": "Create",
       "cls": "type-create",
@@ -1639,62 +1711,6 @@
       "title": "chore(deps): relock onto module-builder ff2ee218 \u2014 windows libwebsockets",
       "url": "https://github.com/logos-co/logos-json-rpc-bridge/pull/4#issuecomment-5621995618",
       "timestamp": "2026-09-10T16:27:41Z"
-    },
-    {
-      "repo": "logos-tx-decoder",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/leg-carries-what-it-decoded\"",
-      "url": "https://github.com/logos-co/logos-tx-decoder",
-      "timestamp": "2026-09-10T16:21:21Z"
-    },
-    {
-      "repo": "logos-evm-signer-cli",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(tokens): say what a token list calls the address being signed to",
-      "url": "https://github.com/logos-co/logos-evm-signer-cli/pull/4#issuecomment-5621835138",
-      "timestamp": "2026-09-10T16:15:22Z"
-    },
-    {
-      "repo": "logos-evm-signer-cli",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/token-list-interpretation\"",
-      "url": "https://github.com/logos-co/logos-evm-signer-cli",
-      "timestamp": "2026-09-10T16:03:34Z"
-    },
-    {
-      "repo": "logos-rln-modules",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "test(nix): build lez_core against logos-execution-zone#876",
-      "url": "https://github.com/logos-co/logos-rln-modules/pull/17#issuecomment-5621721980",
-      "timestamp": "2026-09-10T16:07:25Z"
-    },
-    {
-      "repo": "logos-module-builder",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore(deps): relock logos-nix (mingw libwebsockets)",
-      "url": "https://github.com/logos-co/logos-module-builder/pull/241#issuecomment-5621653645",
-      "timestamp": "2026-09-10T16:02:21Z"
-    },
-    {
-      "repo": "logos-rln-modules",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"test/lez-nix-overlays\"",
-      "url": "https://github.com/logos-co/logos-rln-modules",
-      "timestamp": "2026-09-10T15:59:52Z"
-    },
-    {
-      "repo": "logos-tx-decoder",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(tokens): name an address, and scale its amounts, from a token list",
-      "url": "https://github.com/logos-co/logos-tx-decoder/pull/6#issuecomment-5621476033",
-      "timestamp": "2026-09-10T15:49:20Z"
     }
   ],
   "discourse": [
@@ -1973,10 +1989,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788458400,
-        "count": 0
-      },
       {
         "ts": 1788462000,
         "count": 0
@@ -2648,6 +2660,10 @@
       {
         "ts": 1789063200,
         "count": 5
+      },
+      {
+        "ts": 1789066800,
+        "count": 5
       }
     ],
     "summary": {
@@ -2660,28 +2676,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 18.3,
-        "last_seen": 1789063221
+        "uptime_pct": 18.9,
+        "last_seen": 1789066824
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 18.3,
-        "last_seen": 1789063221
+        "uptime_pct": 18.9,
+        "last_seen": 1789066824
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 18.3,
-        "last_seen": 1789063221
+        "uptime_pct": 18.9,
+        "last_seen": 1789066824
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 18.3,
-        "last_seen": 1789063221
+        "uptime_pct": 18.9,
+        "last_seen": 1789066824
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 18.3,
-        "last_seen": 1789063208
+        "uptime_pct": 18.9,
+        "last_seen": 1789066811
       }
     ],
     "stake_estimate_hourly": [],
@@ -2689,10 +2705,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
           "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
         ]
       }
     ]
@@ -3659,7 +3675,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786808485,
+  "genesis_ts": 1786812085,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3669,6 +3685,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-10T18:00:27Z",
-  "updated": 1789063227
+  "peer_snapshot": "2026-09-10T19:00:27Z",
+  "updated": 1789066827
 }
