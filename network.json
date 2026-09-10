@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789030174
+      "last_seen": 1789034134
     }
   ],
   "events": [
@@ -1540,108 +1540,92 @@
   "youtube": {},
   "github": [
     {
-      "repo": "logos-basecamp",
+      "repo": "logos-modules-release-base",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/windows-x86_64-variant\"",
+      "url": "https://github.com/logos-co/logos-modules-release-base",
+      "timestamp": "2026-09-09T00:11:32Z"
+    },
+    {
+      "repo": "ecosystem",
       "type": "Comment",
       "cls": "type-create",
-      "title": "fix(ci): bump retries count when uploading to s3 bucket",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/408#issuecomment-5615850122",
-      "timestamp": "2026-09-10T08:50:05Z"
+      "title": "[RFP] Atomic Swaps with LEZ",
+      "url": "https://github.com/logos-co/ecosystem/issues/182#issuecomment-5616692159",
+      "timestamp": "2026-09-10T09:55:27Z"
     },
     {
-      "repo": "logos-rust-sdk",
+      "repo": "logos-evm-eth-rpc-module",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"fix/surface-the-daemon-log\"",
-      "url": "https://github.com/logos-co/logos-rust-sdk",
-      "timestamp": "2026-09-08T22:45:38Z"
+      "title": "new branch \"docs/correct-optional-dep-rationale\"",
+      "url": "https://github.com/logos-co/logos-evm-eth-rpc-module",
+      "timestamp": "2026-09-09T00:41:37Z"
     },
     {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "ci: bump timeouts",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/407#issuecomment-5615555277",
-      "timestamp": "2026-09-10T08:27:55Z"
-    },
-    {
-      "repo": "logos-modules-release",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "lez_indexer_module v1.1.2",
-      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/lez_indexer_module-v1.1.2",
-      "timestamp": "2026-09-10T08:27:53Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "ci: add Windows build pipeline",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/406#issuecomment-5615511095",
-      "timestamp": "2026-09-10T08:24:35Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
+      "repo": "logos-evm-signer-ui",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"chore/bump-package-downloader-module\"",
-      "url": "https://github.com/logos-co/logos-logoscore-cli",
-      "timestamp": "2026-09-08T22:13:19Z"
-    },
-    {
-      "repo": "logos-modules-dev",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/add-membership-ui\"",
-      "url": "https://github.com/logos-co/logos-modules-dev",
-      "timestamp": "2026-09-08T22:35:06Z"
-    },
-    {
-      "repo": "logos-monero-wallet-cli",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"main\"",
-      "url": "https://github.com/logos-co/logos-monero-wallet-cli",
-      "timestamp": "2026-09-10T02:38:31Z"
-    },
-    {
-      "repo": "logos-package-downloader-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/surface-download-error\"",
-      "url": "https://github.com/logos-co/logos-package-downloader-module",
-      "timestamp": "2026-09-08T21:27:05Z"
+      "title": "new branch \"chore/bump-module-builder\"",
+      "url": "https://github.com/logos-co/logos-evm-signer-ui",
+      "timestamp": "2026-09-08T20:12:12Z"
     },
     {
       "repo": "logos-liblogos",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"fix/load-deps-enum\"",
+      "title": "new branch \"fix/protocol-follows\"",
       "url": "https://github.com/logos-co/logos-liblogos",
-      "timestamp": "2026-09-08T20:32:00Z"
+      "timestamp": "2026-09-08T22:45:36Z"
     },
     {
-      "repo": "logos-module-builder",
+      "repo": "logos-modules-release-action",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"docs/load-deps-enum\"",
-      "url": "https://github.com/logos-co/logos-module-builder",
-      "timestamp": "2026-09-08T20:31:32Z"
+      "title": "new branch \"feat/windows-x86_64-variant\"",
+      "url": "https://github.com/logos-co/logos-modules-release-action",
+      "timestamp": "2026-09-09T00:10:50Z"
     },
     {
-      "repo": "logos-monero-wallet-backend",
-      "type": "Create",
+      "repo": "logos-delivery-module",
+      "type": "Comment",
       "cls": "type-create",
-      "title": "new branch \"main\"",
-      "url": "https://github.com/logos-co/logos-monero-wallet-backend",
-      "timestamp": "2026-09-10T02:37:02Z"
+      "title": "configureRln deadlocks the module: the dispatch thread waits on the RLN bridge lane, the lane waits on the dispatch thread",
+      "url": "https://github.com/logos-co/logos-delivery-module/issues/104#issuecomment-5616425709",
+      "timestamp": "2026-09-10T09:35:17Z"
     },
     {
-      "repo": "logos-module-viewer",
+      "repo": "logos-evm-uniswap-module",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"fix/load-deps-enum\"",
-      "url": "https://github.com/logos-co/logos-module-viewer",
-      "timestamp": "2026-09-08T20:31:36Z"
+      "title": "new branch \"fix/eth-rpc-call-deadline-arg\"",
+      "url": "https://github.com/logos-co/logos-evm-uniswap-module",
+      "timestamp": "2026-09-09T00:26:17Z"
+    },
+    {
+      "repo": "logos-evm-fee-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/bump-module-builder\"",
+      "url": "https://github.com/logos-co/logos-evm-fee-module",
+      "timestamp": "2026-09-08T20:04:17Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(ci): bump retries count when uploading to s3 bucket",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/408#issuecomment-5616249798",
+      "timestamp": "2026-09-10T09:22:24Z"
+    },
+    {
+      "repo": "logos-lez-rln",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"deploy/testnet-faucet-260908\"",
+      "url": "https://github.com/logos-co/logos-lez-rln",
+      "timestamp": "2026-09-09T00:03:44Z"
     }
   ],
   "discourse": [
@@ -1920,10 +1904,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788426000,
-        "count": 0
-      },
       {
         "ts": 1788429600,
         "count": 0
@@ -2595,6 +2575,10 @@
       {
         "ts": 1789030800,
         "count": 5
+      },
+      {
+        "ts": 1789034400,
+        "count": 5
       }
     ],
     "summary": {
@@ -2607,28 +2591,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 13.0,
-        "last_seen": 1789030818
+        "uptime_pct": 13.6,
+        "last_seen": 1789034419
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 13.0,
-        "last_seen": 1789030818
+        "uptime_pct": 13.6,
+        "last_seen": 1789034419
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 13.0,
-        "last_seen": 1789030818
+        "uptime_pct": 13.6,
+        "last_seen": 1789034419
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 13.0,
-        "last_seen": 1789030818
+        "uptime_pct": 13.6,
+        "last_seen": 1789034419
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 13.0,
-        "last_seen": 1789030805
+        "uptime_pct": 13.6,
+        "last_seen": 1789034406
       }
     ],
     "stake_estimate_hourly": [],
@@ -2636,10 +2620,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
           "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb"
         ]
       }
     ]
@@ -3616,6 +3600,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-10T09:00:23Z",
-  "updated": 1789030823
+  "peer_snapshot": "2026-09-10T10:00:24Z",
+  "updated": 1789034424
 }
