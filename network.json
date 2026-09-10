@@ -1,9 +1,42 @@
 {
-  "chain": {},
-  "network": {},
+  "chain": {
+    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
+    "lib_slot": 2251518,
+    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
+    "slot": 2254742,
+    "height": 78366,
+    "state": "Bootstrapping",
+    "mode": "Bootstrapping"
+  },
+  "network": {
+    "listen_addresses": [
+      "/ip4/127.0.0.1/udp/3000/quic-v1",
+      "/ip4/192.168.1.36/udp/3000/quic-v1",
+      "/ip4/100.108.127.3/udp/3000/quic-v1",
+      "/ip4/172.18.0.1/udp/3000/quic-v1",
+      "/ip4/172.17.0.1/udp/3000/quic-v1"
+    ],
+    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+    "connected_peers": [
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+    ],
+    "n_peers": 4,
+    "n_connections": 4,
+    "n_pending_connections": 0,
+    "discovered_peers": [
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
+    ],
+    "n_discovered_peers": 4
+  },
   "nodes": [
     {
-      "peer_id": "",
+      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
       "ip": "88.19.213.99",
       "lat": 39.0665,
       "lon": -0.5617,
@@ -19,7 +52,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +65,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789041394
+      "last_seen": 1789045227
     }
   ],
   "events": [
@@ -1540,6 +1573,38 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-evm-eth-rpc-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/windows-cross\"",
+      "url": "https://github.com/logos-co/logos-evm-eth-rpc-module",
+      "timestamp": "2026-09-09T01:35:43Z"
+    },
+    {
+      "repo": "logos-eth-wallet-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/wallet-ui-doctests\"",
+      "url": "https://github.com/logos-co/logos-eth-wallet-ui",
+      "timestamp": "2026-09-10T12:50:07Z"
+    },
+    {
+      "repo": "logos-eth-wallet-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/settings-tab\"",
+      "url": "https://github.com/logos-co/logos-eth-wallet-ui",
+      "timestamp": "2026-09-10T12:37:55Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"erhant/bump-modules-for-0.2.5-rc2-pt2\"",
+      "url": "https://github.com/logos-co/logos-modules-release",
+      "timestamp": "2026-09-10T07:49:35Z"
+    },
+    {
       "repo": "logos-basecamp",
       "type": "Release",
       "cls": "type-release",
@@ -1650,54 +1715,6 @@
       "title": "[RFP] Atomic Swaps with LEZ",
       "url": "https://github.com/logos-co/ecosystem/issues/182#issuecomment-5616692159",
       "timestamp": "2026-09-10T09:55:27Z"
-    },
-    {
-      "repo": "logos-evm-eth-rpc-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs/correct-optional-dep-rationale\"",
-      "url": "https://github.com/logos-co/logos-evm-eth-rpc-module",
-      "timestamp": "2026-09-09T00:41:37Z"
-    },
-    {
-      "repo": "logos-evm-signer-ui",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/bump-module-builder\"",
-      "url": "https://github.com/logos-co/logos-evm-signer-ui",
-      "timestamp": "2026-09-08T20:12:12Z"
-    },
-    {
-      "repo": "logos-liblogos",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/protocol-follows\"",
-      "url": "https://github.com/logos-co/logos-liblogos",
-      "timestamp": "2026-09-08T22:45:36Z"
-    },
-    {
-      "repo": "logos-modules-release-action",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/windows-x86_64-variant\"",
-      "url": "https://github.com/logos-co/logos-modules-release-action",
-      "timestamp": "2026-09-09T00:10:50Z"
-    },
-    {
-      "repo": "logos-delivery-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "configureRln deadlocks the module: the dispatch thread waits on the RLN bridge lane, the lane waits on the dispatch thread",
-      "url": "https://github.com/logos-co/logos-delivery-module/issues/104#issuecomment-5616425709",
-      "timestamp": "2026-09-10T09:35:17Z"
-    },
-    {
-      "repo": "logos-evm-uniswap-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/eth-rpc-call-deadline-arg\"",
-      "url": "https://github.com/logos-co/logos-evm-uniswap-module",
-      "timestamp": "2026-09-09T00:26:17Z"
     }
   ],
   "discourse": [
@@ -1976,10 +1993,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788436800,
-        "count": 0
-      },
       {
         "ts": 1788440400,
         "count": 0
@@ -2651,6 +2664,10 @@
       {
         "ts": 1789041600,
         "count": 5
+      },
+      {
+        "ts": 1789045200,
+        "count": 5
       }
     ],
     "summary": {
@@ -2663,28 +2680,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 14.8,
-        "last_seen": 1789041618
+        "uptime_pct": 15.4,
+        "last_seen": 1789045215
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 14.8,
-        "last_seen": 1789041618
+        "uptime_pct": 15.4,
+        "last_seen": 1789045215
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 14.8,
-        "last_seen": 1789041618
+        "uptime_pct": 15.4,
+        "last_seen": 1789045215
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 14.8,
-        "last_seen": 1789041618
+        "uptime_pct": 15.4,
+        "last_seen": 1789045215
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 14.8,
-        "last_seen": 1789041606
+        "uptime_pct": 15.4,
+        "last_seen": 1789045212
       }
     ],
     "stake_estimate_hourly": [],
@@ -2692,9 +2709,9 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
           "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
           "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
           "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
         ]
       }
@@ -3662,7 +3679,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": null,
+  "genesis_ts": 1786790487,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3672,6 +3689,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-10T12:00:23Z",
-  "updated": 1789041623
+  "peer_snapshot": "2026-09-10T13:00:29Z",
+  "updated": 1789045229
 }
