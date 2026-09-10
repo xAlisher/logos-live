@@ -1,42 +1,9 @@
 {
-  "chain": {
-    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
-    "lib_slot": 2251518,
-    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
-    "slot": 2254742,
-    "height": 78366,
-    "state": "Bootstrapping",
-    "mode": "Bootstrapping"
-  },
-  "network": {
-    "listen_addresses": [
-      "/ip4/127.0.0.1/udp/3000/quic-v1",
-      "/ip4/192.168.1.36/udp/3000/quic-v1",
-      "/ip4/100.108.127.3/udp/3000/quic-v1",
-      "/ip4/172.18.0.1/udp/3000/quic-v1",
-      "/ip4/172.17.0.1/udp/3000/quic-v1"
-    ],
-    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
-    "connected_peers": [
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
-    ],
-    "n_peers": 4,
-    "n_connections": 5,
-    "n_pending_connections": 0,
-    "discovered_peers": [
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
-    ],
-    "n_discovered_peers": 4
-  },
+  "chain": {},
+  "network": {},
   "nodes": [
     {
-      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+      "peer_id": "",
       "ip": "88.19.213.99",
       "lat": 39.0665,
       "lon": -0.5617,
@@ -65,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789038023
+      "last_seen": 1789041394
     }
   ],
   "events": [
@@ -1573,6 +1540,62 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-basecamp",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "0.3.0-rc.1",
+      "url": "https://github.com/logos-co/logos-basecamp/releases/tag/0.3.0-rc.1",
+      "timestamp": "2026-09-10T11:58:12Z"
+    },
+    {
+      "repo": "logos-delivery-demo",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat: expose configureRln in the demo",
+      "url": "https://github.com/logos-co/logos-delivery-demo/pull/27#issuecomment-5618052397",
+      "timestamp": "2026-09-10T11:38:08Z"
+    },
+    {
+      "repo": "logos-evm-uniswap-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/windows-cross\"",
+      "url": "https://github.com/logos-co/logos-evm-uniswap-module",
+      "timestamp": "2026-09-09T02:04:30Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "Pre-release pre-release-6bf70ba-995",
+      "url": "https://github.com/logos-co/logos-basecamp/releases/tag/pre-release-6bf70ba-995",
+      "timestamp": "2026-09-10T11:25:51Z"
+    },
+    {
+      "repo": "logos-evm-token-list-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/windows-cross\"",
+      "url": "https://github.com/logos-co/logos-evm-token-list-module",
+      "timestamp": "2026-09-09T02:39:41Z"
+    },
+    {
+      "repo": "logos-evm-signer-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/windows-cross\"",
+      "url": "https://github.com/logos-co/logos-evm-signer-ui",
+      "timestamp": "2026-09-09T02:39:37Z"
+    },
+    {
+      "repo": "logos-lips",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"docs/mempool-transaction-retention\"",
+      "url": "https://github.com/logos-co/logos-lips",
+      "timestamp": "2026-09-10T11:04:14Z"
+    },
+    {
       "repo": "logos-rust-sdk",
       "type": "Create",
       "cls": "type-create",
@@ -1675,22 +1698,6 @@
       "title": "new branch \"fix/eth-rpc-call-deadline-arg\"",
       "url": "https://github.com/logos-co/logos-evm-uniswap-module",
       "timestamp": "2026-09-09T00:26:17Z"
-    },
-    {
-      "repo": "logos-evm-fee-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/bump-module-builder\"",
-      "url": "https://github.com/logos-co/logos-evm-fee-module",
-      "timestamp": "2026-09-08T20:04:17Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(ci): bump retries count when uploading to s3 bucket",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/408#issuecomment-5616249798",
-      "timestamp": "2026-09-10T09:22:24Z"
     }
   ],
   "discourse": [
@@ -1969,10 +1976,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788433200,
-        "count": 0
-      },
       {
         "ts": 1788436800,
         "count": 0
@@ -2644,6 +2647,10 @@
       {
         "ts": 1789038000,
         "count": 5
+      },
+      {
+        "ts": 1789041600,
+        "count": 5
       }
     ],
     "summary": {
@@ -2656,28 +2663,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 14.2,
-        "last_seen": 1789038021
+        "uptime_pct": 14.8,
+        "last_seen": 1789041618
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 14.2,
-        "last_seen": 1789038021
+        "uptime_pct": 14.8,
+        "last_seen": 1789041618
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 14.2,
-        "last_seen": 1789038021
+        "uptime_pct": 14.8,
+        "last_seen": 1789041618
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 14.2,
-        "last_seen": 1789038021
+        "uptime_pct": 14.8,
+        "last_seen": 1789041618
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 14.2,
-        "last_seen": 1789038008
+        "uptime_pct": 14.8,
+        "last_seen": 1789041606
       }
     ],
     "stake_estimate_hourly": [],
@@ -2685,10 +2692,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
           "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
         ]
       }
     ]
@@ -3655,7 +3662,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786783283,
+  "genesis_ts": null,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3665,6 +3672,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-10T11:00:25Z",
-  "updated": 1789038025
+  "peer_snapshot": "2026-09-10T12:00:23Z",
+  "updated": 1789041623
 }
