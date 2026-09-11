@@ -1,42 +1,9 @@
 {
-  "chain": {
-    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
-    "lib_slot": 2251518,
-    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
-    "slot": 2254742,
-    "height": 78366,
-    "state": "Bootstrapping",
-    "mode": "Bootstrapping"
-  },
-  "network": {
-    "listen_addresses": [
-      "/ip4/127.0.0.1/udp/3000/quic-v1",
-      "/ip4/192.168.1.36/udp/3000/quic-v1",
-      "/ip4/100.108.127.3/udp/3000/quic-v1",
-      "/ip4/172.18.0.1/udp/3000/quic-v1",
-      "/ip4/172.17.0.1/udp/3000/quic-v1"
-    ],
-    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
-    "connected_peers": [
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
-    ],
-    "n_peers": 4,
-    "n_connections": 4,
-    "n_pending_connections": 0,
-    "discovered_peers": [
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
-    ],
-    "n_discovered_peers": 4
-  },
+  "chain": {},
+  "network": {},
   "nodes": [
     {
-      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+      "peer_id": "",
       "ip": "88.19.213.99",
       "lat": 39.0665,
       "lon": -0.5617,
@@ -52,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -65,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789081231
+      "last_seen": 1789084294
     }
   ],
   "events": [
@@ -1576,6 +1543,46 @@
       "repo": "logos-modules-dev",
       "type": "Release",
       "cls": "type-release",
+      "title": "liblogos_lez_rln_module v2.1.0-63.gc89c7691",
+      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/liblogos_lez_rln_module-v2.1.0-63.gc89c7691",
+      "timestamp": "2026-09-10T23:42:55Z"
+    },
+    {
+      "repo": "logos-modules-dev",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "liblogos_rln_module v0.7.0-64.g53d31e3d",
+      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/liblogos_rln_module-v0.7.0-64.g53d31e3d",
+      "timestamp": "2026-09-10T23:40:33Z"
+    },
+    {
+      "repo": "logos-modules-dev",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "delivery_module v0.2.1-136.g514fa126",
+      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/delivery_module-v0.2.1-136.g514fa126",
+      "timestamp": "2026-09-10T23:40:10Z"
+    },
+    {
+      "repo": "logos-package-manager-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/version-column-width\"",
+      "url": "https://github.com/logos-co/logos-package-manager-ui",
+      "timestamp": "2026-09-10T16:39:19Z"
+    },
+    {
+      "repo": "logos-modules-dev",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "lez_core v0.4.1-119.g0ea57f8a",
+      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/lez_core-v0.4.1-119.g0ea57f8a",
+      "timestamp": "2026-09-10T23:18:55Z"
+    },
+    {
+      "repo": "logos-modules-dev",
+      "type": "Release",
+      "cls": "type-release",
       "title": "liblogos_rln_module v0.5.0-37.g09077243",
       "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/liblogos_rln_module-v0.5.0-37.g09077243",
       "timestamp": "2026-09-10T22:57:08Z"
@@ -1715,38 +1722,6 @@
       "title": "docs: list the Windows installer among the distribution outputs",
       "url": "https://github.com/logos-co/logos-tutorial/pull/90#issuecomment-5625172317",
       "timestamp": "2026-09-10T20:43:08Z"
-    },
-    {
-      "repo": "logos-tutorial",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/tutorial-v5-capabilities\"",
-      "url": "https://github.com/logos-co/logos-tutorial",
-      "timestamp": "2026-09-09T11:55:56Z"
-    },
-    {
-      "repo": "logos-delivery-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(doctests): install the RLN dependency chain the module now needs",
-      "url": "https://github.com/logos-co/logos-delivery-module/pull/110#issuecomment-5624994843",
-      "timestamp": "2026-09-10T20:27:58Z"
-    },
-    {
-      "repo": "logos-modules-release",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "json_rpc_bridge v0.1.0",
-      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/json_rpc_bridge-v0.1.0",
-      "timestamp": "2026-09-10T20:26:58Z"
-    },
-    {
-      "repo": "logos-evm-signer-ui",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "test(e2e): let the host find the optional dependency, as a user would",
-      "url": "https://github.com/logos-co/logos-evm-signer-ui/pull/15#issuecomment-5624948067",
-      "timestamp": "2026-09-10T20:24:04Z"
     }
   ],
   "discourse": [
@@ -2025,10 +2000,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788476400,
-        "count": 0
-      },
       {
         "ts": 1788480000,
         "count": 0
@@ -2700,6 +2671,10 @@
       {
         "ts": 1789081200,
         "count": 5
+      },
+      {
+        "ts": 1789084800,
+        "count": 5
       }
     ],
     "summary": {
@@ -2712,28 +2687,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 21.3,
-        "last_seen": 1789081226
+        "uptime_pct": 21.9,
+        "last_seen": 1789084823
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 21.3,
-        "last_seen": 1789081226
+        "uptime_pct": 21.9,
+        "last_seen": 1789084823
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 21.3,
-        "last_seen": 1789081226
+        "uptime_pct": 21.9,
+        "last_seen": 1789084823
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 21.3,
-        "last_seen": 1789081226
+        "uptime_pct": 21.9,
+        "last_seen": 1789084823
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 21.3,
-        "last_seen": 1789081213
+        "uptime_pct": 21.9,
+        "last_seen": 1789084820
       }
     ],
     "stake_estimate_hourly": [],
@@ -2741,10 +2716,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
         ]
       }
     ]
@@ -3711,7 +3686,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786826489,
+  "genesis_ts": null,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3721,6 +3696,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-10T23:00:31Z",
-  "updated": 1789081231
+  "peer_snapshot": "2026-09-11T00:00:29Z",
+  "updated": 1789084829
 }
