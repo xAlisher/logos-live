@@ -65,7 +65,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789092029
+      "last_seen": 1789095630
     }
   ],
   "events": [
@@ -1573,6 +1573,22 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-view-module-runtime",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/windows-no-console\"",
+      "url": "https://github.com/logos-co/logos-view-module-runtime",
+      "timestamp": "2026-09-10T20:19:21Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/repoint-rln-module-branch\"",
+      "url": "https://github.com/logos-co/logos-delivery-module",
+      "timestamp": "2026-09-10T18:55:57Z"
+    },
+    {
       "repo": "logos-logoscore-cli",
       "type": "Comment",
       "cls": "type-create",
@@ -1707,30 +1723,6 @@
       "title": "feat: configure RLN in the demo, and show it live",
       "url": "https://github.com/logos-co/logos-delivery-demo/pull/27#issuecomment-5626035361",
       "timestamp": "2026-09-10T22:02:41Z"
-    },
-    {
-      "repo": "logos-rln-e2e",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/lez-v0.2.5\"",
-      "url": "https://github.com/logos-co/logos-rln-e2e",
-      "timestamp": "2026-09-10T21:49:13Z"
-    },
-    {
-      "repo": "logos-evm-fee-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/estimate-gas-fee-cap\"",
-      "url": "https://github.com/logos-co/logos-evm-fee-module",
-      "timestamp": "2026-09-10T16:27:18Z"
-    },
-    {
-      "repo": "logos-delivery-demo",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"add-configure-rln\"",
-      "url": "https://github.com/logos-co/logos-delivery-demo",
-      "timestamp": "2026-09-09T13:02:20Z"
     }
   ],
   "discourse": [
@@ -2009,10 +2001,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788487200,
-        "count": 0
-      },
       {
         "ts": 1788490800,
         "count": 0
@@ -2684,6 +2672,10 @@
       {
         "ts": 1789092000,
         "count": 5
+      },
+      {
+        "ts": 1789095600,
+        "count": 5
       }
     ],
     "summary": {
@@ -2696,28 +2688,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 23.1,
-        "last_seen": 1789092026
+        "uptime_pct": 23.7,
+        "last_seen": 1789095627
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 23.1,
-        "last_seen": 1789092026
+        "uptime_pct": 23.7,
+        "last_seen": 1789095627
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 23.1,
-        "last_seen": 1789092026
+        "uptime_pct": 23.7,
+        "last_seen": 1789095627
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 23.1,
-        "last_seen": 1789092026
+        "uptime_pct": 23.7,
+        "last_seen": 1789095627
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 23.1,
-        "last_seen": 1789092025
+        "uptime_pct": 23.7,
+        "last_seen": 1789095627
       }
     ],
     "stake_estimate_hourly": [],
@@ -2725,10 +2717,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
           "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       }
     ]
@@ -3695,7 +3687,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786837287,
+  "genesis_ts": 1786840888,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3705,6 +3697,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-11T02:00:29Z",
-  "updated": 1789092029
+  "peer_snapshot": "2026-09-11T03:00:30Z",
+  "updated": 1789095630
 }
