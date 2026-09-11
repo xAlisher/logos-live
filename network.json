@@ -24,7 +24,7 @@
       "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
     ],
     "n_peers": 4,
-    "n_connections": 5,
+    "n_connections": 4,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
@@ -52,7 +52,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -65,7 +65,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789095630
+      "last_seen": 1789099232
     }
   ],
   "events": [
@@ -1573,6 +1573,38 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-workspace",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Nightly bump / doc-tests failing",
+      "url": "https://github.com/logos-co/logos-workspace/issues/74#issuecomment-5629237356",
+      "timestamp": "2026-09-11T03:59:57Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/catalog-array-valued-provides\"",
+      "url": "https://github.com/logos-co/logos-basecamp",
+      "timestamp": "2026-09-10T21:42:03Z"
+    },
+    {
+      "repo": "logos-package-downloader",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/catalog-array-valued-provides\"",
+      "url": "https://github.com/logos-co/logos-package-downloader",
+      "timestamp": "2026-09-10T21:38:15Z"
+    },
+    {
+      "repo": "logos-lez-rln",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/lez-v0.2.5\"",
+      "url": "https://github.com/logos-co/logos-lez-rln",
+      "timestamp": "2026-09-10T21:22:04Z"
+    },
+    {
       "repo": "logos-view-module-runtime",
       "type": "Create",
       "cls": "type-create",
@@ -1699,30 +1731,6 @@
       "title": "chore(deps): pick up the catalog fix that dropped whole repositories",
       "url": "https://github.com/logos-co/logos-basecamp/pull/412#issuecomment-5626085616",
       "timestamp": "2026-09-10T22:07:23Z"
-    },
-    {
-      "repo": "logos-delivery-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore(nix): relock onto the rln-modules lez repoint",
-      "url": "https://github.com/logos-co/logos-delivery-module/pull/111#issuecomment-5626081119",
-      "timestamp": "2026-09-10T22:06:56Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore(deps): pick up the catalog fix that dropped whole repositories",
-      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/129#issuecomment-5626043567",
-      "timestamp": "2026-09-10T22:03:26Z"
-    },
-    {
-      "repo": "logos-delivery-demo",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: configure RLN in the demo, and show it live",
-      "url": "https://github.com/logos-co/logos-delivery-demo/pull/27#issuecomment-5626035361",
-      "timestamp": "2026-09-10T22:02:41Z"
     }
   ],
   "discourse": [
@@ -2001,10 +2009,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788490800,
-        "count": 0
-      },
       {
         "ts": 1788494400,
         "count": 0
@@ -2676,6 +2680,10 @@
       {
         "ts": 1789095600,
         "count": 5
+      },
+      {
+        "ts": 1789099200,
+        "count": 5
       }
     ],
     "summary": {
@@ -2688,28 +2696,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 23.7,
-        "last_seen": 1789095627
+        "uptime_pct": 24.3,
+        "last_seen": 1789099226
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 23.7,
-        "last_seen": 1789095627
+        "uptime_pct": 24.3,
+        "last_seen": 1789099226
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 23.7,
-        "last_seen": 1789095627
+        "uptime_pct": 24.3,
+        "last_seen": 1789099226
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 23.7,
-        "last_seen": 1789095627
+        "uptime_pct": 24.3,
+        "last_seen": 1789099226
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 23.7,
-        "last_seen": 1789095627
+        "uptime_pct": 24.3,
+        "last_seen": 1789099213
       }
     ],
     "stake_estimate_hourly": [],
@@ -2717,9 +2725,9 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
+          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
           "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-          "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
           "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       }
@@ -3687,7 +3695,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786840888,
+  "genesis_ts": 1786844491,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3697,6 +3705,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-11T03:00:30Z",
-  "updated": 1789095630
+  "peer_snapshot": "2026-09-11T04:00:33Z",
+  "updated": 1789099233
 }
