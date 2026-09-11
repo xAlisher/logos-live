@@ -1,42 +1,9 @@
 {
-  "chain": {
-    "lib": "3fe9fa057e7195e512e9938a6045ef8f22097106a066f731bbc22de994fd960c",
-    "lib_slot": 2251518,
-    "tip": "b63b66214f69f52ebb37c6b38fedccfcf9327fcfb55bedd6fec72d918f57dbeb",
-    "slot": 2254742,
-    "height": 78366,
-    "state": "Bootstrapping",
-    "mode": "Bootstrapping"
-  },
-  "network": {
-    "listen_addresses": [
-      "/ip4/127.0.0.1/udp/3000/quic-v1",
-      "/ip4/192.168.1.36/udp/3000/quic-v1",
-      "/ip4/100.108.127.3/udp/3000/quic-v1",
-      "/ip4/172.18.0.1/udp/3000/quic-v1",
-      "/ip4/172.17.0.1/udp/3000/quic-v1"
-    ],
-    "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
-    "connected_peers": [
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
-    ],
-    "n_peers": 4,
-    "n_connections": 4,
-    "n_pending_connections": 0,
-    "discovered_peers": [
-      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
-      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
-      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz"
-    ],
-    "n_discovered_peers": 4
-  },
+  "chain": {},
+  "network": {},
   "nodes": [
     {
-      "peer_id": "12D3KooWR47pVGQNEaSKtWYYphzYjyKAtvo1v81zdaRDHRt1Gzw1",
+      "peer_id": "",
       "ip": "88.19.213.99",
       "lat": 39.0665,
       "lon": -0.5617,
@@ -65,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789102832
+      "last_seen": 1789106075
     }
   ],
   "events": [
@@ -1573,6 +1540,22 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-delivery-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/rln-lifecycle-deadlock-followup\"",
+      "url": "https://github.com/logos-co/logos-delivery-module",
+      "timestamp": "2026-09-09T20:18:38Z"
+    },
+    {
+      "repo": "logos-cpp-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore: relock logos-protocol onto the reserved completion channel",
+      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/161#issuecomment-5629746293",
+      "timestamp": "2026-09-11T05:03:56Z"
+    },
+    {
       "repo": "logos-rln-modules",
       "type": "Create",
       "cls": "type-create",
@@ -1659,54 +1642,6 @@
       "title": "new branch \"chore/bump-module-builder\"",
       "url": "https://github.com/logos-co/logos-package-manager-module",
       "timestamp": "2026-09-10T18:52:38Z"
-    },
-    {
-      "repo": "logos-standalone-app",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/load-plugin-optional-deps\"",
-      "url": "https://github.com/logos-co/logos-standalone-app",
-      "timestamp": "2026-09-10T18:44:38Z"
-    },
-    {
-      "repo": "logos-modules-dev",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "liblogos_lez_rln_module v2.1.0-63.gc89c7691",
-      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/liblogos_lez_rln_module-v2.1.0-63.gc89c7691",
-      "timestamp": "2026-09-10T23:42:55Z"
-    },
-    {
-      "repo": "logos-modules-dev",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "liblogos_rln_module v0.7.0-64.g53d31e3d",
-      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/liblogos_rln_module-v0.7.0-64.g53d31e3d",
-      "timestamp": "2026-09-10T23:40:33Z"
-    },
-    {
-      "repo": "logos-modules-dev",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "delivery_module v0.2.1-136.g514fa126",
-      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/delivery_module-v0.2.1-136.g514fa126",
-      "timestamp": "2026-09-10T23:40:10Z"
-    },
-    {
-      "repo": "logos-package-manager-ui",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/version-column-width\"",
-      "url": "https://github.com/logos-co/logos-package-manager-ui",
-      "timestamp": "2026-09-10T16:39:19Z"
-    },
-    {
-      "repo": "logos-modules-dev",
-      "type": "Release",
-      "cls": "type-release",
-      "title": "lez_core v0.4.1-119.g0ea57f8a",
-      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/lez_core-v0.4.1-119.g0ea57f8a",
-      "timestamp": "2026-09-10T23:18:55Z"
     }
   ],
   "discourse": [
@@ -1985,10 +1920,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788498000,
-        "count": 0
-      },
       {
         "ts": 1788501600,
         "count": 0
@@ -2660,6 +2591,10 @@
       {
         "ts": 1789102800,
         "count": 5
+      },
+      {
+        "ts": 1789106400,
+        "count": 5
       }
     ],
     "summary": {
@@ -2672,28 +2607,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 24.9,
-        "last_seen": 1789102825
+        "uptime_pct": 25.4,
+        "last_seen": 1789106422
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 24.9,
-        "last_seen": 1789102825
+        "uptime_pct": 25.4,
+        "last_seen": 1789106422
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 24.9,
-        "last_seen": 1789102825
+        "uptime_pct": 25.4,
+        "last_seen": 1789106422
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 24.9,
-        "last_seen": 1789102825
+        "uptime_pct": 25.4,
+        "last_seen": 1789106422
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 24.9,
-        "last_seen": 1789102812
+        "uptime_pct": 25.4,
+        "last_seen": 1789106420
       }
     ],
     "stake_estimate_hourly": [],
@@ -2701,10 +2636,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
           "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
           "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1"
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       }
     ]
@@ -3671,7 +3606,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1786848090,
+  "genesis_ts": null,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3681,6 +3616,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-11T05:00:32Z",
-  "updated": 1789102832
+  "peer_snapshot": "2026-09-11T06:00:30Z",
+  "updated": 1789106430
 }
