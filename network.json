@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1780015698,
-      "last_seen": 1789109375
+      "last_seen": 1789113335
     }
   ],
   "events": [
@@ -1540,6 +1540,38 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Remove duplicate lib files",
+      "url": "https://github.com/logos-co/logos-delivery-module/pull/112#issuecomment-5631247532",
+      "timestamp": "2026-09-11T07:52:50Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"improve-rln-msg-hot-path\"",
+      "url": "https://github.com/logos-co/logos-delivery-module",
+      "timestamp": "2026-09-11T07:48:07Z"
+    },
+    {
+      "repo": "ecosystem",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[LP] Atomic swap maker mainnet liquidity provision",
+      "url": "https://github.com/logos-co/ecosystem/issues/177#issuecomment-5631073859",
+      "timestamp": "2026-09-11T07:35:51Z"
+    },
+    {
+      "repo": "ecosystem",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[LP] Atomic swap maker SDK / starter kit",
+      "url": "https://github.com/logos-co/ecosystem/issues/176#issuecomment-5631071007",
+      "timestamp": "2026-09-11T07:35:35Z"
+    },
+    {
       "repo": "logos-liblogos",
       "type": "Comment",
       "cls": "type-create",
@@ -1650,22 +1682,6 @@
       "title": "new branch \"fix/catalog-array-valued-provides\"",
       "url": "https://github.com/logos-co/logos-package-downloader",
       "timestamp": "2026-09-10T21:38:15Z"
-    },
-    {
-      "repo": "logos-lez-rln",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/lez-v0.2.5\"",
-      "url": "https://github.com/logos-co/logos-lez-rln",
-      "timestamp": "2026-09-10T21:22:04Z"
-    },
-    {
-      "repo": "logos-view-module-runtime",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/windows-no-console\"",
-      "url": "https://github.com/logos-co/logos-view-module-runtime",
-      "timestamp": "2026-09-10T20:19:21Z"
     }
   ],
   "discourse": [
@@ -1885,7 +1901,7 @@
     "total_distributed": 7094997,
     "faucet_remainder": null,
     "unique_leaders": 171414,
-    "total_leader_blocks": 192263,
+    "total_leader_blocks": 192384,
     "top_leaders": [
       {
         "pk": "043a923e7f4e499c",
@@ -2173,10 +2189,6 @@
     "source": "node-logs",
     "window_hours": 169,
     "active_peers_hourly": [
-      {
-        "ts": 1788505200,
-        "count": 0
-      },
       {
         "ts": 1788508800,
         "count": 0
@@ -2848,6 +2860,10 @@
       {
         "ts": 1789110000,
         "count": 5
+      },
+      {
+        "ts": 1789113600,
+        "count": 5
       }
     ],
     "summary": {
@@ -2860,28 +2876,28 @@
     "peer_uptime": [
       {
         "peer_id": "12D3KooWFrouXfmrR4ns\u2026",
-        "uptime_pct": 26.0,
-        "last_seen": 1789110029
+        "uptime_pct": 26.6,
+        "last_seen": 1789113630
       },
       {
         "peer_id": "12D3KooWJRGau8M1rjT7\u2026",
-        "uptime_pct": 26.0,
-        "last_seen": 1789110029
+        "uptime_pct": 26.6,
+        "last_seen": 1789113630
       },
       {
         "peer_id": "12D3KooWQXJavMDTRscj\u2026",
-        "uptime_pct": 26.0,
-        "last_seen": 1789110029
+        "uptime_pct": 26.6,
+        "last_seen": 1789113630
       },
       {
         "peer_id": "12D3KooWSQc7CcGtvWDP\u2026",
-        "uptime_pct": 26.0,
-        "last_seen": 1789110029
+        "uptime_pct": 26.6,
+        "last_seen": 1789113630
       },
       {
         "peer_id": "12D3KooWR47pVGQNEaSK\u2026",
-        "uptime_pct": 26.0,
-        "last_seen": 1789110016
+        "uptime_pct": 26.6,
+        "last_seen": 1789113618
       }
     ],
     "stake_estimate_hourly": [],
@@ -2889,10 +2905,10 @@
       {
         "ip": "65.109.51.37",
         "peer_ids": [
-          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
-          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
           "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb"
+          "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+          "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+          "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar"
         ]
       }
     ]
@@ -3869,6 +3885,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-09-11T07:00:33Z",
-  "updated": 1789110033
+  "peer_snapshot": "2026-09-11T08:00:34Z",
+  "updated": 1789113634
 }
