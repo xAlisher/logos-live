@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "15722f7049f7805238d84cb3970ba16b8c7bbdcacd64874b351e88c7f6752e4d",
-    "lib_slot": 121836,
-    "tip": "4b963ed61f4ad3ebbbca52eb4896757d51cc1e0fd10d0d0ba6945dac5b6aa7a4",
-    "slot": 126001,
-    "height": 3705,
+    "lib": "27a144491f72874a5b903756ea1b02988fa6817ba5c4f7e88a8db5359634e13f",
+    "lib_slot": 129751,
+    "tip": "c9afe18d922ba2aa50ac90ea035c87ef5f4d940c688c964f6d57f466c526a057",
+    "slot": 133194,
+    "height": 3941,
     "state": "Online",
     "mode": "Online"
   },
@@ -68,6 +68,7 @@
       "12D3KooWGvDWckHqURrSaDMxozqq4WSrbL2cbzCcF2SD15dV2hhc",
       "12D3KooWPzkZetrFnrA3bN9JsVQ96DxPckzuRpM2wN3cRG6MFQn8",
       "12D3KooWNGjMGuxzWP4jb3oU5PaMTEmiMZxY7yta2PFQMi9NZE6b",
+      "12D3KooWJsMu6h2N6qaA9fVwddPKtH12EtB33CmckrfWYcJ4XVDd",
       "12D3KooWGvZQNPvLjhWc6RZG12eE3GF5y5XEcDE7AmAGKrtGKuCU",
       "12D3KooWGtq8Qpmcy8LUX14ucu7GGoNsVy6rUhYZoaQ5BKQbZJKr",
       "12D3KooWFvSdaYcejuJ8bFM5ysWgrjfr63Pf2d2Tg9V4JHFL9e1L",
@@ -127,9 +128,9 @@
       "12D3KooWDEoj9iRh296WLfdVaJYip55Nzn4M97CeKFxGWU2JFXPc",
       "12D3KooWJknzHizoeeP4zoqcxa78AzsiVsTZL3SubxvHpvup74B4"
     ],
-    "n_peers": 108,
-    "n_connections": 109,
-    "n_pending_connections": 0,
+    "n_peers": 109,
+    "n_connections": 111,
+    "n_pending_connections": 1,
     "discovered_peers": [
       "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "12D3KooWCji99YXjZ9SZwbeUU4THjm3agP62ehnfNB7Vdun3o4Xx",
@@ -184,13 +185,13 @@
       "12D3KooWMXzXJcqw8quHvGkvgpAfTRtWrZV7LU14sF98AHLNCVE3",
       "12D3KooWS2jWHhghx6wftuh9b6c2A8SFqu9MSMYPa26MDXNz3nVE",
       "12D3KooWAzdLH8bg4d9YrXuuu1ng8sMKBxVNbQJzyTJgAbkuWTNL",
-      "12D3KooWFsi1DFqwgpyTXSsknxB73kcKw6j1KgTUeEBZtKyNR6QW",
       "12D3KooWNcKb1yTf5VupQFWLkQdpS5BhuZLdqve57wWo9zjgEi5N",
       "12D3KooWLo7uh54g2ebuj4nH46XaVr3258W2BoZ5TCxBgkwdwLi2",
       "12D3KooWNaa5zzk83tNsrezxbshXNbDvt5mVa7eyZzSnezzUzHmN",
       "12D3KooWLaSHVC1nmgUzV1VJfj9ejsDuseAokyXgdP3eFfp9sbD3",
       "12D3KooWPYcdLZ8zTro6KETzF6Mm2r374Pyv2ke5twCdo5u9PK9y",
-      "12D3KooWDWQGzFVL8BPdn1vNDJ4qKKCbKEftctZJ1zyjnL1Ew4Qg"
+      "12D3KooWGXJGcUGDSd7cqZYfb921YdrcwX4QMESEsndUsnAz8nZb",
+      "12D3KooWN1tbS7iUMhZbKuSXecM9AiMV79WWEqxg5UJQ7GjU5jYW"
     ],
     "n_discovered_peers": 60
   },
@@ -212,7 +213,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -224,8 +225,8 @@
       "environment": "hosting",
       "self": false,
       "online": true,
-      "first_seen": 1780015698,
-      "last_seen": 1790884815
+      "first_seen": 1790889414,
+      "last_seen": 1790892016
     }
   ],
   "events": [
@@ -1733,159 +1734,270 @@
   "youtube": {},
   "github": [
     {
-      "repo": "nim-libp2p-mix-ffi",
-      "type": "Create",
+      "repo": "logos-basecamp",
+      "type": "Comment",
       "cls": "type-create",
-      "title": "new branch \"simplify-ffi-boundary\"",
-      "url": "https://github.com/logos-co/nim-libp2p-mix-ffi",
-      "timestamp": "2026-10-01T19:46:54Z"
+      "title": "chore: relock logos-package and logos-package-manager",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/456#issuecomment-5941499527",
+      "timestamp": "2026-10-01T21:59:21Z"
     },
     {
-      "repo": "logos-logoscore-cli",
+      "repo": "logos-rln-modules",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"fix/register-runtime-bundled-modules\"",
-      "url": "https://github.com/logos-co/logos-logoscore-cli",
-      "timestamp": "2026-10-01T19:43:44Z"
+      "title": "new branch \"feat/known-networks\"",
+      "url": "https://github.com/logos-co/logos-rln-modules",
+      "timestamp": "2026-09-30T14:02:50Z"
+    },
+    {
+      "repo": "logos-rln-e2e",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/devnet-target\"",
+      "url": "https://github.com/logos-co/logos-rln-e2e",
+      "timestamp": "2026-09-30T15:32:04Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/relock-lgx-streaming-load\"",
+      "url": "https://github.com/logos-co/logos-liblogos",
+      "timestamp": "2026-10-01T21:55:50Z"
+    },
+    {
+      "repo": "nix-bundle-logos-module-install",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/relock-lgx-streaming-load\"",
+      "url": "https://github.com/logos-co/nix-bundle-logos-module-install",
+      "timestamp": "2026-10-01T21:55:47Z"
+    },
+    {
+      "repo": "logos-package-manager",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore: relock logos-package to c25a116",
+      "url": "https://github.com/logos-co/logos-package-manager/pull/47#issuecomment-5941412513",
+      "timestamp": "2026-10-01T21:53:06Z"
+    },
+    {
+      "repo": "logos-tutorial",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/part1-rendering\"",
+      "url": "https://github.com/logos-co/logos-tutorial",
+      "timestamp": "2026-10-01T21:49:46Z"
+    },
+    {
+      "repo": "logos-liblogos",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "0.3.1",
+      "url": "https://github.com/logos-co/logos-liblogos/releases/tag/0.3.1",
+      "timestamp": "2026-10-01T21:46:43Z"
     },
     {
       "repo": "logos-package-downloader",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"fix/installed-optional-not-in-catalog\"",
+      "title": "new branch \"chore/relock-logos-package-c25a116\"",
       "url": "https://github.com/logos-co/logos-package-downloader",
-      "timestamp": "2026-10-01T19:43:40Z"
+      "timestamp": "2026-10-01T21:46:26Z"
     },
     {
-      "repo": "logos-tutorial",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Run the tutorials on logosctl instead of logoscore and lgpm",
-      "url": "https://github.com/logos-co/logos-tutorial/pull/110#issuecomment-5938485737",
-      "timestamp": "2026-10-01T19:01:22Z"
-    },
-    {
-      "repo": "logos-libp2p-mix-rln",
+      "repo": "logos-basecamp",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"ci/github-actions-tests\"",
-      "url": "https://github.com/logos-co/logos-libp2p-mix-rln",
-      "timestamp": "2026-10-01T18:45:16Z"
+      "title": "new branch \"chore/relock-logos-package-c25a116\"",
+      "url": "https://github.com/logos-co/logos-basecamp",
+      "timestamp": "2026-10-01T21:46:24Z"
     },
     {
       "repo": "logos-web",
       "type": "Comment",
       "cls": "type-create",
       "title": "feat(web): testnet v0.3 legal pages and links",
-      "url": "https://github.com/logos-co/logos-web/pull/203#issuecomment-5938134650",
-      "timestamp": "2026-10-01T18:41:12Z"
-    },
-    {
-      "repo": "logos-modules-release",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/blockchainUiRelease030\"",
-      "url": "https://github.com/logos-co/logos-modules-release",
-      "timestamp": "2026-09-30T11:51:04Z"
+      "url": "https://github.com/logos-co/logos-web/pull/203#issuecomment-5941314591",
+      "timestamp": "2026-10-01T21:46:19Z"
     },
     {
       "repo": "logos-web",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"web/testnet-legal-v03\"",
-      "url": "https://github.com/logos-co/logos-web",
-      "timestamp": "2026-10-01T18:35:32Z"
-    },
-    {
-      "repo": "scaffold",
       "type": "Comment",
       "cls": "type-create",
-      "title": "fix(deploy): discover guest binaries from an independently-workspaced guest crate",
-      "url": "https://github.com/logos-co/scaffold/pull/262#issuecomment-5937071997",
-      "timestamp": "2026-10-01T17:43:31Z"
+      "title": "Add Links to Logos Blockchain Testnet (v0.3) T&Cs & Logos Blockchain Testnet (v0.3) Privacy Policy in Footer",
+      "url": "https://github.com/logos-co/logos-web/issues/202#issuecomment-5941227437",
+      "timestamp": "2026-10-01T21:40:59Z"
     },
     {
-      "repo": "logos-tutorial",
+      "repo": "logos-rust-sdk",
       "type": "Comment",
       "cls": "type-create",
-      "title": "docs: correct stale prose the doctests cannot catch",
-      "url": "https://github.com/logos-co/logos-tutorial/pull/109#issuecomment-5937047677",
-      "timestamp": "2026-10-01T17:41:56Z"
+      "title": "ci: run checks.sdk-unit-tests",
+      "url": "https://github.com/logos-co/logos-rust-sdk/pull/73#issuecomment-5941106451",
+      "timestamp": "2026-10-01T21:35:03Z"
     },
     {
-      "repo": "logos-delivery-module",
+      "repo": "logos-rust-sdk",
       "type": "Comment",
       "cls": "type-create",
-      "title": "docs: publish v0.3.0 as the latest docs version",
-      "url": "https://github.com/logos-co/logos-delivery-module/pull/152#issuecomment-5937034070",
-      "timestamp": "2026-10-01T17:41:03Z"
+      "title": "lidl-gen: a refused `result` call reaches the generated Rust client as `Ok`",
+      "url": "https://github.com/logos-co/logos-rust-sdk/issues/63#issuecomment-5940893344",
+      "timestamp": "2026-10-01T21:23:02Z"
     },
     {
-      "repo": "logos-docs",
+      "repo": "logos-json-rpc-bridge",
       "type": "Create",
       "cls": "type-create",
-      "title": "new branch \"testnet-v0.3-update-f02\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-10-01T17:35:40Z"
+      "title": "new branch \"fix/unknown-method-rejection\"",
+      "url": "https://github.com/logos-co/logos-json-rpc-bridge",
+      "timestamp": "2026-10-01T21:21:40Z"
     },
     {
-      "repo": "logos-docs",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/start-module-from-cli-template\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-10-01T17:24:43Z"
-    },
-    {
-      "repo": "logos-docs",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/lgx-reference-installers-variants\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-10-01T17:24:47Z"
-    },
-    {
-      "repo": "logos-docs",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs/logos-cli-reference\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-10-01T17:24:45Z"
-    },
-    {
-      "repo": "ecosystem",
+      "repo": "spel",
       "type": "Comment",
       "cls": "type-create",
-      "title": "[Node Program] Logos node DAppNode package \u2192 public DAppStore",
-      "url": "https://github.com/logos-co/ecosystem/issues/247#issuecomment-5934903952",
-      "timestamp": "2026-10-01T15:41:25Z"
+      "title": "Instruction variant tag is inferred from IDL array position, not the enum",
+      "url": "https://github.com/logos-co/spel/issues/288#issuecomment-5940853538",
+      "timestamp": "2026-10-01T21:20:57Z"
     },
     {
-      "repo": "logos-rln-e2e",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/relock-rln-main-delivery-0.3.0\"",
-      "url": "https://github.com/logos-co/logos-rln-e2e",
-      "timestamp": "2026-10-01T16:34:15Z"
-    },
-    {
-      "repo": "logos-release-set",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"test/tutorial-windows-dry-run\"",
-      "url": "https://github.com/logos-co/logos-release-set",
-      "timestamp": "2026-10-01T16:35:59Z"
-    },
-    {
-      "repo": "logos-storage-module",
+      "repo": "logos-logoscore-cli",
       "type": "Comment",
       "cls": "type-create",
-      "title": "Mix lookups on logos.test time out on every proxy; logos.dev Mix pool has an empty mixPubKey",
-      "url": "https://github.com/logos-co/logos-storage-module/issues/101#issuecomment-5935792752",
-      "timestamp": "2026-10-01T16:29:08Z"
+      "title": "fix(call): report a provider's unknown_method refusal as METHOD_NOT_FOUND",
+      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/167#issuecomment-5940799076",
+      "timestamp": "2026-10-01T21:18:20Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(lidl-gen): refuse an unknown method name instead of answering None",
+      "url": "https://github.com/logos-co/logos-rust-sdk/pull/72#issuecomment-5940696837",
+      "timestamp": "2026-10-01T21:13:17Z"
+    },
+    {
+      "repo": "logos-cpp-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(lidl-gen): refuse an unknown method name instead of answering NULL",
+      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/178#issuecomment-5940659176",
+      "timestamp": "2026-10-01T21:11:24Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Add links to Logos Blockchain Testnet T&Cs & Logos Blockchain Testnet Privacy Policy on Basecamp LP",
+      "url": "https://github.com/logos-co/logos-web/issues/201#issuecomment-5940617874",
+      "timestamp": "2026-10-01T21:09:16Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(deps): relock onto logos-protocol 4fc6973 \u2014 absent module fails fast, quiet traces",
+      "url": "https://github.com/logos-co/logos-rust-sdk/pull/71#issuecomment-5940612073",
+      "timestamp": "2026-10-01T21:08:58Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"ci/run-sdk-unit-tests\"",
+      "url": "https://github.com/logos-co/logos-rust-sdk",
+      "timestamp": "2026-10-01T21:07:14Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Add links to Logos Blockchain Testnet T&Cs & Logos Blockchain Testnet Privacy Policy on Blockchain Page",
+      "url": "https://github.com/logos-co/logos-web/issues/200#issuecomment-5940552833",
+      "timestamp": "2026-10-01T21:05:55Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Add Logos Testnet (v0.3) Privacy Policy page",
+      "url": "https://github.com/logos-co/logos-web/issues/199#issuecomment-5940509593",
+      "timestamp": "2026-10-01T21:03:52Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Update Testnet T&C (v0.3)",
+      "url": "https://github.com/logos-co/logos-web/issues/198#issuecomment-5940468969",
+      "timestamp": "2026-10-01T21:01:43Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Update Testnet FAQs (v0.3)",
+      "url": "https://github.com/logos-co/logos-web/issues/197#issuecomment-5940442770",
+      "timestamp": "2026-10-01T21:00:18Z"
+    },
+    {
+      "repo": "logos-cpp-sdk",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(deps): relock onto logos-protocol 4fc6973 \u2014 absent module fails fast, quiet traces",
+      "url": "https://github.com/logos-co/logos-cpp-sdk/pull/177#issuecomment-5940350938",
+      "timestamp": "2026-10-01T20:54:56Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(logosctl): name the running dependents an install stops, and leave them stopped",
+      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/166#issuecomment-5940329955",
+      "timestamp": "2026-10-01T20:53:28Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/unknown-method-rejection\"",
+      "url": "https://github.com/logos-co/logos-logoscore-cli",
+      "timestamp": "2026-10-01T20:41:56Z"
+    },
+    {
+      "repo": "logos-protocol",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/unknown-method-rejection\"",
+      "url": "https://github.com/logos-co/logos-protocol",
+      "timestamp": "2026-10-01T20:41:51Z"
+    },
+    {
+      "repo": "logos-rust-sdk",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/unknown-method-rejection\"",
+      "url": "https://github.com/logos-co/logos-rust-sdk",
+      "timestamp": "2026-10-01T20:41:39Z"
+    },
+    {
+      "repo": "logos-cpp-sdk",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/unknown-method-rejection\"",
+      "url": "https://github.com/logos-co/logos-cpp-sdk",
+      "timestamp": "2026-10-01T20:41:34Z"
     }
   ],
   "discourse": [
+    {
+      "title": "Logos Circle Maraba #2",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-maraba-2/1977",
+      "timestamp": "2026-10-01T20:24:02.535Z",
+      "replies": 0
+    },
     {
       "title": "\ud83d\ude80 New \u03bbPrize: LP-0026, Forum App ($5,500)",
       "category": "Forum",
@@ -2088,301 +2200,294 @@
       "url": "https://forum.logos.co/t/logos-circle-aba-3-august-2026-meetup-report/1939",
       "timestamp": "2026-09-14T16:10:28.830Z",
       "replies": 0
-    },
-    {
-      "title": "Logos Circle Uyo \u2013 Meetup 4.0 Report",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-uyo-meetup-4-0-report/1937",
-      "timestamp": "2026-09-14T06:44:08.105Z",
-      "replies": 1
     }
   ],
   "stake": {
-    "recipients": 102,
-    "total_distributed": 7094997,
+    "recipients": 0,
+    "total_distributed": 0,
     "faucet_remainder": null,
-    "unique_leaders": 227892,
-    "total_leader_blocks": 252065,
+    "unique_leaders": 113,
+    "total_leader_blocks": 113,
     "top_leaders": [
       {
-        "pk": "043a923e7f4e499c",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "0f8cf47e6b3a9946",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "800a974853229c85",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "c60d432329fff6c1",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "57d6796e077d5b93",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "167e91406eb79f40",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "c90c1d7c6c8d4347",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "0e1f049d72ae1021",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "982ad7a679d0e452",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "247e8a48e3637f71",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "6459b87cfae79ae5",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "d358c25a91205716",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "4fe8474af1b42073",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "6dfea013de559f6c",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "13300482d03b1aba",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "f3e661a70e1fdeb7",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "707b19767c7dacf6",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "b20c9ceabbf6750b",
+        "blocks": 1,
+        "pct": 0.9
       },
       {
-        "pk": "22f9ca39ce130c6b",
-        "blocks": 12,
-        "pct": 0.0
+        "pk": "7ea0f18295882ea2",
+        "blocks": 1,
+        "pct": 0.9
       }
     ]
   },
   "recent_blocks": {
     "window": {
-      "blocks": 121,
-      "slot_min": 121836,
-      "slot_max": 126001,
-      "slot_span": 4166,
-      "transactions": 363,
-      "operations": 686,
-      "empty_blocks": 23,
-      "missed_or_unseen_slots": 4045
+      "blocks": 113,
+      "slot_min": 129966,
+      "slot_max": 133194,
+      "slot_span": 3229,
+      "transactions": 247,
+      "operations": 472,
+      "empty_blocks": 25,
+      "missed_or_unseen_slots": 3116
     },
     "leader_diversity": {
-      "unique_leaders": 121,
-      "top_leader_share_pct": 0.8
+      "unique_leaders": 113,
+      "top_leader_share_pct": 0.9
     },
     "top_leaders": [
       {
-        "leader_key": "333d2b757fa4b555",
+        "leader_key": "0f8cf47e6b3a9946",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "4f4c6c3f97d45dee",
+        "leader_key": "c60d432329fff6c1",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "0d5dfd596939bf2d",
+        "leader_key": "167e91406eb79f40",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "24fcdceab2575ee4",
+        "leader_key": "0e1f049d72ae1021",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "ddc17b4a433dec20",
+        "leader_key": "247e8a48e3637f71",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "6e99773e80381d5d",
+        "leader_key": "d358c25a91205716",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "9592997089037035",
+        "leader_key": "6dfea013de559f6c",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "30b619a32267ca98",
+        "leader_key": "f3e661a70e1fdeb7",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "cdcf540b133a74fa",
+        "leader_key": "b20c9ceabbf6750b",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       },
       {
-        "leader_key": "294146d0cac9c900",
+        "leader_key": "7ea0f18295882ea2",
         "blocks": 1,
-        "pct": 0.8
+        "pct": 0.9
       }
     ],
     "recent": [
       {
-        "slot": 125281,
-        "leader_key": "2628d1bd874f95b5",
+        "slot": 132449,
+        "leader_key": "f9241ef3dd23641b",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "d386b305269c0b16"
+      },
+      {
+        "slot": 132576,
+        "leader_key": "2471dabbec78181c",
+        "transactions": 4,
+        "operations": 7,
+        "root": "",
+        "hash": "eb8d37796d46b081"
+      },
+      {
+        "slot": 132631,
+        "leader_key": "96f8d1f5f2f498d8",
+        "transactions": 3,
+        "operations": 5,
+        "root": "",
+        "hash": "bea00e523649594a"
+      },
+      {
+        "slot": 132658,
+        "leader_key": "99e0579828753aa3",
+        "transactions": 4,
+        "operations": 7,
+        "root": "",
+        "hash": "456219a9e716fd5f"
+      },
+      {
+        "slot": 132714,
+        "leader_key": "b0b9648b2065e2f5",
         "transactions": 6,
         "operations": 11,
         "root": "",
-        "hash": "90db9c0e4838fde3"
+        "hash": "1f26e6ffb00266e6"
       },
       {
-        "slot": 125319,
-        "leader_key": "5cab5727a9e6f922",
+        "slot": 132738,
+        "leader_key": "fb270ee08979a950",
         "transactions": 3,
         "operations": 5,
         "root": "",
-        "hash": "81160eaa594c9ea7"
+        "hash": "bd2c2dbdde4d1b8b"
       },
       {
-        "slot": 125378,
-        "leader_key": "95396bf4dc6bdbc9",
-        "transactions": 7,
-        "operations": 13,
-        "root": "",
-        "hash": "e08e76812750de47"
-      },
-      {
-        "slot": 125404,
-        "leader_key": "6b487ff51dc4dfb8",
-        "transactions": 5,
-        "operations": 9,
-        "root": "",
-        "hash": "6d293a77891796e3"
-      },
-      {
-        "slot": 125413,
-        "leader_key": "461baaf4d06c49f3",
-        "transactions": 2,
-        "operations": 4,
-        "root": "",
-        "hash": "df159cdb183353ad"
-      },
-      {
-        "slot": 125457,
-        "leader_key": "1b31f66a319a10e4",
-        "transactions": 7,
-        "operations": 13,
-        "root": "",
-        "hash": "34b225f1e96882ef"
-      },
-      {
-        "slot": 125482,
-        "leader_key": "73554e8b04d0a092",
-        "transactions": 2,
-        "operations": 3,
-        "root": "",
-        "hash": "e692fdcc2799e999"
-      },
-      {
-        "slot": 125490,
-        "leader_key": "165422b16df314ff",
+        "slot": 132744,
+        "leader_key": "850e97cc7747a6dc",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "1c5bb8149d9cdab5"
+        "hash": "654acd13420dc685"
       },
       {
-        "slot": 125519,
-        "leader_key": "6444ea7d124a21eb",
+        "slot": 132819,
+        "leader_key": "d9ba0f726ec00d86",
         "transactions": 5,
         "operations": 9,
         "root": "",
-        "hash": "df9268048834091f"
+        "hash": "6c406edd94fadd37"
       },
       {
-        "slot": 125532,
-        "leader_key": "5d81b238ee0f57ce",
-        "transactions": 2,
-        "operations": 3,
-        "root": "",
-        "hash": "d2617f6a63bba009"
-      },
-      {
-        "slot": 125632,
-        "leader_key": "294146d0cac9c900",
-        "transactions": 7,
-        "operations": 13,
-        "root": "",
-        "hash": "326504b3dff5d4d1"
-      },
-      {
-        "slot": 125667,
-        "leader_key": "cdcf540b133a74fa",
-        "transactions": 2,
-        "operations": 3,
-        "root": "",
-        "hash": "dbf034fd518a8a11"
-      },
-      {
-        "slot": 125673,
-        "leader_key": "30b619a32267ca98",
-        "transactions": 0,
-        "operations": 0,
-        "root": "",
-        "hash": "700178a6b9bf508e"
-      },
-      {
-        "slot": 125779,
-        "leader_key": "9592997089037035",
-        "transactions": 10,
-        "operations": 18,
-        "root": "",
-        "hash": "afff9250029bc077"
-      },
-      {
-        "slot": 125809,
-        "leader_key": "6e99773e80381d5d",
-        "transactions": 3,
-        "operations": 5,
-        "root": "",
-        "hash": "b8b0c500041e94df"
-      },
-      {
-        "slot": 125961,
-        "leader_key": "ddc17b4a433dec20",
-        "transactions": 9,
-        "operations": 17,
-        "root": "",
-        "hash": "5507059f35362e14"
-      },
-      {
-        "slot": 125965,
-        "leader_key": "24fcdceab2575ee4",
+        "slot": 132831,
+        "leader_key": "ec7b2c93d65e86f3",
         "transactions": 1,
         "operations": 2,
         "root": "",
-        "hash": "657e3659b66cc5d0"
+        "hash": "f34dca0c91fd8bd8"
       },
       {
-        "slot": 125972,
-        "leader_key": "0d5dfd596939bf2d",
+        "slot": 132837,
+        "leader_key": "ff02261bd80b4904",
+        "transactions": 2,
+        "operations": 3,
+        "root": "",
+        "hash": "7ed5506cca183dd4"
+      },
+      {
+        "slot": 132840,
+        "leader_key": "7ea0f18295882ea2",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "4376b09cc489eeb2"
+        "hash": "d8c0524cab6a2964"
       },
       {
-        "slot": 125994,
-        "leader_key": "4f4c6c3f97d45dee",
+        "slot": 132845,
+        "leader_key": "b20c9ceabbf6750b",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "395ba14ef77e89dd"
+      },
+      {
+        "slot": 132882,
+        "leader_key": "f3e661a70e1fdeb7",
+        "transactions": 5,
+        "operations": 9,
+        "root": "",
+        "hash": "b81ad2274f4993a0"
+      },
+      {
+        "slot": 132952,
+        "leader_key": "6dfea013de559f6c",
+        "transactions": 5,
+        "operations": 9,
+        "root": "",
+        "hash": "f4a9720391814061"
+      },
+      {
+        "slot": 132977,
+        "leader_key": "d358c25a91205716",
         "transactions": 3,
         "operations": 5,
         "root": "",
-        "hash": "91897ab11cc8a393"
+        "hash": "94b745c988b6904a"
       },
       {
-        "slot": 126001,
-        "leader_key": "333d2b757fa4b555",
+        "slot": 132980,
+        "leader_key": "247e8a48e3637f71",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "4b963ed61f4ad3eb"
+        "hash": "e410aeaf679726b0"
+      },
+      {
+        "slot": 132998,
+        "leader_key": "0e1f049d72ae1021",
+        "transactions": 2,
+        "operations": 3,
+        "root": "",
+        "hash": "3b5b4d457e2ac567"
+      },
+      {
+        "slot": 133073,
+        "leader_key": "167e91406eb79f40",
+        "transactions": 7,
+        "operations": 13,
+        "root": "",
+        "hash": "d353e403d14f7f84"
+      },
+      {
+        "slot": 133179,
+        "leader_key": "c60d432329fff6c1",
+        "transactions": 5,
+        "operations": 9,
+        "root": "",
+        "hash": "8c30c77d5a02cfec"
+      },
+      {
+        "slot": 133194,
+        "leader_key": "0f8cf47e6b3a9946",
+        "transactions": 2,
+        "operations": 4,
+        "root": "",
+        "hash": "c9afe18d922ba2aa"
       }
     ]
   },
@@ -3381,7 +3486,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1790758814,
+  "genesis_ts": 1790758822,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3391,6 +3496,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-10-01T20:00:15Z",
-  "updated": 1790884815
+  "peer_snapshot": "2026-10-01T22:00:16Z",
+  "updated": 1790892016
 }
