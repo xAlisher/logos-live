@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "6e5e2e754e22300f3d852251a2695033124b59749afb636a847e738c2c6fb740",
-    "lib_slot": 191393,
-    "tip": "a7508f323f1ccddc6c17b16682ec28f718659b79e8d6d91e8ecbf586a55450d7",
-    "slot": 194384,
-    "height": 5890,
+    "lib": "14f6a6ee1e98c6d8d1980280ab56d1c6132b03e22693469dd4229a67d680861c",
+    "lib_slot": 194183,
+    "tip": "bb2146f323ce89d959b4653def4375cb9aeb7892bd5db957bd9b32989f0a3001",
+    "slot": 197977,
+    "height": 6003,
     "state": "Online",
     "mode": "Online"
   },
@@ -111,7 +111,6 @@
       "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "12D3KooWHrAYypETd4kcu3wjomMruV8WUc3zERhmxzxJpG8s9NkV",
       "12D3KooWM6z6qAWQvks7qPFUpzayviRp6DTbXPif6eptdqfqbq9v",
-      "12D3KooWBTVSo1VKzYDd5yRuvpHb2ieoneT7npk9NzFQpC6ekaCP",
       "12D3KooWMU2CwkSJwnGVo6JVLMLkmwZCECLU5D83myQ1HzpJ3ES3",
       "12D3KooWCeRYisiuX8W1M81DSBNJWQRoaBn5XZe3mYKfpNCfx8qs",
       "12D3KooWEAPJZyY5tA8AmWSqo18mKxs7q1k88azAxk3khhozjk5t",
@@ -185,6 +184,7 @@
       "12D3KooWM1ypTXQw9j9v1upFCHTiEsVxFYbHNZgApGtuqmSkjnxM",
       "12D3KooWPaUuindxeFA4sdXw4bdjF82PEXyQ8QJSZ5opnKXf7U89",
       "12D3KooWFE8f2Q7keuW8XEqxizZwHFytWmu9zmksv4eKJrJTXUGK",
+      "12D3KooWAtmmSbMrbKqMZ8b77SYfrGTonqawNGAnB7CcKtjYL13P",
       "12D3KooWPJ9ANBmMuA4Gt1yUCdruAdtUSEW9UogxQyfrbCe1E2iZ",
       "12D3KooWAD3hHkbqcLcUPze75wUXzFYEX7gb92njRMczpWndMujY",
       "12D3KooWJ3pZY2a6tMcXJRLLBnjUVKnTZG6eboiUo3UvYtq3PBi8",
@@ -200,7 +200,6 @@
       "12D3KooWMiqrYxWrTcZ7w9feLzamRvxAR6Ex2FD23DHAXLBNGTyB",
       "12D3KooWBUhLJHMDxCab5x4ZMuwJjxmpSEpkU475ZYtD6qXTfBg9",
       "12D3KooWBgy1zzJk2azjcnaMjUxYSzukFCJQeP5bHGfDq338v3zA",
-      "12D3KooWFv6CAHgWpqBA32a2LGnvPMDn9641CUyGXrHaS8njHGXb",
       "12D3KooWS2jWHhghx6wftuh9b6c2A8SFqu9MSMYPa26MDXNz3nVE",
       "12D3KooWJciMnzt9VYXVm7dNNGzghCSBJWNL239Mb66zSK8xfKAq",
       "12D3KooWAZdrCLs2aDgF192bFyxbj9fFrWd9kAaNM1qDRVxdrirt",
@@ -284,8 +283,8 @@
       "12D3KooWNVEQpbAr7mNF7CejxAbJ6YLqiv7hstxKmpmVzgifcq1a",
       "12D3KooWM1KK8pqycta4iECDbuP3WoSWDAnRhF1N6NQXjvt6NMQy"
     ],
-    "n_peers": 265,
-    "n_connections": 267,
+    "n_peers": 264,
+    "n_connections": 266,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWD7qGu31nVBzZY262peN3A4UtE6WQG2LsC6ac1UX4wJU3",
@@ -400,7 +399,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -413,7 +412,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1790953216
+      "last_seen": 1790956814
     }
   ],
   "events": [
@@ -1909,6 +1908,110 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(discovery): hand libp2p every bootstrap peer, not only the first",
+      "url": "https://github.com/logos-co/logos-delivery-module/pull/155#issuecomment-5956130961",
+      "timestamp": "2026-10-02T15:55:41Z"
+    },
+    {
+      "repo": "logos-modules-dev",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "delivery_module v0.3.0-171.g284144ae",
+      "url": "https://github.com/logos-co/logos-modules-dev/releases/tag/delivery_module-v0.3.0-171.g284144ae",
+      "timestamp": "2026-10-02T15:53:14Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "blockchain_ui v0.3.1",
+      "url": "https://github.com/logos-co/logos-modules-release/releases/tag/blockchain_ui-v0.3.1",
+      "timestamp": "2026-10-02T15:47:38Z"
+    },
+    {
+      "repo": "logos-tutorial",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Drop the logosctl workarounds the watch and reinstall fixes made unnecessary",
+      "url": "https://github.com/logos-co/logos-tutorial/pull/114#issuecomment-5955957510",
+      "timestamp": "2026-10-02T15:45:07Z"
+    },
+    {
+      "repo": "openmetrics-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/windows\"",
+      "url": "https://github.com/logos-co/openmetrics-module",
+      "timestamp": "2026-10-02T15:42:39Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "ci(docs): allow a manual deploy to build a given release tag",
+      "url": "https://github.com/logos-co/logos-delivery-module/pull/156#issuecomment-5955907303",
+      "timestamp": "2026-10-02T15:41:53Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"ci/docs-dispatch-tag\"",
+      "url": "https://github.com/logos-co/logos-delivery-module",
+      "timestamp": "2026-10-02T15:37:42Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore: relock logos-package-downloader-module to bbf5c8b",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/461#issuecomment-5955804355",
+      "timestamp": "2026-10-02T15:36:08Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/proc-stat-read-race\"",
+      "url": "https://github.com/logos-co/logos-logoscore-cli",
+      "timestamp": "2026-10-02T15:35:38Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/relock-unknown-method\"",
+      "url": "https://github.com/logos-co/logos-module-builder",
+      "timestamp": "2026-10-02T15:33:54Z"
+    },
+    {
+      "repo": "logos-module-viewer",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"build/relock-liblogos-token-order\"",
+      "url": "https://github.com/logos-co/logos-module-viewer",
+      "timestamp": "2026-10-02T15:32:57Z"
+    },
+    {
+      "repo": "logos-logoscore-cli",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore: relock logos-package-downloader-module to bbf5c8b",
+      "url": "https://github.com/logos-co/logos-logoscore-cli/pull/170#issuecomment-5955401439",
+      "timestamp": "2026-10-02T15:13:07Z"
+    },
+    {
+      "repo": "logos-module-builder",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore: relock logos-standalone-app to 23dcbc6",
+      "url": "https://github.com/logos-co/logos-module-builder/pull/269#issuecomment-5955394617",
+      "timestamp": "2026-10-02T15:12:43Z"
+    },
+    {
       "repo": "logos-logoscore-py",
       "type": "Comment",
       "cls": "type-create",
@@ -1949,14 +2052,6 @@
       "timestamp": "2026-10-02T14:44:55Z"
     },
     {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore: relock logos-package-downloader-module to bbf5c8b",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/461#issuecomment-5954885511",
-      "timestamp": "2026-10-02T14:43:22Z"
-    },
-    {
       "repo": "logos-module-builder",
       "type": "Create",
       "cls": "type-create",
@@ -1971,78 +2066,6 @@
       "title": "fix(rust): take logos-rust-sdk's typed LIDL collections",
       "url": "https://github.com/logos-co/logos-test-modules/pull/69#issuecomment-5954604961",
       "timestamp": "2026-10-02T14:25:50Z"
-    },
-    {
-      "repo": "logos-libp2p-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(security): pin AI code review workflow to immutable commit SHA and document threat model",
-      "url": "https://github.com/logos-co/logos-libp2p-module/pull/117#issuecomment-5954265059",
-      "timestamp": "2026-10-02T14:07:33Z"
-    },
-    {
-      "repo": "logos-doctest",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(emit-smoke): run check_file without compgen, which nixpkgs' bash lacks",
-      "url": "https://github.com/logos-co/logos-doctest/pull/25#issuecomment-5954169281",
-      "timestamp": "2026-10-02T14:03:32Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix: use fix in process stat to show accurate cpu usage in module inspector",
-      "url": "https://github.com/logos-co/logos-basecamp/pull/460#issuecomment-5954154298",
-      "timestamp": "2026-10-02T14:02:56Z"
-    },
-    {
-      "repo": "logos-doctest",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(emit-smoke): keep every record of a step, so a later pass can't hide a failure",
-      "url": "https://github.com/logos-co/logos-doctest/pull/24#issuecomment-5953426189",
-      "timestamp": "2026-10-02T13:29:01Z"
-    },
-    {
-      "repo": "logos-release-set",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/windows-results-duplicate-record-keys\"",
-      "url": "https://github.com/logos-co/logos-release-set",
-      "timestamp": "2026-10-02T13:26:04Z"
-    },
-    {
-      "repo": "logos-release-set",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/specs-run-a-node-v0.3\"",
-      "url": "https://github.com/logos-co/logos-release-set",
-      "timestamp": "2026-10-02T01:03:47Z"
-    },
-    {
-      "repo": "logos-design-system",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/wrap-storybook-for-nix-run\"",
-      "url": "https://github.com/logos-co/logos-design-system",
-      "timestamp": "2026-10-02T00:07:22Z"
-    },
-    {
-      "repo": "logos-web",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix/design-systems-footer-links\"",
-      "url": "https://github.com/logos-co/logos-web",
-      "timestamp": "2026-10-01T03:06:19Z"
-    },
-    {
-      "repo": "logos-standalone-app",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/relock-unknown-method\"",
-      "url": "https://github.com/logos-co/logos-standalone-app",
-      "timestamp": "2026-10-02T13:13:10Z"
     }
   ],
   "discourse": [
@@ -2261,8 +2284,8 @@
     "recipients": 0,
     "total_distributed": 0,
     "faucet_remainder": null,
-    "unique_leaders": 2034,
-    "total_leader_blocks": 2170,
+    "unique_leaders": 2147,
+    "total_leader_blocks": 2291,
     "top_leaders": [
       {
         "pk": "88abf5167129aee6",
@@ -2319,13 +2342,13 @@
   "recent_blocks": {
     "window": {
       "blocks": 121,
-      "slot_min": 191393,
-      "slot_max": 194384,
-      "slot_span": 2992,
-      "transactions": 224,
-      "operations": 451,
-      "empty_blocks": 32,
-      "missed_or_unseen_slots": 2871
+      "slot_min": 194183,
+      "slot_max": 197977,
+      "slot_span": 3795,
+      "transactions": 255,
+      "operations": 512,
+      "empty_blocks": 23,
+      "missed_or_unseen_slots": 3674
     },
     "leader_diversity": {
       "unique_leaders": 121,
@@ -2333,216 +2356,216 @@
     },
     "top_leaders": [
       {
-        "leader_key": "2a9c10db16262a51",
+        "leader_key": "09aa10b76dd5980c",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "21a960aabc0ee6b2",
+        "leader_key": "e380f52b8006c3bf",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "e257f66ff5fe7164",
+        "leader_key": "fa2b5f1cbf656623",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "d5b7e63c85f0808d",
+        "leader_key": "da705e28d4aae824",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "846653517d68f10a",
+        "leader_key": "10340d48f1386109",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "212e4c462271e702",
+        "leader_key": "99e0a7fdccb508d9",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "a8d06fd96a64f92b",
+        "leader_key": "f50c1765d51ab053",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "788efe5de0547f88",
+        "leader_key": "008c97a644dba3bb",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "ce6af35d9d5be210",
+        "leader_key": "f7c40f7c82482325",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "dfc97ecefbe72e06",
+        "leader_key": "aacf3f5006813c27",
         "blocks": 1,
         "pct": 0.8
       }
     ],
     "recent": [
       {
-        "slot": 193952,
-        "leader_key": "263b4581736b871f",
-        "transactions": 1,
-        "operations": 2,
-        "root": "",
-        "hash": "e15a52a47b7c1fb5"
-      },
-      {
-        "slot": 193974,
-        "leader_key": "5942db70e4865671",
-        "transactions": 2,
-        "operations": 4,
-        "root": "",
-        "hash": "195ee8623a850b63"
-      },
-      {
-        "slot": 194003,
-        "leader_key": "28852771c24c2241",
-        "transactions": 1,
-        "operations": 2,
-        "root": "",
-        "hash": "f8cf16bbd5cf6d05"
-      },
-      {
-        "slot": 194026,
-        "leader_key": "d6e17be272ac629d",
-        "transactions": 3,
-        "operations": 6,
-        "root": "",
-        "hash": "92cef77f0de82bbb"
-      },
-      {
-        "slot": 194055,
-        "leader_key": "c2742177189b16a8",
-        "transactions": 4,
-        "operations": 8,
-        "root": "",
-        "hash": "eefe586014cd07c4"
-      },
-      {
-        "slot": 194057,
-        "leader_key": "0cd5f159d49db331",
+        "slot": 197378,
+        "leader_key": "52f1f82328a50f80",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "932315022781ceb5"
+        "hash": "f8fbb6c84ef53a44"
       },
       {
-        "slot": 194077,
-        "leader_key": "7e12988914684d59",
-        "transactions": 0,
-        "operations": 0,
-        "root": "",
-        "hash": "8e1f1c92c0b3b997"
-      },
-      {
-        "slot": 194111,
-        "leader_key": "813ea1bd10852f4f",
-        "transactions": 1,
-        "operations": 2,
-        "root": "",
-        "hash": "59cdcde98c65d7f0"
-      },
-      {
-        "slot": 194120,
-        "leader_key": "e6b50fcadc02ab78",
-        "transactions": 1,
-        "operations": 2,
-        "root": "",
-        "hash": "83551cc297b993e2"
-      },
-      {
-        "slot": 194133,
-        "leader_key": "3f286cb73950c92d",
-        "transactions": 0,
-        "operations": 0,
-        "root": "",
-        "hash": "3c342f185b28d664"
-      },
-      {
-        "slot": 194146,
-        "leader_key": "dfc97ecefbe72e06",
-        "transactions": 1,
-        "operations": 2,
-        "root": "",
-        "hash": "f9b8228595b78182"
-      },
-      {
-        "slot": 194171,
-        "leader_key": "ce6af35d9d5be210",
-        "transactions": 0,
-        "operations": 0,
-        "root": "",
-        "hash": "f4e841448a4bc262"
-      },
-      {
-        "slot": 194183,
-        "leader_key": "788efe5de0547f88",
-        "transactions": 3,
-        "operations": 6,
-        "root": "",
-        "hash": "14f6a6ee1e98c6d8"
-      },
-      {
-        "slot": 194239,
-        "leader_key": "a8d06fd96a64f92b",
-        "transactions": 4,
-        "operations": 8,
-        "root": "",
-        "hash": "f18189db288e22a4"
-      },
-      {
-        "slot": 194264,
-        "leader_key": "212e4c462271e702",
+        "slot": 197439,
+        "leader_key": "14ba8a5ee711a426",
         "transactions": 5,
         "operations": 10,
         "root": "",
-        "hash": "b50e9d5b49c9d9a4"
+        "hash": "264609fe100ce92a"
       },
       {
-        "slot": 194292,
-        "leader_key": "846653517d68f10a",
+        "slot": 197452,
+        "leader_key": "af7d748d36ac14ff",
         "transactions": 1,
         "operations": 2,
         "root": "",
-        "hash": "78a55fd994ed6cbd"
+        "hash": "0def42795cdbf9c9"
       },
       {
-        "slot": 194303,
-        "leader_key": "d5b7e63c85f0808d",
+        "slot": 197459,
+        "leader_key": "cce94c1bb7345fa1",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "4e75104cfa4f3b8d"
+      },
+      {
+        "slot": 197532,
+        "leader_key": "32143e5db6f0d3c4",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "f597398c84a4caab"
+      },
+      {
+        "slot": 197535,
+        "leader_key": "2d7c299e7bf4d9b1",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "492d99c9cf9ad22a"
+        "hash": "72d44d7a56222cbe"
       },
       {
-        "slot": 194327,
-        "leader_key": "e257f66ff5fe7164",
-        "transactions": 3,
-        "operations": 6,
+        "slot": 197536,
+        "leader_key": "507d16895b960483",
+        "transactions": 0,
+        "operations": 0,
         "root": "",
-        "hash": "29a44a4a5a11fadd"
+        "hash": "a27e1caea201bc1f"
       },
       {
-        "slot": 194360,
-        "leader_key": "21a960aabc0ee6b2",
-        "transactions": 3,
-        "operations": 6,
+        "slot": 197561,
+        "leader_key": "0bab0df1433dc92a",
+        "transactions": 2,
+        "operations": 4,
         "root": "",
-        "hash": "6f6f802102bdf3c8"
+        "hash": "0d4c32d2602b277b"
       },
       {
-        "slot": 194384,
-        "leader_key": "2a9c10db16262a51",
+        "slot": 197576,
+        "leader_key": "0abed6e8fee5daa7",
         "transactions": 1,
         "operations": 2,
         "root": "",
-        "hash": "a7508f323f1ccddc"
+        "hash": "a9a413e4ce5272b5"
+      },
+      {
+        "slot": 197601,
+        "leader_key": "3ca5a1ee06b8d16f",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "c6708135571b1126"
+      },
+      {
+        "slot": 197639,
+        "leader_key": "aacf3f5006813c27",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "ba3f868ef6f78706"
+      },
+      {
+        "slot": 197692,
+        "leader_key": "f7c40f7c82482325",
+        "transactions": 3,
+        "operations": 6,
+        "root": "",
+        "hash": "963761e54eef2087"
+      },
+      {
+        "slot": 197783,
+        "leader_key": "008c97a644dba3bb",
+        "transactions": 4,
+        "operations": 8,
+        "root": "",
+        "hash": "ee682b32666aa51f"
+      },
+      {
+        "slot": 197809,
+        "leader_key": "f50c1765d51ab053",
+        "transactions": 4,
+        "operations": 8,
+        "root": "",
+        "hash": "6fa08a462b2c9e10"
+      },
+      {
+        "slot": 197823,
+        "leader_key": "99e0a7fdccb508d9",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "f4a6dfd30840f2bc"
+      },
+      {
+        "slot": 197834,
+        "leader_key": "10340d48f1386109",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "2822b34ced429d6e"
+      },
+      {
+        "slot": 197863,
+        "leader_key": "da705e28d4aae824",
+        "transactions": 2,
+        "operations": 4,
+        "root": "",
+        "hash": "d6087e7a388125c8"
+      },
+      {
+        "slot": 197915,
+        "leader_key": "fa2b5f1cbf656623",
+        "transactions": 2,
+        "operations": 4,
+        "root": "",
+        "hash": "66ebf99cffe4ca03"
+      },
+      {
+        "slot": 197945,
+        "leader_key": "e380f52b8006c3bf",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "b3b18af54cf90810"
+      },
+      {
+        "slot": 197977,
+        "leader_key": "09aa10b76dd5980c",
+        "transactions": 2,
+        "operations": 4,
+        "root": "",
+        "hash": "bb2146f323ce89d9"
       }
     ]
   },
@@ -3541,7 +3564,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1790758832,
+  "genesis_ts": 1790758837,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3551,6 +3574,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-10-02T15:00:16Z",
-  "updated": 1790953216
+  "peer_snapshot": "2026-10-02T16:00:14Z",
+  "updated": 1790956814
 }
