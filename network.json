@@ -1,10 +1,10 @@
 {
   "chain": {
-    "lib": "07af9a63fa02aac7ccee8ae470ef1524023f4d08c04c7410bfae5bebe3c976f4",
-    "lib_slot": 406596,
-    "tip": "0366ef4c66b948ed0c825cd2214cef410573bde0ed1ee283986b1a11ffd6282b",
-    "slot": 410404,
-    "height": 12777,
+    "lib": "eca6a25f565c3a4273d2ecdd9c02a95acbd9ca59f9dbd25217d9984f027f9bbc",
+    "lib_slot": 410202,
+    "tip": "4e344a5f35aed46541f28bcd912eee5687bac6c3f1a9c39766847e30ae311ad5",
+    "slot": 414004,
+    "height": 12891,
     "state": "Online",
     "mode": "Online"
   },
@@ -138,6 +138,7 @@
       "12D3KooWP8EGGaCyWvLjLxCniPhhrYqasaqvoP66qWtVKW2oJxBe",
       "12D3KooWFMtQQijhQ1faDJe4Nu1GA4DV49irs5GFCrj3srzCxD1v",
       "12D3KooWFzuEDQpnRZtpHwEF6kG3b24U1QSQHCSB1NL9VEpX1JVx",
+      "12D3KooWEKCEfPBjVNiTtSVx1PZXQ5uiLdt1nWU5mrCvfEes7jj9",
       "12D3KooWCzDHH1vygXoNeecVSRvoFMYiAq6qWRTujCZnCKW8YMiq",
       "12D3KooWJ6tMWj5LKWzvXK1YQtyKXRjtQhL7QWQLQtpHC9sN99F7",
       "12D3KooWNJ6T593kYhT4QkhL1kRWyMXzqW3SNwhEKKvF4BZbFXkv",
@@ -251,7 +252,6 @@
       "12D3KooWSXDpbhHznAG37GULJT2PhpAytESyBYJL2Z2WZfTTHwM8",
       "12D3KooWSigW1sasE7vU9Wk17v8Gz2Vj8xF32wrx1jrHp9k6MfHs",
       "12D3KooWBy25NSU5bnHzEadPKwJFvAXTzot6g89qb8a1DiDh7srx",
-      "12D3KooWAPo4H5UhJ4cPgbZTMM2zG9VjfCFHJ1VyWAXRPaCZaZwx",
       "12D3KooWMBnCApqXsmuFR8uQdRDPy3SmYJ8P4BZMgDGBGeJ2TT3Y",
       "12D3KooWLwGHXz1bnD2oGFyqYyPb27ne4oeQN6wKvygSV2zPZ84n",
       "12D3KooWSpVD11BiMv8nCHfLmZJbbNVL8Gpvn3RZZbBJQjyQ9GXk",
@@ -643,7 +643,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -656,7 +656,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1791169214
+      "last_seen": 1791172814
     }
   ],
   "events": [
@@ -2158,14 +2158,6 @@
       "title": "new branch \"chore/relock-unknown-method\"",
       "url": "https://github.com/logos-co/logos-logoscore-cli",
       "timestamp": "2026-10-02T16:18:06Z"
-    },
-    {
-      "repo": "logos-windows-ci",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/doctest-ui-evidence\"",
-      "url": "https://github.com/logos-co/logos-windows-ci",
-      "timestamp": "2026-10-02T20:35:54Z"
     }
   ],
   "discourse": [
@@ -2384,8 +2376,8 @@
     "recipients": 0,
     "total_distributed": 0,
     "faucet_remainder": null,
-    "unique_leaders": 8372,
-    "total_leader_blocks": 9067,
+    "unique_leaders": 8486,
+    "total_leader_blocks": 9188,
     "top_leaders": [
       {
         "pk": "88abf5167129aee6",
@@ -2442,13 +2434,13 @@
   "recent_blocks": {
     "window": {
       "blocks": 121,
-      "slot_min": 406596,
-      "slot_max": 410404,
-      "slot_span": 3809,
-      "transactions": 262,
-      "operations": 524,
-      "empty_blocks": 27,
-      "missed_or_unseen_slots": 3688
+      "slot_min": 410202,
+      "slot_max": 414004,
+      "slot_span": 3803,
+      "transactions": 252,
+      "operations": 505,
+      "empty_blocks": 31,
+      "missed_or_unseen_slots": 3682
     },
     "leader_diversity": {
       "unique_leaders": 121,
@@ -2456,216 +2448,216 @@
     },
     "top_leaders": [
       {
-        "leader_key": "8d707be1fdeff264",
+        "leader_key": "fe457686c5ecf93b",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "dfff799a14389e2b",
+        "leader_key": "4f69dced7acab570",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "16c2ec87542a2f59",
+        "leader_key": "93b3eb8deb3ff848",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "4651f13d29706944",
+        "leader_key": "99b7f10960a40436",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "fd1805d5d4984b5a",
+        "leader_key": "2827cdd2cf704961",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "9c26a1f91efa2e63",
+        "leader_key": "e73f26831ec06d1f",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "fff4905cf2bf2b91",
+        "leader_key": "9e4b29fa7b2436b1",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "df405265683b9e9f",
+        "leader_key": "07f57d9635cb352f",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "bd92e66057a4a0b5",
+        "leader_key": "2e5cde6d61ce8c93",
         "blocks": 1,
         "pct": 0.8
       },
       {
-        "leader_key": "dab3575bc66ea72c",
+        "leader_key": "be26323e0aa6fe6d",
         "blocks": 1,
         "pct": 0.8
       }
     ],
     "recent": [
       {
-        "slot": 409621,
-        "leader_key": "60bb1d47c020aa5b",
-        "transactions": 0,
-        "operations": 0,
+        "slot": 413429,
+        "leader_key": "08b78c5e4c5acb6a",
+        "transactions": 1,
+        "operations": 2,
         "root": "",
-        "hash": "005a45df91dde317"
+        "hash": "817faa71d16a0097"
       },
       {
-        "slot": 409755,
-        "leader_key": "568ebd5d6aa07be2",
-        "transactions": 11,
-        "operations": 22,
-        "root": "",
-        "hash": "e4a19e29c5bef939"
-      },
-      {
-        "slot": 409776,
-        "leader_key": "ea9b85acf96893e2",
-        "transactions": 0,
-        "operations": 0,
-        "root": "",
-        "hash": "f8aca87b7fe6749e"
-      },
-      {
-        "slot": 409787,
-        "leader_key": "451dfbe11a28d7d8",
-        "transactions": 2,
-        "operations": 4,
-        "root": "",
-        "hash": "3b0ef78c970daba7"
-      },
-      {
-        "slot": 409836,
-        "leader_key": "279cb05c11b71361",
-        "transactions": 2,
-        "operations": 4,
-        "root": "",
-        "hash": "5ed9eb87c2e78a03"
-      },
-      {
-        "slot": 409902,
-        "leader_key": "dd41a9ed878b6355",
+        "slot": 413498,
+        "leader_key": "8976420bd944ce9b",
         "transactions": 4,
         "operations": 8,
         "root": "",
-        "hash": "3e10d7499c7cf980"
+        "hash": "1983469b078e09ba"
       },
       {
-        "slot": 409995,
-        "leader_key": "54417711084b3702",
+        "slot": 413515,
+        "leader_key": "9c98ffa815721f76",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "4256716b047a66c6"
+      },
+      {
+        "slot": 413561,
+        "leader_key": "c69fc7de870fff08",
         "transactions": 5,
         "operations": 10,
         "root": "",
-        "hash": "d12b172b0116ea5e"
+        "hash": "752b017077e6831d"
       },
       {
-        "slot": 409999,
-        "leader_key": "2b9178efc473f097",
-        "transactions": 0,
-        "operations": 0,
+        "slot": 413566,
+        "leader_key": "04f041368240a8d6",
+        "transactions": 1,
+        "operations": 2,
         "root": "",
-        "hash": "050c2dead2d75545"
+        "hash": "8ba91f52b9f1f78f"
       },
       {
-        "slot": 410013,
-        "leader_key": "f5b04266ec93222d",
-        "transactions": 0,
-        "operations": 0,
-        "root": "",
-        "hash": "6e0426fbfe3a76a0"
-      },
-      {
-        "slot": 410090,
-        "leader_key": "6a23af920b4ed911",
-        "transactions": 4,
-        "operations": 8,
-        "root": "",
-        "hash": "b2b31d09c1d8325e"
-      },
-      {
-        "slot": 410137,
-        "leader_key": "dab3575bc66ea72c",
+        "slot": 413605,
+        "leader_key": "53104feca884ea55",
         "transactions": 3,
         "operations": 6,
         "root": "",
-        "hash": "890abff72e46a55e"
+        "hash": "3445072ab888d346"
       },
       {
-        "slot": 410147,
-        "leader_key": "bd92e66057a4a0b5",
+        "slot": 413634,
+        "leader_key": "195f59e26ca835d1",
+        "transactions": 4,
+        "operations": 8,
+        "root": "",
+        "hash": "bbd6734f5c3423e9"
+      },
+      {
+        "slot": 413656,
+        "leader_key": "abc7dd543e308e09",
         "transactions": 1,
         "operations": 2,
         "root": "",
-        "hash": "38b1b1b398d2a636"
+        "hash": "123510f0ad4ab840"
       },
       {
-        "slot": 410171,
-        "leader_key": "df405265683b9e9f",
-        "transactions": 2,
-        "operations": 4,
-        "root": "",
-        "hash": "5f6b16b6b534ad2c"
-      },
-      {
-        "slot": 410202,
-        "leader_key": "fff4905cf2bf2b91",
-        "transactions": 2,
-        "operations": 4,
-        "root": "",
-        "hash": "eca6a25f565c3a42"
-      },
-      {
-        "slot": 410210,
-        "leader_key": "9c26a1f91efa2e63",
-        "transactions": 1,
-        "operations": 2,
-        "root": "",
-        "hash": "fdd20e46d349f558"
-      },
-      {
-        "slot": 410244,
-        "leader_key": "fd1805d5d4984b5a",
-        "transactions": 5,
-        "operations": 10,
-        "root": "",
-        "hash": "8ca4dbd25b72602a"
-      },
-      {
-        "slot": 410318,
-        "leader_key": "4651f13d29706944",
-        "transactions": 6,
-        "operations": 12,
-        "root": "",
-        "hash": "05a703b507f79636"
-      },
-      {
-        "slot": 410352,
-        "leader_key": "16c2ec87542a2f59",
-        "transactions": 2,
-        "operations": 4,
-        "root": "",
-        "hash": "1ad2beeb85b534cd"
-      },
-      {
-        "slot": 410354,
-        "leader_key": "dfff799a14389e2b",
+        "slot": 413678,
+        "leader_key": "752098be40da0bdd",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "9926e2cb236aaa4c"
+        "hash": "1ccacf1a1676d5ad"
       },
       {
-        "slot": 410404,
-        "leader_key": "8d707be1fdeff264",
+        "slot": 413695,
+        "leader_key": "99b80574dd8e1916",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "038384ca94d01528"
+      },
+      {
+        "slot": 413708,
+        "leader_key": "be26323e0aa6fe6d",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "e420ac153da393cd"
+      },
+      {
+        "slot": 413729,
+        "leader_key": "2e5cde6d61ce8c93",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "f5d69254d5bdd8f4"
+      },
+      {
+        "slot": 413733,
+        "leader_key": "07f57d9635cb352f",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "a793fffc68059987"
+      },
+      {
+        "slot": 413758,
+        "leader_key": "9e4b29fa7b2436b1",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "d901b722383d34de"
+      },
+      {
+        "slot": 413820,
+        "leader_key": "e73f26831ec06d1f",
         "transactions": 2,
         "operations": 4,
         "root": "",
-        "hash": "0366ef4c66b948ed"
+        "hash": "6627a7c7b6f553ad"
+      },
+      {
+        "slot": 413878,
+        "leader_key": "2827cdd2cf704961",
+        "transactions": 3,
+        "operations": 6,
+        "root": "",
+        "hash": "231d10f9201a0d68"
+      },
+      {
+        "slot": 413883,
+        "leader_key": "99b7f10960a40436",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "8dd20a235291f82e"
+      },
+      {
+        "slot": 413893,
+        "leader_key": "93b3eb8deb3ff848",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "256492e9f8c06ee6"
+      },
+      {
+        "slot": 413980,
+        "leader_key": "4f69dced7acab570",
+        "transactions": 7,
+        "operations": 14,
+        "root": "",
+        "hash": "da760005f4519bde"
+      },
+      {
+        "slot": 414004,
+        "leader_key": "fe457686c5ecf93b",
+        "transactions": 2,
+        "operations": 4,
+        "root": "",
+        "hash": "4e344a5f35aed465"
       }
     ]
   },
@@ -3674,6 +3666,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-10-05T03:00:14Z",
-  "updated": 1791169214
+  "peer_snapshot": "2026-10-05T04:00:14Z",
+  "updated": 1791172814
 }
