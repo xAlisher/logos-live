@@ -1,9 +1,63 @@
 {
-  "chain": {},
-  "network": {},
+  "chain": {
+    "lib": "6e82a56ced487ec9ef2442c8734465704d184719b499f03213138993535fb8d7",
+    "lib_slot": 0,
+    "tip": "990d49ca49ca374af73aa6afb8f0e7d8370f5fa7fc28949f8fbb93085811229a",
+    "slot": 1633,
+    "height": 12,
+    "state": "Bootstrapping",
+    "mode": "Bootstrapping"
+  },
+  "network": {
+    "listen_addresses": [
+      "/ip4/127.0.0.1/udp/3000/quic-v1",
+      "/ip4/192.168.1.36/udp/3000/quic-v1",
+      "/ip4/100.108.127.3/udp/3000/quic-v1",
+      "/ip4/172.18.0.1/udp/3000/quic-v1",
+      "/ip4/172.17.0.1/udp/3000/quic-v1"
+    ],
+    "peer_id": "12D3KooWKPexKWL5M1XVgZkyWk2tUZxxVTRq5ifKYXBNnR9pNZ9Y",
+    "connected_peers": [
+      "12D3KooWBgZjLU1v6KJQP4BqVjkoEEHmssCjzgSirvCTc4KYS3oV",
+      "12D3KooWHusxQgSdtFUxMUhbcxwerrs35vD5ECGfT8LHMPyg1NPE",
+      "12D3KooWAi2txck42bNDzJjYGVxL8ajrfhdjSLFqLFryJyf5hyRP",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "12D3KooWL4Qq3pSt492KHhGQ5vEtmr2v83f1ZTLFRdwyfGZLXawe",
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "12D3KooWQ7gsH9jW72MkuPnnKeXx8DVVyWbwX7PeTHWHZcEhVV5A",
+      "12D3KooWGXJGcUGDSd7cqZYfb921YdrcwX4QMESEsndUsnAz8nZb",
+      "12D3KooWS46aezm25fWJDHjUjJEPRwJyfNx6h3BDra1sD8XccGMs",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWNcKb1yTf5VupQFWLkQdpS5BhuZLdqve57wWo9zjgEi5N",
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWLjgLkV3LFUgeVzP6Qkp9qsF7fghZ8b6L959fY3yK6j5B",
+      "12D3KooWMU2CwkSJwnGVo6JVLMLkmwZCECLU5D83myQ1HzpJ3ES3",
+      "12D3KooWPL3dMjBeirEZiuhkginKDoU3iz8jToGJaJWXcuAGzdZg",
+      "12D3KooWCTutixnfNXWg82D4ZHLpJfv8DFU7A4TsgZDuzvwr7bhC"
+    ],
+    "n_peers": 16,
+    "n_connections": 16,
+    "n_pending_connections": 0,
+    "discovered_peers": [
+      "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "12D3KooWNcKb1yTf5VupQFWLkQdpS5BhuZLdqve57wWo9zjgEi5N",
+      "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "12D3KooWGXJGcUGDSd7cqZYfb921YdrcwX4QMESEsndUsnAz8nZb",
+      "12D3KooWBgZjLU1v6KJQP4BqVjkoEEHmssCjzgSirvCTc4KYS3oV",
+      "12D3KooWLjgLkV3LFUgeVzP6Qkp9qsF7fghZ8b6L959fY3yK6j5B",
+      "12D3KooWAi2txck42bNDzJjYGVxL8ajrfhdjSLFqLFryJyf5hyRP",
+      "12D3KooWL4Qq3pSt492KHhGQ5vEtmr2v83f1ZTLFRdwyfGZLXawe",
+      "12D3KooWS46aezm25fWJDHjUjJEPRwJyfNx6h3BDra1sD8XccGMs",
+      "12D3KooWCTutixnfNXWg82D4ZHLpJfv8DFU7A4TsgZDuzvwr7bhC",
+      "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
+      "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "12D3KooWHusxQgSdtFUxMUhbcxwerrs35vD5ECGfT8LHMPyg1NPE"
+    ],
+    "n_discovered_peers": 13
+  },
   "nodes": [
     {
-      "peer_id": "",
+      "peer_id": "12D3KooWKPexKWL5M1XVgZkyWk2tUZxxVTRq5ifKYXBNnR9pNZ9Y",
       "ip": "83.49.38.117",
       "lat": 39.0864,
       "lon": -0.4698,
@@ -19,7 +73,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,22 +86,10 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1791554259
+      "last_seen": 1791558014
     }
   ],
   "events": [
-    {
-      "name": "Logos Circle Kano:HealthyChild HealthyFuture Initiative 1.0",
-      "start": "2026-10-09T09:00:00.000Z",
-      "end": "2026-10-09T15:00:00.000Z",
-      "url": "https://lu.ma/fkoafunc",
-      "lat": 12.0140991,
-      "lon": 8.5417452,
-      "city": "Kano",
-      "country": "Nigeria",
-      "address": "7F4C2G7R+MM9 Mixed S/G East, Dabo Special Primary School, Kano",
-      "upcoming": true
-    },
     {
       "name": "Field Station / Rajasthan",
       "start": "2026-10-23T03:30:00.000Z",
@@ -95,6 +137,18 @@
       "country": "Nigeria",
       "address": "QPQQ+PW2, Yekope Street, Adankolo, New Layout Rd, Lokoja",
       "upcoming": true
+    },
+    {
+      "name": "Logos Circle Kano:HealthyChild HealthyFuture Initiative 1.0",
+      "start": "2026-10-09T09:00:00.000Z",
+      "end": "2026-10-09T15:00:00.000Z",
+      "url": "https://lu.ma/fkoafunc",
+      "lat": 12.0140991,
+      "lon": 8.5417452,
+      "city": "Kano",
+      "country": "Nigeria",
+      "address": "7F4C2G7R+MM9 Mixed S/G East, Dabo Special Primary School, Kano",
+      "upcoming": false
     },
     {
       "name": "Freequencies",
@@ -1475,22 +1529,58 @@
       "country": "Nigeria",
       "address": "11 Abakaliki St, Awka",
       "upcoming": false
-    },
-    {
-      "name": "Logos Circle Delta",
-      "start": "2026-04-30T10:00:00.000Z",
-      "end": "2026-04-30T12:30:00.000Z",
-      "url": "https://lu.ma/xl45wdft",
-      "lat": 5.5711927,
-      "lon": 5.7828785,
-      "city": "Warri",
-      "country": "Nigeria",
-      "address": "HQCM+F5C Inside delta mall, Sapele Rd, Warri",
-      "upcoming": false
     }
   ],
   "youtube": {},
   "github": [
+    {
+      "repo": "spel",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Instruction variant tag is inferred from IDL array position, not the enum",
+      "url": "https://github.com/logos-co/spel/issues/288#issuecomment-6080129607",
+      "timestamp": "2026-10-09T11:40:20Z"
+    },
+    {
+      "repo": "logos-docs",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "docs: rename LGO to TestToken",
+      "url": "https://github.com/logos-co/logos-docs/pull/550#issuecomment-6082092679",
+      "timestamp": "2026-10-09T13:40:24Z"
+    },
+    {
+      "repo": "rfp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[MILESTONE] RFP-003 M3 \u2014 BTC-LEZ leg",
+      "url": "https://github.com/logos-co/rfp/issues/123#issuecomment-6079909704",
+      "timestamp": "2026-10-09T11:25:08Z"
+    },
+    {
+      "repo": "logos-zcash-wallet-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/history-intent\"",
+      "url": "https://github.com/logos-co/logos-zcash-wallet-ui",
+      "timestamp": "2026-10-09T14:32:09Z"
+    },
+    {
+      "repo": "logos-zcash-wallet-core-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/history-intent\"",
+      "url": "https://github.com/logos-co/logos-zcash-wallet-core-module",
+      "timestamp": "2026-10-09T14:29:58Z"
+    },
+    {
+      "repo": "logos-zcash-node-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/lan-servers\"",
+      "url": "https://github.com/logos-co/logos-zcash-node-module",
+      "timestamp": "2026-10-09T14:01:08Z"
+    },
     {
       "repo": "logos-zcash-wallet-backend",
       "type": "Create",
@@ -1618,33 +1708,16 @@
       "title": "new branch \"ci/logos-nix-cache\"",
       "url": "https://github.com/logos-co/nix-bundle-appimage",
       "timestamp": "2026-10-08T00:19:25Z"
-    },
-    {
-      "repo": "ecosystem",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[EcoDev] Testnet 0.3.0 cutover \u2014 node on-ramp, Blend Core, 1-click + node-remote compat, docs, dogfood (tracking)",
-      "url": "https://github.com/logos-co/ecosystem/issues/246#issuecomment-6078298598",
-      "timestamp": "2026-10-09T09:34:25Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"perf/tests-build-once\"",
-      "url": "https://github.com/logos-co/logos-logoscore-cli",
-      "timestamp": "2026-10-07T23:17:47Z"
-    },
-    {
-      "repo": "logos-basecamp",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"perf/one-bundle-drv\"",
-      "url": "https://github.com/logos-co/logos-basecamp",
-      "timestamp": "2026-10-07T23:00:05Z"
     }
   ],
   "discourse": [
+    {
+      "title": "\ud83d\ude80 New \u03bbPrize: LP-0026, Forum App ($5,500)",
+      "category": "Forum",
+      "url": "https://forum.logos.co/t/new-prize-lp-0026-forum-app-5-500/1976",
+      "timestamp": "2026-10-01T16:35:54.382Z",
+      "replies": 2
+    },
     {
       "title": "RFP-003 Atomic Swaps with LEZ: Gateway.fm's build and where the review stands",
       "category": "Forum",
@@ -1699,13 +1772,6 @@
       "category": "Forum",
       "url": "https://forum.logos.co/t/question-about-lambda-prize-adoption-criteria-for-a-solo-developer/1988",
       "timestamp": "2026-10-07T18:51:09.730Z",
-      "replies": 1
-    },
-    {
-      "title": "\ud83d\ude80 New \u03bbPrize: LP-0026, Forum App ($5,500)",
-      "category": "Forum",
-      "url": "https://forum.logos.co/t/new-prize-lp-0026-forum-app-5-500/1976",
-      "timestamp": "2026-10-01T16:35:54.382Z",
       "replies": 1
     },
     {
@@ -1860,8 +1926,8 @@
     "recipients": 0,
     "total_distributed": 0,
     "faucet_remainder": null,
-    "unique_leaders": 13619,
-    "total_leader_blocks": 18505,
+    "unique_leaders": 13631,
+    "total_leader_blocks": 18517,
     "top_leaders": [
       {
         "pk": "44889b706fff3c48",
@@ -1915,7 +1981,172 @@
       }
     ]
   },
-  "recent_blocks": {},
+  "recent_blocks": {
+    "window": {
+      "blocks": 12,
+      "slot_min": 350,
+      "slot_max": 1633,
+      "slot_span": 1284,
+      "transactions": 61,
+      "operations": 194,
+      "empty_blocks": 3,
+      "missed_or_unseen_slots": 1272
+    },
+    "leader_diversity": {
+      "unique_leaders": 12,
+      "top_leader_share_pct": 8.3
+    },
+    "top_leaders": [
+      {
+        "leader_key": "9c81e8d93dc57d06",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "54178f49a1e5bf53",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "2eac92513e88436d",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "3623ea6f9dbe52da",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "8fd3e4b694bf7d1d",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "2e1d0f2281b51baa",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "22511176e702f0b2",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "c5ffbf84107f6a55",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "4df1791c57fea384",
+        "blocks": 1,
+        "pct": 8.3
+      },
+      {
+        "leader_key": "9b31b0cc5c6e74e7",
+        "blocks": 1,
+        "pct": 8.3
+      }
+    ],
+    "recent": [
+      {
+        "slot": 350,
+        "leader_key": "f6821264f09e9223",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "db4af9cdbe593b74"
+      },
+      {
+        "slot": 520,
+        "leader_key": "17b43e32e5f00091",
+        "transactions": 1,
+        "operations": 2,
+        "root": "",
+        "hash": "b12c4fc7770e6e0b"
+      },
+      {
+        "slot": 763,
+        "leader_key": "9b31b0cc5c6e74e7",
+        "transactions": 17,
+        "operations": 68,
+        "root": "",
+        "hash": "fc83ad2a0b7c56e4"
+      },
+      {
+        "slot": 867,
+        "leader_key": "4df1791c57fea384",
+        "transactions": 3,
+        "operations": 11,
+        "root": "",
+        "hash": "a357b8eb6636dcd6"
+      },
+      {
+        "slot": 1010,
+        "leader_key": "c5ffbf84107f6a55",
+        "transactions": 6,
+        "operations": 15,
+        "root": "",
+        "hash": "080a15b159c80c9d"
+      },
+      {
+        "slot": 1014,
+        "leader_key": "22511176e702f0b2",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "d50791bae662c37d"
+      },
+      {
+        "slot": 1246,
+        "leader_key": "2e1d0f2281b51baa",
+        "transactions": 12,
+        "operations": 36,
+        "root": "",
+        "hash": "d58b4fcbe7ad810d"
+      },
+      {
+        "slot": 1263,
+        "leader_key": "8fd3e4b694bf7d1d",
+        "transactions": 2,
+        "operations": 9,
+        "root": "",
+        "hash": "54f0e74380f7b6f1"
+      },
+      {
+        "slot": 1397,
+        "leader_key": "3623ea6f9dbe52da",
+        "transactions": 8,
+        "operations": 19,
+        "root": "",
+        "hash": "a83e2ffe4a451cba"
+      },
+      {
+        "slot": 1398,
+        "leader_key": "2eac92513e88436d",
+        "transactions": 0,
+        "operations": 0,
+        "root": "",
+        "hash": "2e4b15b45166e9c2"
+      },
+      {
+        "slot": 1530,
+        "leader_key": "54178f49a1e5bf53",
+        "transactions": 6,
+        "operations": 18,
+        "root": "",
+        "hash": "6c969ec832063bf8"
+      },
+      {
+        "slot": 1633,
+        "leader_key": "9c81e8d93dc57d06",
+        "transactions": 6,
+        "operations": 16,
+        "root": "",
+        "hash": "990d49ca49ca374a"
+      }
+    ]
+  },
   "telemetry": {},
   "zone_messages": [
     {
@@ -2911,7 +3142,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": null,
+  "genesis_ts": 1791556381,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -2921,6 +3152,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-10-09T14:00:14Z",
-  "updated": 1791554414
+  "peer_snapshot": "2026-10-09T15:00:14Z",
+  "updated": 1791558014
 }
