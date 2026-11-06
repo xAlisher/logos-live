@@ -29,6 +29,7 @@
       "12D3KooWE8aHt9HVJCF9hREbWW5FGoCc5CHp17fxV8Zw4DVUvWZG",
       "12D3KooWAkCZdDrPGE9vfAMPbwMhzFF2Zt7Jrr6FTNdaepCNT933",
       "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "12D3KooWPzwf2PZW4FrbAbhNm2kFCfsgWj4GRKty34NyPdF1d1Hd",
       "12D3KooWJdm5BcFtb2HvNXUsDAGS2xRpDLu14FkUvPSSZx1gJZiB",
       "12D3KooWHQLiY3kuEPVcpuDBagdUXoj2j5qaGkBEiDK17fMYgwZu",
       "12D3KooWKMrtWDeFRsQqvZpgWJb7XWyR38nYiPJ2dfFgNHMJi6Vt",
@@ -215,8 +216,8 @@
       "12D3KooWJAYsyc4Mobk53nd2GrFkK2B4zB4CfvVALG75p7FqVszU",
       "12D3KooWRnB7LdrUR5TdPnASBPRhMRJgSuUM54fHoxGu6eLCg634"
     ],
-    "n_peers": 196,
-    "n_connections": 196,
+    "n_peers": 197,
+    "n_connections": 197,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWKSppwV3zVpKQeJ69AUfE8qMefrFNhPWnZk9tDnkkYocr",
@@ -328,7 +329,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1793933492
+      "last_seen": 1793937091
     }
   ],
   "events": [
@@ -1788,6 +1789,62 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Test/MCP lifecycle B6: cancelling the upgrade gate keeps the old version",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/554#issuecomment-6675626570",
+      "timestamp": "2026-11-06T02:57:26Z"
+    },
+    {
+      "repo": "nimbos",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "update to nim-libp2p 2.2.2",
+      "url": "https://github.com/logos-co/nimbos/pull/266#issuecomment-6675545330",
+      "timestamp": "2026-11-06T02:51:27Z"
+    },
+    {
+      "repo": "nimbos",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat: implement orphan block synchronization via download block request",
+      "url": "https://github.com/logos-co/nimbos/pull/258#issuecomment-6675406197",
+      "timestamp": "2026-11-06T02:41:33Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Test/MCP lifecycle B4: reinstalling the same version, wording and no-op on disk",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/552#issuecomment-6675247467",
+      "timestamp": "2026-11-06T02:30:13Z"
+    },
+    {
+      "repo": "logos-evm-keystore-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix: the wallet's name, never an account's, is what origins and pickers report",
+      "url": "https://github.com/logos-co/logos-evm-keystore-module/pull/44#issuecomment-6675151530",
+      "timestamp": "2026-11-06T02:23:10Z"
+    },
+    {
+      "repo": "logos-monero-wallet-cli",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/v0.2.0\"",
+      "url": "https://github.com/logos-co/logos-monero-wallet-cli",
+      "timestamp": "2026-11-05T18:31:41Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Test/MCP lifecycle B2: two confirmations in flight, the second is refused with an answer",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/550#issuecomment-6674908357",
+      "timestamp": "2026-11-06T02:06:03Z"
+    },
+    {
       "repo": "logos-uniswap-ui",
       "type": "Comment",
       "cls": "type-create",
@@ -1858,62 +1915,22 @@
       "title": "new branch \"chore/v0.2.0\"",
       "url": "https://github.com/logos-co/logos-uniswap-ui",
       "timestamp": "2026-11-05T20:42:09Z"
-    },
-    {
-      "repo": "logos-signer-manager-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/v0.2.0\"",
-      "url": "https://github.com/logos-co/logos-signer-manager-module",
-      "timestamp": "2026-11-05T15:40:13Z"
-    },
-    {
-      "repo": "logos-uniswap-backend",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/v0.2.0\"",
-      "url": "https://github.com/logos-co/logos-uniswap-backend",
-      "timestamp": "2026-11-05T20:19:10Z"
-    },
-    {
-      "repo": "logos-uniswap-backend",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore: version 0.2.0, dependencies on ~0.2.0",
-      "url": "https://github.com/logos-co/logos-uniswap-backend/pull/16#issuecomment-6669835031",
-      "timestamp": "2026-11-05T21:19:47Z"
-    },
-    {
-      "repo": "logos-eth-wallet-backend",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore: version 0.2.0, dependencies on ~0.2.0",
-      "url": "https://github.com/logos-co/logos-eth-wallet-backend/pull/39#issuecomment-6669757135",
-      "timestamp": "2026-11-05T21:15:56Z"
-    },
-    {
-      "repo": "logos-eth-wallet-ui",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "chore: version 0.2.0, dependencies on ~0.2.0",
-      "url": "https://github.com/logos-co/logos-eth-wallet-ui/pull/42#issuecomment-6669675964",
-      "timestamp": "2026-11-05T21:12:01Z"
     }
   ],
   "discourse": [
+    {
+      "title": "Logos circle maraba #3",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-maraba-3/2878",
+      "timestamp": "2026-11-05T11:41:34.314Z",
+      "replies": 2
+    },
     {
       "title": "Brand Guidance: Keep Lezer Wallet, or Choose a New Name?",
       "category": "Circles",
       "url": "https://forum.logos.co/t/brand-guidance-keep-lezer-wallet-or-choose-a-new-name/2872",
       "timestamp": "2026-11-03T20:09:17.767Z",
       "replies": 2
-    },
-    {
-      "title": "Logos circle maraba #3",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-maraba-3/2878",
-      "timestamp": "2026-11-05T11:41:34.314Z",
-      "replies": 1
     },
     {
       "title": "Logos Circle Benin City Report - Octobar 2026",
@@ -3264,7 +3281,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1791583653,
+  "genesis_ts": 1791587252,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3274,6 +3291,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-06T02:51:32Z",
-  "updated": 1793933492
+  "peer_snapshot": "2026-11-06T03:51:31Z",
+  "updated": 1793937091
 }
