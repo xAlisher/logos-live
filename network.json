@@ -19,6 +19,7 @@
     "peer_id": "12D3KooWKPexKWL5M1XVgZkyWk2tUZxxVTRq5ifKYXBNnR9pNZ9Y",
     "connected_peers": [
       "12D3KooWP3CsB91nFsBfE4N38csZqpVVKNK8jasDYrfLEHbLyRFe",
+      "12D3KooWEU49LTuUkMnff1cvzvPrsg2LNKsPeVEGzkr1Pj3HF6ZD",
       "12D3KooWBgWa595cfBbmxSjXCfA3x3WoBahZiMCbixWffPVHBYUB",
       "12D3KooWBgZjLU1v6KJQP4BqVjkoEEHmssCjzgSirvCTc4KYS3oV",
       "12D3KooWQzEJfAA7bcYQkDCz2dqBzVQXnBx2qzc3zyDYHeYcqRm3",
@@ -28,6 +29,7 @@
       "12D3KooWC4u5J2W4N1TeLW2L9B279xUVkshyuw4e7U8WFhP4E8xa",
       "12D3KooWAkCZdDrPGE9vfAMPbwMhzFF2Zt7Jrr6FTNdaepCNT933",
       "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "12D3KooWPzwf2PZW4FrbAbhNm2kFCfsgWj4GRKty34NyPdF1d1Hd",
       "12D3KooWJdm5BcFtb2HvNXUsDAGS2xRpDLu14FkUvPSSZx1gJZiB",
       "12D3KooWHQLiY3kuEPVcpuDBagdUXoj2j5qaGkBEiDK17fMYgwZu",
       "12D3KooWKMrtWDeFRsQqvZpgWJb7XWyR38nYiPJ2dfFgNHMJi6Vt",
@@ -217,8 +219,8 @@
       "12D3KooWJAYsyc4Mobk53nd2GrFkK2B4zB4CfvVALG75p7FqVszU",
       "12D3KooWRnB7LdrUR5TdPnASBPRhMRJgSuUM54fHoxGu6eLCg634"
     ],
-    "n_peers": 198,
-    "n_connections": 199,
+    "n_peers": 200,
+    "n_connections": 201,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWKSppwV3zVpKQeJ69AUfE8qMefrFNhPWnZk9tDnkkYocr",
@@ -317,7 +319,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
+      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -330,7 +332,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794030692
+      "last_seen": 1794034292
     }
   ],
   "events": [
@@ -1778,6 +1780,14 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-evm-keystore-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/emptied-wallet-keeps-phrase\"",
+      "url": "https://github.com/logos-co/logos-evm-keystore-module",
+      "timestamp": "2026-11-06T18:15:02Z"
+    },
+    {
       "repo": "logos-bitcoin-node-module",
       "type": "Create",
       "cls": "type-create",
@@ -1896,38 +1906,6 @@
       "title": "new branch \"chore/v0.2.0\"",
       "url": "https://github.com/logos-co/logos-eth-rpc-ui",
       "timestamp": "2026-11-05T16:15:46Z"
-    },
-    {
-      "repo": "logos-zcash-wallet-backend",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/per-network-tor-use\"",
-      "url": "https://github.com/logos-co/logos-zcash-wallet-backend",
-      "timestamp": "2026-11-06T15:52:31Z"
-    },
-    {
-      "repo": "logos-zcash-wallet-cli",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/per-network-tor-use\"",
-      "url": "https://github.com/logos-co/logos-zcash-wallet-cli",
-      "timestamp": "2026-11-06T16:22:14Z"
-    },
-    {
-      "repo": "logos-bitcoin-privacy-tests",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/per-network-tor-use\"",
-      "url": "https://github.com/logos-co/logos-bitcoin-privacy-tests",
-      "timestamp": "2026-11-06T16:22:06Z"
-    },
-    {
-      "repo": "logos-monero-wallet-core-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/per-network-tor-use\"",
-      "url": "https://github.com/logos-co/logos-monero-wallet-core-module",
-      "timestamp": "2026-11-06T16:20:51Z"
     }
   ],
   "discourse": [
@@ -3294,7 +3272,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1791680853,
+  "genesis_ts": 1791684453,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3304,6 +3282,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-07T05:51:32Z",
-  "updated": 1794030692
+  "peer_snapshot": "2026-11-07T06:51:32Z",
+  "updated": 1794034292
 }
