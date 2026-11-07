@@ -19,6 +19,7 @@
     "peer_id": "12D3KooWKPexKWL5M1XVgZkyWk2tUZxxVTRq5ifKYXBNnR9pNZ9Y",
     "connected_peers": [
       "12D3KooWP3CsB91nFsBfE4N38csZqpVVKNK8jasDYrfLEHbLyRFe",
+      "12D3KooWEU49LTuUkMnff1cvzvPrsg2LNKsPeVEGzkr1Pj3HF6ZD",
       "12D3KooWBgWa595cfBbmxSjXCfA3x3WoBahZiMCbixWffPVHBYUB",
       "12D3KooWBgZjLU1v6KJQP4BqVjkoEEHmssCjzgSirvCTc4KYS3oV",
       "12D3KooWQzEJfAA7bcYQkDCz2dqBzVQXnBx2qzc3zyDYHeYcqRm3",
@@ -118,6 +119,7 @@
       "12D3KooWDBLzX8xzewyacxZXbDpLSwEQob59Tq5TN8xMBQoZEyqz",
       "12D3KooWCY2iEveq8dqBLBuxxX8CCvtdayooHD4zCFWcUgToQXMw",
       "12D3KooWQ6m77E8Mk7xcWZgpzTGPwH9NvmUDWSDqEuzyXJfc2GuR",
+      "12D3KooWC4Ci6Nsqmd7v2bqpnpr8k9mhENkmFjFvd96zZrw2k1bx",
       "12D3KooWSXJxNBKutVXhNqGTvyhSuy56XdNh2ox2qsSaH7Lyvnab",
       "12D3KooWPMdvqopx6nqh2Ymm5qT7kHjZo8rseButiSJwiPfVJibG",
       "12D3KooWN1tbS7iUMhZbKuSXecM9AiMV79WWEqxg5UJQ7GjU5jYW",
@@ -147,7 +149,6 @@
       "12D3KooWJuL1Gn4u7Jcf122TctCECR1xepnfNQnwobdkqFE2Js8V",
       "12D3KooWAYCjAf6NDDgu5XxpXGkejsg3YiasXLE9wPisxidjxYBi",
       "12D3KooWNbVKgbBDvZMAueViX8gFh6s86gVkPYYdG6rZJYirAvXF",
-      "12D3KooWCvECdosuXcmozg9svx7AbyYaKQYy5PxvtEVfvCvzza4o",
       "12D3KooWM6z6qAWQvks7qPFUpzayviRp6DTbXPif6eptdqfqbq9v",
       "12D3KooWFdMGkmnz1BDRRuDnWoTvpFW59x2NcAkoc2jekLTvibN2",
       "12D3KooWJ7KrJdjMXt1dqfGqBRcPZJCyJjdTNoHXTWj9DKQ1FRam",
@@ -216,8 +217,8 @@
       "12D3KooWJAYsyc4Mobk53nd2GrFkK2B4zB4CfvVALG75p7FqVszU",
       "12D3KooWRnB7LdrUR5TdPnASBPRhMRJgSuUM54fHoxGu6eLCg634"
     ],
-    "n_peers": 197,
-    "n_connections": 198,
+    "n_peers": 198,
+    "n_connections": 199,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWKSppwV3zVpKQeJ69AUfE8qMefrFNhPWnZk9tDnkkYocr",
@@ -329,7 +330,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794019890
+      "last_seen": 1794023491
     }
   ],
   "events": [
@@ -1776,6 +1777,38 @@
   ],
   "youtube": {},
   "github": [
+    {
+      "repo": "logos-monero-wallet-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/per-network-tor-use\"",
+      "url": "https://github.com/logos-co/logos-monero-wallet-ui",
+      "timestamp": "2026-11-06T16:14:55Z"
+    },
+    {
+      "repo": "logos-nix",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/ios-detect-xcode\"",
+      "url": "https://github.com/logos-co/logos-nix",
+      "timestamp": "2026-11-06T14:22:27Z"
+    },
+    {
+      "repo": "logos-evm-keystore-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/empty-wallet-kept-phrase\"",
+      "url": "https://github.com/logos-co/logos-evm-keystore-ui",
+      "timestamp": "2026-11-06T18:15:06Z"
+    },
+    {
+      "repo": "logos-zcash-wallet-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/own-server-sends\"",
+      "url": "https://github.com/logos-co/logos-zcash-wallet-ui",
+      "timestamp": "2026-11-06T20:12:07Z"
+    },
     {
       "repo": "logos-docs",
       "type": "Create",
@@ -3245,7 +3278,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1791670051,
+  "genesis_ts": 1791673652,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3255,6 +3288,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-07T02:51:30Z",
-  "updated": 1794019890
+  "peer_snapshot": "2026-11-07T03:51:31Z",
+  "updated": 1794023491
 }
