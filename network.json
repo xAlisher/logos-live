@@ -78,7 +78,6 @@
       "12D3KooWNHpi29g8Zmackg3zmx9CCeQRyR3EyX35rUUFAmvULVy4",
       "12D3KooWSiC7KNnJoAv3T9LVFzDfWmFZm44iUw18LGHqkyP6cYn8",
       "12D3KooWGXJGcUGDSd7cqZYfb921YdrcwX4QMESEsndUsnAz8nZb",
-      "12D3KooWCvK3jj2WGsM52Dbq15NNZWaysCNvWCACyRo1CDNcKegU",
       "12D3KooWDRJhnzhy9TkHtLadX11p5iwCerv6aEorXzLbspvJaQwn",
       "12D3KooWHzZzP2EhxGgVdVX5G38XWtQNPsjV2yTA6ykA4C84CCJn",
       "12D3KooWBX6tKgRTgwQFUpM51ARzo2QMJpKBunaSJUaeTiQgnV4a",
@@ -152,9 +151,11 @@
       "12D3KooWJuL1Gn4u7Jcf122TctCECR1xepnfNQnwobdkqFE2Js8V",
       "12D3KooWAYCjAf6NDDgu5XxpXGkejsg3YiasXLE9wPisxidjxYBi",
       "12D3KooWNbVKgbBDvZMAueViX8gFh6s86gVkPYYdG6rZJYirAvXF",
+      "12D3KooWCvECdosuXcmozg9svx7AbyYaKQYy5PxvtEVfvCvzza4o",
       "12D3KooWM6z6qAWQvks7qPFUpzayviRp6DTbXPif6eptdqfqbq9v",
       "12D3KooWFdMGkmnz1BDRRuDnWoTvpFW59x2NcAkoc2jekLTvibN2",
       "12D3KooWJ7KrJdjMXt1dqfGqBRcPZJCyJjdTNoHXTWj9DKQ1FRam",
+      "12D3KooWPcUq2fQaMoZbtwxwgcsr6oNgAmRqpKytJni5YcbJZpjH",
       "12D3KooWPWnvAcYZK9WEuL67qTFaibF43EFXwMcJB5W8WpRSJHNo",
       "12D3KooWFsi1DFqwgpyTXSsknxB73kcKw6j1KgTUeEBZtKyNR6QW",
       "12D3KooWDHFFU9SAkSFTuz2R4BsBwpqW9HrG3qXKBsrsZFNAT7Xr",
@@ -196,7 +197,6 @@
       "12D3KooWFV8i3pi7JUcBJvq73BBgQYjH4FivCrmBT6KUqbzUD4Wz",
       "12D3KooWFB7L5mxumrXxwBfNpLWUv4gBGo8owcKFgvJbiNUj1C4R",
       "12D3KooWJhJD5KfDxmBZwzP8fCnnGrmikisgHvi9a7BmhsP99wkC",
-      "12D3KooWPTjtu5E61o16XbijEF3MZrAKY5JWXB9WiYZcXR4reERB",
       "12D3KooWLmjoxLpDvh8wWkY3WL8AzrFV3iDQvDaxm9F7Mvg6w5qX",
       "12D3KooWAdRsT2YTPAEkEk59phHwCPhMt89fzkG2k55rKtXJxg9C",
       "12D3KooWLFTis8KxS3ZnuLguwWHuQf1L61Fx35KSaeXzPSSUWgc1",
@@ -320,7 +320,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -333,7 +333,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794012692
+      "last_seen": 1794016291
     }
   ],
   "events": [
@@ -1781,6 +1781,30 @@
   "youtube": {},
   "github": [
     {
+      "repo": "nimbos",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "switch to ORC",
+      "url": "https://github.com/logos-co/nimbos/pull/265#issuecomment-6699589650",
+      "timestamp": "2026-11-07T00:28:58Z"
+    },
+    {
+      "repo": "logos-evm-fee-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/v0.2.0\"",
+      "url": "https://github.com/logos-co/logos-evm-fee-module",
+      "timestamp": "2026-11-05T16:16:11Z"
+    },
+    {
+      "repo": "logos-eth-rpc-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"chore/v0.2.0\"",
+      "url": "https://github.com/logos-co/logos-eth-rpc-ui",
+      "timestamp": "2026-11-05T16:15:46Z"
+    },
+    {
       "repo": "logos-zcash-wallet-backend",
       "type": "Create",
       "cls": "type-create",
@@ -1883,14 +1907,6 @@
       "title": "feat: a switch for sending transactions over Tor (txProxy)",
       "url": "https://github.com/logos-co/logos-monerod-ui/pull/6#issuecomment-6695367184",
       "timestamp": "2026-11-06T20:57:59Z"
-    },
-    {
-      "repo": "logos-monero-wallet-core-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: send through a public node over Tor when the node module says so",
-      "url": "https://github.com/logos-co/logos-monero-wallet-core-module/pull/19#issuecomment-6694733142",
-      "timestamp": "2026-11-06T20:27:40Z"
     }
   ],
   "discourse": [
@@ -3257,7 +3273,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1791662853,
+  "genesis_ts": 1791666452,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3267,6 +3283,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-07T00:51:32Z",
-  "updated": 1794012692
+  "peer_snapshot": "2026-11-07T01:51:31Z",
+  "updated": 1794016291
 }
