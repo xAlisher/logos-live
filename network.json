@@ -98,7 +98,6 @@
       "12D3KooWN8dNT3hPgXKLgqNTAQZpCv96JMhAB1dQvkepE3Cop2ab",
       "12D3KooWNAAwH5trBxjSm6WvnLbNu8s7VbVDFVng5sTcfHQ4Cjvr",
       "12D3KooWKV3DzFiLVfP8WLhUcEZ3VhSKA4vtjFSszNyC8NMQQ6EY",
-      "12D3KooWBKvDh4poqWnUB8uhMeyc3cd9L1N1NjZsbfJ3NVnfzEnR",
       "12D3KooWHScR2hffxHyYYzDX25kCzXkU4Yow6VEdNxtb72Kwk9ku",
       "12D3KooWDksAarrJHGxPWgrTy7vwZ3dL1YZiu4K6rrznn76VbYGN",
       "12D3KooWB5BZrCsYKWhybiH6kfgASRNwnhv6wHKdrgfHkn9huxGG",
@@ -190,6 +189,7 @@
       "12D3KooWGmYEM3rP34pFSLo2xEkEmKzEgD6rxBzV1dym7W9iTepc",
       "12D3KooWRPEWQmu52rxaQdAxDsW7FaaQWPpi4TbU3F6XSL8yprjy",
       "12D3KooWHdPYEJdy4W6f5Eg6NNpMdcjihgYkFNK6RNK6UoNXeGqS",
+      "12D3KooWFV8i3pi7JUcBJvq73BBgQYjH4FivCrmBT6KUqbzUD4Wz",
       "12D3KooWFB7L5mxumrXxwBfNpLWUv4gBGo8owcKFgvJbiNUj1C4R",
       "12D3KooWJhJD5KfDxmBZwzP8fCnnGrmikisgHvi9a7BmhsP99wkC",
       "12D3KooWPTjtu5E61o16XbijEF3MZrAKY5JWXB9WiYZcXR4reERB",
@@ -329,7 +329,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794145893
+      "last_seen": 1794149491
     }
   ],
   "events": [
@@ -1741,6 +1741,30 @@
   "youtube": {},
   "github": [
     {
+      "repo": "rfp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[PROPOSAL] RFP-021 \u2014 Affidavit: trustless Ethereum state attestation for LEZ",
+      "url": "https://github.com/logos-co/rfp/issues/247#issuecomment-6722303575",
+      "timestamp": "2026-11-08T13:49:35Z"
+    },
+    {
+      "repo": "logos-bitcoin-wallet-backend",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/local-sends\"",
+      "url": "https://github.com/logos-co/logos-bitcoin-wallet-backend",
+      "timestamp": "2026-11-06T20:37:25Z"
+    },
+    {
+      "repo": "logos-bitcoind-module",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/private-sends-over-logos-tor\"",
+      "url": "https://github.com/logos-co/logos-bitcoind-module",
+      "timestamp": "2026-11-06T20:16:36Z"
+    },
+    {
       "repo": "logos-zcash-wallet-backend",
       "type": "Create",
       "cls": "type-create",
@@ -1859,14 +1883,6 @@
       "title": "feat: with your own node, send payments through a public node over Tor",
       "url": "https://github.com/logos-co/logos-monero-node-module/pull/13#issuecomment-6716090198",
       "timestamp": "2026-11-08T02:18:46Z"
-    },
-    {
-      "repo": "logos-monero-node-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(defaults): stagenet and testnet catch up from a second operator",
-      "url": "https://github.com/logos-co/logos-monero-node-module/pull/12#issuecomment-6716070670",
-      "timestamp": "2026-11-08T02:16:35Z"
     }
   ],
   "discourse": [
@@ -3233,7 +3249,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1791796054,
+  "genesis_ts": 1791799652,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3243,6 +3259,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-08T13:51:33Z",
-  "updated": 1794145893
+  "peer_snapshot": "2026-11-08T14:51:31Z",
+  "updated": 1794149491
 }
