@@ -29,7 +29,6 @@
       "12D3KooWE8aHt9HVJCF9hREbWW5FGoCc5CHp17fxV8Zw4DVUvWZG",
       "12D3KooWAkCZdDrPGE9vfAMPbwMhzFF2Zt7Jrr6FTNdaepCNT933",
       "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-      "12D3KooWPzwf2PZW4FrbAbhNm2kFCfsgWj4GRKty34NyPdF1d1Hd",
       "12D3KooWJdm5BcFtb2HvNXUsDAGS2xRpDLu14FkUvPSSZx1gJZiB",
       "12D3KooWHQLiY3kuEPVcpuDBagdUXoj2j5qaGkBEiDK17fMYgwZu",
       "12D3KooWKMrtWDeFRsQqvZpgWJb7XWyR38nYiPJ2dfFgNHMJi6Vt",
@@ -190,7 +189,6 @@
       "12D3KooWFV8i3pi7JUcBJvq73BBgQYjH4FivCrmBT6KUqbzUD4Wz",
       "12D3KooWFB7L5mxumrXxwBfNpLWUv4gBGo8owcKFgvJbiNUj1C4R",
       "12D3KooWJhJD5KfDxmBZwzP8fCnnGrmikisgHvi9a7BmhsP99wkC",
-      "12D3KooWPTjtu5E61o16XbijEF3MZrAKY5JWXB9WiYZcXR4reERB",
       "12D3KooWLmjoxLpDvh8wWkY3WL8AzrFV3iDQvDaxm9F7Mvg6w5qX",
       "12D3KooWAdRsT2YTPAEkEk59phHwCPhMt89fzkG2k55rKtXJxg9C",
       "12D3KooWLFTis8KxS3ZnuLguwWHuQf1L61Fx35KSaeXzPSSUWgc1",
@@ -210,11 +208,12 @@
       "12D3KooWMZ4bBjzJwW7LT4hZs7owRMGVxur1ezQNF9oBWKhNrtDD",
       "12D3KooWN6EEfgRDwYtQRA5D4gmgMfhH6wYPe3gtVoKvPSX6z4C6",
       "12D3KooWJAYsyc4Mobk53nd2GrFkK2B4zB4CfvVALG75p7FqVszU",
+      "12D3KooWHafhsbBQLQJSmUTf9TDS9nTAAqHfhGJC45qRzwevC7th",
       "12D3KooWRnB7LdrUR5TdPnASBPRhMRJgSuUM54fHoxGu6eLCg634"
     ],
-    "n_peers": 193,
-    "n_connections": 194,
-    "n_pending_connections": 1,
+    "n_peers": 192,
+    "n_connections": 192,
+    "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWKSppwV3zVpKQeJ69AUfE8qMefrFNhPWnZk9tDnkkYocr",
       "12D3KooWLaSHVC1nmgUzV1VJfj9ejsDuseAokyXgdP3eFfp9sbD3",
@@ -245,13 +244,13 @@
       "12D3KooWDLXx8sBqAkjebBgoJGRdvf3zXMfwSon5qrswCCYzAjxS",
       "12D3KooWQDxz9i9guobxrVcu1H3zJjcoEYr2gZWtr3eDTKtynmgY",
       "12D3KooWQBMv2jW6BNV6mZhEGe5m35s2WMguoKqYiUGr1VLkWoqi",
-      "12D3KooWNaa5zzk83tNsrezxbshXNbDvt5mVa7eyZzSnezzUzHmN",
       "12D3KooWB8uz6qifw2PCFAdGr5nySZiQMPAWvmyaZD8gAPHcMfxq",
       "12D3KooWRfLdD23f4tsaFXcdcZeNQrsA3Z6AnNmNymuq6kyUuTx9",
       "12D3KooWP9vYSZNfg5Gb5XwaZsJpkLFTV2cke2Tb1Cc2EqNh1DEa",
       "12D3KooWSXJxNBKutVXhNqGTvyhSuy56XdNh2ox2qsSaH7Lyvnab",
       "12D3KooWDWQGzFVL8BPdn1vNDJ4qKKCbKEftctZJ1zyjnL1Ew4Qg",
       "12D3KooWRwJk3AjcRr8NgyJ9hCvv934Am89ghFkKPFfhCWKus7hG",
+      "12D3KooWNaa5zzk83tNsrezxbshXNbDvt5mVa7eyZzSnezzUzHmN",
       "12D3KooWFmRYq1gzMx3zWBTBAVqJnLAmpShS7nDLMqbWFSiZ8vTh",
       "12D3KooWB5BZrCsYKWhybiH6kfgASRNwnhv6wHKdrgfHkn9huxGG",
       "12D3KooWPMdvqopx6nqh2Ymm5qT7kHjZo8rseButiSJwiPfVJibG",
@@ -326,7 +325,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794210691
+      "last_seen": 1794214291
     }
   ],
   "events": [
@@ -1725,6 +1724,22 @@
   ],
   "youtube": {},
   "github": [
+    {
+      "repo": "logos-lips",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[RFC] Block Construction: Validate the header before resolving references",
+      "url": "https://github.com/logos-co/logos-lips/pull/495#issuecomment-6734372270",
+      "timestamp": "2026-11-09T07:09:27Z"
+    },
+    {
+      "repo": "logos-lips",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[RFC] Mempool: Specify the mempool as implemented",
+      "url": "https://github.com/logos-co/logos-lips/pull/413#issuecomment-6734281604",
+      "timestamp": "2026-11-09T07:03:21Z"
+    },
     {
       "repo": "logos-lips",
       "type": "Comment",
@@ -3210,7 +3225,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1791860852,
+  "genesis_ts": 1791864452,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3220,6 +3235,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-09T07:51:31Z",
-  "updated": 1794210691
+  "peer_snapshot": "2026-11-09T08:51:31Z",
+  "updated": 1794214291
 }
