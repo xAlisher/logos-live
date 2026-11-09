@@ -27,10 +27,10 @@
       "12D3KooWBccqp2U8hTYBdBzk9JTcM6rWqtwAcJSLpW6Ubv6P8ae4",
       "12D3KooWS9Lv7qub6QwkjPc2p1cEnULKKYxdLbm3c9nP3XPoLrp4",
       "12D3KooWC4u5J2W4N1TeLW2L9B279xUVkshyuw4e7U8WFhP4E8xa",
+      "12D3KooWEU49LTuUkMnff1cvzvPrsg2LNKsPeVEGzkr1Pj3HF6ZD",
       "12D3KooWE8aHt9HVJCF9hREbWW5FGoCc5CHp17fxV8Zw4DVUvWZG",
       "12D3KooWAkCZdDrPGE9vfAMPbwMhzFF2Zt7Jrr6FTNdaepCNT933",
       "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
-      "12D3KooWPzwf2PZW4FrbAbhNm2kFCfsgWj4GRKty34NyPdF1d1Hd",
       "12D3KooWJdm5BcFtb2HvNXUsDAGS2xRpDLu14FkUvPSSZx1gJZiB",
       "12D3KooWHQLiY3kuEPVcpuDBagdUXoj2j5qaGkBEiDK17fMYgwZu",
       "12D3KooWKMrtWDeFRsQqvZpgWJb7XWyR38nYiPJ2dfFgNHMJi6Vt",
@@ -69,6 +69,7 @@
       "12D3KooWJ2k1zg7aSgynB6Q516FPWjjeWdKmHV5GvyGYkrm8pLNQ",
       "12D3KooWJwqwdMo3XgHcaQmK31wEtYiCPe2CP1eoe9n4keuxjm4d",
       "12D3KooWPhxbsH3SkWYoAks9L849QXKfFVuRX9gpdUoKaa93kh5q",
+      "12D3KooWAns9h3QivEFoFoBTgJZkX9GZ8pjj97iS1crU7J4Gg8rc",
       "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "12D3KooWQkMTvfm14ExxgLhvkSX1RKsEW7kN7mf5vwF4sQggCmtG",
       "12D3KooWRbGum3u49TLGssapsbNVf6Z1MN2VEKjnsc1XFjjupB4Q",
@@ -145,7 +146,6 @@
       "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
       "12D3KooWShJFRovoJeHNu8kxtnWgrLCPM7Yp2rGGnBxDrzYkn3g2",
       "12D3KooWJuL1Gn4u7Jcf122TctCECR1xepnfNQnwobdkqFE2Js8V",
-      "12D3KooWSP9zvxJ8xvMzx9Que7hFKExbG6AbHV6SCvYdFJLsTASA",
       "12D3KooWAYCjAf6NDDgu5XxpXGkejsg3YiasXLE9wPisxidjxYBi",
       "12D3KooWNbVKgbBDvZMAueViX8gFh6s86gVkPYYdG6rZJYirAvXF",
       "12D3KooWM6z6qAWQvks7qPFUpzayviRp6DTbXPif6eptdqfqbq9v",
@@ -317,7 +317,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -330,7 +330,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794243092
+      "last_seen": 1794246692
     }
   ],
   "events": [
@@ -1730,6 +1730,14 @@
   "youtube": {},
   "github": [
     {
+      "repo": "ecosystem",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Clarify RLN status on testnet and RLN membership handling in wallet \u03bb-Prizes",
+      "url": "https://github.com/logos-co/ecosystem/issues/260#issuecomment-6742256190",
+      "timestamp": "2026-11-09T14:16:18Z"
+    },
+    {
       "repo": "logos-lips",
       "type": "Comment",
       "cls": "type-create",
@@ -1840,30 +1848,29 @@
       "title": "[RFC] Mempool: Specify the mempool as implemented",
       "url": "https://github.com/logos-co/logos-lips/pull/413#issuecomment-6735879447",
       "timestamp": "2026-11-09T08:45:25Z"
-    },
-    {
-      "repo": "logos-workspace",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Nightly bump / doc-tests failing",
-      "url": "https://github.com/logos-co/logos-workspace/issues/74#issuecomment-6732593825",
-      "timestamp": "2026-11-09T04:56:53Z"
     }
   ],
   "discourse": [
     {
-      "title": "Organic docs.logos.co",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/organic-docs-logos-co/2378",
-      "timestamp": "2026-10-27T12:41:50.910Z",
-      "replies": 8
+      "title": " Bosphorus: private lending on LEZ, built at the Logos Field Station",
+      "category": "Forum",
+      "url": "https://forum.logos.co/t/bosphorus-private-lending-on-lez-built-at-the-logos-field-station/2897",
+      "timestamp": "2026-11-09T05:09:18.513Z",
+      "replies": 1
     },
     {
       "title": "Logos circle yola meet-up 4 report",
       "category": "Circles",
       "url": "https://forum.logos.co/t/logos-circle-yola-meet-up-4-report/2895",
       "timestamp": "2026-11-09T05:08:49.326Z",
-      "replies": 1
+      "replies": 4
+    },
+    {
+      "title": "Organic docs.logos.co",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/organic-docs-logos-co/2378",
+      "timestamp": "2026-10-27T12:41:50.910Z",
+      "replies": 8
     },
     {
       "title": "Logos Lokoja Circle October Report",
@@ -1913,13 +1920,6 @@
       "url": "https://forum.logos.co/t/logos-circle-kano-november/2880",
       "timestamp": "2026-11-07T06:15:37.512Z",
       "replies": 1
-    },
-    {
-      "title": " Bosphorus: private lending on LEZ, built at the Logos Field Station",
-      "category": "Forum",
-      "url": "https://forum.logos.co/t/bosphorus-private-lending-on-lez-built-at-the-logos-field-station/2897",
-      "timestamp": "2026-11-09T05:09:18.513Z",
-      "replies": 0
     },
     {
       "title": "Logos Circle Yola Meet Up #4",
@@ -3214,7 +3214,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": 1791893253,
+  "genesis_ts": 1791896853,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 673.4,
@@ -3224,6 +3224,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-09T16:51:32Z",
-  "updated": 1794243092
+  "peer_snapshot": "2026-11-09T17:51:32Z",
+  "updated": 1794246692
 }
