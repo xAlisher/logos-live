@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794873313
+      "last_seen": 1794876613
     }
   ],
   "events": [
@@ -1601,6 +1601,30 @@
   "github": [
     {
       "repo": "logos-accounts-ui",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "v0.4.0-rc.1",
+      "url": "https://github.com/logos-co/logos-accounts-ui/releases/tag/v0.4.0-rc.1",
+      "timestamp": "2026-11-17T00:59:01Z"
+    },
+    {
+      "repo": "setup-nix-cache-action",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "v1.2.2",
+      "url": "https://github.com/logos-co/setup-nix-cache-action/releases/tag/v1.2.2",
+      "timestamp": "2026-11-17T00:53:18Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/web/allow-cms-fetch-failure\"",
+      "url": "https://github.com/logos-co/logos-web",
+      "timestamp": "2026-11-16T16:19:36Z"
+    },
+    {
+      "repo": "logos-accounts-ui",
       "type": "Comment",
       "cls": "type-create",
       "title": "build: prepare 0.4.0-rc.1 against account-registry v0.3.1",
@@ -1710,30 +1734,6 @@
       "title": "fix(ci): run e2e daily on schedule only",
       "url": "https://github.com/logos-co/logos-web/pull/309#issuecomment-6919351542",
       "timestamp": "2026-11-16T14:32:48Z"
-    },
-    {
-      "repo": "nim-libp2p-mix",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(mix): add mix key ring and candidate-key processing",
-      "url": "https://github.com/logos-co/nim-libp2p-mix/pull/78#issuecomment-6922602682",
-      "timestamp": "2026-11-16T16:36:46Z"
-    },
-    {
-      "repo": "nim-libp2p-mix",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat(mix): wire the key ring into MixProtocol and publish key entries",
-      "url": "https://github.com/logos-co/nim-libp2p-mix/pull/84#issuecomment-6922612920",
-      "timestamp": "2026-11-16T16:37:11Z"
-    },
-    {
-      "repo": "logos-web",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(web): align the Muster hero logos",
-      "url": "https://github.com/logos-co/logos-web/pull/311#issuecomment-6922398656",
-      "timestamp": "2026-11-16T16:30:29Z"
     }
   ],
   "discourse": [],
@@ -2882,6 +2882,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-17T00:00:44Z",
-  "updated": 1794873644
+  "peer_snapshot": "2026-11-17T01:00:45Z",
+  "updated": 1794877245
 }
