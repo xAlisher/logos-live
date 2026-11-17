@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1794941954
+      "last_seen": 1794945254
     }
   ],
   "events": [
@@ -70,6 +70,18 @@
       "city": "Lisboa",
       "country": "Portugal",
       "address": "R. de S\u00e3o Domingos 6, Lisboa",
+      "upcoming": true
+    },
+    {
+      "name": "Freequencies",
+      "start": "2026-11-25T18:00:00.000Z",
+      "end": "2026-11-25T23:00:00.000Z",
+      "url": "https://lu.ma/logos-gcp2",
+      "lat": 38.71648880000001,
+      "lon": -9.129401999999999,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "R. da Voz do Oper\u00e1rio 60, Lisboa",
       "upcoming": true
     },
     {
@@ -1600,12 +1612,52 @@
   "youtube": {},
   "github": [
     {
+      "repo": "scaffold",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "basecamp setup builds the dev lgpm for a portable basecamp when [repos.lgpm] is absent",
+      "url": "https://github.com/logos-co/scaffold/issues/308#issuecomment-6956143113",
+      "timestamp": "2026-11-17T17:46:53Z"
+    },
+    {
+      "repo": "scaffold",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "test-node start --work-dir deletes a non-empty folder on failed start and on stop",
+      "url": "https://github.com/logos-co/scaffold/issues/302#issuecomment-6956140355",
+      "timestamp": "2026-11-17T17:46:46Z"
+    },
+    {
+      "repo": "logos-accounts-ui",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"build/release-v0.4.0-rc.2\"",
+      "url": "https://github.com/logos-co/logos-accounts-ui",
+      "timestamp": "2026-11-17T08:34:02Z"
+    },
+    {
       "repo": "logos-chat-ui",
       "type": "Comment",
       "cls": "type-create",
       "title": "feat: use chat_module's GroupV3 groups",
-      "url": "https://github.com/logos-co/logos-chat-ui/pull/85#issuecomment-6956563847",
-      "timestamp": "2026-11-17T18:04:26Z"
+      "url": "https://github.com/logos-co/logos-chat-ui/pull/85#issuecomment-6958150966",
+      "timestamp": "2026-11-17T19:11:18Z"
+    },
+    {
+      "repo": "logos-modules-release",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"use-bladerunner\"",
+      "url": "https://github.com/logos-co/logos-modules-release",
+      "timestamp": "2026-11-16T08:07:48Z"
+    },
+    {
+      "repo": "logos-lips",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[RFC] Block Construction: Validate the header before resolving references",
+      "url": "https://github.com/logos-co/logos-lips/pull/495#issuecomment-6958180315",
+      "timestamp": "2026-11-17T19:12:26Z"
     },
     {
       "repo": "logos-chat-ui",
@@ -1654,14 +1706,6 @@
       "title": "feat: run the backend as a core module",
       "url": "https://github.com/logos-co/logos-accounts-ui/pull/25#issuecomment-6955730794",
       "timestamp": "2026-11-17T17:29:49Z"
-    },
-    {
-      "repo": "logos-lips",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "[RFC] Block Construction: Validate the header before resolving references",
-      "url": "https://github.com/logos-co/logos-lips/pull/495#issuecomment-6954371283",
-      "timestamp": "2026-11-17T16:37:49Z"
     },
     {
       "repo": "logos-web",
@@ -2850,6 +2894,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-17T19:00:45Z",
-  "updated": 1794942045
+  "peer_snapshot": "2026-11-17T20:00:46Z",
+  "updated": 1794945646
 }
