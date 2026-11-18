@@ -32,22 +32,10 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1795006634
+      "last_seen": 1795009934
     }
   ],
   "events": [
-    {
-      "name": "LOGOS GOMBE CIRCLE",
-      "start": "2026-11-18T11:00:00.000Z",
-      "end": "2026-11-18T14:00:00.000Z",
-      "url": "https://lu.ma/ar76g2oq",
-      "lat": 9.880747999999999,
-      "lon": 11.22135,
-      "city": "Biliri",
-      "country": "Nigeria",
-      "address": "Kalmai, Biliri",
-      "upcoming": true
-    },
     {
       "name": "LOGOS CIRCLE IBADAN VI: COMMUNITY STEWARDS II",
       "start": "2026-11-19T07:00:00.000Z",
@@ -263,6 +251,18 @@
       "country": "Nigeria",
       "address": "11 Abakaliki St, Awka",
       "upcoming": true
+    },
+    {
+      "name": "LOGOS GOMBE CIRCLE",
+      "start": "2026-11-18T11:00:00.000Z",
+      "end": "2026-11-18T14:00:00.000Z",
+      "url": "https://lu.ma/ar76g2oq",
+      "lat": 9.880747999999999,
+      "lon": 11.22135,
+      "city": "Biliri",
+      "country": "Nigeria",
+      "address": "Kalmai, Biliri",
+      "upcoming": false
     },
     {
       "name": "Logos Circle Awka November Meetup",
@@ -1595,22 +1595,34 @@
       "country": "Sudan",
       "address": "IMPACT hub Khartoum Apartment 1, Building 30, Block 14 ,Riyadh\u060c Khartoum Sudan\u060c Street 117, Al Khurtum",
       "upcoming": false
-    },
-    {
-      "name": "LOGOS ABEOKUTA CIRCLE:Tech Her Forward 2",
-      "start": "2026-06-20T13:00:00.000Z",
-      "end": "2026-06-20T17:00:00.000Z",
-      "url": "https://lu.ma/zggs7e5h",
-      "lat": 7.0943011,
-      "lon": 3.3963628999999997,
-      "city": "Kobape",
-      "country": "Nigeria",
-      "address": "Kobape Rd, PMB Estate, Kobape",
-      "upcoming": false
     }
   ],
   "youtube": {},
   "github": [
+    {
+      "repo": "logos-web",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/muster-logo-optical-alignment\"",
+      "url": "https://github.com/logos-co/logos-web",
+      "timestamp": "2026-11-16T18:13:34Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "perf(web): fail stalled media downloads fast",
+      "url": "https://github.com/logos-co/logos-web/pull/332#issuecomment-6980511733",
+      "timestamp": "2026-11-18T13:49:57Z"
+    },
+    {
+      "repo": "spel",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Refactor/lez v0.4.x",
+      "url": "https://github.com/logos-co/spel/pull/301#issuecomment-6980469601",
+      "timestamp": "2026-11-18T13:48:13Z"
+    },
     {
       "repo": "logos-web",
       "type": "Comment",
@@ -1634,14 +1646,6 @@
       "title": "fix(web): remove Railgun image quote",
       "url": "https://github.com/logos-co/logos-web/pull/330#issuecomment-6978382498",
       "timestamp": "2026-11-18T12:20:08Z"
-    },
-    {
-      "repo": "spel",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Refactor/lez v0.4.x",
-      "url": "https://github.com/logos-co/spel/pull/301#issuecomment-6977931773",
-      "timestamp": "2026-11-18T12:00:02Z"
     },
     {
       "repo": "logos-web",
@@ -1754,30 +1758,6 @@
       "title": "new branch \"test-10\"",
       "url": "https://github.com/logos-co/logos-delivery-module",
       "timestamp": "2026-11-17T10:14:00Z"
-    },
-    {
-      "repo": "logos-web",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/ci/vercel-ignore-unaffected\"",
-      "url": "https://github.com/logos-co/logos-web",
-      "timestamp": "2026-11-17T15:06:21Z"
-    },
-    {
-      "repo": "logos-storage-ui",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: run the backend as a core module",
-      "url": "https://github.com/logos-co/logos-storage-ui/pull/103#issuecomment-6972850994",
-      "timestamp": "2026-11-18T08:10:06Z"
-    },
-    {
-      "repo": "roadmap",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"docs/logoscore-weekly-2026-11-09-16\"",
-      "url": "https://github.com/logos-co/roadmap",
-      "timestamp": "2026-11-17T11:43:41Z"
     }
   ],
   "discourse": [],
@@ -2926,6 +2906,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-18T13:00:46Z",
-  "updated": 1795006846
+  "peer_snapshot": "2026-11-18T14:00:46Z",
+  "updated": 1795010446
 }
