@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,22 +32,10 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1795085835
+      "last_seen": 1795089135
     }
   ],
   "events": [
-    {
-      "name": "Logos Circle: Lisbon",
-      "start": "2026-11-19T10:00:00.000Z",
-      "end": "2026-11-19T11:30:00.000Z",
-      "url": "https://lu.ma/py03d0oe",
-      "lat": 38.7058483,
-      "lon": -9.1606281,
-      "city": "Lisboa",
-      "country": "Portugal",
-      "address": "R. de S\u00e3o Domingos 6, Lisboa",
-      "upcoming": true
-    },
     {
       "name": "Logos Blitz Circle: Chiang Mai",
       "start": "2026-11-20T02:00:00.000Z",
@@ -263,6 +251,18 @@
       "country": "Nigeria",
       "address": "33 Samuel Effanga Crescent, Osong Ama Estate Rd, Uyo",
       "upcoming": true
+    },
+    {
+      "name": "Logos Circle: Lisbon",
+      "start": "2026-11-19T10:00:00.000Z",
+      "end": "2026-11-19T11:30:00.000Z",
+      "url": "https://lu.ma/py03d0oe",
+      "lat": 38.7058483,
+      "lon": -9.1606281,
+      "city": "Lisboa",
+      "country": "Portugal",
+      "address": "R. de S\u00e3o Domingos 6, Lisboa",
+      "upcoming": false
     },
     {
       "name": "LOGOS CIRCLE IBADAN VI: COMMUNITY STEWARDS II",
@@ -1595,22 +1595,50 @@
       "country": "Nigeria",
       "address": "33 Samuel Effanga Crescent, Osong Ama Estate Rd, Uyo",
       "upcoming": false
-    },
-    {
-      "name": "Logos Circle Los Angeles",
-      "start": "2026-06-24T01:30:00.000Z",
-      "end": "2026-06-24T03:30:00.000Z",
-      "url": "https://lu.ma/yybbt8bd",
-      "lat": 34.1838751,
-      "lon": -118.30961909999999,
-      "city": "Burbank",
-      "country": "United States",
-      "address": "300 N 3rd St, Burbank",
-      "upcoming": false
     }
   ],
   "youtube": {},
   "github": [
+    {
+      "repo": "logos-web",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"web/railgun-3\"",
+      "url": "https://github.com/logos-co/logos-web",
+      "timestamp": "2026-11-18T16:11:19Z"
+    },
+    {
+      "repo": "logos-keycard-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Expose a forget_wallet(id) method (parity with keycard_shell_module) so an empty or stale reader-card seed can be dropped",
+      "url": "https://github.com/logos-co/logos-keycard-module/issues/12#issuecomment-7007897728",
+      "timestamp": "2026-11-19T11:33:33Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(ci): request reviewers on Playwright upgrade PRs",
+      "url": "https://github.com/logos-co/logos-web/pull/338#issuecomment-7007637783",
+      "timestamp": "2026-11-19T11:21:16Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(e2e): abort the run when the site does not answer",
+      "url": "https://github.com/logos-co/logos-web/pull/336#issuecomment-7007271507",
+      "timestamp": "2026-11-19T11:04:31Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(web): Railgun button arrow consistency",
+      "url": "https://github.com/logos-co/logos-web/pull/337#issuecomment-7007329725",
+      "timestamp": "2026-11-19T11:07:14Z"
+    },
     {
       "repo": "logos-design-system",
       "type": "Comment",
@@ -1666,14 +1694,6 @@
       "title": "new branch \"feat/logos-brand-styling\"",
       "url": "https://github.com/logos-co/logos-docs",
       "timestamp": "2026-11-17T20:48:00Z"
-    },
-    {
-      "repo": "logos-workspace",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Nightly bump / doc-tests failing",
-      "url": "https://github.com/logos-co/logos-workspace/issues/74#issuecomment-6999698529",
-      "timestamp": "2026-11-19T04:28:13Z"
     }
   ],
   "discourse": [],
@@ -2822,6 +2842,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-19T11:00:45Z",
-  "updated": 1795086045
+  "peer_snapshot": "2026-11-19T12:00:45Z",
+  "updated": 1795089645
 }
