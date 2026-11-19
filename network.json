@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWQXJavMDTRscjauFSgVAB1VLB6Rzpy2uY5SU9Tk7927tb",
+      "peer_id": "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,7 +32,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1795106955
+      "last_seen": 1795110915
     }
   ],
   "events": [
@@ -1600,12 +1600,68 @@
   "youtube": {},
   "github": [
     {
+      "repo": "logos-web",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"perf/web/parallel-asset-steps\"",
+      "url": "https://github.com/logos-co/logos-web",
+      "timestamp": "2026-11-18T12:28:26Z"
+    },
+    {
+      "repo": "ecosystem",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "[Node Program] Logos node DAppNode package \u2192 public DAppStore",
+      "url": "https://github.com/logos-co/ecosystem/issues/247#issuecomment-7015676838",
+      "timestamp": "2026-11-19T16:45:01Z"
+    },
+    {
+      "repo": "logos-libp2p-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(events): move event delivery off the Nim event thread",
+      "url": "https://github.com/logos-co/logos-libp2p-module/pull/127#issuecomment-7016470756",
+      "timestamp": "2026-11-19T17:16:14Z"
+    },
+    {
       "repo": "logos-design-system",
       "type": "Comment",
       "cls": "type-create",
-      "title": "Feat/responsive tooling",
-      "url": "https://github.com/logos-co/logos-design-system/pull/80#issuecomment-7016003626",
-      "timestamp": "2026-11-19T16:58:00Z"
+      "title": "feat(table): responsive table, as Alisher's RESPONSIVE.md \u00a73.5 has it",
+      "url": "https://github.com/logos-co/logos-design-system/pull/81#issuecomment-7016860980",
+      "timestamp": "2026-11-19T17:32:12Z"
+    },
+    {
+      "repo": "logos-delivery-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "chore(deps): bump logos-delivery to v0.40.0",
+      "url": "https://github.com/logos-co/logos-delivery-module/pull/190#issuecomment-7016839765",
+      "timestamp": "2026-11-19T17:31:21Z"
+    },
+    {
+      "repo": "logos-libp2p-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(service-disco): spec-shaped advertise and lookup overloads",
+      "url": "https://github.com/logos-co/logos-libp2p-module/pull/131#issuecomment-7016751589",
+      "timestamp": "2026-11-19T17:27:45Z"
+    },
+    {
+      "repo": "logos-basecamp",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "flake: update public key of logos nix cache",
+      "url": "https://github.com/logos-co/logos-basecamp/pull/566#issuecomment-7016633437",
+      "timestamp": "2026-11-19T17:22:54Z"
+    },
+    {
+      "repo": "logos-libp2p-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix(stream): log the submit failure reason in callAsync",
+      "url": "https://github.com/logos-co/logos-libp2p-module/pull/128#issuecomment-7016530020",
+      "timestamp": "2026-11-19T17:18:36Z"
     },
     {
       "repo": "logos-design-system",
@@ -1613,7 +1669,15 @@
       "cls": "type-release",
       "title": "Canary (master)",
       "url": "https://github.com/logos-co/logos-design-system/releases/tag/canary",
-      "timestamp": "2026-11-19T16:49:18Z"
+      "timestamp": "2026-11-19T17:15:11Z"
+    },
+    {
+      "repo": "logos-design-system",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "Feat/responsive tooling",
+      "url": "https://github.com/logos-co/logos-design-system/pull/80#issuecomment-7016003626",
+      "timestamp": "2026-11-19T16:58:00Z"
     },
     {
       "repo": "nim-libp2p-mix",
@@ -1710,30 +1774,6 @@
       "title": "fix(e2e): abort the run when the site does not answer",
       "url": "https://github.com/logos-co/logos-web/pull/336#issuecomment-7008847716",
       "timestamp": "2026-11-19T12:17:08Z"
-    },
-    {
-      "repo": "logos-web",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"web/railgun-3\"",
-      "url": "https://github.com/logos-co/logos-web",
-      "timestamp": "2026-11-18T16:11:19Z"
-    },
-    {
-      "repo": "logos-keycard-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Expose a forget_wallet(id) method (parity with keycard_shell_module) so an empty or stale reader-card seed can be dropped",
-      "url": "https://github.com/logos-co/logos-keycard-module/issues/12#issuecomment-7007897728",
-      "timestamp": "2026-11-19T11:33:33Z"
-    },
-    {
-      "repo": "logos-web",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "fix(web): Railgun button arrow consistency",
-      "url": "https://github.com/logos-co/logos-web/pull/337#issuecomment-7007329725",
-      "timestamp": "2026-11-19T11:07:14Z"
     }
   ],
   "discourse": [],
@@ -2882,6 +2922,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-19T17:00:46Z",
-  "updated": 1795107646
+  "peer_snapshot": "2026-11-19T18:00:46Z",
+  "updated": 1795111246
 }
