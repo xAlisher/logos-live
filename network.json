@@ -19,7 +19,7 @@
       "last_seen": 0
     },
     {
-      "peer_id": "12D3KooWSQc7CcGtvWDPF1yCbBthFnQjprfCVHmfmNDUrSmqQsU1",
+      "peer_id": "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "ip": "65.109.51.37",
       "lat": 60.1719,
       "lon": 24.9347,
@@ -32,22 +32,10 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1795078575
+      "last_seen": 1795081875
     }
   ],
   "events": [
-    {
-      "name": "LOGOS CIRCLE IBADAN VI: COMMUNITY STEWARDS II",
-      "start": "2026-11-19T07:00:00.000Z",
-      "end": "2026-11-19T10:00:00.000Z",
-      "url": "https://lu.ma/suuo9hb1",
-      "lat": 7.4509545,
-      "lon": 3.9003788,
-      "city": "Ibadan",
-      "country": "Nigeria",
-      "address": "Abadina road, Ibadan",
-      "upcoming": true
-    },
     {
       "name": "Logos Circle: Lisbon",
       "start": "2026-11-19T10:00:00.000Z",
@@ -58,6 +46,18 @@
       "city": "Lisboa",
       "country": "Portugal",
       "address": "R. de S\u00e3o Domingos 6, Lisboa",
+      "upcoming": true
+    },
+    {
+      "name": "Logos Blitz Circle: Chiang Mai",
+      "start": "2026-11-20T02:00:00.000Z",
+      "end": "2026-11-20T03:00:00.000Z",
+      "url": "https://lu.ma/0zxfm5nn",
+      "lat": 18.795886799999998,
+      "lon": 98.96626549999999,
+      "city": "Amphoe Mueang Chiang Mai",
+      "country": "Thailand",
+      "address": "2 20 Nimmana Haeminda Rd Lane 15 Nimmanhaemin Tambon Su Thep, Amphoe Mueang Chiang Mai",
       "upcoming": true
     },
     {
@@ -251,6 +251,30 @@
       "country": "Nigeria",
       "address": "11 Abakaliki St, Awka",
       "upcoming": true
+    },
+    {
+      "name": "Logo Circle Uyo ( Celebrating With The Kids In The Street )",
+      "start": "2026-12-11T14:00:00.000Z",
+      "end": "2026-12-11T17:00:00.000Z",
+      "url": "https://lu.ma/6u0ysv0k",
+      "lat": 5.0079477,
+      "lon": 7.9581966,
+      "city": "Uyo",
+      "country": "Nigeria",
+      "address": "33 Samuel Effanga Crescent, Osong Ama Estate Rd, Uyo",
+      "upcoming": true
+    },
+    {
+      "name": "LOGOS CIRCLE IBADAN VI: COMMUNITY STEWARDS II",
+      "start": "2026-11-19T07:00:00.000Z",
+      "end": "2026-11-19T10:00:00.000Z",
+      "url": "https://lu.ma/suuo9hb1",
+      "lat": 7.4509545,
+      "lon": 3.9003788,
+      "city": "Ibadan",
+      "country": "Nigeria",
+      "address": "Abadina road, Ibadan",
+      "upcoming": false
     },
     {
       "name": "LOGOS GOMBE CIRCLE",
@@ -1583,22 +1607,18 @@
       "country": "United States",
       "address": "300 N 3rd St, Burbank",
       "upcoming": false
-    },
-    {
-      "name": "LOGOS KHARTOUM CIRCLE : LOGOS & CORGI",
-      "start": "2026-06-20T14:00:00.000Z",
-      "end": "2026-06-20T17:00:00.000Z",
-      "url": "https://lu.ma/bf745gkx",
-      "lat": 15.5793684,
-      "lon": 32.5678209,
-      "city": "Al Khurtum",
-      "country": "Sudan",
-      "address": "IMPACT hub Khartoum Apartment 1, Building 30, Block 14 ,Riyadh\u060c Khartoum Sudan\u060c Street 117, Al Khurtum",
-      "upcoming": false
     }
   ],
   "youtube": {},
   "github": [
+    {
+      "repo": "logos-design-system",
+      "type": "Release",
+      "cls": "type-release",
+      "title": "Canary (master)",
+      "url": "https://github.com/logos-co/logos-design-system/releases/tag/canary",
+      "timestamp": "2026-11-19T09:58:56Z"
+    },
     {
       "repo": "logos-design-system",
       "type": "Comment",
@@ -1670,30 +1690,6 @@
       "title": "feat: leave signing without a password to the approvers",
       "url": "https://github.com/logos-co/logos-evm-keystore-cli/pull/17#issuecomment-6998123324",
       "timestamp": "2026-11-19T02:47:15Z"
-    },
-    {
-      "repo": "logos-evm-keystore-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: keep a key ready for the signer manager",
-      "url": "https://github.com/logos-co/logos-evm-keystore-module/pull/48#issuecomment-6998010392",
-      "timestamp": "2026-11-19T02:40:07Z"
-    },
-    {
-      "repo": "logos-evm-keystore-module",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: drop the keystore's own unlock",
-      "url": "https://github.com/logos-co/logos-evm-keystore-module/pull/49#issuecomment-6997975821",
-      "timestamp": "2026-11-19T02:37:55Z"
-    },
-    {
-      "repo": "logos-evm-signer-ui",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "feat: an Allowances page in the Signer",
-      "url": "https://github.com/logos-co/logos-evm-signer-ui/pull/41#issuecomment-6997969080",
-      "timestamp": "2026-11-19T02:37:30Z"
     }
   ],
   "discourse": [],
@@ -2842,6 +2838,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-19T09:00:45Z",
-  "updated": 1795078845
+  "peer_snapshot": "2026-11-19T10:00:45Z",
+  "updated": 1795082445
 }
