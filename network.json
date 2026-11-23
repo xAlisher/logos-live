@@ -1,5 +1,13 @@
 {
-  "chain": {},
+  "chain": {
+    "lib": "df2c1b290ace9294bf919c8d924f1dbd68f8223bfdd837f8ac031643b57c6a7c",
+    "lib_slot": 2309589,
+    "tip": "6ae207f59824a124764765303633803c92c0b0c162c3c4ca0d0b213083d04fc2",
+    "slot": 3693443,
+    "height": 100897,
+    "state": "Bootstrapping",
+    "mode": "Bootstrapping"
+  },
   "network": {
     "listen_addresses": [
       "/ip4/127.0.0.1/udp/3000/quic-v1",
@@ -137,6 +145,7 @@
       "12D3KooWSfuVrepQS1rNzExveB8UL4vnVdfi1zbkMn4CQxUsz9HL",
       "12D3KooWHEL1BqoSNJ8XfH7xrecaWoykqCmBJEZRT4dmG3DTHnwY",
       "12D3KooWCy3ju2BC4zfY7yRUdnJpZDE4t6A17fdhQxzZPphB4ffk",
+      "12D3KooWN6SwSCNFVXK24unDax5VqTrXg5ymkyhW5qfcPFBdr6uW",
       "12D3KooWPJKQW1xNA65uRUpKtrthN4cADVEG9eLaSFfXu7W735xs",
       "12D3KooWD7QohZD22QGnGh3W9rxJL1mb8419vGRxwbeubvdb5e21",
       "12D3KooWSaPoFUmp1YaLmStdHezvDCg2zQMgk9oxemcXKpSnkEg7",
@@ -146,6 +155,7 @@
       "12D3KooWPTjtu5E61o16XbijEF3MZrAKY5JWXB9WiYZcXR4reERB",
       "12D3KooWLmjoxLpDvh8wWkY3WL8AzrFV3iDQvDaxm9F7Mvg6w5qX",
       "12D3KooWAdRsT2YTPAEkEk59phHwCPhMt89fzkG2k55rKtXJxg9C",
+      "12D3KooWLFTis8KxS3ZnuLguwWHuQf1L61Fx35KSaeXzPSSUWgc1",
       "12D3KooWSUwQamqpSs3wHWo6igjJxBmU3StsEMQKbS3kpxynmqwy",
       "12D3KooWMZ6oRXGvMvWKW1TYq4hx9u5SrB1UDKxDz8EbqhVRDPQK",
       "12D3KooWB8uz6qifw2PCFAdGr5nySZiQMPAWvmyaZD8gAPHcMfxq",
@@ -162,8 +172,8 @@
       "12D3KooWHafhsbBQLQJSmUTf9TDS9nTAAqHfhGJC45qRzwevC7th",
       "12D3KooWRnB7LdrUR5TdPnASBPRhMRJgSuUM54fHoxGu6eLCg634"
     ],
-    "n_peers": 151,
-    "n_connections": 156,
+    "n_peers": 153,
+    "n_connections": 158,
     "n_pending_connections": 0,
     "discovered_peers": [
       "12D3KooWKSppwV3zVpKQeJ69AUfE8qMefrFNhPWnZk9tDnkkYocr",
@@ -207,7 +217,6 @@
       "12D3KooWLo7uh54g2ebuj4nH46XaVr3258W2BoZ5TCxBgkwdwLi2",
       "12D3KooWAdRsT2YTPAEkEk59phHwCPhMt89fzkG2k55rKtXJxg9C",
       "12D3KooWRPEWQmu52rxaQdAxDsW7FaaQWPpi4TbU3F6XSL8yprjy",
-      "12D3KooWJQYRfTomRNVbhaRRtpfFkT5dWQvowqvxzxZ6P4h91avk",
       "12D3KooWCY2iEveq8dqBLBuxxX8CCvtdayooHD4zCFWcUgToQXMw",
       "12D3KooWLaBCDuH8geCvRwEAMaEqZurGioHTdyhT3KUaiGCzvx4V",
       "12D3KooWFfRUBnCfE4ujhqBpzEuuHYf9gub3oP7kBAw3eGqMvaBP",
@@ -218,6 +227,7 @@
       "12D3KooWN8dNT3hPgXKLgqNTAQZpCv96JMhAB1dQvkepE3Cop2ab",
       "12D3KooWQDXNt61ambNk7oDLLJBL8qwEdv6B1FTtJXAccsySvE9K",
       "12D3KooWGKPBzRoXrs2dt4hvpFBCbSHGmcMZz8a4nMBMFcu4iyBo",
+      "12D3KooWJQYRfTomRNVbhaRRtpfFkT5dWQvowqvxzxZ6P4h91avk",
       "12D3KooWJRGau8M1rjT7R5e4YYsgdFhsMX35nRDtMwCDjxQkXAHz",
       "12D3KooWFrouXfmrR4nsLMtE7wu15DoMJ6VtoUtHinREZCvbWHar",
       "12D3KooWCFhMe9xHk3B8GUshR8dECEKar39U6NBoTvmCgTJTjtFP",
@@ -235,8 +245,8 @@
       "12D3KooWD7TRJUN4fAJgp7fhcfm63p7FgdZdkgZW4mrFLVkkjMB2",
       "12D3KooWSWiF5oQU4CCYMM5gVnDpbGwtM27v1UGEbdceU2QK6o2M",
       "12D3KooWCy3ju2BC4zfY7yRUdnJpZDE4t6A17fdhQxzZPphB4ffk",
-      "12D3KooWQ6m77E8Mk7xcWZgpzTGPwH9NvmUDWSDqEuzyXJfc2GuR",
       "12D3KooWSaPoFUmp1YaLmStdHezvDCg2zQMgk9oxemcXKpSnkEg7",
+      "12D3KooWQ6m77E8Mk7xcWZgpzTGPwH9NvmUDWSDqEuzyXJfc2GuR",
       "12D3KooWE4TYTrcqG9TSGmZ1p4JRN6Qe58m3LErivnVb43nHE3iE"
     ],
     "n_discovered_peers": 72
@@ -272,7 +282,7 @@
       "self": false,
       "online": true,
       "first_seen": 1790889414,
-      "last_seen": 1795439177
+      "last_seen": 1795442684
     }
   ],
   "events": [
@@ -1840,20 +1850,84 @@
   "youtube": {},
   "github": [
     {
-      "repo": "roadmap",
+      "repo": "logos-keycard-shell-module",
       "type": "Comment",
       "cls": "type-create",
-      "title": "docs(messaging): add weekly updates 2026-11-23",
-      "url": "https://github.com/logos-co/roadmap/pull/616#issuecomment-7101464591",
-      "timestamp": "2026-11-23T12:40:12Z"
+      "title": "feat(accounts): export the EVM xpub once, derive addresses here",
+      "url": "https://github.com/logos-co/logos-keycard-shell-module/pull/14#issuecomment-7103206639",
+      "timestamp": "2026-11-23T13:54:39Z"
+    },
+    {
+      "repo": "logos-keycard-ui",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "fix: a Shell connects only its own wallet, not every saved one",
+      "url": "https://github.com/logos-co/logos-keycard-ui/pull/14#issuecomment-7103207884",
+      "timestamp": "2026-11-23T13:54:43Z"
+    },
+    {
+      "repo": "logos-keycard-shell-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat(linux): ship the Shell's udev rule as a file",
+      "url": "https://github.com/logos-co/logos-keycard-shell-module/pull/13#issuecomment-7103207263",
+      "timestamp": "2026-11-23T13:54:41Z"
+    },
+    {
+      "repo": "logos-keycard-module",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat: forget a seed wallet with its card inserted; list empty readers",
+      "url": "https://github.com/logos-co/logos-keycard-module/pull/14#issuecomment-7103206032",
+      "timestamp": "2026-11-23T13:54:38Z"
+    },
+    {
+      "repo": "nim-libp2p-mix",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"feat/mix-key-rotation-query\"",
+      "url": "https://github.com/logos-co/nim-libp2p-mix",
+      "timestamp": "2026-11-21T05:37:17Z"
+    },
+    {
+      "repo": "logos-design-system",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "feat: layouts and fixes for Basecamp and the Package Manager, from a phone to a desktop",
+      "url": "https://github.com/logos-co/logos-design-system/pull/83#issuecomment-7102720769",
+      "timestamp": "2026-11-23T13:34:06Z"
+    },
+    {
+      "repo": "logos-lips",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "docs(storage): naming service spec",
+      "url": "https://github.com/logos-co/logos-lips/pull/547#issuecomment-7102544676",
+      "timestamp": "2026-11-23T13:26:47Z"
+    },
+    {
+      "repo": "logos-web",
+      "type": "Create",
+      "cls": "type-create",
+      "title": "new branch \"fix/web/manifesto-pgp-link\"",
+      "url": "https://github.com/logos-co/logos-web",
+      "timestamp": "2026-11-21T12:58:16Z"
     },
     {
       "repo": "logos-storage-module",
       "type": "Comment",
       "cls": "type-create",
       "title": "chore: switch to the new logos nix cache public key",
-      "url": "https://github.com/logos-co/logos-storage-module/pull/116#issuecomment-7100731961",
-      "timestamp": "2026-11-23T12:14:58Z"
+      "url": "https://github.com/logos-co/logos-storage-module/pull/116#issuecomment-7102073339",
+      "timestamp": "2026-11-23T13:06:49Z"
+    },
+    {
+      "repo": "roadmap",
+      "type": "Comment",
+      "cls": "type-create",
+      "title": "docs(messaging): add weekly updates 2026-11-23",
+      "url": "https://github.com/logos-co/roadmap/pull/616#issuecomment-7101464591",
+      "timestamp": "2026-11-23T12:40:12Z"
     },
     {
       "repo": "roadmap",
@@ -1942,57 +2016,44 @@
       "title": "new branch \"docs/mirror-lez-rpc-and-sync-alerts\"",
       "url": "https://github.com/logos-co/logos-docs",
       "timestamp": "2026-11-20T20:11:53Z"
-    },
-    {
-      "repo": "logos-delivery-module",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"chore/release-v0.4.0-rc.1\"",
-      "url": "https://github.com/logos-co/logos-delivery-module",
-      "timestamp": "2026-11-20T23:05:44Z"
-    },
-    {
-      "repo": "logos-web",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Daily E2E tests are failing",
-      "url": "https://github.com/logos-co/logos-web/issues/295#issuecomment-7092865176",
-      "timestamp": "2026-11-23T05:56:28Z"
-    },
-    {
-      "repo": "logos-docs",
-      "type": "Comment",
-      "cls": "type-create",
-      "title": "Sync API reference workflow is failing",
-      "url": "https://github.com/logos-co/logos-docs/issues/631#issuecomment-7092432773",
-      "timestamp": "2026-11-23T05:28:09Z"
-    },
-    {
-      "repo": "logos-eth-wallet-ui",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"feat/verify-address-on-shell\"",
-      "url": "https://github.com/logos-co/logos-eth-wallet-ui",
-      "timestamp": "2026-11-20T22:02:51Z"
-    },
-    {
-      "repo": "logos-docs",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"fix-doc-packet-yaml\"",
-      "url": "https://github.com/logos-co/logos-docs",
-      "timestamp": "2026-11-20T18:42:12Z"
-    },
-    {
-      "repo": "logos-logoscore-cli",
-      "type": "Create",
-      "cls": "type-create",
-      "title": "new branch \"ci/windows-cache-prime\"",
-      "url": "https://github.com/logos-co/logos-logoscore-cli",
-      "timestamp": "2026-11-20T18:08:35Z"
     }
   ],
   "discourse": [
+    {
+      "title": "Logos Circle Ilorin September 2026 \u2014 Planning Circle Report",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-ilorin-september-2026-planning-circle-report/2885",
+      "timestamp": "2026-11-23T13:30:54.027Z",
+      "replies": 0
+    },
+    {
+      "title": "LOGOS CIRCLE MAIDUGURI MEETUP #3 REPORT, NOVEMBER 2026",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-maiduguri-meetup-3-report-november-2026/2884",
+      "timestamp": "2026-11-23T13:30:47.541Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos circle Maiduguri winnable issue #1 : Oral 360",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-maiduguri-winnable-issue-1-oral-360/2883",
+      "timestamp": "2026-11-23T13:30:39.249Z",
+      "replies": 0
+    },
+    {
+      "title": "Logos circle Maiduguri winnable issue #2: Community Health Outreach, November 2026",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-maiduguri-winnable-issue-2-community-health-outreach-november-2026/2882",
+      "timestamp": "2026-11-23T13:30:32.206Z",
+      "replies": 0
+    },
+    {
+      "title": "LOGOS CIRCLE ILORIN - October 2026 Circle Report",
+      "category": "Circles",
+      "url": "https://forum.logos.co/t/logos-circle-ilorin-october-2026-circle-report/2881",
+      "timestamp": "2026-11-23T13:30:26.794Z",
+      "replies": 0
+    },
     {
       "title": "Logos circle jigawa 1.0- october report",
       "category": "Circles",
@@ -2167,49 +2228,14 @@
       "url": "https://forum.logos.co/t/gombe-logos-circle-october-2026/2040",
       "timestamp": "2026-10-26T14:38:48.569Z",
       "replies": 1
-    },
-    {
-      "title": "Logos Circle Vizag #4 - Sep 2026, Second Action",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-vizag-4-sep-2026-second-action/1947",
-      "timestamp": "2026-09-22T07:39:28.208Z",
-      "replies": 1
-    },
-    {
-      "title": "Logos Circle Delhi NCR update",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-delhi-ncr-update/1993",
-      "timestamp": "2026-10-09T07:42:37.366Z",
-      "replies": 1
-    },
-    {
-      "title": "Dar logos circle #3",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/dar-logos-circle-3/2026",
-      "timestamp": "2026-10-25T19:12:47.741Z",
-      "replies": 1
-    },
-    {
-      "title": "Logos Circle Mumbai #2",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-mumbai-2/1982",
-      "timestamp": "2026-10-03T19:47:51.581Z",
-      "replies": 1
-    },
-    {
-      "title": "Logos Circle Madrid #2",
-      "category": "Circles",
-      "url": "https://forum.logos.co/t/logos-circle-madrid-2/1959",
-      "timestamp": "2026-09-27T19:25:11.556Z",
-      "replies": 1
     }
   ],
   "stake": {
     "recipients": 0,
     "total_distributed": 0,
     "faucet_remainder": null,
-    "unique_leaders": 83241,
-    "total_leader_blocks": 351195,
+    "unique_leaders": 83744,
+    "total_leader_blocks": 351698,
     "top_leaders": [
       {
         "pk": "44889b706fff3c48",
@@ -2265,231 +2291,231 @@
   },
   "recent_blocks": {
     "window": {
-      "blocks": 489,
-      "slot_min": 3363054,
-      "slot_max": 3386402,
-      "slot_span": 23349,
-      "transactions": 4343,
-      "operations": 9581,
-      "empty_blocks": 28,
-      "missed_or_unseen_slots": 22860
+      "blocks": 486,
+      "slot_min": 3680554,
+      "slot_max": 3697997,
+      "slot_span": 17444,
+      "transactions": 2700,
+      "operations": 6407,
+      "empty_blocks": 54,
+      "missed_or_unseen_slots": 16958
     },
     "leader_diversity": {
-      "unique_leaders": 489,
+      "unique_leaders": 486,
       "top_leader_share_pct": 0.2
     },
     "top_leaders": [
       {
-        "leader_key": "983383695ef518a0",
+        "leader_key": "39cbc71d3e7ee3e5",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "5d37525d0200942f",
+        "leader_key": "1bf1dd252bfa4fc8",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "726b86a02e001985",
+        "leader_key": "0e1f0bbdc25e4b76",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "d66ae26419d9ac1e",
+        "leader_key": "3afd34654da79f39",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "a891cae514588728",
+        "leader_key": "6a34217d3b7fcb72",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "e953d3b2b597913a",
+        "leader_key": "bf1114107840e548",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "3f56dbea25b3b02a",
+        "leader_key": "795543226a443bc3",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "baef3b5d9f11a9a2",
+        "leader_key": "d044f0de3bf10194",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "6a908607231c658c",
+        "leader_key": "81ab25aabc140f70",
         "blocks": 1,
         "pct": 0.2
       },
       {
-        "leader_key": "51ec1cc36ae2d929",
+        "leader_key": "1eea668452b30a66",
         "blocks": 1,
         "pct": 0.2
       }
     ],
     "recent": [
       {
-        "slot": 3385769,
-        "leader_key": "8d2f5c6eae1dd91c",
+        "slot": 3697156,
+        "leader_key": "a8ffbfeff1040813",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "c55076887551c544"
+        "hash": "b45e7be241337772"
       },
       {
-        "slot": 3385778,
-        "leader_key": "7316ade773ef4093",
-        "transactions": 2,
-        "operations": 5,
+        "slot": 3697296,
+        "leader_key": "3cb2199efc479b42",
+        "transactions": 20,
+        "operations": 41,
         "root": "",
-        "hash": "afe56deb8d49cfc6"
+        "hash": "a9d701712290a74a"
       },
       {
-        "slot": 3385820,
-        "leader_key": "15c0d38c1ca8bb36",
-        "transactions": 15,
-        "operations": 31,
+        "slot": 3697309,
+        "leader_key": "b122d92f0ce615de",
+        "transactions": 1,
+        "operations": 2,
         "root": "",
-        "hash": "c9b46f6b22a9799d"
+        "hash": "818a318e1a2308da"
       },
       {
-        "slot": 3385829,
-        "leader_key": "3eaa33dee0a17444",
-        "transactions": 3,
-        "operations": 7,
-        "root": "",
-        "hash": "1dea728e77984db8"
-      },
-      {
-        "slot": 3385859,
-        "leader_key": "eeec80e463c5afbb",
+        "slot": 3697343,
+        "leader_key": "7ec2f38c0be10313",
         "transactions": 9,
         "operations": 18,
         "root": "",
-        "hash": "2647721c45d3dc5b"
+        "hash": "c43a034267463544"
       },
       {
-        "slot": 3385890,
-        "leader_key": "d31764d2e2a04f71",
-        "transactions": 5,
-        "operations": 10,
-        "root": "",
-        "hash": "84a34c77c52fa174"
-      },
-      {
-        "slot": 3385988,
-        "leader_key": "30de049679a0305e",
-        "transactions": 21,
-        "operations": 42,
-        "root": "",
-        "hash": "343a17d6d5dd4561"
-      },
-      {
-        "slot": 3386001,
-        "leader_key": "6c5f74d0d3ea965b",
+        "slot": 3697357,
+        "leader_key": "f5f026417f9289d3",
         "transactions": 1,
-        "operations": 2,
+        "operations": 4,
         "root": "",
-        "hash": "3a17c1cac63fa92d"
+        "hash": "eead5130f3ccca5f"
       },
       {
-        "slot": 3386037,
-        "leader_key": "70c8e587f49ddfa8",
-        "transactions": 8,
-        "operations": 17,
+        "slot": 3697366,
+        "leader_key": "d041310fcfa67623",
+        "transactions": 2,
+        "operations": 6,
         "root": "",
-        "hash": "cc5615bab55e2b51"
+        "hash": "0494ae5f10fb8af1"
       },
       {
-        "slot": 3386066,
-        "leader_key": "f95254011e8b56b2",
-        "transactions": 7,
-        "operations": 17,
+        "slot": 3697570,
+        "leader_key": "e5856649601e5f65",
+        "transactions": 35,
+        "operations": 74,
         "root": "",
-        "hash": "da742d1e9b8d6244"
+        "hash": "0a27b1595e969f9b"
       },
       {
-        "slot": 3386121,
-        "leader_key": "51ec1cc36ae2d929",
-        "transactions": 9,
-        "operations": 21,
+        "slot": 3697644,
+        "leader_key": "a057c2c400dd65f6",
+        "transactions": 6,
+        "operations": 12,
         "root": "",
-        "hash": "a6caf8edcc43b8fe"
+        "hash": "23b2953363715ae8"
       },
       {
-        "slot": 3386149,
-        "leader_key": "6a908607231c658c",
-        "transactions": 10,
-        "operations": 22,
+        "slot": 3697674,
+        "leader_key": "5a2aa2d4cbfdc7ee",
+        "transactions": 4,
+        "operations": 8,
         "root": "",
-        "hash": "980dc56c91b16cb9"
+        "hash": "486e111888bc8c51"
       },
       {
-        "slot": 3386208,
-        "leader_key": "baef3b5d9f11a9a2",
+        "slot": 3697714,
+        "leader_key": "5eb557531ef73a86",
+        "transactions": 14,
+        "operations": 36,
+        "root": "",
+        "hash": "685cbdac0f222c0c"
+      },
+      {
+        "slot": 3697780,
+        "leader_key": "1eea668452b30a66",
         "transactions": 12,
-        "operations": 24,
+        "operations": 28,
         "root": "",
-        "hash": "78662b5e9b8f4f9d"
+        "hash": "31acac5de11c28f8"
       },
       {
-        "slot": 3386246,
-        "leader_key": "3f56dbea25b3b02a",
+        "slot": 3697797,
+        "leader_key": "81ab25aabc140f70",
         "transactions": 5,
         "operations": 10,
         "root": "",
-        "hash": "58ffd973293c8d14"
+        "hash": "153cfd71e2f2194d"
       },
       {
-        "slot": 3386256,
-        "leader_key": "e953d3b2b597913a",
-        "transactions": 1,
-        "operations": 2,
-        "root": "",
-        "hash": "ce3c5b1195f4d6d5"
-      },
-      {
-        "slot": 3386260,
-        "leader_key": "a891cae514588728",
+        "slot": 3697800,
+        "leader_key": "d044f0de3bf10194",
         "transactions": 0,
         "operations": 0,
         "root": "",
-        "hash": "7fac8a6595be76d1"
+        "hash": "31afbd28e429f9f4"
       },
       {
-        "slot": 3386285,
-        "leader_key": "d66ae26419d9ac1e",
+        "slot": 3697823,
+        "leader_key": "795543226a443bc3",
         "transactions": 7,
-        "operations": 14,
+        "operations": 20,
         "root": "",
-        "hash": "2d4b5dc67aef5810"
+        "hash": "b663943d7b8a7407"
       },
       {
-        "slot": 3386349,
-        "leader_key": "726b86a02e001985",
-        "transactions": 22,
-        "operations": 48,
+        "slot": 3697824,
+        "leader_key": "bf1114107840e548",
+        "transactions": 1,
+        "operations": 2,
         "root": "",
-        "hash": "f75960fa4d458a4e"
+        "hash": "db5ea462af238c28"
       },
       {
-        "slot": 3386387,
-        "leader_key": "5d37525d0200942f",
+        "slot": 3697860,
+        "leader_key": "6a34217d3b7fcb72",
         "transactions": 8,
-        "operations": 19,
+        "operations": 18,
         "root": "",
-        "hash": "1da46a4def04204a"
+        "hash": "2b87155534887b28"
       },
       {
-        "slot": 3386402,
-        "leader_key": "983383695ef518a0",
+        "slot": 3697873,
+        "leader_key": "3afd34654da79f39",
         "transactions": 5,
         "operations": 10,
         "root": "",
-        "hash": "300ed967026ef945"
+        "hash": "f7462bda041d375d"
+      },
+      {
+        "slot": 3697936,
+        "leader_key": "0e1f0bbdc25e4b76",
+        "transactions": 12,
+        "operations": 30,
+        "root": "",
+        "hash": "b0ac418acddc1337"
+      },
+      {
+        "slot": 3697950,
+        "leader_key": "1bf1dd252bfa4fc8",
+        "transactions": 2,
+        "operations": 4,
+        "root": "",
+        "hash": "b14337b6e2f39f29"
+      },
+      {
+        "slot": 3697997,
+        "leader_key": "39cbc71d3e7ee3e5",
+        "transactions": 8,
+        "operations": 20,
+        "root": "",
+        "hash": "893523e3b3cf130d"
       }
     ]
   },
@@ -3616,7 +3642,7 @@
       "country": ""
     }
   ],
-  "genesis_ts": null,
+  "genesis_ts": 1791749277,
   "disk": {
     "total_gb": 1967.8,
     "used_gb": 795.7,
@@ -3626,6 +3652,6 @@
   "heard_count": 0,
   "heard_nodes": [],
   "peer_data_source": "crawler",
-  "peer_snapshot": "2026-11-23T13:06:31Z",
-  "updated": 1795439191
+  "peer_snapshot": "2026-11-23T14:05:20Z",
+  "updated": 1795442720
 }
